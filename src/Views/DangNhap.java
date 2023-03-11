@@ -23,7 +23,11 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
+<<<<<<< HEAD
         jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
+=======
+        jLabel1.setIcon(new ImageIcon("D:\\PhanMemBanGiay\\src\\icon\\Video1.gif"));
+>>>>>>> 810c2f0e2cc739c27be5bd9ad912ec374fff3361
     }
 
     public boolean check() {
@@ -89,6 +93,7 @@ public class DangNhap extends javax.swing.JFrame {
         getContentPane().add(txtUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 230, 30));
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPass.setText("Pass");
         txtPass.setBorder(null);
         txtPass.setEchoChar('\u25cf');
         txtPass.addActionListener(new java.awt.event.ActionListener() {
@@ -151,21 +156,37 @@ public class DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
+<<<<<<< HEAD
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
+=======
+        btnHien.setIcon(new ImageIcon("D:\\PhanMemBanGiay\\src\\icon\\Hien.png"));
+>>>>>>> 810c2f0e2cc739c27be5bd9ad912ec374fff3361
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
+<<<<<<< HEAD
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
+=======
+        btnHien.setIcon(new ImageIcon("D:\\PhanMemBanGiay\\src\\icon\\An.png"));
+>>>>>>> 810c2f0e2cc739c27be5bd9ad912ec374fff3361
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
 
     private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
+<<<<<<< HEAD
         btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
         btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Login.png"));
+=======
+        btnDangNhap.setIcon(new ImageIcon("D:\\PhanMemBanGiay\\src\\icon\\LoginAn.png"));
+    }//GEN-LAST:event_btnDangNhapMouseEntered
+
+    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
+        btnDangNhap.setIcon(new ImageIcon("D:\\PhanMemBanGiay\\src\\icon\\Login.png"));
+>>>>>>> 810c2f0e2cc739c27be5bd9ad912ec374fff3361
     }//GEN-LAST:event_btnDangNhapMouseExited
 
     private void lblQuenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMouseClicked
