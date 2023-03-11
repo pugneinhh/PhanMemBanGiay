@@ -24,9 +24,13 @@ public class DangNhap extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
+<<<<<<< HEAD
         jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
 
         jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
+=======
+        jLabel1.setIcon(new ImageIcon("src\\icon\\Video1.gif"));
+>>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
 
     }
 
@@ -154,18 +158,30 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
 
+<<<<<<< HEAD
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
 
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
+=======
+        
+
+        btnHien.setIcon(new ImageIcon("src\\icon\\Hien.png"));
+>>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
 
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
 
+<<<<<<< HEAD
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
 
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
+=======
+       
+
+        btnHien.setIcon(new ImageIcon("src\\icon\\An.png"));
+>>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
 
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
@@ -175,6 +191,16 @@ public class DangNhap extends javax.swing.JFrame {
         btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
+<<<<<<< HEAD
+=======
+                                      
+
+    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
+        btnDangNhap.setIcon(new ImageIcon("src\\icon\\Login.png"));
+
+    }//GEN-LAST:event_btnDangNhapMouseExited
+
+>>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
     private void lblQuenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMouseClicked
         this.dispose();
         new QuenMK().setVisible(true);
@@ -201,35 +227,7 @@ public class DangNhap extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -251,7 +249,5 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser1;
     // End of variables declaration//GEN-END:variables
-private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Java3\\src\\icons\\Unknown person.png"));
-    }
+
 }
