@@ -23,7 +23,7 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
-        jLabel1.setIcon(new ImageIcon("D:\\DuAn\\D-n-1\\DuAnNhom6\\src\\icon\\Video1.gif"));
+        jLabel1.setIcon(new ImageIcon("\\icon\\Video1.gif"));
     }
 
     public boolean check() {
@@ -89,6 +89,7 @@ public class DangNhap extends javax.swing.JFrame {
         getContentPane().add(txtUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 230, 30));
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPass.setText("Pass");
         txtPass.setBorder(null);
         txtPass.setEchoChar('\u25cf');
         txtPass.addActionListener(new java.awt.event.ActionListener() {
