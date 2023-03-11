@@ -23,7 +23,7 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
-        jLabel1.setIcon(new ImageIcon("D:\\tests1\\DuAnNhom6\\src\\icon\\Video1.gif"));
+        jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
     }
 
     public boolean check() {
@@ -151,21 +151,21 @@ public class DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
-        btnHien.setIcon(new ImageIcon("D:\\tests1\\DuAnNhom6\\src\\icon\\Hien.png"));
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
-        btnHien.setIcon(new ImageIcon("D:\\tests1\\DuAnNhom6\\src\\icon\\An.png"));
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
 
     private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
-        btnDangNhap.setIcon(new ImageIcon("D:\\tests1\\DuAnNhom6\\src\\icon\\LoginAn.png"));
+        btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
-        btnDangNhap.setIcon(new ImageIcon("D:\\tests1\\DuAnNhom6\\src\\icon\\Login.png"));
+        btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Login.png"));
     }//GEN-LAST:event_btnDangNhapMouseExited
 
     private void lblQuenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMouseClicked
