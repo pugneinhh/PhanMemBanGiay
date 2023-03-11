@@ -75,6 +75,12 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnClose = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         JHome = new javax.swing.JPanel();
+        JKhuyenMai = new javax.swing.JPanel();
+        JSanPham = new javax.swing.JPanel();
+        JThongKe = new javax.swing.JPanel();
+        JHoaDon = new javax.swing.JPanel();
+        JNhanVien = new javax.swing.JPanel();
+        JBanHang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -161,6 +167,84 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         jPanel2.add(JHome, "card2");
 
+        javax.swing.GroupLayout JKhuyenMaiLayout = new javax.swing.GroupLayout(JKhuyenMai);
+        JKhuyenMai.setLayout(JKhuyenMaiLayout);
+        JKhuyenMaiLayout.setHorizontalGroup(
+            JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1170, Short.MAX_VALUE)
+        );
+        JKhuyenMaiLayout.setVerticalGroup(
+            JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 615, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JKhuyenMai, "card2");
+
+        javax.swing.GroupLayout JSanPhamLayout = new javax.swing.GroupLayout(JSanPham);
+        JSanPham.setLayout(JSanPhamLayout);
+        JSanPhamLayout.setHorizontalGroup(
+            JSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JSanPhamLayout.setVerticalGroup(
+            JSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JSanPham, "card2");
+
+        javax.swing.GroupLayout JThongKeLayout = new javax.swing.GroupLayout(JThongKe);
+        JThongKe.setLayout(JThongKeLayout);
+        JThongKeLayout.setHorizontalGroup(
+            JThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JThongKeLayout.setVerticalGroup(
+            JThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JThongKe, "card2");
+
+        javax.swing.GroupLayout JHoaDonLayout = new javax.swing.GroupLayout(JHoaDon);
+        JHoaDon.setLayout(JHoaDonLayout);
+        JHoaDonLayout.setHorizontalGroup(
+            JHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JHoaDonLayout.setVerticalGroup(
+            JHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JHoaDon, "card2");
+
+        javax.swing.GroupLayout JNhanVienLayout = new javax.swing.GroupLayout(JNhanVien);
+        JNhanVien.setLayout(JNhanVienLayout);
+        JNhanVienLayout.setHorizontalGroup(
+            JNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JNhanVienLayout.setVerticalGroup(
+            JNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JNhanVien, "card2");
+
+        javax.swing.GroupLayout JBanHangLayout = new javax.swing.GroupLayout(JBanHang);
+        JBanHang.setLayout(JBanHangLayout);
+        JBanHangLayout.setHorizontalGroup(
+            JBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JBanHangLayout.setVerticalGroup(
+            JBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(JBanHang, "card2");
+
         javax.swing.GroupLayout JMainLayout = new javax.swing.GroupLayout(JMain);
         JMain.setLayout(JMainLayout);
         JMainLayout.setHorizontalGroup(
@@ -171,7 +255,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                     .addGroup(JMainLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1134, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(JMainLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -255,8 +339,14 @@ public class FormNhanVien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JBanHang;
+    private javax.swing.JPanel JHoaDon;
     private javax.swing.JPanel JHome;
+    private javax.swing.JPanel JKhuyenMai;
     private javax.swing.JPanel JMain;
+    private javax.swing.JPanel JNhanVien;
+    private javax.swing.JPanel JSanPham;
+    private javax.swing.JPanel JThongKe;
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnMenu;
