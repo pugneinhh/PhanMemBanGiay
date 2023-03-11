@@ -93,9 +93,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         JMain = new javax.swing.JPanel();
         btnMenu = new javax.swing.JLabel();
-        Menu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnClose = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         JHome = new javax.swing.JPanel();
         lbltrangchu = new javax.swing.JLabel();
@@ -105,6 +102,9 @@ public class FormNhanVien extends javax.swing.JFrame {
         JHoaDon = new javax.swing.JPanel();
         JNhanVien = new javax.swing.JPanel();
         JBanHang = new javax.swing.JPanel();
+        Menu = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnClose = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,41 +140,6 @@ public class FormNhanVien extends javax.swing.JFrame {
                 btnMenuMouseClicked(evt);
             }
         });
-
-        Menu.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setText("Trang chủ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Thoat.png"))); // NOI18N
-        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCloseMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
-        Menu.setLayout(MenuLayout);
-        MenuLayout.setHorizontalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        MenuLayout.setVerticalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(105, 105, 105)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(482, 482, 482))
-        );
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
@@ -268,6 +233,41 @@ public class FormNhanVien extends javax.swing.JFrame {
         );
 
         jPanel2.add(JBanHang, "card2");
+
+        Menu.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Trang chủ");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Thoat.png"))); // NOI18N
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCloseMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
+        Menu.setLayout(MenuLayout);
+        MenuLayout.setHorizontalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        MenuLayout.setVerticalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(105, 105, 105)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(482, 482, 482))
+        );
 
         javax.swing.GroupLayout JMainLayout = new javax.swing.GroupLayout(JMain);
         JMain.setLayout(JMainLayout);
