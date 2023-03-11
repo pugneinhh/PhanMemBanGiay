@@ -182,10 +182,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         JHome.setLayout(JHomeLayout);
         JHomeLayout.setHorizontalGroup(
             JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JHomeLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(lbltrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 1111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+            .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1170, Short.MAX_VALUE)
         );
         JHomeLayout.setVerticalGroup(
             JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
