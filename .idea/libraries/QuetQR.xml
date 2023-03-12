@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="QuetQR">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/slf4j-log4j12-1.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/slf4j-api-1.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/javase-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/core-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/webcam-capture-0.3.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/QuetQR/bridj-0.6.2-windows-only.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

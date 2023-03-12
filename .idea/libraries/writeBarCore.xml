@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="writeBarCore">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/writeBarCore/qrgen-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/writeBarCore/zxing-j2se-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/writeBarCore/zxing-core-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/writeBarCore/barcode.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
