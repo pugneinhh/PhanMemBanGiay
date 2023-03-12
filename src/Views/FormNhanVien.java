@@ -19,7 +19,7 @@ import javax.swing.Timer;
  */
 public class FormNhanVien extends javax.swing.JFrame {
     
-    
+    int index=0;
     private String[] images={"giayhome.png","giayhome1.png","giayhome2.png","giayhome3.png"};
     /**
      * Creates new form FormNhanVien
@@ -29,24 +29,21 @@ public class FormNhanVien extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
         
-            loadtrangchu();
+            loadtrangchu(index);
          
         
     }
     
-    private void loadtrangchu(){
-        Timer timer=new Timer(2000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int n=(int) Math.floor(Math.random()*4);
-                String image=images[n];
+    private void loadtrangchu(int i){
+       
+                String image=images[i];
                 ImageIcon ii=new ImageIcon("src\\icon\\"+image);
                 Image img=ii.getImage().getScaledInstance(lbltrangchu.getWidth(), lbltrangchu.getHeight(), Image.SCALE_SMOOTH);
                 ii=new ImageIcon(img);
                 lbltrangchu.setIcon(ii);
-            }
-        });
-        timer.start();
+            
+        
+        
         
         
     }
@@ -101,6 +98,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         JHome = new javax.swing.JPanel();
         lbltrangchu = new javax.swing.JLabel();
+        btnPre = new javax.swing.JLabel();
+        btnNext = new javax.swing.JLabel();
         JKhuyenMai = new javax.swing.JPanel();
         JSanPham = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -169,15 +168,46 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         jPanel2.setLayout(new java.awt.CardLayout());
 
+        JHome.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnPre.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnPre.setText("<");
+        btnPre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPreMouseClicked(evt);
+            }
+        });
+
+        btnNext.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnNext.setText(">");
+        btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNextMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout JHomeLayout = new javax.swing.GroupLayout(JHome);
         JHome.setLayout(JHomeLayout);
         JHomeLayout.setHorizontalGroup(
             JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1170, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JHomeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnPre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         JHomeLayout.setVerticalGroup(
             JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addGroup(JHomeLayout.createSequentialGroup()
+                .addGap(268, 268, 268)
+                .addGroup(JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNext)
+                    .addComponent(btnPre))
+                .addContainerGap(260, Short.MAX_VALUE))
+            .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.add(JHome, "card2");
@@ -186,11 +216,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         JKhuyenMai.setLayout(JKhuyenMaiLayout);
         JKhuyenMaiLayout.setHorizontalGroup(
             JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1170, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
         );
         JKhuyenMaiLayout.setVerticalGroup(
             JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
         jPanel2.add(JKhuyenMai, "card2");
@@ -319,7 +349,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Sản Phẩm", jPanel5);
@@ -350,7 +380,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGroup(JSanPhamLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         JSanPhamLayout.setVerticalGroup(
             JSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,8 +502,8 @@ public class FormNhanVien extends javax.swing.JFrame {
                     .addGroup(JMainLayout.createSequentialGroup()
                         .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -488,7 +518,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JMain, javax.swing.GroupLayout.PREFERRED_SIZE, 619, Short.MAX_VALUE))
+                .addComponent(JMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -496,6 +526,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
     private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
        hienMenu();
+       
     }//GEN-LAST:event_btnMenuMouseClicked
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
@@ -513,6 +544,22 @@ public class FormNhanVien extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnPreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreMouseClicked
+      index--;
+      if(index<0){
+          index=images.length-1;
+      }
+        loadtrangchu(index);
+    }//GEN-LAST:event_btnPreMouseClicked
+
+    private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
+       index++;
+      if(index>=images.length){
+          index=0;
+      }
+        loadtrangchu(index);
+    }//GEN-LAST:event_btnNextMouseClicked
 
     /**
      * @param args the command line arguments
@@ -541,6 +588,12 @@ public class FormNhanVien extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -562,6 +615,8 @@ public class FormNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnMenu;
+    private javax.swing.JLabel btnNext;
+    private javax.swing.JLabel btnPre;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
