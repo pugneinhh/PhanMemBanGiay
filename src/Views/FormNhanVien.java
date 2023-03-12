@@ -29,7 +29,9 @@ public class FormNhanVien extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
         
-//        loadtrangchu();
+            loadtrangchu();
+         
+        
     }
     
     private void loadtrangchu(){
@@ -45,6 +47,8 @@ public class FormNhanVien extends javax.swing.JFrame {
             }
         });
         timer.start();
+        
+        
     }
     //Width=190;
     //Height=641;
