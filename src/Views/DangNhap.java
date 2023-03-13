@@ -24,13 +24,13 @@ public class DangNhap extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-<<<<<<< HEAD
+
         jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
 
         jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
-=======
+
         jLabel1.setIcon(new ImageIcon("src\\icon\\Video1.gif"));
->>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
+
 
     }
 
@@ -158,30 +158,30 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
 
-<<<<<<< HEAD
+
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
 
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
-=======
+
         
 
         btnHien.setIcon(new ImageIcon("src\\icon\\Hien.png"));
->>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
+
 
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
 
-<<<<<<< HEAD
+
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
 
         btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
-=======
+
        
 
         btnHien.setIcon(new ImageIcon("src\\icon\\An.png"));
->>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
+
 
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
@@ -191,8 +191,7 @@ public class DangNhap extends javax.swing.JFrame {
         btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
-<<<<<<< HEAD
-=======
+
                                       
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
@@ -200,7 +199,7 @@ public class DangNhap extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDangNhapMouseExited
 
->>>>>>> eec9dd452df7c0d70dc917f724fc1ebb46049c92
+
     private void lblQuenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMouseClicked
         this.dispose();
         new QuenMK().setVisible(true);
