@@ -21,7 +21,13 @@ public class DangNhap extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
+
+        jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
+
+        jLabel1.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Video1.gif"));
+
         jLabel1.setIcon(new ImageIcon("src\\icon\\Video1.gif"));
+
 
     }
 
@@ -117,9 +123,6 @@ public class DangNhap extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnDangNhapMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDangNhapMouseExited(evt);
-            }
         });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, 40));
 
@@ -152,18 +155,30 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
 
+
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
+
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
+
         
 
         btnHien.setIcon(new ImageIcon("src\\icon\\Hien.png"));
+
 
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
 
+
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
+
+        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
+
        
 
         btnHien.setIcon(new ImageIcon("src\\icon\\An.png"));
+
 
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
@@ -173,12 +188,14 @@ public class DangNhap extends javax.swing.JFrame {
         btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
+
                                       
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
         btnDangNhap.setIcon(new ImageIcon("src\\icon\\Login.png"));
 
     }//GEN-LAST:event_btnDangNhapMouseExited
+
 
     private void lblQuenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMouseClicked
         this.dispose();
