@@ -330,7 +330,7 @@ public class QLGiaoCaFrm extends javax.swing.JInternalFrame {
 
         jPanel12.add(jPanel13);
 
-        jPanel10.add(jPanel12, java.awt.BorderLayout.CENTER);
+        jPanel10.add(jPanel12, java.awt.BorderLayout.LINE_START);
 
         jPanel23.setBackground(new java.awt.Color(255, 153, 255));
         jPanel23.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 200, 10, 10, new java.awt.Color(255, 153, 255)));
