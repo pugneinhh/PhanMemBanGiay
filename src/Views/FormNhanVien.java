@@ -221,7 +221,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGap(0, 613, Short.MAX_VALUE)
         );
 
-        pncardgoc.add(JKhuyenMai, "card2");
+        pncardgoc.add(JKhuyenMai, "cardkm");
 
         javax.swing.GroupLayout JSanPhamLayout = new javax.swing.GroupLayout(JSanPham);
         JSanPham.setLayout(JSanPhamLayout);
@@ -324,6 +324,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnKhuyenMai.setText("Khuyến mãi");
+        btnKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhuyenMaiMouseClicked(evt);
+            }
+        });
 
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -461,7 +466,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                         .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pncardgoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)))
+                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 648, Short.MAX_VALUE)))
         );
 
         pncardgoc.getAccessibleContext().setAccessibleName("");
@@ -524,6 +529,13 @@ public class FormNhanVien extends javax.swing.JFrame {
          JSanPham.add(spl,BorderLayout.CENTER);
          cardlayout.show(pncardgoc, "cardsp");
     }//GEN-LAST:event_btnSanPhamMouseClicked
+
+    private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
+        KhuyenMaiJPanel kml=new KhuyenMaiJPanel();
+        kml.setSize(pncardgoc.getWidth(),pncardgoc.getHeight());
+        JKhuyenMai.add(kml,BorderLayout.CENTER);
+         cardlayout.show(pncardgoc, "cardkm");
+    }//GEN-LAST:event_btnKhuyenMaiMouseClicked
 
     /**
      * @param args the command line arguments

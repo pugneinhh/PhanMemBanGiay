@@ -8,12 +8,12 @@ package Views;
  *
  * @author HoiVN
  */
-public class KhuyenMai extends javax.swing.JPanel {
+public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form KhuyenMai
      */
-    public KhuyenMai() {
+    public KhuyenMaiJPanel() {
         initComponents();
     }
 
