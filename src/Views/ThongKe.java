@@ -415,7 +415,7 @@ public class ThongKe extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Xuất FiLe EXEL");
+        jButton1.setText("Xuất FiLe EXCEL");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
