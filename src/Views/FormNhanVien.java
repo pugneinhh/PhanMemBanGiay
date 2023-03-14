@@ -93,7 +93,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         JMain = new javax.swing.JPanel();
-        btnMenu = new javax.swing.JLabel();
         pncardgoc = new javax.swing.JPanel();
         JHome = new javax.swing.JPanel();
         lbltrangchu = new javax.swing.JLabel();
@@ -105,9 +104,9 @@ public class FormNhanVien extends javax.swing.JFrame {
         JNhanVien = new javax.swing.JPanel();
         JHoaDon = new javax.swing.JPanel();
         JBanHang = new javax.swing.JPanel();
+        JKhachHang = new javax.swing.JPanel();
         Menu = new javax.swing.JPanel();
         btnTrangchu = new javax.swing.JLabel();
-        btnClose = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnBanHang = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -127,7 +126,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(239, 185, 169));
 
@@ -149,17 +147,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         JMain.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Menu.png"))); // NOI18N
-        btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuMouseClicked(evt);
-            }
-        });
 
         pncardgoc.setLayout(new java.awt.CardLayout());
 
@@ -189,7 +180,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnPre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
+                .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1131, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -197,14 +188,14 @@ public class FormNhanVien extends javax.swing.JFrame {
         JHomeLayout.setVerticalGroup(
             JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JHomeLayout.createSequentialGroup()
-                .addGap(268, 268, 268)
+                .addGap(286, 286, 286)
                 .addGroup(JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNext)
                     .addComponent(btnPre))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(JHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JHomeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbltrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -214,11 +205,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         JKhuyenMai.setLayout(JKhuyenMaiLayout);
         JKhuyenMaiLayout.setHorizontalGroup(
             JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1350, Short.MAX_VALUE)
+            .addGap(0, 1211, Short.MAX_VALUE)
         );
         JKhuyenMaiLayout.setVerticalGroup(
             JKhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+            .addGap(0, 713, Short.MAX_VALUE)
         );
 
         pncardgoc.add(JKhuyenMai, "cardkm");
@@ -227,11 +218,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         JSanPham.setLayout(JSanPhamLayout);
         JSanPhamLayout.setHorizontalGroup(
             JSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1350, Short.MAX_VALUE)
+            .addGap(0, 1211, Short.MAX_VALUE)
         );
         JSanPhamLayout.setVerticalGroup(
             JSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+            .addGap(0, 713, Short.MAX_VALUE)
         );
 
         pncardgoc.add(JSanPham, "cardsp");
@@ -286,7 +277,22 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        pncardgoc.add(JBanHang, "card2");
+        pncardgoc.add(JBanHang, "cardbh");
+
+        JKhachHang.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout JKhachHangLayout = new javax.swing.GroupLayout(JKhachHang);
+        JKhachHang.setLayout(JKhachHangLayout);
+        JKhachHangLayout.setHorizontalGroup(
+            JKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1211, Short.MAX_VALUE)
+        );
+        JKhachHangLayout.setVerticalGroup(
+            JKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+
+        pncardgoc.add(JKhachHang, "cardkh");
 
         Menu.setBackground(new java.awt.Color(255, 255, 255));
         Menu.setPreferredSize(new java.awt.Dimension(190, 641));
@@ -295,18 +301,16 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnTrangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnTrangchu.setText("Trang chủ");
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Thoat.png"))); // NOI18N
-        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCloseMouseClicked(evt);
-            }
-        });
-
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBanHang.setText("Bán hàng");
         btnBanHang.setMaximumSize(new java.awt.Dimension(94, 27));
         btnBanHang.setMinimumSize(new java.awt.Dimension(94, 27));
+        btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBanHangMouseClicked(evt);
+            }
+        });
 
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -337,6 +341,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnKhachHang.setText("Khách hàng");
+        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseClicked(evt);
+            }
+        });
 
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -356,35 +365,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(MenuLayout.createSequentialGroup()
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MenuLayout.createSequentialGroup()
@@ -394,6 +374,31 @@ public class FormNhanVien extends javax.swing.JFrame {
                             .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(MenuLayout.createSequentialGroup()
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         MenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBanHang, btnHoaDon, btnKhachHang, btnKhuyenMai, btnNhanVien, btnSanPham, btnTrangchu, jSeparator1, jSeparator2, jSeparator3, jSeparator4, jSeparator5, jSeparator6});
@@ -401,10 +406,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -442,31 +445,23 @@ public class FormNhanVien extends javax.swing.JFrame {
                 .addGap(49, 49, 49))
         );
 
-        MenuLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBanHang, btnHoaDon, btnKhachHang, btnKhuyenMai, btnNhanVien, btnSanPham, btnTrangchu});
+        MenuLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBanHang, btnHoaDon, btnKhachHang, btnKhuyenMai, btnNhanVien, btnSanPham});
 
         javax.swing.GroupLayout JMainLayout = new javax.swing.GroupLayout(JMain);
         JMain.setLayout(JMainLayout);
         JMainLayout.setHorizontalGroup(
             JMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JMainLayout.createSequentialGroup()
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(JMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JMainLayout.createSequentialGroup()
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pncardgoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(pncardgoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JMainLayout.setVerticalGroup(
             JMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JMainLayout.createSequentialGroup()
+            .addGroup(JMainLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(JMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JMainLayout.createSequentialGroup()
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pncardgoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 648, Short.MAX_VALUE)))
+                .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
+            .addComponent(pncardgoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pncardgoc.getAccessibleContext().setAccessibleName("");
@@ -488,15 +483,6 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
-       hienMenu();
-       
-    }//GEN-LAST:event_btnMenuMouseClicked
-
-    private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
-        dongMenu();
-    }//GEN-LAST:event_btnCloseMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
        System.exit(0);
@@ -532,10 +518,24 @@ public class FormNhanVien extends javax.swing.JFrame {
 
     private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
         KhuyenMaiJPanel kml=new KhuyenMaiJPanel();
-        kml.setSize(pncardgoc.getWidth(),pncardgoc.getHeight());
+        kml.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
         JKhuyenMai.add(kml,BorderLayout.CENTER);
-         cardlayout.show(pncardgoc, "cardkm");
+        cardlayout.show(pncardgoc, "cardkm");
     }//GEN-LAST:event_btnKhuyenMaiMouseClicked
+
+    private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
+        KhachHangJPanel khl=new KhachHangJPanel();
+        khl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JKhachHang.add(khl,BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardkh");
+    }//GEN-LAST:event_btnKhachHangMouseClicked
+
+    private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
+        BanHangJPanel bhl=new BanHangJPanel();
+         bhl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JBanHang.add(bhl,BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardbh");
+    }//GEN-LAST:event_btnBanHangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -583,6 +583,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel JBanHang;
     private javax.swing.JPanel JHoaDon;
     private javax.swing.JPanel JHome;
+    private javax.swing.JPanel JKhachHang;
     private javax.swing.JPanel JKhuyenMai;
     private javax.swing.JPanel JMain;
     private javax.swing.JPanel JNhanVien;
@@ -590,11 +591,9 @@ public class FormNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel JThongKe;
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel btnBanHang;
-    private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnHoaDon;
     private javax.swing.JLabel btnKhachHang;
     private javax.swing.JLabel btnKhuyenMai;
-    private javax.swing.JLabel btnMenu;
     private javax.swing.JLabel btnNext;
     private javax.swing.JLabel btnNhanVien;
     private javax.swing.JLabel btnPre;
