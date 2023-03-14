@@ -3,21 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/ts/src/Views/KhachHang.java</file>
-            <file>file:/D:/ts/src/Views/FormNhanVien.java</file>
-            <file>file:/D:/ts/src/Views/QuenMK.java</file>
-            <file>file:/D:/ts/src/Views/SanPhamJPanel.java</file>
-            <file>file:/D:/ts/src/Views/DangNhap.java</file>
-            <file>file:/D:/ts/src/DomainModels/ChatLieu.java</file>
-            <file>file:/D:/ts/src/Views/Loading.java</file>
-            <file>file:/D:/ts/src/Views/ThanhToanHoaDonJFrame.java</file>
-            <file>file:/D:/ts/src/Views/ThongKe.java</file>
-            <file>file:/D:/ts/src/DomainModels/ChiTietSanPham.java</file>
-=======
-            <file>file:/D:/Duan1_Nhom7/src/Views/QLGiaoCa.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/phanmembangiay/PhanMemBanGiay.java</file>
->>>>>>> 34ce105e07b368cd3386f8626f3f9ad95ba53bd1
+            <file>file:/D:/ts/src/Views/ThongTinNhanVien.java</file>
+            <file>file:/D:/ts/src/Views/Barcode.java</file>
+            <file>file:/D:/ts/src/Views/NhanVien.java</file>
         </group>
     </open-files>
 </project-private>
