@@ -106,9 +106,9 @@ public class NhanVien extends javax.swing.JPanel {
 
         jLabel11.setText("Trạng Thái");
 
-        jRadioButton3.setText("Nghỉ");
+        jRadioButton3.setText("Đã nghỉ");
 
-        jRadioButton4.setText("Đi Làm");
+        jRadioButton4.setText("Đang làm");
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
