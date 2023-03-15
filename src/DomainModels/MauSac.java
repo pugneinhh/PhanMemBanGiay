@@ -21,6 +21,12 @@ public class MauSac {
     public MauSac() {
     }
 
+    public MauSac(String maMS, String tenMS, int trangThai) {
+        this.maMS = maMS;
+        this.tenMS = tenMS;
+        this.trangThai = trangThai;
+    }
+    
     public MauSac(String idMS, String maMS, String tenMS, Date ngayTao, Date ngaySua, int trangThai) {
         this.idMS = idMS;
         this.maMS = maMS;
