@@ -21,6 +21,12 @@ public class DoCao {
     public DoCao() {
     }
 
+    public DoCao(String maDC, String tenDC, int trangThai) {
+        this.maDC = maDC;
+        this.tenDC = tenDC;
+        this.trangThai = trangThai;
+    }
+    
     public DoCao(String idDC, String maDC, String tenDC, Date ngayTao, Date ngaySua, int trangThai) {
         this.idDC = idDC;
         this.maDC = maDC;

@@ -26,6 +26,16 @@ public class SanPham {
     public SanPham() {
     }
 
+    public SanPham(String maSP, String tenSP, int soLuong, BigDecimal donGia, String moTa, String hinhAnh, int trangThai) {
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.moTa = moTa;
+        this.hinhAnh = hinhAnh;
+        this.trangThai = trangThai;
+    }
+    
     public SanPham(String idSP, String maSP, String tenSP, int soLuong, BigDecimal donGia, String moTa, String hinhAnh, Date ngayTao, Date ngaySua, int trangThai) {
         this.idSP = idSP;
         this.maSP = maSP;

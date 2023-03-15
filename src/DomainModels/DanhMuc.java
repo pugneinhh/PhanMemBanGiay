@@ -21,6 +21,13 @@ public class DanhMuc {
     public DanhMuc() {
     }
 
+    public DanhMuc(String maDM, String tenDM, Date ngaySua, int trangThai) {
+        this.maDM = maDM;
+        this.tenDM = tenDM;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+    
     public DanhMuc(String idDM, String maDM, String tenDM, Date ngayTao, Date ngaySua, int trangThai) {
         this.idDM = idDM;
         this.maDM = maDM;
