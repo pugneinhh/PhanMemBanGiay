@@ -24,6 +24,15 @@ public class GioHangChiTiet {
     public GioHangChiTiet() {
     }
 
+    public GioHangChiTiet(GioHang idGH, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, BigDecimal donGiaKhiGiam, int trangThai) {
+        this.idGH = idGH;
+        this.idCTSP = idCTSP;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.donGiaKhiGiam = donGiaKhiGiam;
+        this.trangThai = trangThai;
+    }
+    
     public GioHangChiTiet(GioHang idGH, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, BigDecimal donGiaKhiGiam, Date ngayTao, Date ngaySua, int trangThai) {
         this.idGH = idGH;
         this.idCTSP = idCTSP;

@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Phanh
  */
 public class HoaDon {
-    private String idH;
+    private String idHD;
     private NhanVien idNV;
     private KhachHang idKH;
     private Date ngayTao;
@@ -26,8 +26,18 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String idH, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, Date ngaySua, int trangThai) {
-        this.idH = idH;
+    public HoaDon(NhanVien idNV, KhachHang idKH, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, int trangThai) {
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.thanhTien = thanhTien;
+        this.tienShip = tienShip;
+        this.idKM = idKM;
+        this.ghiChu = ghiChu;
+        this.trangThai = trangThai;
+    }
+    
+    public HoaDon(String idHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, Date ngaySua, int trangThai) {
+        this.idHD = idHD;
         this.idNV = idNV;
         this.idKH = idKH;
         this.ngayTao = ngayTao;
@@ -39,12 +49,12 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-    public String getIdH() {
-        return idH;
+    public String getIdHD() {
+        return idHD;
     }
 
-    public void setIdH(String idH) {
-        this.idH = idH;
+    public void setIdHD(String idHD) {
+        this.idHD = idHD;
     }
 
     public NhanVien getIdNV() {

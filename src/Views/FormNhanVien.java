@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -25,7 +27,13 @@ public class FormNhanVien extends javax.swing.JFrame {
      */
     public FormNhanVien() {
         initComponents();
-        setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
+        Toolkit tk=Toolkit.getDefaultToolkit();
+        int xsize=(int) tk.getScreenSize().getWidth();
+        int ysize=(int) tk.getScreenSize().getHeight();
+        Insets scrmax=Toolkit.getDefaultToolkit().getScreenInsets(getGraphicsConfiguration());
+        int taskBar=scrmax.bottom;
+        this.setSize(xsize, ysize-taskBar);
         getContentPane().setBackground(Color.white);
         cardlayout = (CardLayout) pncardgoc.getLayout();
             loadtrangchu(index);
@@ -33,6 +41,16 @@ public class FormNhanVien extends javax.swing.JFrame {
         
     }
     
+    private void resetbtn(){
+        btnBanHang.setBackground(Color.white);
+        btnNhanVien.setBackground(Color.white);
+        btnKhachHang.setBackground(Color.white);
+        btnKhuyenMai.setBackground(Color.white);
+        btnHoaDon.setBackground(Color.white);
+        btnSanPham.setBackground(Color.white);
+        btnTrangchu.setBackground(Color.white);
+        btnThongKe.setBackground(Color.white);
+    }
     private void loadtrangchu(int i){
        
                 String image=images[i];
@@ -126,6 +144,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(239, 185, 169));
 
@@ -155,6 +175,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         pncardgoc.setLayout(new java.awt.CardLayout());
 
         JHome.setBackground(new java.awt.Color(255, 255, 255));
+        JHome.setLayout(new java.awt.BorderLayout());
+        JHome.add(lbltrangchu, java.awt.BorderLayout.CENTER);
 
         btnPre.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnPre.setText("<");
@@ -163,6 +185,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                 btnPreMouseClicked(evt);
             }
         });
+        JHome.add(btnPre, java.awt.BorderLayout.WEST);
 
         btnNext.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnNext.setText(">");
@@ -171,35 +194,9 @@ public class FormNhanVien extends javax.swing.JFrame {
                 btnNextMouseClicked(evt);
             }
         });
+        JHome.add(btnNext, java.awt.BorderLayout.EAST);
 
-        javax.swing.GroupLayout JHomeLayout = new javax.swing.GroupLayout(JHome);
-        JHome.setLayout(JHomeLayout);
-        JHomeLayout.setHorizontalGroup(
-            JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbltrangchu, javax.swing.GroupLayout.DEFAULT_SIZE, 1131, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        JHomeLayout.setVerticalGroup(
-            JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JHomeLayout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addGroup(JHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNext)
-                    .addComponent(btnPre))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JHomeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbltrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        pncardgoc.add(JHome, "card2");
+        pncardgoc.add(JHome, "cardhome");
 
         javax.swing.GroupLayout JKhuyenMaiLayout = new javax.swing.GroupLayout(JKhuyenMai);
         JKhuyenMai.setLayout(JKhuyenMaiLayout);
@@ -238,7 +235,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        pncardgoc.add(JThongKe, "card2");
+        pncardgoc.add(JThongKe, "cardtk");
 
         javax.swing.GroupLayout JNhanVienLayout = new javax.swing.GroupLayout(JNhanVien);
         JNhanVien.setLayout(JNhanVienLayout);
@@ -251,7 +248,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        pncardgoc.add(JNhanVien, "card2");
+        pncardgoc.add(JNhanVien, "cardnv");
 
         javax.swing.GroupLayout JHoaDonLayout = new javax.swing.GroupLayout(JHoaDon);
         JHoaDon.setLayout(JHoaDonLayout);
@@ -264,7 +261,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        pncardgoc.add(JHoaDon, "card2");
+        pncardgoc.add(JHoaDon, "cardhd");
 
         javax.swing.GroupLayout JBanHangLayout = new javax.swing.GroupLayout(JBanHang);
         JBanHang.setLayout(JBanHangLayout);
@@ -300,6 +297,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnTrangchu.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnTrangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnTrangchu.setText("Trang chủ");
+        btnTrangchu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTrangchuMouseClicked(evt);
+            }
+        });
 
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -315,6 +317,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnHoaDon.setText("Hóa đơn");
+        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseClicked(evt);
+            }
+        });
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -337,6 +344,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnNhanVien.setText("Nhân viên");
+        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNhanVienMouseClicked(evt);
+            }
+        });
 
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -350,6 +362,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnThongKe.setText("Thống kê");
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseClicked(evt);
+            }
+        });
 
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -514,6 +531,8 @@ public class FormNhanVien extends javax.swing.JFrame {
          spl.setSize(pncardgoc.getWidth(),pncardgoc.getHeight());
          JSanPham.add(spl,BorderLayout.CENTER);
          cardlayout.show(pncardgoc, "cardsp");
+         
+         
     }//GEN-LAST:event_btnSanPhamMouseClicked
 
     private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
@@ -536,6 +555,34 @@ public class FormNhanVien extends javax.swing.JFrame {
         JBanHang.add(bhl,BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardbh");
     }//GEN-LAST:event_btnBanHangMouseClicked
+
+    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
+        ThongKeJPanel tkl=new ThongKeJPanel();
+        tkl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JThongKe.add(tkl,BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardtk");
+                
+    }//GEN-LAST:event_btnThongKeMouseClicked
+
+    private void btnTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangchuMouseClicked
+       
+        JHome.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+         cardlayout.show(pncardgoc, "cardhome");
+    }//GEN-LAST:event_btnTrangchuMouseClicked
+
+    private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
+        NhanVienJPanel nvl=new NhanVienJPanel();
+        nvl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JNhanVien.add(nvl,BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardnv");
+    }//GEN-LAST:event_btnNhanVienMouseClicked
+
+    private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
+        LichSuGiaoDich lsl=new LichSuGiaoDich();
+        lsl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JHoaDon.add(lsl,BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardhd");
+    }//GEN-LAST:event_btnHoaDonMouseClicked
 
     /**
      * @param args the command line arguments

@@ -29,6 +29,19 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
+    public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loadGiamGia, int trangThai) {
+        this.maKM = maKM;
+        this.tenKM = tenKM;
+        this.giaTri = giaTri;
+        this.giamToiDa = giamToiDa;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.hinhThucApDung = hinhThucApDung;
+        this.apDungGiamGia = apDungGiamGia;
+        this.loadGiamGia = loadGiamGia;
+        this.trangThai = trangThai;
+    }
+    
     public KhuyenMai(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loadGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
         this.idKM = idKM;
         this.maKM = maKM;

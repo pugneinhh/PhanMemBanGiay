@@ -25,6 +25,16 @@ public class GioHang {
     public GioHang() {
     }
 
+    public GioHang(String maGH, KhachHang idKH, NhanVien idNV, Date ngayThanhToan, String diaChi, String sdt, int trangThai) {
+        this.maGH = maGH;
+        this.idKH = idKH;
+        this.idNV = idNV;
+        this.ngayThanhToan = ngayThanhToan;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.trangThai = trangThai;
+    }
+    
     public GioHang(String idGH, String maGH, KhachHang idKH, NhanVien idNV, Date ngayTao, Date ngayThanhToan, String diaChi, String sdt, Date ngaySua, int trangThai) {
         this.idGH = idGH;
         this.maGH = maGH;

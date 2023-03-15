@@ -28,6 +28,19 @@ public class KhachHang {
     public KhachHang() {
     }
 
+    public KhachHang(String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
+        this.maKH = maKH;
+        this.loaiKH = loaiKH;
+        this.tenKH = tenKH;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
+        this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.ngayThamGia = ngayThamGia;
+        this.trangThai = trangThai;
+    }
+    
     public KhachHang(String idKH, String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, Date ngayTao, Date ngaySua, int trangThai) {
         this.idKH = idKH;
         this.maKH = maKH;

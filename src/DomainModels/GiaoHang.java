@@ -12,7 +12,8 @@ import java.util.Date;
  * @author Phanh
  */
 public class GiaoHang {
-    private String idGioHang;
+
+    private String idGiaoHang;
     private HoaDon idHD;
     private KhachHang idKH;
     private KhuyenMai idKM;
@@ -30,8 +31,22 @@ public class GiaoHang {
     public GiaoHang() {
     }
 
-    public GiaoHang(String idGioHang, HoaDon idHD, KhachHang idKH, KhuyenMai idKM, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
-        this.idGioHang = idGioHang;
+    public GiaoHang(HoaDon idHD, KhachHang idKH, KhuyenMai idKM, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, int trangThai) {
+        this.idHD = idHD;
+        this.idKH = idKH;
+        this.idKM = idKM;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.tienHang = tienHang;
+        this.tienShip = tienShip;
+        this.tongTien = tongTien;
+        this.ngayGiao = ngayGiao;
+        this.ngayNhan = ngayNhan;
+        this.trangThai = trangThai;
+    }
+
+    public GiaoHang(String idGiaoHang, HoaDon idHD, KhachHang idKH, KhuyenMai idKM, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idGiaoHang = idGiaoHang;
         this.idHD = idHD;
         this.idKH = idKH;
         this.idKM = idKM;
@@ -47,12 +62,12 @@ public class GiaoHang {
         this.trangThai = trangThai;
     }
 
-    public String getIdGioHang() {
-        return idGioHang;
+    public String getIdGiaoHang() {
+        return idGiaoHang;
     }
 
-    public void setIdGioHang(String idGioHang) {
-        this.idGioHang = idGioHang;
+    public void setIdGiaoHang(String idGiaoHang) {
+        this.idGiaoHang = idGiaoHang;
     }
 
     public HoaDon getIdHD() {
@@ -158,7 +173,5 @@ public class GiaoHang {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-            
-           
 
 }

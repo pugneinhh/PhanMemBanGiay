@@ -31,6 +31,21 @@ public class GiaoCa {
     public GiaoCa() {
     }
 
+    public GiaoCa(String maGC, NhanVien maNVGiao, NhanVien maNVNhan, String gioGiaoCa, String gioNhanCao, BigDecimal tienCoSo, BigDecimal tienPhatSinh, BigDecimal doanhThuCa, BigDecimal tongTien, String ghiChuGiao, String ghiChuNhan, int trangThai) {
+        this.maGC = maGC;
+        this.maNVGiao = maNVGiao;
+        this.maNVNhan = maNVNhan;
+        this.gioGiaoCa = gioGiaoCa;
+        this.gioNhanCao = gioNhanCao;
+        this.tienCoSo = tienCoSo;
+        this.tienPhatSinh = tienPhatSinh;
+        this.doanhThuCa = doanhThuCa;
+        this.tongTien = tongTien;
+        this.ghiChuGiao = ghiChuGiao;
+        this.ghiChuNhan = ghiChuNhan;
+        this.trangThai = trangThai;
+    }
+    
     public GiaoCa(String idGC, String maGC, NhanVien maNVGiao, NhanVien maNVNhan, String gioGiaoCa, String gioNhanCao, BigDecimal tienCoSo, BigDecimal tienPhatSinh, BigDecimal doanhThuCa, BigDecimal tongTien, String ghiChuGiao, String ghiChuNhan, Date ngayTao, Date ngaySua, int trangThai) {
         this.idGC = idGC;
         this.maGC = maGC;
