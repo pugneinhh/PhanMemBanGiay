@@ -89,7 +89,6 @@ public class QLKMFrm extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtKhuyenMai = new javax.swing.JTextField();
         txtTenKhuyenMai = new javax.swing.JTextField();
-        txtNgayBatDau = new com.github.lgooddatepicker.components.DatePicker();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -99,7 +98,6 @@ public class QLKMFrm extends javax.swing.JInternalFrame {
         percentCard = new javax.swing.JPanel();
         sppercent = new javax.swing.JSpinner();
         txtGiamToiDa = new javax.swing.JSpinner();
-        txtNgayKetThuc = new com.github.lgooddatepicker.components.DatePicker();
         jPanel16 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -278,9 +276,6 @@ public class QLKMFrm extends javax.swing.JInternalFrame {
         txtTenKhuyenMai.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel11.add(txtTenKhuyenMai);
 
-        txtNgayBatDau.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel11.add(txtNgayBatDau);
-
         jLabel2.setText("Giá Trị");
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel11.add(jLabel2);
@@ -316,9 +311,6 @@ public class QLKMFrm extends javax.swing.JInternalFrame {
         txtGiamToiDa.setModel(new javax.swing.SpinnerNumberModel(10000, 10000, null, 1000));
         txtGiamToiDa.setEditor(new javax.swing.JSpinner.NumberEditor(txtGiamToiDa, "###,###,### VNĐ"));
         jPanel11.add(txtGiamToiDa);
-
-        txtNgayKetThuc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel11.add(txtNgayKetThuc);
 
         jPanel2.add(jPanel11, java.awt.BorderLayout.NORTH);
 
@@ -1281,8 +1273,6 @@ public class QLKMFrm extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner txtGiaTri;
     private javax.swing.JSpinner txtGiamToiDa;
     private javax.swing.JTextField txtKhuyenMai;
-    private com.github.lgooddatepicker.components.DatePicker txtNgayBatDau;
-    private com.github.lgooddatepicker.components.DatePicker txtNgayKetThuc;
     private javax.swing.JTextField txtTenKhuyenMai;
     private javax.swing.JSpinner txthdtoithieu;
     private javax.swing.JPanel vndCard;
