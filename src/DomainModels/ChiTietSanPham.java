@@ -31,6 +31,21 @@ public class ChiTietSanPham {
     public ChiTietSanPham() {
     }
 
+    public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, int trangThai) {
+        this.idSP = idSP;
+        this.idKM = idKM;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.trangThai = trangThai;
+    }
+    
     public ChiTietSanPham(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;
