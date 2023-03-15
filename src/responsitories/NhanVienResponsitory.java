@@ -58,8 +58,8 @@ public class NhanVienResponsitory {
     }
 
     public NhanVien updateNV(NhanVien nv) {
-        String sql = "UPDATE NHANVIEN SET MANV=?,HOTen=?,NGAYSINH=?,GIOITINH=?,DIACHI=?,SDT=?,EMAIL=?,MATKHAU=?,IDCV=?,HINH=?, TRANGTHAI=?,NGAYSUA=GETDATE() WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, nv.getMaNV(), nv.getHoTen(), nv.getNgaySinh(), nv.getGioiTinh(), nv.getDiaChi(), nv.getSdt(), nv.getEmail(), nv.getMatKhau(), nv.getIdCV(), nv.getHinh(), nv.getTrangThai(),nv.getIdNV());
+        String sql = "UPDATE NHANVIEN SET HOTen=?,NGAYSINH=?,GIOITINH=?,DIACHI=?,SDT=?,EMAIL=?,MATKHAU=?,IDCV=?,HINH=?, TRANGTHAI=?,NGAYSUA=GETDATE() WHERE MANV=?";
+        JDBCHelper.executeUpdate(sql, nv.getHoTen(), nv.getNgaySinh(), nv.getGioiTinh(), nv.getDiaChi(), nv.getSdt(), nv.getEmail(), nv.getMatKhau(), nv.getIdCV(), nv.getHinh(), nv.getTrangThai(),nv.getMaNV());
         return nv;
     }
 
