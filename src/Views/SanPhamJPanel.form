@@ -159,7 +159,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                   <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="39" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel24" min="-2" pref="59" max="-2" attributes="0"/>
@@ -167,7 +167,11 @@
                                   <Component id="jComboBox4" min="-2" pref="142" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton9" linkSize="1" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+=======
+                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+>>>>>>> d506cb80cd95da8bb820b09700d86eaa3eb9b376
                               </Group>
                           </Group>
                       </Group>
@@ -244,12 +248,13 @@
                                           <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jButton9" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="31" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton9" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
