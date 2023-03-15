@@ -1,0 +1,94 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ViewModels;
+
+import java.util.Date;
+
+/**
+ *
+ * @author Asus
+ */
+public class DoCaoModel {
+     private String idDC;
+    private String maDC;
+    private String tenDC;
+    private Date ngayTao;
+    private Date ngaySua;
+    private int trangThai;
+
+    public DoCaoModel() {
+    }
+
+    public DoCaoModel(String idDC, String maDC, String tenDC, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idDC = idDC;
+        this.maDC = maDC;
+        this.tenDC = tenDC;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+
+    public DoCaoModel(String maDC, String tenDC, int trangThai) {
+        this.maDC = maDC;
+        this.tenDC = tenDC;
+        this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return  tenDC ;
+    }
+
+    public String getIdDC() {
+        return idDC;
+    }
+
+    public void setIdDC(String idDC) {
+        this.idDC = idDC;
+    }
+
+    public String getMaDC() {
+        return maDC;
+    }
+
+    public void setMaDC(String maDC) {
+        this.maDC = maDC;
+    }
+
+    public String getTenDC() {
+        return tenDC;
+    }
+
+    public void setTenDC(String tenDC) {
+        this.tenDC = tenDC;
+    }
+
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public Date getNgaySua() {
+        return ngaySua;
+    }
+
+    public void setNgaySua(Date ngaySua) {
+        this.ngaySua = ngaySua;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+   
+    
+}
