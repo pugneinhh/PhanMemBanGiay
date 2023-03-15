@@ -368,7 +368,7 @@ public class QLGiaoCaFrm extends javax.swing.JInternalFrame {
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+            .addGap(0, 44, Short.MAX_VALUE)
         );
 
         jPanel25.add(jPanel26, java.awt.BorderLayout.LINE_END);
