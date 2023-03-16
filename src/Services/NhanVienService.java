@@ -41,17 +41,33 @@ public class NhanVienService {
         }
         return list;
     }
-    public ArrayList<NhanVienModel> getNVLamByCV(String tenCV,String sdt) {
+    public ArrayList<NhanVienModel> getNVLamByCV(String tenCV) {
         ArrayList<NhanVienModel> list = new ArrayList<>();
-        ArrayList<NhanVien> ds = nvr.getNVLamByCV(tenCV,sdt);
+        ArrayList<NhanVien> ds = nvr.getNVLamByCV(tenCV);
         for (NhanVien x : ds) {
             list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
         }
         return list;
     }
-    public ArrayList<NhanVienModel> getNVNghiByCV(String tenCV,String sdt) {
+    public ArrayList<NhanVienModel> getNVNghiByCV(String tenCV) {
         ArrayList<NhanVienModel> list = new ArrayList<>();
-        ArrayList<NhanVien> ds = nvr.getNVLamByCV(tenCV,sdt);
+        ArrayList<NhanVien> ds = nvr.getNVNghiByCV(tenCV);
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<NhanVienModel> getNVLamBySdt(String sdt) {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVLamBySdt(sdt);
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<NhanVienModel> getNVNghiBySdt(String sdt) {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVNghiBySdt(sdt);
         for (NhanVien x : ds) {
             list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
         }
