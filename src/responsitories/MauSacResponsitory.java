@@ -49,14 +49,14 @@ public class MauSacResponsitory {
     }
     public MauSac insertMS(MauSac ms){
         
-        String sql="INSERT INTO DanhMuc VALUES(NEWID(),?,?,GetDate(),null,?)";
+        String sql="INSERT INTO MAUSAC VALUES(NEWID(),?,?,GetDate(),null,?)";
         JDBCHelper.executeUpdate(sql, ms.getMaMS(),ms.getTenMS(),ms.getTrangThai());
         return ms;
     }
     public MauSac updateMS(MauSac ms){
         
-        String sql="UPDATE MauSac SET MA=?,TEN=?,NGAYSUA=GETDATE() WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, ms.getMaMS(),ms.getTenMS(),ms.getIdMS());
+        String sql="UPDATE MauSac SET TEN=?,NGAYSUA=GETDATE(),TrangThai=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql, ms.getTenMS(),ms.getTrangThai(),ms.getMaMS());
         return ms;
     }
     public Integer deleteMS(String id){   
@@ -64,7 +64,5 @@ public class MauSacResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        new MauSacResponsitory().insertMS(new MauSac("MS1", "Đỏ", 1));
-    }
+    
 }

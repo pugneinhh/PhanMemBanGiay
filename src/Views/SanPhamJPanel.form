@@ -12,6 +12,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupSize">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupSanPham">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -369,6 +371,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton3">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupSanPham"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="C&#xf2;n"/>
                   </Properties>
                   <Events>
@@ -377,6 +382,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton4">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupSanPham"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
                   </Properties>
                   <Events>
@@ -840,10 +848,10 @@
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="rdoConDanhMuc" min="-2" pref="56" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="rdoHetDanhMuc" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <Component id="rdoHetDanhMuc" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="165" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -913,7 +921,7 @@
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupDanhMuc"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
+                        <Property name="text" type="java.lang.String" value="H&#x1ebf;t h&#x1ea1;n"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnThemDanhMuc">
@@ -1041,26 +1049,25 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                                          <EmptySpace pref="132" max="32767" attributes="0"/>
                                           <Component id="btnCapNhatMauSac" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                                           <Component id="btnXoaMauSac" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                                           <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txtTenMauSac" min="-2" pref="176" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="rdoConMauSac" min="-2" pref="56" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rdoHetMauSac" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace pref="172" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rdoConMauSac" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rdoHetMauSac" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <EmptySpace pref="145" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1123,7 +1130,7 @@
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroupMauSac"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
+                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t h&#x1ea1;n"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnThemMauSac">
@@ -1265,10 +1272,10 @@
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="rdoConChatLieu" min="-2" pref="56" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="rdoHetChatLieu" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="rdoHetChatLieu" min="-2" pref="73" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1341,7 +1348,7 @@
                             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                               <ComponentRef name="buttonGroupChatLieu"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
+                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t h&#x1ea1;n"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnThemChatLieu">
@@ -1463,16 +1470,16 @@
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="btnThemDoCao" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnThemDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                                  <Component id="btnCapNhatDoCao" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnCapNhatDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                                                  <Component id="btnXoaDoCao" linkSize="7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnXoaDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
@@ -1484,10 +1491,10 @@
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="rdoConDoCao" min="-2" pref="56" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="rdoHetDoCao" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="rdoHetDoCao" min="-2" pref="77" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="177" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1546,6 +1553,9 @@
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="rdoConDoCao">
                           <Properties>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupDoCao"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="C&#xf2;n"/>
                           </Properties>
                           <Events>
@@ -1554,7 +1564,10 @@
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="rdoHetDoCao">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
+                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                              <ComponentRef name="buttonGroupDoCao"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="H&#x1ebf;t h&#x1ea1;n"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnThemDoCao">
@@ -1645,39 +1658,40 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel8" min="-2" pref="57" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="txtMaSize" min="-2" pref="176" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btnThemSize" linkSize="8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                                              <Component id="btnThemSize" linkSize="9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                              <Component id="txtTenSize" min="-2" pref="176" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtTenSize" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="btnCapNhatSize" linkSize="9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="rdoConSize" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="rdoHetSize" min="-2" pref="62" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="229" max="32767" attributes="0"/>
+                                              <Component id="rdoHetSize" min="-2" pref="77" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btnCapNhatSize" linkSize="8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                                              <Component id="btnXoaSize" linkSize="8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="422" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Component id="btnXoaSize" linkSize="9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="0" pref="215" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -1747,7 +1761,7 @@
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroupSize"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="H&#x1ebf;t"/>
+                        <Property name="text" type="java.lang.String" value="H&#x1ebf;t h&#x1ea1;n"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnThemSize">

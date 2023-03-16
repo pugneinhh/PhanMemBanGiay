@@ -26,216 +26,217 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
     DanhMucService dms;
     DefaultTableModel dtmDM;
-    
+
     MauSacService mss;
     DefaultTableModel dtmMS;
-    
+
     ChatLieuService cls;
     DefaultTableModel dtmCL;
-    
+
     DoCaoService dcs;
     DefaultTableModel dtmDC;
-    
+
     SizeService sizes;
     DefaultTableModel dtmsize;
-    
-    
-    
-    
-    
+
     public SanPhamJPanel() {
         initComponents();
         dms = new DanhMucService();
         dtmDM = new DefaultTableModel();
-        dtmDM = (DefaultTableModel)tblDanhMuc.getModel();
+        dtmDM = (DefaultTableModel) tblDanhMuc.getModel();
         loadtableDM();
-        
+
         mss = new MauSacService();
         dtmMS = new DefaultTableModel();
-        dtmMS = (DefaultTableModel)tblMauSac.getModel();
+        dtmMS = (DefaultTableModel) tblMauSac.getModel();
         loadtableMauSac();
-        
+
         cls = new ChatLieuService();
         dtmCL = new DefaultTableModel();
-        dtmCL = (DefaultTableModel)tblChatLieu.getModel();
+        dtmCL = (DefaultTableModel) tblChatLieu.getModel();
         loadtableChatLieu();
-        
+
         dcs = new DoCaoService();
         dtmDC = new DefaultTableModel();
-        dtmDC = (DefaultTableModel)tblDoCao.getModel();
+        dtmDC = (DefaultTableModel) tblDoCao.getModel();
         loadtableDoCao();
-       
+
         sizes = new SizeService();
         dtmsize = new DefaultTableModel();
-        dtmsize = (DefaultTableModel)tblSize.getModel();
+        dtmsize = (DefaultTableModel) tblSize.getModel();
         loadtableSize();
-        
-        
-        
-        
+
     }
-    
+
     //////////////////////////////////////////////DanhMuc/////////////////////////////////////////////////////////////////
-    public void loadtableDM(){
+    public void loadtableDM() {
         ArrayList<DanhMucModel> list = dms.getAllDanhMuc();
         dtmDM.setRowCount(0);
-        for(DanhMucModel x : list){
-            Object[]rowdata = {
+        for (DanhMucModel x : list) {
+            Object[] rowdata = {
                 x.getMaDM(),
                 x.getTenDM(),
-                x.getTrangThai()==0? "Còn" : "Hết"
+                x.getTrangThai() == 0 ? "Còn" : "Hết"
             };
             dtmDM.addRow(rowdata);
         }
     }
-  private void clearDM() {
+
+    private void clearDM() {
         txtMaDanhMuc.setText("");
         txtTenDanhMuc.setText("");
         rdoConDanhMuc.setSelected(true);
 
     }
-    private DanhMucModel getDanhMucForm(){
+
+    private DanhMucModel getDanhMucForm() {
         String maDanhMuc = txtMaDanhMuc.getText().trim();
         String tenDanhMuc = txtTenDanhMuc.getText().trim();
-        int tt =rdoConDanhMuc.isSelected()== true ? 0 : 1;
-        if(maDanhMuc.length()==0 ||tenDanhMuc.length()==0){
+        int tt = rdoConDanhMuc.isSelected() == true ? 0 : 1;
+        if (maDanhMuc.length() == 0 || tenDanhMuc.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống Mã và Tên Danh Mục");
-            return null; 
+            return null;
         }
         DanhMucModel ds = new DanhMucModel(maDanhMuc, tenDanhMuc, tt);
         return ds;
     }
     //////////////////////////////////////////////DanhMuc/////////////////////////////////////////////////////////////////
-    
-      //////////////////////////////////////////////MauSac/////////////////////////////////////////////////////////////////
-     public void loadtableMauSac(){
-        ArrayList<MauSacModel> list =mss.getAllMauSac();
-        dtmCL.setRowCount(0);
-        for(MauSacModel x : list){
-            Object[]rowdata = {
+
+    //////////////////////////////////////////////MauSac/////////////////////////////////////////////////////////////////
+    public void loadtableMauSac() {
+        ArrayList<MauSacModel> list = mss.getAllMauSac();
+        dtmMS.setRowCount(0);
+        for (MauSacModel x : list) {
+            Object[] rowdata = {
                 x.getMaMS(),
                 x.getTenMS(),
-                x.getTrangThai()==0? "Còn" : "Hết"
+                x.getTrangThai() == 0 ? "Còn" : "Hết"
             };
-            dtmCL.addRow(rowdata);
+            dtmMS.addRow(rowdata);
         }
     }
-  private void clearMauSac() {
+
+    private void clearMauSac() {
         txtMaMauSac.setText("");
         txtTenMauSac.setText("");
         rdoConMauSac.setSelected(true);
 
     }
-    private MauSacModel getMauSacForm(){
+
+    private MauSacModel getMauSacForm() {
         String maMauSac = txtMaMauSac.getText().trim();
         String tenMauSac = txtTenMauSac.getText().trim();
-        int tt =rdoConMauSac.isSelected()== true ? 0 : 1;
-        if(maMauSac.length()==0 ||tenMauSac.length()==0){
+        int tt = rdoConMauSac.isSelected() == true ? 0 : 1;
+        if (maMauSac.length() == 0 || tenMauSac.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống Mã và Tên Danh Màu");
-            return null; 
+            return null;
         }
-      MauSacModel ms = new MauSacModel(maMauSac, tenMauSac, tt);
-      return ms;
+        MauSacModel ms = new MauSacModel(maMauSac, tenMauSac, tt);
+        return ms;
     }
     ////////////////////////////////////////////// Màu  Sắc  /////////////////////////////////////////////////////////////////
-    
-    
-      //////////////////////////////////////////////Chất Liệu/////////////////////////////////////////////////////////////////
-     public void loadtableChatLieu(){
-        ArrayList<ChatLieuModel> list =cls.getAllChatLieu();
+
+    //////////////////////////////////////////////Chất Liệu/////////////////////////////////////////////////////////////////
+    public void loadtableChatLieu() {
+        ArrayList<ChatLieuModel> list = cls.getAllChatLieu();
         dtmCL.setRowCount(0);
-        for(ChatLieuModel x : list){
-            Object[]rowdata = {
+        for (ChatLieuModel x : list) {
+            Object[] rowdata = {
                 x.getMaCL(),
                 x.getTenCL(),
-                x.getTrangThai()==0? "Còn" : "Hết"
+                x.getTrangThai() == 0 ? "Còn" : "Hết"
             };
             dtmCL.addRow(rowdata);
         }
     }
-  private void clearChatLieu() {
+
+    private void clearChatLieu() {
         txtMaChatLieu.setText("");
         txtTenChatLieu.setText("");
         rdoConChatLieu.setSelected(true);
 
     }
-    private ChatLieuModel getChatLieuForm(){
+
+    private ChatLieuModel getChatLieuForm() {
         String maChatLieu = txtMaChatLieu.getText().trim();
         String tenChatLieu = txtTenChatLieu.getText().trim();
-        int tt =rdoConChatLieu.isSelected()== true ? 0 : 1;
-        if(maChatLieu.length()==0 ||tenChatLieu.length()==0){
+        int tt = rdoConChatLieu.isSelected() == true ? 0 : 1;
+        if (maChatLieu.length() == 0 || tenChatLieu.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống Mã và Tên Chất Liệu");
-            return null; 
+            return null;
         }
-      ChatLieuModel cl = new ChatLieuModel(maChatLieu, tenChatLieu, tt);
-      return cl;
+        ChatLieuModel cl = new ChatLieuModel(maChatLieu, tenChatLieu, tt);
+        return cl;
     }
     ////////////////////////////////////////////// Chất Liệu  /////////////////////////////////////////////////////////////////
-    
-    
-        
-      //////////////////////////////////////////////Độ cao/////////////////////////////////////////////////////////////////
-     public void loadtableDoCao(){
-        ArrayList<DoCaoModel> list =dcs.getAllDoCao();
+
+    //////////////////////////////////////////////Độ cao/////////////////////////////////////////////////////////////////
+    public void loadtableDoCao() {
+        ArrayList<DoCaoModel> list = dcs.getAllDoCao();
         dtmDC.setRowCount(0);
-        for(DoCaoModel x : list){
-            Object[]rowdata = {
+        for (DoCaoModel x : list) {
+            Object[] rowdata = {
                 x.getMaDC(),
                 x.getTenDC(),
-                x.getTrangThai()==0? "Còn" : "Hết"
+                x.getTrangThai() == 0 ? "Còn" : "Hết"
             };
             dtmDC.addRow(rowdata);
         }
     }
-  private void clearDoCao() {
+
+    private void clearDoCao() {
         txtMaDoCao.setText("");
         txtTenDoCao.setText("");
         rdoConDoCao.setSelected(true);
 
     }
-    private DoCaoModel getDoCaoForm(){
+
+    private DoCaoModel getDoCaoForm() {
         String maDoCao = txtMaDoCao.getText().trim();
         String tenDoCao = txtTenDoCao.getText().trim();
-        int tt =rdoConDoCao.isSelected()== true ? 0 : 1;
-        if(maDoCao.length()==0 ||tenDoCao.length()==0){
+        int tt = rdoConDoCao.isSelected() == true ? 0 : 1;
+        if (maDoCao.length() == 0 || tenDoCao.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống Mã và Tên Độ Cao");
-            return null; 
+            return null;
         }
-      DoCaoModel dc = new DoCaoModel(maDoCao, tenDoCao, tt);
-      return dc;
+        DoCaoModel dc = new DoCaoModel(maDoCao, tenDoCao, tt);
+        return dc;
     }
     ////////////////////////////////////////////// Dộ Cao  /////////////////////////////////////////////////////////////////
-    
+
     //////////////////////////////////////////////Size/////////////////////////////////////////////////////////////////
-     public void loadtableSize(){
-        ArrayList<SizeModel> list =sizes.getAllSize();
+    public void loadtableSize() {
+        ArrayList<SizeModel> list = sizes.getAllSize();
         dtmsize.setRowCount(0);
-        for(SizeModel x : list){
-            Object[]rowdata = {
+        for (SizeModel x : list) {
+            Object[] rowdata = {
                 x.getMaSize(),
                 x.getTenSize(),
-                x.getTrangThai()==0? "Còn" : "Hết"
+                x.getTrangThai() == 0 ? "Còn" : "Hết"
             };
             dtmsize.addRow(rowdata);
         }
     }
-  private void clearSize() {
+
+    private void clearSize() {
         txtMaSize.setText("");
         txtTenSize.setText("");
         rdoConSize.setSelected(true);
 
     }
-    private SizeModel getSizeForm(){
+
+    private SizeModel getSizeForm() {
         String maSize = txtMaSize.getText().trim();
         String tenSize = txtTenSize.getText().trim();
-        int tt =rdoConDoCao.isSelected()== true ? 0 : 1;
-        if(maSize.length()==0 ||tenSize.length()==0){
+        int tt = rdoConDoCao.isSelected() == true ? 0 : 1;
+        if (maSize.length() == 0 || tenSize.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống Mã và Tên Độ Cao");
-            return null; 
+            return null;
         }
-      SizeModel size = new SizeModel(maSize, tenSize, tt);
-      return size;
+        SizeModel size = new SizeModel(maSize, tenSize, tt);
+        return size;
     }
+
     ////////////////////////////////////////////// Size  /////////////////////////////////////////////////////////////////
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -246,6 +247,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         buttonGroupChatLieu = new javax.swing.ButtonGroup();
         buttonGroupDoCao = new javax.swing.ButtonGroup();
         buttonGroupSize = new javax.swing.ButtonGroup();
+        buttonGroupSanPham = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -412,6 +414,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
         jLabel19.setText("Trạng Thái");
 
+        buttonGroupSanPham.add(jRadioButton3);
         jRadioButton3.setText("Còn");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,6 +422,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             }
         });
 
+        buttonGroupSanPham.add(jRadioButton4);
         jRadioButton4.setText("Hết");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -766,7 +770,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         rdoConDanhMuc.setText("Còn");
 
         buttonGroupDanhMuc.add(rdoHetDanhMuc);
-        rdoHetDanhMuc.setText("Hết");
+        rdoHetDanhMuc.setText("Hết hạn");
 
         btnThemDanhMuc.setText("Thêm");
         btnThemDanhMuc.addActionListener(new java.awt.event.ActionListener() {
@@ -836,8 +840,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoConDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoHetDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 165, Short.MAX_VALUE))
+                                .addComponent(rdoHetDanhMuc)))
+                        .addGap(0, 151, Short.MAX_VALUE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
@@ -882,7 +886,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         rdoConMauSac.setText("Còn");
 
         buttonGroupMauSac.add(rdoHetMauSac);
-        rdoHetMauSac.setText("Hết");
+        rdoHetMauSac.setText("Hết hạn");
 
         btnThemMauSac.setText("Thêm");
         btnThemMauSac.addActionListener(new java.awt.event.ActionListener() {
@@ -940,23 +944,22 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                         .addComponent(btnThemMauSac)))
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                         .addComponent(btnCapNhatMauSac)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnXoaMauSac)
-                        .addGap(320, 320, 320))
+                        .addGap(195, 195, 195)
+                        .addComponent(btnXoaMauSac))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTenMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(93, 93, 93)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rdoConMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdoHetMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(172, Short.MAX_VALUE))))
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rdoConMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rdoHetMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jPanel16Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCapNhatMauSac, btnThemMauSac, btnXoaMauSac});
@@ -1017,7 +1020,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         rdoConChatLieu.setText("Còn");
 
         buttonGroupChatLieu.add(rdoHetChatLieu);
-        rdoHetChatLieu.setText("Hết");
+        rdoHetChatLieu.setText("Hết hạn");
 
         btnThemChatLieu.setText("Thêm");
         btnThemChatLieu.addActionListener(new java.awt.event.ActionListener() {
@@ -1096,8 +1099,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoConChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoHetChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 183, Short.MAX_VALUE))
+                                .addComponent(rdoHetChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 161, Short.MAX_VALUE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane6)))
@@ -1151,6 +1154,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Trạng Thái");
 
+        buttonGroupDoCao.add(rdoConDoCao);
         rdoConDoCao.setText("Còn");
         rdoConDoCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1158,7 +1162,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             }
         });
 
-        rdoHetDoCao.setText("Hết");
+        buttonGroupDoCao.add(rdoHetDoCao);
+        rdoHetDoCao.setText("Hết hạn");
 
         btnThemDoCao.setText("Thêm");
         btnThemDoCao.addActionListener(new java.awt.event.ActionListener() {
@@ -1237,8 +1242,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoConDoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoHetDoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 203, Short.MAX_VALUE))
+                                .addComponent(rdoHetDoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 177, Short.MAX_VALUE))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane7)))
@@ -1302,7 +1307,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         });
 
         buttonGroupSize.add(rdoHetSize);
-        rdoHetSize.setText("Hết");
+        rdoHetSize.setText("Hết hạn");
 
         btnThemSize.setText("Thêm");
         btnThemSize.addActionListener(new java.awt.event.ActionListener() {
@@ -1347,33 +1352,33 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtMaSize, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addComponent(btnThemSize)
-                                .addGap(42, 42, 42)))
-                        .addGap(90, 90, 90)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addGap(5, 5, 5)
-                                .addComponent(txtTenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
+                                .addGap(136, 136, 136)
+                                .addComponent(btnThemSize)))
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel26)
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCapNhatSize))
+                        .addGap(77, 77, 77)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addGap(18, 18, 18)
                                 .addComponent(rdoConSize)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoHetSize, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 229, Short.MAX_VALUE))
+                                .addComponent(rdoHetSize, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(btnCapNhatSize)
-                                .addGap(126, 126, 126)
-                                .addComponent(btnXoaSize)
-                                .addGap(422, 422, 422))))
+                                .addGap(8, 8, 8)
+                                .addComponent(btnXoaSize)))
+                        .addGap(0, 215, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -1477,138 +1482,138 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
     private void btnThemDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDanhMucActionPerformed
         DanhMucModel dmm = getDanhMucForm();
-        if(dmm==null){
+        if (dmm == null) {
             return;
         }
-        if(dms.insertDM(dmm)!=null){
+        if (dms.insertDM(dmm) != null) {
             JOptionPane.showMessageDialog(this, "Thêm Thành Công");
             loadtableDM();
             clearDM();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại do trùng mã Danh Mục");
         }
     }//GEN-LAST:event_btnThemDanhMucActionPerformed
 
     private void btnCapNhatDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatDanhMucActionPerformed
-int row = tblDanhMuc.getSelectedRow();
-if(row==-1){
-    JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sưa");
-    
-    return;
-}
-DanhMucModel dmm = getDanhMucForm();
-if(dmm == null){
-    return;
-}
-dmm.setMaDM(tblDanhMuc.getValueAt(row, 0).toString());
-if(dms.updateDM(dmm)!=null){
-    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-    loadtableDM();
-    clearDM();
-}else{
-    JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
-}
+        int row = tblDanhMuc.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sưa");
+
+            return;
+        }
+        DanhMucModel dmm = getDanhMucForm();
+        if (dmm == null) {
+            return;
+        }
+        dmm.setMaDM(tblDanhMuc.getValueAt(row, 0).toString());
+        if (dms.updateDM(dmm) != null) {
+            JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+            loadtableDM();
+            clearDM();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
+        }
     }//GEN-LAST:event_btnCapNhatDanhMucActionPerformed
 
     private void btnXoaDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDanhMucActionPerformed
         int row = tblDanhMuc.getSelectedRow();
-        if(row==-1){
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn Dòng Cần Xóa");
             return;
         }
-        String maDanhMuc = tblDanhMuc.getValueAt(row,0).toString();
+        String maDanhMuc = tblDanhMuc.getValueAt(row, 0).toString();
         int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Danh Mục sản phẩm này không");
-        if(xn==JOptionPane.YES_OPTION){
-            if(dms.deleteDM(maDanhMuc)!=0){
+        if (xn == JOptionPane.YES_OPTION) {
+            if (dms.deleteDM(maDanhMuc) != 0) {
                 JOptionPane.showMessageDialog(this, "Xóa Danh Mục Sản Phẩm Thành Công");
                 loadtableDM();
                 clearDM();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Xóa Danh Mục Thất Bại");
         }
     }//GEN-LAST:event_btnXoaDanhMucActionPerformed
 
     private void tblDanhMucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhMucMouseClicked
         int row = tblDanhMuc.getSelectedRow();
-        if(row==-1){
+        if (row == -1) {
             return;
         }
         txtMaDanhMuc.setText(tblDanhMuc.getValueAt(row, 0).toString());
         txtTenDanhMuc.setText(tblDanhMuc.getValueAt(row, 1).toString());
         String tt = tblDanhMuc.getValueAt(row, 2).toString();
-        if(tt.equalsIgnoreCase("Còn")){
+        if (tt.equalsIgnoreCase("Còn")) {
             rdoConDanhMuc.setSelected(true);
-        }else{
+        } else {
             rdoHetDanhMuc.setSelected(true);
         }
     }//GEN-LAST:event_tblDanhMucMouseClicked
 
     private void btnThemMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMauSacActionPerformed
-          MauSacModel msm = getMauSacForm();
-        if(msm==null){
+        MauSacModel msm = getMauSacForm();
+        if (msm == null) {
             return;
         }
-        if(mss.insertMS(msm)!=null){
+        if (mss.insertMS(msm) != null) {
             JOptionPane.showMessageDialog(this, "Thêm Thành Công");
             loadtableMauSac();
             clearMauSac();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại do trùng mã Màu Sắc");
         }
     }//GEN-LAST:event_btnThemMauSacActionPerformed
 
     private void btnCapNhatMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatMauSacActionPerformed
-       int row = tblMauSac.getSelectedRow();
-if(row==-1){
-    JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
-    
-    return;
-}
-MauSacModel msm = getMauSacForm();
-if(msm == null){
-    return;
-}
-msm.setMaMS(tblMauSac.getValueAt(row, 0).toString());
-if(mss.updateMS(msm)!=null){
-    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-    loadtableMauSac();
-    clearMauSac();
-}else{
-    JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
-}
+        int row = tblMauSac.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
+
+            return;
+        }
+        MauSacModel msm = getMauSacForm();
+        if (msm == null) {
+            return;
+        }
+        msm.setMaMS(tblMauSac.getValueAt(row, 0).toString());
+        if (mss.updateMS(msm) != null) {
+            JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+            loadtableMauSac();
+            clearMauSac();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
+        }
     }//GEN-LAST:event_btnCapNhatMauSacActionPerformed
 
     private void btnXoaMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMauSacActionPerformed
         int row = tblMauSac.getSelectedRow();
-        if(row==-1){
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn Dòng Cần Xóa");
             return;
         }
-        String maMauSac = tblMauSac.getValueAt(row,0).toString();
+        String maMauSac = tblMauSac.getValueAt(row, 0).toString();
         int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Màu Sắc sản phẩm này không");
-        if(xn==JOptionPane.YES_OPTION){
-            if(mss.deleteMS(maMauSac)!=0){
+        if (xn == JOptionPane.YES_OPTION) {
+            if (mss.deleteMS(maMauSac) != 0) {
                 JOptionPane.showMessageDialog(this, "Xóa Màu Sắc Sản Phẩm Thành Công");
                 loadtableMauSac();
                 clearMauSac();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Xóa Màu Sắc Thất Bại");
         }
     }//GEN-LAST:event_btnXoaMauSacActionPerformed
 
     private void tblMauSacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMauSacMouseClicked
         int row = tblMauSac.getSelectedRow();
-        if(row==-1){
+        if (row == -1) {
             return;
         }
         txtMaMauSac.setText(tblMauSac.getValueAt(row, 0).toString());
         txtTenMauSac.setText(tblMauSac.getValueAt(row, 1).toString());
         String tt = tblMauSac.getValueAt(row, 2).toString();
-        if(tt.equalsIgnoreCase("Còn")){
+        if (tt.equalsIgnoreCase("Còn")) {
             rdoConMauSac.setSelected(true);
-        }else{
+        } else {
             rdoHetMauSac.setSelected(true);
         }
     }//GEN-LAST:event_tblMauSacMouseClicked
@@ -1618,70 +1623,70 @@ if(mss.updateMS(msm)!=null){
     }//GEN-LAST:event_txtMaChatLieuActionPerformed
 
     private void btnThemChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemChatLieuActionPerformed
-          ChatLieuModel clm = getChatLieuForm();
-        if(clm==null){
+        ChatLieuModel clm = getChatLieuForm();
+        if (clm == null) {
             return;
         }
-        if(cls.insertCL(clm)!=null){
+        if (cls.insertCL(clm) != null) {
             JOptionPane.showMessageDialog(this, "Thêm Thành Công");
             loadtableChatLieu();
             clearChatLieu();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại do trùng mã Chất Liệu");
         }
     }//GEN-LAST:event_btnThemChatLieuActionPerformed
 
     private void btnCapNhatChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatChatLieuActionPerformed
-               int row = tblChatLieu.getSelectedRow();
-if(row==-1){
-    JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
-    
-    return;
-}
-ChatLieuModel clm = getChatLieuForm();
-if(clm == null){
-    return;
-}
-clm.setMaCL(tblChatLieu.getValueAt(row, 0).toString());
-if(cls.updateCL(clm)!=null){
-    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-    loadtableChatLieu();
-    clearChatLieu();
-}else{
-    JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
-}
+        int row = tblChatLieu.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
+
+            return;
+        }
+        ChatLieuModel clm = getChatLieuForm();
+        if (clm == null) {
+            return;
+        }
+        clm.setMaCL(tblChatLieu.getValueAt(row, 0).toString());
+        if (cls.updateCL(clm) != null) {
+            JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+            loadtableChatLieu();
+            clearChatLieu();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
+        }
     }//GEN-LAST:event_btnCapNhatChatLieuActionPerformed
 
     private void BtnXoaChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnXoaChatLieuActionPerformed
-       int row = tblChatLieu.getSelectedRow();
-        if(row==-1){
+        int row = tblChatLieu.getSelectedRow();
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn Dòng Cần Xóa");
             return;
         }
-        String maChatLieu = tblChatLieu.getValueAt(row,0).toString();
+        String maChatLieu = tblChatLieu.getValueAt(row, 0).toString();
         int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Chất Liệu sản phẩm này không");
-        if(xn==JOptionPane.YES_OPTION){
-            if(cls.deleteCL(maChatLieu)!=0){
+        if (xn == JOptionPane.YES_OPTION) {
+            if (cls.deleteCL(maChatLieu) != 0) {
                 JOptionPane.showMessageDialog(this, "Xóa Chất Liệu Sản Phẩm Thành Công");
                 loadtableChatLieu();
                 clearChatLieu();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Xóa chất Liệu Thất Bại");
         }
     }//GEN-LAST:event_BtnXoaChatLieuActionPerformed
 
     private void tblChatLieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChatLieuMouseClicked
-         int row = tblChatLieu.getSelectedRow();
-        if(row==-1){
+        int row = tblChatLieu.getSelectedRow();
+        if (row == -1) {
             return;
         }
         txtMaChatLieu.setText(tblChatLieu.getValueAt(row, 0).toString());
         txtTenChatLieu.setText(tblChatLieu.getValueAt(row, 1).toString());
         String tt = tblChatLieu.getValueAt(row, 2).toString();
-        if(tt.equalsIgnoreCase("Còn")){
+        if (tt.equalsIgnoreCase("Còn")) {
             rdoConChatLieu.setSelected(true);
-        }else{
+        } else {
             rdoHetChatLieu.setSelected(true);
         }
     }//GEN-LAST:event_tblChatLieuMouseClicked
@@ -1692,138 +1697,138 @@ if(cls.updateCL(clm)!=null){
 
     private void btnThemDoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDoCaoActionPerformed
         DoCaoModel dcm = getDoCaoForm();
-        if(dcm==null){
+        if (dcm == null) {
             return;
         }
-        if(dcs.insertDC(dcm)!=null){
+        if (dcs.insertDC(dcm) != null) {
             JOptionPane.showMessageDialog(this, "Thêm Thành Công");
             loadtableDoCao();
             clearDoCao();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại do trùng mã Độ Cao");
         }
     }//GEN-LAST:event_btnThemDoCaoActionPerformed
 
     private void btnCapNhatDoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatDoCaoActionPerformed
-          int row = tblDoCao.getSelectedRow();
-if(row==-1){
-    JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
-    
-    return;
-}
-DoCaoModel dcm = getDoCaoForm();
-if(dcm == null){
-    return;
-}
-dcm.setMaDC(tblDoCao.getValueAt(row, 0).toString());
-if(dcs.updateDC(dcm)!=null){
-    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-    loadtableDoCao();
-    clearDoCao();
-}else{
-    JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
-}
+        int row = tblDoCao.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
+
+            return;
+        }
+        DoCaoModel dcm = getDoCaoForm();
+        if (dcm == null) {
+            return;
+        }
+        dcm.setMaDC(tblDoCao.getValueAt(row, 0).toString());
+        if (dcs.updateDC(dcm) != null) {
+            JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+            loadtableDoCao();
+            clearDoCao();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
+        }
     }//GEN-LAST:event_btnCapNhatDoCaoActionPerformed
 
     private void btnXoaDoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDoCaoActionPerformed
         int row = tblDoCao.getSelectedRow();
-        if(row==-1){
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn Dòng Cần Xóa");
             return;
         }
-        String maDoCao = tblDoCao.getValueAt(row,0).toString();
+        String maDoCao = tblDoCao.getValueAt(row, 0).toString();
         int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Độ Cao sản phẩm này không");
-        if(xn==JOptionPane.YES_OPTION){
-            if(dcs.deleteDC(maDoCao)!=0){
+        if (xn == JOptionPane.YES_OPTION) {
+            if (dcs.deleteDC(maDoCao) != 0) {
                 JOptionPane.showMessageDialog(this, "Xóa Độ Cao Sản Phẩm Thành Công");
                 loadtableDoCao();
                 clearDoCao();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Xóa Độ Cao Thất Bại");
         }
     }//GEN-LAST:event_btnXoaDoCaoActionPerformed
 
     private void tblDoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoCaoMouseClicked
-          int row = tblDoCao.getSelectedRow();
-        if(row==-1){
+        int row = tblDoCao.getSelectedRow();
+        if (row == -1) {
             return;
         }
         txtMaDoCao.setText(tblDoCao.getValueAt(row, 0).toString());
         txtTenDoCao.setText(tblDoCao.getValueAt(row, 1).toString());
         String tt = tblDoCao.getValueAt(row, 2).toString();
-        if(tt.equalsIgnoreCase("Còn")){
+        if (tt.equalsIgnoreCase("Còn")) {
             rdoConDoCao.setSelected(true);
-        }else{
+        } else {
             rdoHetDoCao.setSelected(true);
         }
     }//GEN-LAST:event_tblDoCaoMouseClicked
 
     private void btnThemSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSizeActionPerformed
-       SizeModel sizem = getSizeForm();
-        if(sizem==null){
+        SizeModel sizem = getSizeForm();
+        if (sizem == null) {
             return;
         }
-        if(sizes.insertSize(sizem)!=null){
+        if (sizes.insertSize(sizem) != null) {
             JOptionPane.showMessageDialog(this, "Thêm Thành Công");
             loadtableSize();
             clearSize();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại do trùng mã Size");
         }
     }//GEN-LAST:event_btnThemSizeActionPerformed
 
     private void btnCapNhatSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatSizeActionPerformed
-                int row = tblSize.getSelectedRow();
-if(row==-1){
-    JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
-    
-    return;
-}
-SizeModel sizem = getSizeForm();
-if(sizem == null){
-    return;
-}
-sizem.setMaSize(tblSize.getValueAt(row, 0).toString());
-if(sizes.updateSize(sizem)!=null){
-    JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-    loadtableSize();
-    clearSize();
-}else{
-    JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
-}
+        int row = tblSize.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
+
+            return;
+        }
+        SizeModel sizem = getSizeForm();
+        if (sizem == null) {
+            return;
+        }
+        sizem.setMaSize(tblSize.getValueAt(row, 0).toString());
+        if (sizes.updateSize(sizem) != null) {
+            JOptionPane.showMessageDialog(this, "Sửa Thành Công");
+            loadtableSize();
+            clearSize();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
+        }
     }//GEN-LAST:event_btnCapNhatSizeActionPerformed
 
     private void btnXoaSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSizeActionPerformed
-      int row = tblSize.getSelectedRow();
-        if(row==-1){
+        int row = tblSize.getSelectedRow();
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn Dòng Cần Xóa");
             return;
         }
-        String maSize = tblSize.getValueAt(row,0).toString();
+        String maSize = tblSize.getValueAt(row, 0).toString();
         int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa Size sản phẩm này không");
-        if(xn==JOptionPane.YES_OPTION){
-            if(sizes.deleteSize(maSize)!=0){
+        if (xn == JOptionPane.YES_OPTION) {
+            if (sizes.deleteSize(maSize) != 0) {
                 JOptionPane.showMessageDialog(this, "Xóa Size Sản Phẩm Thành Công");
                 loadtableSize();
                 clearSize();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Xóa Size Thất Bại");
         }
     }//GEN-LAST:event_btnXoaSizeActionPerformed
 
     private void tblSizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSizeMouseClicked
-       int row = tblSize.getSelectedRow();
-        if(row==-1){
+        int row = tblSize.getSelectedRow();
+        if (row == -1) {
             return;
         }
         txtMaSize.setText(tblSize.getValueAt(row, 0).toString());
         txtTenSize.setText(tblSize.getValueAt(row, 1).toString());
         String tt = tblSize.getValueAt(row, 2).toString();
-        if(tt.equalsIgnoreCase("Còn")){
+        if (tt.equalsIgnoreCase("Còn")) {
             rdoConSize.setSelected(true);
-        }else{
+        } else {
             rdoHetSize.setSelected(true);
         }
     }//GEN-LAST:event_tblSizeMouseClicked
@@ -1849,6 +1854,7 @@ if(sizes.updateSize(sizem)!=null){
     private javax.swing.ButtonGroup buttonGroupDanhMuc;
     private javax.swing.ButtonGroup buttonGroupDoCao;
     private javax.swing.ButtonGroup buttonGroupMauSac;
+    private javax.swing.ButtonGroup buttonGroupSanPham;
     private javax.swing.ButtonGroup buttonGroupSize;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton6;
