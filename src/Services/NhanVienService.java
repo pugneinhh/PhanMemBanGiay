@@ -25,6 +25,39 @@ public class NhanVienService {
         }
         return list;
     }
+    public ArrayList<NhanVienModel> getNVLam() {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVLam();
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<NhanVienModel> getNVNghi() {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVNghi();
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<NhanVienModel> getNVLamByCV(String tenCV,String sdt) {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVLamByCV(tenCV,sdt);
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<NhanVienModel> getNVNghiByCV(String tenCV,String sdt) {
+        ArrayList<NhanVienModel> list = new ArrayList<>();
+        ArrayList<NhanVien> ds = nvr.getNVLamByCV(tenCV,sdt);
+        for (NhanVien x : ds) {
+            list.add(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
+    
 
     public NhanVienModel insertNV(NhanVienModel nvm) {
         ArrayList<NhanVien> ds = nvr.getAllNV();

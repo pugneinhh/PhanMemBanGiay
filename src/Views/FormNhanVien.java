@@ -27,7 +27,7 @@ public class FormNhanVien extends javax.swing.JFrame {
      */
     public FormNhanVien() {
         initComponents();
-        this.setAlwaysOnTop(true);
+        
         Toolkit tk=Toolkit.getDefaultToolkit();
         int xsize=(int) tk.getScreenSize().getWidth();
         int ysize=(int) tk.getScreenSize().getHeight();

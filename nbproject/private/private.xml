@@ -2,25 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/DuAn1/src/Views/DangNhap.java</file>
-            <file>file:/D:/DuAn1/src/Views/QLGiaoCa.java</file>
-            <file>file:/D:/DuAn1/src/Views/Loading.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/responsitories/NhanVienResponsitory.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/ViewModels/NhanVienModel.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Services/NhanVienService.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/NhanVienJPanel.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/FormNhanVien.java</file>
         </group>
-=======
-        <group/>
->>>>>>> origin/master
-=======
-            <file>file:/D:/Duan1_Nhom7/src/phanmembangiay/PhanMemBanGiay.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/QLGiaoCa.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/LichSuGiaoDich.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/QRCode.java</file>
-        </group>
-=======
-        <group/>
->>>>>>> db53c25e9352d372d0df6b1b0327dabc35aef9f2
->>>>>>> origin/master
     </open-files>
 </project-private>

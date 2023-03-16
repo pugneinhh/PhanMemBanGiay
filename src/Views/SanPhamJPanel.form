@@ -167,11 +167,7 @@
                                   <Component id="jComboBox4" min="-2" pref="142" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton9" linkSize="1" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-=======
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
->>>>>>> d506cb80cd95da8bb820b09700d86eaa3eb9b376
                               </Group>
                           </Group>
                       </Group>
