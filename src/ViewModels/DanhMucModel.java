@@ -2,33 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package ViewModels;
 
 import java.util.Date;
 
 /**
  *
- * @author Phanh
+ * @author Asus
  */
-public class DanhMuc {
-    private String idDM;
+public class DanhMucModel {
+     private String idDM;
     private String maDM;
     private String tenDM;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
 
-    public DanhMuc() {
+    public DanhMucModel() {
     }
 
-    public DanhMuc(String maDM, String tenDM, Date ngaySua, int trangThai) {
-        this.maDM = maDM;
-        this.tenDM = tenDM;
-        this.ngaySua = ngaySua;
-        this.trangThai = trangThai;
-    }
-    
-    public DanhMuc(String idDM, String maDM, String tenDM, Date ngayTao, Date ngaySua, int trangThai) {
+    public DanhMucModel(String idDM, String maDM, String tenDM, Date ngayTao, Date ngaySua, int trangThai) {
         this.idDM = idDM;
         this.maDM = maDM;
         this.tenDM = tenDM;
@@ -37,12 +30,11 @@ public class DanhMuc {
         this.trangThai = trangThai;
     }
 
-    public DanhMuc(String maDM, String tenDM, int trangThai) {
+    public DanhMucModel(String maDM, String tenDM, int trangThai) {
         this.maDM = maDM;
         this.tenDM = tenDM;
         this.trangThai = trangThai;
     }
-    
 
     public String getIdDM() {
         return idDM;
@@ -96,5 +88,7 @@ public class DanhMuc {
     public String toString() {
         return  tenDM ;
     }
+    
+    
     
 }

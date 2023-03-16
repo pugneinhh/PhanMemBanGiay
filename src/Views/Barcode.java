@@ -22,9 +22,7 @@ import javax.imageio.ImageIO;
  */
 public class Barcode extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Barcore
-     */
+   
     public Barcode() {
         initComponents();
     }

@@ -31,6 +31,15 @@ public class ChiTietSanPham {
     public ChiTietSanPham() {
     }
 
+    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, int soLuong, int trangThai) {
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
+        this.trangThai = trangThai;
+    }
+
+  
+
     public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, int trangThai) {
         this.idSP = idSP;
         this.idKM = idKM;
@@ -43,6 +52,41 @@ public class ChiTietSanPham {
         this.idMS = idMS;
         this.idCL = idCL;
         this.idDC = idDC;
+        this.trangThai = trangThai;
+    }
+
+    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, Date ngayTao, Date ngaySua, int trangThai) {
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.soLuong = soLuong;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+
+    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, int trangThai) {
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.soLuong = soLuong;
+        this.trangThai = trangThai;
+    }
+
+    
+    public ChiTietSanPham(String idCTSP, SanPham idSP, BigDecimal giaNhap, BigDecimal giaBan, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idCTSP = idCTSP;
+        this.idSP = idSP;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
     
