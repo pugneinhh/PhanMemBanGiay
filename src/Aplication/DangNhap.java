@@ -1,6 +1,7 @@
 
-package Views;
+package Aplication;
 
+import Views.*;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.font.TextAttribute;
@@ -94,7 +95,6 @@ public class DangNhap extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPass.setText("Pass");
         txtPass.setBorder(null);
-        txtPass.setEchoChar('\u25cf');
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassActionPerformed(evt);
