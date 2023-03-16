@@ -26,6 +26,13 @@ public class ChucVu {
         this.tenCV = tenCV;
         this.trangThai = trangThai;
     }
+
+    public ChucVu(String idCV, String maCV, String tenCV, int trangThai) {
+        this.idCV = idCV;
+        this.maCV = maCV;
+        this.tenCV = tenCV;
+        this.trangThai = trangThai;
+    }
     
     public ChucVu(String idCV, String maCV, String tenCV, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCV = idCV;
