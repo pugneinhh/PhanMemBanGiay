@@ -12,30 +12,21 @@ import java.util.Date;
  * @author Asus
  */
 public class SanPhamModel {
+
     private String idSP;
     private String MaSP;
     private String TenSP;
-    private int SoLuongSP;
-    private BigDecimal donGia;
-    private String moTa;
-    private String hinhAnh;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
 
     public SanPhamModel() {
     }
-    
-    
 
-    public SanPhamModel(String idSP, String MaSP, String TenSP, int SoLuongSP, BigDecimal donGia, String moTa, String hinhAnh, Date ngayTao, Date ngaySua, int trangThai) {
+    public SanPhamModel(String idSP, String MaSP, String TenSP, Date ngayTao, Date ngaySua, int trangThai) {
         this.idSP = idSP;
         this.MaSP = MaSP;
         this.TenSP = TenSP;
-        this.SoLuongSP = SoLuongSP;
-        this.donGia = donGia;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
@@ -65,38 +56,6 @@ public class SanPhamModel {
         this.TenSP = TenSP;
     }
 
-    public int getSoLuongSP() {
-        return SoLuongSP;
-    }
-
-    public void setSoLuongSP(int SoLuongSP) {
-        this.SoLuongSP = SoLuongSP;
-    }
-
-    public BigDecimal getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(BigDecimal donGia) {
-        this.donGia = donGia;
-    }
-
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
-    }
-
-    public String getHinhAnh() {
-        return hinhAnh;
-    }
-
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
-    }
-
     public Date getNgayTao() {
         return ngayTao;
     }
@@ -120,7 +79,5 @@ public class SanPhamModel {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
-    
-    
+
 }

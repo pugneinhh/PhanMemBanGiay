@@ -7,118 +7,77 @@ package ViewModels;
 import DomainModels.ChatLieu;
 import DomainModels.DanhMuc;
 import DomainModels.DoCao;
+import DomainModels.KhuyenMai;
 import DomainModels.MauSac;
 import DomainModels.SanPham;
 import DomainModels.Size;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
  * @author Asus
  */
 public class ChiTietSanPhamModel {
-    private SanPham MaSP;
-    private SanPham TenSP;
-    private int soluong;
-    private Size tensSize;
-    private MauSac tenMS;
-    private DoCao tenDC;
-    private ChatLieu tenCL;
-    private DanhMuc tenDM;
+    private String idCTSP;
+    private SanPham idSP;
+    private KhuyenMai idKM;
     private BigDecimal giaNhap;
     private BigDecimal giaBan;
-    private String mota;
-    private int trangthai;
-    private SanPham hinhanh;
+    private int maQR;
+    private int soLuong;
+    private DanhMuc idDM;
+    private Size idSize;
+    private MauSac idMS;
+    private ChatLieu idCL;
+    private DoCao idDC;
+    private Date ngayTao;
+    private Date ngaySua;
+    private int trangThai;
 
     public ChiTietSanPhamModel() {
     }
 
-    public ChiTietSanPhamModel(int soluong, BigDecimal giaNhap, BigDecimal giaBan, int trangthai) {
-        this.soluong = soluong;
+    public ChiTietSanPhamModel(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idCTSP = idCTSP;
+        this.idSP = idSP;
+        this.idKM = idKM;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
-        this.trangthai = trangthai;
+        this.maQR = maQR;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
     }
 
-    public ChiTietSanPhamModel(SanPham MaSP, SanPham TenSP, int soluong, Size tensSize, MauSac tenMS, DoCao tenDC, ChatLieu tenCL, DanhMuc tenDM, BigDecimal giaNhap, BigDecimal giaBan, String mota, int trangthai, SanPham hinhanh) {
-        this.MaSP = MaSP;
-        this.TenSP = TenSP;
-        this.soluong = soluong;
-        this.tensSize = tensSize;
-        this.tenMS = tenMS;
-        this.tenDC = tenDC;
-        this.tenCL = tenCL;
-        this.tenDM = tenDM;
-        this.giaNhap = giaNhap;
-        this.giaBan = giaBan;
-        this.mota = mota;
-        this.trangthai = trangthai;
-        this.hinhanh = hinhanh;
+    public String getIdCTSP() {
+        return idCTSP;
     }
 
-    public SanPham getMaSP() {
-        return MaSP;
+    public void setIdCTSP(String idCTSP) {
+        this.idCTSP = idCTSP;
     }
 
-    public void setMaSP(SanPham MaSP) {
-        this.MaSP = MaSP;
+    public SanPham getIdSP() {
+        return idSP;
     }
 
-    public SanPham getTenSP() {
-        return TenSP;
+    public void setIdSP(SanPham idSP) {
+        this.idSP = idSP;
     }
 
-    public void setTenSP(SanPham TenSP) {
-        this.TenSP = TenSP;
+    public KhuyenMai getIdKM() {
+        return idKM;
     }
 
-    public int getSoluong() {
-        return soluong;
-    }
-
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
-    }
-
-    public Size getTensSize() {
-        return tensSize;
-    }
-
-    public void setTensSize(Size tensSize) {
-        this.tensSize = tensSize;
-    }
-
-    public MauSac getTenMS() {
-        return tenMS;
-    }
-
-    public void setTenMS(MauSac tenMS) {
-        this.tenMS = tenMS;
-    }
-
-    public DoCao getTenDC() {
-        return tenDC;
-    }
-
-    public void setTenDC(DoCao tenDC) {
-        this.tenDC = tenDC;
-    }
-
-    public ChatLieu getTenCL() {
-        return tenCL;
-    }
-
-    public void setTenCL(ChatLieu tenCL) {
-        this.tenCL = tenCL;
-    }
-
-    public DanhMuc getTenDM() {
-        return tenDM;
-    }
-
-    public void setTenDM(DanhMuc tenDM) {
-        this.tenDM = tenDM;
+    public void setIdKM(KhuyenMai idKM) {
+        this.idKM = idKM;
     }
 
     public BigDecimal getGiaNhap() {
@@ -137,30 +96,84 @@ public class ChiTietSanPhamModel {
         this.giaBan = giaBan;
     }
 
-    public String getMota() {
-        return mota;
+    public int getMaQR() {
+        return maQR;
     }
 
-    public void setMota(String mota) {
-        this.mota = mota;
+    public void setMaQR(int maQR) {
+        this.maQR = maQR;
     }
 
-    public int getTrangthai() {
-        return trangthai;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public SanPham getHinhanh() {
-        return hinhanh;
+    public DanhMuc getIdDM() {
+        return idDM;
     }
 
-    public void setHinhanh(SanPham hinhanh) {
-        this.hinhanh = hinhanh;
+    public void setIdDM(DanhMuc idDM) {
+        this.idDM = idDM;
     }
 
-    
+    public Size getIdSize() {
+        return idSize;
+    }
+
+    public void setIdSize(Size idSize) {
+        this.idSize = idSize;
+    }
+
+    public MauSac getIdMS() {
+        return idMS;
+    }
+
+    public void setIdMS(MauSac idMS) {
+        this.idMS = idMS;
+    }
+
+    public ChatLieu getIdCL() {
+        return idCL;
+    }
+
+    public void setIdCL(ChatLieu idCL) {
+        this.idCL = idCL;
+    }
+
+    public DoCao getIdDC() {
+        return idDC;
+    }
+
+    public void setIdDC(DoCao idDC) {
+        this.idDC = idDC;
+    }
+
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public Date getNgaySua() {
+        return ngaySua;
+    }
+
+    public void setNgaySua(Date ngaySua) {
+        this.ngaySua = ngaySua;
+    }
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
     
 }

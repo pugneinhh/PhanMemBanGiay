@@ -54,8 +54,8 @@ public class DoCaoResponsitory {
     }
     public DoCao updateDC(DoCao dc){
         
-        String sql="UPDATE DoCao SET MA=?,TEN=?,NGAYSUA=GETDATE() WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, dc.getMaDC(),dc.getTenDC(),dc.getIdDC());
+        String sql="UPDATE DoCao SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql, dc.getTenDC(),dc.getTrangThai(),dc.getMaDC());
         return dc;
     }
     public Integer deleteDC(String id){   

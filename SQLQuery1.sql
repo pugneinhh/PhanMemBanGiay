@@ -11,6 +11,7 @@ insert into KhachHang values(NewID(), 'KH03', 'QuangAnh', 'M3', 'NinhBinh', N'Na
 
 select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai 
 from KhachHang
+where GioiTinh = N'Nam'
 where TrangThai = 0
 where MaKH = 'KH01'
 
@@ -20,3 +21,4 @@ where MaKH = 'KH01'
 
 delete from KhachHang
 where MaKH = 'KH01'
+
