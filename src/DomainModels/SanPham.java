@@ -12,13 +12,10 @@ import java.util.Date;
  * @author Phanh
  */
 public class SanPham {
+
     private String idSP;
     private String maSP;
     private String tenSP;
-    private int soLuong;
-    private BigDecimal donGia;
-    private String moTa;
-    private String hinhAnh;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
@@ -26,24 +23,16 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String maSP, String tenSP, int soLuong, BigDecimal donGia, String moTa, String hinhAnh, int trangThai) {
+    public SanPham(String maSP, String tenSP, int trangThai) {
         this.maSP = maSP;
         this.tenSP = tenSP;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
         this.trangThai = trangThai;
     }
-    
-    public SanPham(String idSP, String maSP, String tenSP, int soLuong, BigDecimal donGia, String moTa, String hinhAnh, Date ngayTao, Date ngaySua, int trangThai) {
+
+    public SanPham(String idSP, String maSP, String tenSP, Date ngayTao, Date ngaySua, int trangThai) {
         this.idSP = idSP;
         this.maSP = maSP;
         this.tenSP = tenSP;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
@@ -73,38 +62,6 @@ public class SanPham {
         this.tenSP = tenSP;
     }
 
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public BigDecimal getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(BigDecimal donGia) {
-        this.donGia = donGia;
-    }
-
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
-    }
-
-    public String getHinhAnh() {
-        return hinhAnh;
-    }
-
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
-    }
-
     public Date getNgayTao() {
         return ngayTao;
     }
@@ -128,6 +85,5 @@ public class SanPham {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
-    
+
 }
