@@ -1,4 +1,4 @@
-CREATE DATABASE DUAN1_NHOM6
+﻿CREATE DATABASE DUAN1_NHOM6
 USE DUAN1_NHOM6
 GO
 
@@ -231,5 +231,48 @@ ALTER TABLE GIOHANGCHITIET ADD FOREIGN KEY (IdCTSP) REFERENCES CHITIETSANPHAM(ID
 ALTER TABLE GIOHANGCHITIET ADD FOREIGN KEY (IdGH) REFERENCES GIOHANG(Id)
 
 
-/* INSERT DULIEU
+-- INSERT DULIEU
 
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC03',N'3cm',getDate(),1)
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC05',N'5cm',getDate(),1)
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC07',N'7cm',getDate(),1)
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC09',N'9cm',getDate(),1)
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC11',N'11cm',getDate(),1)
+INSERT INTO DoCao(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DC13',N'13cm',getDate(),1)
+
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S34',N'Size 34',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S35',N'Size 35',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S36',N'Size 36',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S37',N'Size 37',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S38',N'Size 38',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S39',N'Size 39',getDate(),1)
+INSERT INTO Size(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'S40',N'Size 40',getDate(),1)
+
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM01',N'Đế nhọn',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM02',N'Đế vuông',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM03',N'Đế xuồng',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM04',N'Đế thấp',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM05',N'CONE HEELS',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM06',N'SLING BACK HEELS',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM07',N'MULE HEELS',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM08',N'Boot',getDate(),1)
+INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM09',N'Sandal',getDate(),1)
+
+INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV01',N'Quản lý',getDate(),1)
+INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Thu Ngân',getDate(),1)
+
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
+'dinhnga123','6d30ddc8-600e-41c7-8870-a5ff87d2564a','nga123.png',getDate(),1)
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV02',N'Nguyễn Thị Phương Anh','02/09/2003',N'Nữ',N'Hà Nội','0982355355','anhdp@gmail.com',
+'panh211','6d30ddc8-600e-41c7-8870-a5ff87d2564a','anh1a.png',getDate(),1)
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV03',N'Trinh Thị Thủy','05/11/2003',N'Nữ',N'Thanh Hóa','0823556147','thuytt@gmail.com',
+'thuytA23','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','thuyA2.png',getDate(),1)
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV04',N'Nguyễn Xuân Quang','10/10/2003',N'Nam',N'Hà Nội','0788233551','quangnt@gmail.com',
+'quangM1','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','quangH.png',getDate(),1)
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV03',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
+'anh04','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),1)
