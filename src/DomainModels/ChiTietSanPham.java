@@ -12,12 +12,13 @@ import java.util.Date;
  * @author Phanh
  */
 public class ChiTietSanPham {
+
     private String idCTSP;
     private SanPham idSP;
     private KhuyenMai idKM;
     private BigDecimal giaNhap;
     private BigDecimal giaBan;
-    private String maQR;
+    private int maQR;
     private int soLuong;
     private DanhMuc idDM;
     private Size idSize;
@@ -27,7 +28,7 @@ public class ChiTietSanPham {
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
-    
+
     public ChiTietSanPham() {
     }
 
@@ -38,9 +39,7 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
-  
-
-    public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, int trangThai) {
+    public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, int trangThai) {
         this.idSP = idSP;
         this.idKM = idKM;
         this.giaNhap = giaNhap;
@@ -55,7 +54,7 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
-    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, Date ngayTao, Date ngaySua, int trangThai) {
+    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, Date ngayTao, Date ngaySua, int trangThai) {
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.maQR = maQR;
@@ -65,7 +64,7 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
-    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, int trangThai) {
+    public ChiTietSanPham(BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, int trangThai) {
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.maQR = maQR;
@@ -73,7 +72,6 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
-    
     public ChiTietSanPham(String idCTSP, SanPham idSP, BigDecimal giaNhap, BigDecimal giaBan, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;
@@ -89,8 +87,8 @@ public class ChiTietSanPham {
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
-    
-    public ChiTietSanPham(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
+
+    public ChiTietSanPham(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;
         this.idKM = idKM;
@@ -148,11 +146,11 @@ public class ChiTietSanPham {
         this.giaBan = giaBan;
     }
 
-    public String getMaQR() {
+    public int getMaQR() {
         return maQR;
     }
 
-    public void setMaQR(String maQR) {
+    public void setMaQR(int maQR) {
         this.maQR = maQR;
     }
 
@@ -227,6 +225,5 @@ public class ChiTietSanPham {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
-    
+
 }

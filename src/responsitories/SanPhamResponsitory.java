@@ -27,7 +27,7 @@ public class SanPhamResponsitory {
           
             try {
                 while(rs.next()){
-                    list.add(new SanPham(rs.getString(1),rs.getString(2), rs.getString(3), rs.getInt(4),rs.getBigDecimal(5),rs.getString(6), rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10)));
+                    //list.add(new SanPham(rs.getString(1),rs.getString(2), rs.getString(3), rs.getInt(4),rs.getBigDecimal(5),rs.getString(6), rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10)));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +42,7 @@ public class SanPhamResponsitory {
         ResultSet rs=JDBCHelper.executeQuery(sql,id);
         try {
             while(rs.next()){
-                return new SanPham(rs.getString(1),rs.getString(2), rs.getString(3), rs.getInt(4),rs.getBigDecimal(5),rs.getString(6), rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
+               // return new SanPham(rs.getString(1),rs.getString(2), rs.getString(3), rs.getInt(4),rs.getBigDecimal(5),rs.getString(6), rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,13 +52,13 @@ public class SanPhamResponsitory {
     public SanPham insertSP(SanPham sp){
         
         String sql="INSERT INTO SanPham VALUES(NEWID(),?,?,?,?,?,?,?,GetDate(),?)";
-        JDBCHelper.executeUpdate(sql, sp.getMaSP(),sp.getTenSP(),sp.getSoLuong(),sp.getDonGia(), sp.getMoTa(), sp.getHinhAnh(), sp.getNgayTao(),sp.getNgaySua(),sp.getTrangThai());
+       // JDBCHelper.executeUpdate(sql, sp.getMaSP(),sp.getTenSP(),sp.getSoLuong(),sp.getDonGia(), sp.getMoTa(), sp.getHinhAnh(), sp.getNgayTao(),sp.getNgaySua(),sp.getTrangThai());
         return sp;
     }
     public SanPham updateSP(SanPham sp){
         
         String sql="UPDATE ChatLieu SET MASP=?,TEN=?,Soluong = ? , dongia = ? , mota = ? , hinhanh= ? ,NGAYSUA=GETDATE(), trangthai = ?  WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, sp.getMaSP(),sp.getTenSP(),sp.getSoLuong(), sp.getDonGia(),sp.getMoTa(),sp.getHinhAnh(),sp.getNgaySua(),sp.getTrangThai(),sp.getIdSP());
+       // JDBCHelper.executeUpdate(sql, sp.getMaSP(),sp.getTenSP(),sp.getSoLuong(), sp.getDonGia(),sp.getMoTa(),sp.getHinhAnh(),sp.getNgaySua(),sp.getTrangThai(),sp.getIdSP());
         return sp;
     }
     public Integer deleteSP(String id){   
