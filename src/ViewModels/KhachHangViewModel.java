@@ -122,4 +122,10 @@ public class KhachHangViewModel {
     public String toString() {
         return "KhachHangViewModel{" + "maKH=" + maKH + ", tenKH=" + tenKH + ", loaiKH=" + loaiKH + ", diaChi=" + diaChi + ", gioiTinh=" + gioiTinh + ", email=" + email + ", sdt=" + sdt + ", ngaySinh=" + ngaySinh + ", ngayThamGia=" + ngayThamGia + ", trangThai=" + trangThai + '}';
     }
+    
+    public Object[] toDataRow(){
+        return new Object[]{maKH,tenKH,loaiKH,diaChi,gioiTinh,
+            email,sdt,ngaySinh,ngayThamGia,trangThai==1?"Còn hoạt động":"Ngừng hoạt động"           
+        };
+    }
 }
