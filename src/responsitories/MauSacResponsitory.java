@@ -49,11 +49,10 @@ public class MauSacResponsitory {
     }
     public MauSac insertMS(MauSac ms){
         
-<<<<<<< HEAD
+
         String sql="INSERT INTO MauSac VALUES(NEWID(),?,?,GetDate(),null,?)";
-=======
-        String sql="INSERT INTO MAUSAC VALUES(NEWID(),?,?,GetDate(),null,?)";
->>>>>>> aad0def70d865b7d64fb3958094d4885e6358056
+
+
         JDBCHelper.executeUpdate(sql, ms.getMaMS(),ms.getTenMS(),ms.getTrangThai());
         return ms;
     }
