@@ -16,14 +16,13 @@ import java.sql.*;
  */
 public class KhachHangResponsitory {
 
-    public ArrayList<KhachHangViewModel> getAllKhachHang() {
-        ArrayList<KhachHangViewModel> khModel = new ArrayList<>();
-        String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
-                + "from KhachHang";
+    public ArrayList<KhachHang> getAllKhachHang() {
+        ArrayList<KhachHang> khModel = new ArrayList<>();
+        String sql = "select * from KhachHang";
         ResultSet rs = JDBCHelper.executeQuery(sql);
         try {
             while (rs.next()) {
-                khModel.add(new KhachHangViewModel(rs.getString(1), rs.getString(2),
+                khModel.add(new KhachHang(rs.getString(1), rs.getString(2),
                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
                         rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10)));
             }
@@ -31,11 +30,27 @@ public class KhachHangResponsitory {
         }
         return khModel;
     }
+    
+    public KhachHang getKhachHangByMa(String ma) {
+        String sql = "select * from KhachHang\n"
+                + "where MaKH = 'KH01'";
+        ResultSet rs = JDBCHelper.executeQuery(sql, ma);
+        try {
+            while (rs.next()) {
+                return new KhachHang(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-    public Integer addKhachHang(KhachHang kh) {
+    public KhachHang insertKhachHang(KhachHang kh) {
         String sql = "insert into KhachHang values(NewID(), ?, ?, ?, ?, ?, ?,\n"
                 + "?, ?, ?, ?, ?, ?)";
-        Integer row = JDBCHelper.executeUpdate(sql,
+        JDBCHelper.executeUpdate(sql,
                 kh.getMaKH(),
                 kh.getLoaiKH(),
                 kh.getTenKH(),
@@ -47,14 +62,14 @@ public class KhachHangResponsitory {
                 kh.getNgayThamGia(),
                 kh.getTrangThai()
         );
-        return row;
+        return kh;
     }
 
-    public Integer updateKhachHang(KhachHang kh) {
+    public KhachHang updateKhachHang(KhachHang kh) {
         String sql = "update KhachHang set LoaiKH = ?, TenKH = ?, DiaChi = ?, GioiTinh = ?, \n"
                 + "Email = ?, SDT = ?, NgaySinh = ?, NgayThamGia = ?, NgayTao = ?, NgaySua = ?, TrangThai = ?\n"
                 + "where MaKH = ?";
-        Integer row = JDBCHelper.executeUpdate(sql,
+        JDBCHelper.executeUpdate(sql,
                 kh.getLoaiKH(),
                 kh.getTenKH(),
                 kh.getDiaChi(),
@@ -66,13 +81,13 @@ public class KhachHangResponsitory {
                 kh.getTrangThai(),
                 kh.getMaKH()
         );
-        return row;
+        return kh;
     }
 
-    public Integer deleteKhachHang(String ma) {
+    public Integer deleteCV(String ma) {
         String sql = "delete from KhachHang\n"
                 + "where MaKH = ?";
-        Integer row = JDBCHelper.executeUpdate(sql,ma);
+        int row = JDBCHelper.executeUpdate(sql, ma);
         return row;
     }
 }
