@@ -25,12 +25,14 @@ public class ChiTietSanPhamModel {
     private BigDecimal giaNhap;
     private BigDecimal giaBan;
     private int maQR;
+    private String hinhanh;
     private int soLuong;
     private DanhMuc idDM;
     private Size idSize;
     private MauSac idMS;
     private ChatLieu idCL;
     private DoCao idDC;
+    private String mota;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
@@ -38,23 +40,44 @@ public class ChiTietSanPhamModel {
     public ChiTietSanPhamModel() {
     }
 
-    public ChiTietSanPhamModel(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, Date ngayTao, Date ngaySua, int trangThai) {
+    public ChiTietSanPhamModel(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;
         this.idKM = idKM;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.maQR = maQR;
+        this.hinhanh = hinhanh;
         this.soLuong = soLuong;
         this.idDM = idDM;
         this.idSize = idSize;
         this.idMS = idMS;
         this.idCL = idCL;
         this.idDC = idDC;
+        this.mota = mota;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
+
+    public ChiTietSanPhamModel(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
+        this.idSP = idSP;
+        this.idKM = idKM;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.hinhanh = hinhanh;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.mota = mota;
+        this.trangThai = trangThai;
+    }
+    
+    
 
     public String getIdCTSP() {
         return idCTSP;
@@ -102,6 +125,14 @@ public class ChiTietSanPhamModel {
 
     public void setMaQR(int maQR) {
         this.maQR = maQR;
+    }
+
+    public String getHinhanh() {
+        return hinhanh;
+    }
+
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
     }
 
     public int getSoLuong() {
@@ -152,6 +183,14 @@ public class ChiTietSanPhamModel {
         this.idDC = idDC;
     }
 
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
+    }
+
     public Date getNgayTao() {
         return ngayTao;
     }
@@ -175,5 +214,7 @@ public class ChiTietSanPhamModel {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
+
+   
+   
 }
