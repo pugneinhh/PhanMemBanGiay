@@ -39,13 +39,13 @@ public class ChiTietSanPhamService {
                 return null;
             }
         }
-        var x = ctspr.insertCTSP(new ChiTietSanPham(ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getSoluong(), ctspm.getTrangthai()));
-        return new ChiTietSanPhamModel(x.getSoLuong(),x.getGiaNhap(), x.getGiaBan(), x.getTrangThai());
+        //var x = ctspr.insertCTSP(new ChiTietSanPham(ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getSoluong(), ctspm.getTrangthai()));
+        //return new ChiTietSanPhamModel(x.getSoLuong(),x.getGiaNhap(), x.getGiaBan(), x.getTrangThai());
     }
 
     public ChiTietSanPhamModel updateCTSP(ChiTietSanPhamModel ctspm) {
-        var x = ctspr.updateCTSP(new ChiTietSanPham(ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getSoluong(), ctspm.getTrangthai()));
-       return new ChiTietSanPhamModel(x.getSoLuong(),x.getGiaNhap(), x.getGiaBan(), x.getTrangThai());
+        //var x = ctspr.updateCTSP(new ChiTietSanPham(ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getSoluong(), ctspm.getTrangthai()));
+      // return new ChiTietSanPhamModel(x.getSoLuong(),x.getGiaNhap(), x.getGiaBan(), x.getTrangThai());
     }
 
     public Integer deleteCTSP(String id) {
