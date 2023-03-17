@@ -49,8 +49,8 @@ public class DanhMucResponsitory {
     }
     public DanhMuc updateDm(DanhMuc dm){
         
-        String sql="UPDATE DanhMuc SET MA=?,TEN=?,NGAYSUA=GETDATE() WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, dm.getMaDM(),dm.getTenDM(),dm.getIdDM());
+        String sql="UPDATE DanhMuc SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql, dm.getMaDM(),dm.getTenDM(),dm.getTrangThai(),dm.getMaDM());
         return dm;
     }
     public Integer deleteDM(String id){   

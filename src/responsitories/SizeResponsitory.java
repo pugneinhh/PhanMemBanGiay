@@ -5,7 +5,6 @@
 package responsitories;
 
 import DomainModels.Size;
-import java.util.ArrayList;
 import Utilities.JDBCHelper;
 import java.util.ArrayList;
 import java.sql.ResultSet;
@@ -56,8 +55,13 @@ public class SizeResponsitory {
     }
     public Size updateSize(Size size){
         
+<<<<<<< HEAD
         String sql="UPDATE size SET MA=?,TEN=?,NGAYSUA=GETDATE(),TrangThai= ? WHERE ID=?";
         JDBCHelper.executeUpdate(sql, size.getMaSize(),size.getTenSize(),size.getIdSize());
+=======
+        String sql="UPDATE size SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql, size.getTenSize(),size.getTrangThai(),size.getMaSize());
+>>>>>>> aad0def70d865b7d64fb3958094d4885e6358056
         return size;
     }
     public Integer deleteSize(String id){   

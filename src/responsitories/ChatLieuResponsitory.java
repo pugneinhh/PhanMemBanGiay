@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ChatLieuResponsitory {
     public ArrayList<ChatLieu> getAllChatLieu(){
         ArrayList<ChatLieu> list=new ArrayList<>();
-        String sql="SELECT * FROM MauSac";
+        String sql="SELECT * FROM CHATLIEU";
         ResultSet rs=JDBCHelper.executeQuery(sql);
         
           
@@ -55,8 +55,8 @@ public class ChatLieuResponsitory {
     }
     public ChatLieu updateCL(ChatLieu cl){
         
-        String sql="UPDATE ChatLieu SET MA=?,TEN=?,NGAYSUA=GETDATE() WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, cl.getMaCL(),cl.getTenCL(),cl.getIdCL());
+        String sql="UPDATE ChatLieu SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql,cl.getTenCL(),cl.getTrangThai(), cl.getMaCL());
         return cl;
     }
     public Integer deleteCL(String id){   
@@ -64,7 +64,5 @@ public class ChatLieuResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        new ChatLieuResponsitory().insertCL(new ChatLieu("CL1", "Nhựa", 1));
-    }
+    
 }

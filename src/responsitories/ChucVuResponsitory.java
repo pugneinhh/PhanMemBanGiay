@@ -51,8 +51,8 @@ public class ChucVuResponsitory {
     }
     public ChucVu updateCV(ChucVu cv){
         
-        String sql="UPDATE CHUCVU SET TEN=?,NGAYSUA=GETDATE() WHERE MA=?";
-        JDBCHelper.executeUpdate(sql, cv.getTenCV(),cv.getMaCV());
+        String sql="UPDATE CHUCVU SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
+        JDBCHelper.executeUpdate(sql, cv.getTenCV(),cv.getTrangThai(),cv.getMaCV());
         return cv;
     }
     public Integer deleteCV(String id){   
