@@ -56,7 +56,7 @@ public class SizeResponsitory {
     }
     public Size updateSize(Size size){
         
-        String sql="UPDATE size SET MA=?,TEN=?,NGAYSUA=GETDATE() WHERE ID=?";
+        String sql="UPDATE size SET MA=?,TEN=?,NGAYSUA=GETDATE(),TrangThai= ? WHERE ID=?";
         JDBCHelper.executeUpdate(sql, size.getMaSize(),size.getTenSize(),size.getIdSize());
         return size;
     }

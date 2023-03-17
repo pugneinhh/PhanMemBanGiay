@@ -110,14 +110,14 @@ public class SanPhamJPanel extends javax.swing.JPanel {
       //////////////////////////////////////////////MauSac/////////////////////////////////////////////////////////////////
      public void loadtableMauSac(){
         ArrayList<MauSacModel> list =mss.getAllMauSac();
-        dtmMS.setRowCount(0);
+        dtmCL.setRowCount(0);
         for(MauSacModel x : list){
             Object[]rowdata = {
                 x.getMaMS(),
                 x.getTenMS(),
                 x.getTrangThai()==0? "Còn" : "Hết"
             };
-            dtmMS.addRow(rowdata);
+            dtmCL.addRow(rowdata);
         }
     }
   private void clearMauSac() {

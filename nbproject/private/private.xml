@@ -2,13 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
             <file>file:/D:/ts/src/Utilities/DBConnection.java</file>
             <file>file:/D:/ts/src/Views/SanPhamJPanel.java</file>
+            <file>file:/D:/ts/src/responsitories/ChiTietSanPhamResponsitory.java</file>
+            <file>file:/D:/ts/src/responsitories/SizeResponsitory.java</file>
+            <file>file:/D:/ts/src/responsitories/DanhMucResponsitory.java</file>
+            <file>file:/D:/ts/src/responsitories/MauSacResponsitory.java</file>
+            <file>file:/D:/ts/src/Services/SizeService.java</file>
+            <file>file:/D:/ts/src/Services/MauSacService.java</file>
+            <file>file:/D:/ts/src/responsitories/GiaoCaResbonsitory.java</file>
+            <file>file:/D:/ts/src/Services/ChucVuService.java</file>
+            <file>file:/D:/ts/src/Services/ChiTietSanPhamService.java</file>
+            <file>file:/D:/ts/src/responsitories/DoCaoResponsitory.java</file>
+            <file>file:/D:/ts/src/Services/ChatLieuService.java</file>
+            <file>file:/D:/ts/src/Views/FormNhanVien.java</file>
+            <file>file:/D:/ts/src/responsitories/KhuyenMaiResbonsitory.java</file>
+            <file>file:/D:/ts/src/responsitories/ChucVuResponsitory.java</file>
+            <file>file:/D:/ts/src/Services/DanhMucService.java</file>
+            <file>file:/D:/ts/src/Services/DoCaoService.java</file>
+            <file>file:/D:/ts/src/Services/NhanVienService.java</file>
+            <file>file:/D:/ts/src/responsitories/ChatLieuResponsitory.java</file>
+            <file>file:/D:/ts/src/Views/NhanVienJPanel.java</file>
+            <file>file:/D:/ts/src/ViewModels/ChiTietSanPhamModel.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 6bccdf371e413c4b8293b1809e6a2c32ae68dca6
     </open-files>
 </project-private>
