@@ -19,7 +19,7 @@ public class DoCaoResponsitory {
     public ArrayList<DoCao> getAllDoCao(){
         ArrayList<DoCao> list=new ArrayList<>();
         String sql="SELECT * FROM DoCao";
-        ResultSet rs=JDBCHelper.executeQuery(sql);
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         
           
             try {
@@ -36,7 +36,7 @@ public class DoCaoResponsitory {
     public DoCao getDCByID(String id){
         
         String sql="SELECT * FROM DoCao WHERE ID=?";
-        ResultSet rs=JDBCHelper.executeQuery(sql,id);
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
         try {
             while(rs.next()){
                 return new DoCao(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));

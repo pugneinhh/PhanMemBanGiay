@@ -40,6 +40,10 @@ public class SanPham {
         this.trangThai = trangThai;
     }
 
+    public SanPham(String maSP, String tenSP, int trangThai) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getIdSP() {
         return idSP;
     }
@@ -90,7 +94,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", trangThai=" + trangThai + '}';
+        return tenSP;
     }
     
 }

@@ -23,7 +23,7 @@ public class SanPhamResponsitory {
     public ArrayList<SanPham> getAllSanPham() {
         ArrayList<SanPham> list = new ArrayList<>();
         String sql = "SELECT * FROM SanPham";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -39,7 +39,7 @@ public class SanPhamResponsitory {
     public SanPham getSPByID(String id) {
         String sql = "SELECT MaSP,Ten,NgayTao,NgaySua,TrangThai FROM SanPham\n"
                 + "where Id = ?";
-        ResultSet rs = JDBCHelper.executeQuery(sql, id);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
                 return new SanPham(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDate(4), rs.getInt(5));

@@ -20,7 +20,7 @@ public class ChatLieuResponsitory {
     public ArrayList<ChatLieu> getAllChatLieu(){
         ArrayList<ChatLieu> list=new ArrayList<>();
         String sql="SELECT * FROM CHATLIEU";
-        ResultSet rs=JDBCHelper.executeQuery(sql);
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         
           
             try {
@@ -37,7 +37,7 @@ public class ChatLieuResponsitory {
     public ChatLieu getCLByID(String id){
         
         String sql="SELECT * FROM ChatLieu WHERE ID=?";
-        ResultSet rs=JDBCHelper.executeQuery(sql,id);
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
         try {
             while(rs.next()){
                 return new ChatLieu(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));

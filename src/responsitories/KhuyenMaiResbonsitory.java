@@ -12,7 +12,7 @@ public class KhuyenMaiResbonsitory {
     public ArrayList<KhuyenMai> getAllKM() {
         ArrayList<KhuyenMai> list = new ArrayList<>();
         String sql = "select *from KhuyenMai";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -28,7 +28,7 @@ public class KhuyenMaiResbonsitory {
     public KhuyenMai getKMByID(String id) {
 
         String sql = "select *from KhuyenMai where id=?";
-        ResultSet rs = JDBCHelper.executeQuery(sql, id);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
 

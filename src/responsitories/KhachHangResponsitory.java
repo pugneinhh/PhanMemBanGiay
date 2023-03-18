@@ -19,7 +19,7 @@ public class KhachHangResponsitory {
     public ArrayList<KhachHang> getAllKhachHang() {
         ArrayList<KhachHang> khModel = new ArrayList<>();
         String sql = "select * from KhachHang";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
         try {
             while (rs.next()) {
                 khModel.add(new KhachHang(rs.getString(1), rs.getString(2),
@@ -34,7 +34,7 @@ public class KhachHangResponsitory {
     public KhachHang getKhachHangByMa(String ma) {
         String sql = "select * from KhachHang\n"
                 + "where MaKH = 'KH01'";
-        ResultSet rs = JDBCHelper.executeQuery(sql, ma);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, ma);
         try {
             while (rs.next()) {
                 return new KhachHang(rs.getString(1), rs.getString(2),

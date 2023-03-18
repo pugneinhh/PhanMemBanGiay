@@ -24,7 +24,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getAllNV() {
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT * FROM NHANVIEN ";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -40,7 +40,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVLam() {
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT * FROM NHANVIEN WHERE TRANGTHAI=1";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -56,7 +56,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVNghi() {
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT * FROM NHANVIEN WHERE TRANGTHAI=0";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -71,7 +71,7 @@ public class NhanVienResponsitory {
     }
     public NhanVien getNVByID(String id) {
         String sql = "SELECT ID,HOTEN FROM NhanVien WHERE ID=?";
-        ResultSet rs = JDBCHelper.executeQuery(sql, id);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
                 return new NhanVien(rs.getString(1), rs.getString(2));
@@ -102,7 +102,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVLamByCV(String tenCV){
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT NHANVIEN.* FROM NHANVIEN JOIN CHUCVU ON NHANVIEN.IDCV=CHUCVU.ID WHERE NHANVIEN.TRANGTHAI=1 AND Ten LIKE ?";
-        ResultSet rs = JDBCHelper.executeQuery(sql,"%"+tenCV+"%");
+        ResultSet rs = JDBCHelper.excuteQuery(sql,"%"+tenCV+"%");
 
         try {
             while (rs.next()) {
@@ -118,7 +118,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVNghiByCV(String tenCV){
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT NHANVIEN.* FROM NHANVIEN JOIN CHUCVU ON NHANVIEN.IDCV=CHUCVU.ID WHERE NHANVIEN.TRANGTHAI=0 AND Ten LIKE ?";
-        ResultSet rs = JDBCHelper.executeQuery(sql,"%"+tenCV+"%");
+        ResultSet rs = JDBCHelper.excuteQuery(sql,"%"+tenCV+"%");
 
         try {
             while (rs.next()) {
@@ -134,7 +134,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVLamBySdt(String sdt){
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT NHANVIEN.* FROM NHANVIEN JOIN CHUCVU ON NHANVIEN.IDCV=CHUCVU.ID WHERE NHANVIEN.TRANGTHAI=1 AND SDT LIKE ?";
-        ResultSet rs = JDBCHelper.executeQuery(sql,"%"+sdt+"%");
+        ResultSet rs = JDBCHelper.excuteQuery(sql,"%"+sdt+"%");
 
         try {
             while (rs.next()) {
@@ -150,7 +150,7 @@ public class NhanVienResponsitory {
     public ArrayList<NhanVien> getNVNghiBySdt(String sdt){
         ArrayList<NhanVien> list = new ArrayList<>();
         String sql = "SELECT NHANVIEN.* FROM NHANVIEN JOIN CHUCVU ON NHANVIEN.IDCV=CHUCVU.ID WHERE NHANVIEN.TRANGTHAI=0 AND SDT LIKE ?";
-        ResultSet rs = JDBCHelper.executeQuery(sql,"%"+sdt+"%");
+        ResultSet rs = JDBCHelper.excuteQuery(sql,"%"+sdt+"%");
 
         try {
             while (rs.next()) {

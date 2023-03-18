@@ -86,7 +86,7 @@ public class Size {
 
     @Override
     public String toString() {
-        return  tenSize ;
+        return tenSize;
     }
-    
+
 }

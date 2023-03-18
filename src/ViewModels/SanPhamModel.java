@@ -32,6 +32,12 @@ public class SanPhamModel {
         this.trangThai = trangThai;
     }
 
+    public SanPhamModel(String MaSP, String TenSP, int trangThai) {
+        this.MaSP = MaSP;
+        this.TenSP = TenSP;
+        this.trangThai = trangThai;
+    }
+
     public String getIdSP() {
         return idSP;
     }

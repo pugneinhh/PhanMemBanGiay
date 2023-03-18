@@ -20,7 +20,7 @@ public class SizeResponsitory {
     public ArrayList<Size> getAllSize(){
         ArrayList<Size> list=new ArrayList<>();
         String sql="SELECT * FROM Size";
-        ResultSet rs=JDBCHelper.executeQuery(sql);
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         
           
             try {
@@ -36,7 +36,7 @@ public class SizeResponsitory {
     }
     public Size getSizeByID(String id){    
         String sql="SELECT * FROM Size WHERE ID=?";
-        ResultSet rs=JDBCHelper.executeQuery(sql,id);
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
         try {
             while(rs.next()){
                 return new Size(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));
@@ -54,8 +54,10 @@ public class SizeResponsitory {
     }
     public Size updateSize(Size size){
         
+
         String sql="UPDATE size SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
         JDBCHelper.executeUpdate(sql, size.getTenSize(),size.getTrangThai(),size.getMaSize());
+
         return size;
     }
     public Integer deleteSize(String id){   
