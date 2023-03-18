@@ -211,19 +211,28 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         ArrayList<NhanVienModel> list = nvs.getNVLam();
+        boolean kt=false;
         if (check()) {
             for (NhanVienModel x : list) {
+                
                 if (x.getMaNV().equals(txtUser.getText().trim()) && x.getMatKhau().equals(String.valueOf(txtPass.getPassword()))) {
+                    kt=true;
                     nv = x;
-                    this.setVisible(false);
-                    new Loading().setVisible(true);
+                    
                 } else if (x.getMaNV().equals(txtUser.getText().trim()) && !x.getMatKhau().equals(String.valueOf(txtPass.getPassword()))) {
                     JOptionPane.showMessageDialog(this, "Sai mật khẩu! Vui lòng nhập lại mật khẩu", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
                     txtPass.requestFocus();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản!Vui lòng kiểm tra lại thông tin đăng nhập", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+                    kt=false;
+                } 
+                    
+                
+            }
+            if(kt==true){
+                this.setVisible(false);
+                    new Loading().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản!Vui lòng kiểm tra lại thông tin đăng nhập", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
+                    
             }
         }
 
