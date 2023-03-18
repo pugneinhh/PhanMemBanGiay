@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE DUAN1_NHOM6
 USE DUAN1_NHOM6
 GO
-
+SELECT * FROM NHANVIEN
 CREATE TABLE ChucVu(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 Ma VARCHAR(20) UNIQUE,
@@ -332,6 +332,7 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP09',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Giày Cao Gót Đan Dây',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
+
 
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,

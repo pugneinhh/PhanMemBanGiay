@@ -54,6 +54,7 @@ public class QuenMK extends javax.swing.JFrame {
         }
 
         txtMa.setText(" " + sb.toString());
+        
     }
 
     private void loadlai() {
@@ -136,10 +137,13 @@ public class QuenMK extends javax.swing.JFrame {
         });
         getContentPane().add(txtCapcha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 150, 30));
 
+        txtMa.setEditable(false);
         txtMa.setBackground(new java.awt.Color(204, 204, 204));
         txtMa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(255, 0, 51));
         txtMa.setBorder(null);
         txtMa.setEnabled(false);
+        txtMa.setOpaque(true);
         getContentPane().add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 90, 30));
 
         btnGui.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -245,11 +249,11 @@ public class QuenMK extends javax.swing.JFrame {
             msg.setContent("Mật khẩu đăng nhập hệ thống là:" +txtMessage ,"text/html;charset=utf-8");
             Transport.send(msg);
             JOptionPane.showMessageDialog(this, "Gửi thành công đến email "+to);
+            
         } catch (MessagingException e) {
             e.printStackTrace();
-            
-
         }
+        
     }
     /**
      * @param args the command line arguments

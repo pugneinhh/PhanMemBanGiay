@@ -228,6 +228,7 @@ public class DangNhap extends javax.swing.JFrame {
                 
             }
             if(kt==true){
+                
                 this.setVisible(false);
                     new Loading().setVisible(true);
             }else{
