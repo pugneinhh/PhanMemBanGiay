@@ -34,8 +34,7 @@ public class SizeResponsitory {
         
         return list;
     }
-    public Size getSizeByID(String id){
-        
+    public Size getSizeByID(String id){    
         String sql="SELECT * FROM Size WHERE ID=?";
         ResultSet rs=JDBCHelper.executeQuery(sql,id);
         try {
@@ -65,6 +64,7 @@ public class SizeResponsitory {
         return row;
     }
     public static void main(String[] args) {
-        new SizeResponsitory().insertSize(new Size("s1", "39", 1));
+        SizeResponsitory sizeR = new SizeResponsitory();
+        System.out.println(sizeR.getSizeByID("bdf2df63-3654-44ad-a158-8268b3b45cf9"));
     }
 }
