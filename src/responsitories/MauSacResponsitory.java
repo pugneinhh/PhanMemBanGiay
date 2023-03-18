@@ -20,7 +20,7 @@ public class MauSacResponsitory {
     public ArrayList<MauSac> getAllMauSac(){
         ArrayList<MauSac> list=new ArrayList<>();
         String sql="SELECT * FROM MauSac";
-        ResultSet rs=JDBCHelper.executeQuery(sql);
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         
           
             try {
@@ -37,7 +37,7 @@ public class MauSacResponsitory {
     public MauSac getMSByID(String id){
         
         String sql="SELECT * FROM MauSac WHERE ID=?";
-        ResultSet rs=JDBCHelper.executeQuery(sql,id);
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
         try {
             while(rs.next()){
                 return new MauSac(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));

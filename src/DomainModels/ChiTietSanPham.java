@@ -54,6 +54,23 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
+    public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
+        this.idSP = idSP;
+        this.idKM = idKM;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.hinhanh = hinhanh;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.mota = mota;
+        this.trangThai = trangThai;
+    }
+    
     public String getIdCTSP() {
         return idCTSP;
     }
@@ -190,23 +207,9 @@ public class ChiTietSanPham {
         this.trangThai = trangThai;
     }
 
-    public ChiTietSanPham(SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
-        this.idSP = idSP;
-        this.idKM = idKM;
-        this.giaNhap = giaNhap;
-        this.giaBan = giaBan;
-        this.maQR = maQR;
-        this.hinhanh = hinhanh;
-        this.soLuong = soLuong;
-        this.idDM = idDM;
-        this.idSize = idSize;
-        this.idMS = idMS;
-        this.idCL = idCL;
-        this.idDC = idDC;
-        this.mota = mota;
-        this.trangThai = trangThai;
+    @Override
+    public String toString() {
+        return "ChiTietSanPham{" + "idCTSP=" + idCTSP + ", idSP=" + idSP + ", idKM=" + idKM + ", giaNhap=" + giaNhap + ", giaBan=" + giaBan + ", maQR=" + maQR + ", hinhanh=" + hinhanh + ", soLuong=" + soLuong + ", idDM=" + idDM + ", idSize=" + idSize + ", idMS=" + idMS + ", idCL=" + idCL + ", idDC=" + idDC + ", mota=" + mota + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", trangThai=" + trangThai + '}';
     }
-
     
-   
 }

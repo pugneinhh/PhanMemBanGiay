@@ -23,9 +23,11 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String maSP, String tenSP, int trangThai) {
+    public SanPham(String maSP, String tenSP, Date ngayTao, Date ngaySua, int trangThai) {
         this.maSP = maSP;
         this.tenSP = tenSP;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
 
@@ -36,6 +38,10 @@ public class SanPham {
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
+    }
+
+    public SanPham(String maSP, String tenSP, int trangThai) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getIdSP() {
@@ -86,4 +92,9 @@ public class SanPham {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return tenSP;
+    }
+    
 }

@@ -86,7 +86,7 @@ public class DoCao {
 
     @Override
     public String toString() {
-        return  tenDC ;
+        return tenDC;
     }
-    
+
 }
