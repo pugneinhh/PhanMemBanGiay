@@ -453,6 +453,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         jLabel7.setText("Tên SP");
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox9ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("In mã");
 
@@ -1819,6 +1824,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             rdoHetSize.setSelected(true);
         }
     }//GEN-LAST:event_tblSizeMouseClicked
+
+    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

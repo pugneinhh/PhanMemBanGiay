@@ -55,8 +55,10 @@ public class SizeResponsitory {
     }
     public Size updateSize(Size size){
         
+
         String sql="UPDATE size SET TEN=?,NGAYSUA=GETDATE(),TRANGTHAI=? WHERE MA=?";
         JDBCHelper.executeUpdate(sql, size.getTenSize(),size.getTrangThai(),size.getMaSize());
+
         return size;
     }
     public Integer deleteSize(String id){   
