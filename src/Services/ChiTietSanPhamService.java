@@ -15,7 +15,7 @@ import responsitories.ChiTietSanPhamResponsitory;
  * @author Asus
  */
 public class ChiTietSanPhamService {
-<<<<<<< HEAD
+
      ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
 
     public ArrayList<ChiTietSanPhamModel> getAllChiTietSanPham() {
@@ -46,7 +46,7 @@ public class ChiTietSanPhamService {
     public Integer deleteCTSP(String qr) {
         return ctspr.deleteCTSP(qr);
     }
-=======
+
 //     ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
 //
 //    public ArrayList<ChiTietSanPhamModel> getAllChiTietSanPham() {
@@ -83,5 +83,5 @@ public class ChiTietSanPhamService {
 //    public Integer deleteCTSP(String id) {
 //        return ctspr.deleteCTSP(id);
 //    }
->>>>>>> 66c808428f83526e9c3c74794ca9646bbe1b9fee
+
 }

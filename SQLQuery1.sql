@@ -83,6 +83,8 @@ NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
+INSERT INTO GiaoCa(id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
+values(NEWID(),'MAGC01','NV01','NV02','12h43','12h45',1000000,50000,70000,2000000,'Đinh Thị Quỳnh Nga Giao Ca','Nguyễn Thị Phương Anh Nhận Ca',getDate(),1)
 
 CREATE TABLE KhachHang(
 ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -281,3 +283,5 @@ VALUES(NewID(),'NV03',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','035
 SELECT ChiTietSanPham.QR , SanPham.Ten ,ChiTietSanPham.GiaNhap,ChiTietSanPham.GiaBan,ChiTietSanPham.SoLuong ,Size ,DoCao, ChatLieu,MauSac , DanhMuc,
 ChiTietSanPham.MoTa,ChiTietSanPham.HinhAnh,ChiTietSanPham.TrangThai from ChiTietSanPham ,SanPham 
 where ChiTietSanPham.id = SanPham.Id
+
+select *from NHANVIEN
