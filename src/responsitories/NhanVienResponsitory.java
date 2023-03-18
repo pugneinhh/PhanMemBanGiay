@@ -7,6 +7,8 @@ package responsitories;
 import DomainModels.ChucVu;
 import DomainModels.NhanVien;
 import Utilities.JDBCHelper;
+import Aplication.QuenMK;
+import java.security.SecureRandom;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

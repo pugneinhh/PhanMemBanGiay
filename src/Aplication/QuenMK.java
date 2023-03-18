@@ -4,17 +4,28 @@
  */
 package Aplication;
 
+import DomainModels.NhanVien;
 import Views.*;
 import java.awt.Color;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
+import responsitories.NhanVienResponsitory;
 
 /**
  *
  * @author Phanh
  */
 public class QuenMK extends javax.swing.JFrame {
-
+    NhanVienResponsitory nvr=new NhanVienResponsitory();
     /**
      * Creates new form QuenMK
      */
@@ -197,10 +208,49 @@ public class QuenMK extends javax.swing.JFrame {
 
     private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
         if (check() == true) {
-
+           ArrayList<NhanVien> list=nvr.getNVLam();
+            for (NhanVien x : list) {
+                if(x.getEmail().equals(txtEmail.getText().trim())){
+                    guiMail(x.getMatKhau());
+                }
+            }
+            
         }
     }//GEN-LAST:event_btnGuiActionPerformed
+    private void guiMail(String txtMessage){
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
 
+            String accountname = "anhntpph28990@fpt.edu.vn";
+            String accountpass = "famobnhohmvxxkdu";
+            Session s = Session.getInstance(p,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(accountname, accountpass);
+                    }
+                }
+            );
+            
+            String to = txtEmail.getText();
+            String title = "Thông tin mật khẩu";
+            
+            Message msg = new MimeMessage(s);
+            msg.setFrom(new InternetAddress(accountname));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            msg.setSubject(title);
+            msg.setContent("Mật khẩu đăng nhập hệ thống là:" +txtMessage ,"text/html;charset=utf-8");
+            Transport.send(msg);
+            JOptionPane.showMessageDialog(this, "Gửi thành công đến email "+to);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            
+
+        }
+    }
     /**
      * @param args the command line arguments
      */
