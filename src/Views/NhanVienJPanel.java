@@ -54,12 +54,9 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         dtmNVLam = (DefaultTableModel) tblNVLam.getModel();
         dtmNVNghi = (DefaultTableModel) tblNVNghi.getModel();
         cbbCV.setModel((DefaultComboBoxModel) dcmCV);
-<<<<<<< HEAD
         cbbTimCV.setModel((DefaultComboBoxModel) dcmCV);
         cbbCV.setModel((DefaultComboBoxModel) dcmCV);
-=======
         cbbTimCV.setModel((DefaultComboBoxModel) dcmCVM);
->>>>>>> origin/master
         loadTableCV();
         loadComboCV();
         loadComboCVTim();

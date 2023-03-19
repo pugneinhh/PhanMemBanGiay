@@ -177,7 +177,6 @@ public class ChiTietSanPhamResponsitory {
     }
 
     public ChiTietSanPham updateCTSP(ChiTietSanPham ctsp) {
-<<<<<<< HEAD
         String sql = "UPDATE ChiTietSanPham SET idsp= ?,gianhap=?,giaban= ?,hinhanh= ? , "
                 + "Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE(), TrangThai =? WHERE QR=?";
         JDBCHelper.executeUpdate(sql,
@@ -194,13 +193,9 @@ public class ChiTietSanPhamResponsitory {
                 ctsp.getMota(),
                 ctsp.getTrangThai(),
                 ctsp.getMaQR());
-=======
-        String sql = "UPDATE CHITIETSANPHAM SET idsp= ?,idkm=?,gianhap=?,giaban= ?,hinhanh= ? , Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE() WHERE QR=?";
-        JDBCHelper.executeUpdate(sql, ctsp.getIdSP(), ctsp.getIdKM(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getHinhanh(), ctsp.getSoLuong(), ctsp.getIdDM(), ctsp.getIdSize(), ctsp.getIdMS(), ctsp.getIdCL(), ctsp.getIdDC(), ctsp.getTrangThai(), ctsp.getMaQR());
->>>>>>> origin/master
         return ctsp;
     }
-    
+
     public Integer updateCTSP1(ChiTietSanPham ctsp) {
         String sql = "UPDATE ChiTietSanPham SET idsp= ?,gianhap=?,giaban= ?,hinhanh= ? , "
                 + "Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE() WHERE QR=?";
@@ -241,10 +236,10 @@ public class ChiTietSanPhamResponsitory {
         DoCao dc = new DoCao("bfa2e592-0cb3-41fd-bedb-34b49e1989d8");
         BigDecimal giaN = null;
         BigDecimal giaB = null;
-        
+
         giaN = BigDecimal.valueOf(Double.parseDouble("111000"));
         giaB = BigDecimal.valueOf(Double.parseDouble("222000"));
-        
+
         Integer kq = ctspR.updateCTSP1(new ChiTietSanPham(null, sp, km, giaN, giaB, 20012006, "SP03.png", 111, dm, s, ms, cl, dc, "AAA", null, null, 0));
         System.out.println(kq);
 
