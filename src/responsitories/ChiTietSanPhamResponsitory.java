@@ -88,13 +88,13 @@ public class ChiTietSanPhamResponsitory {
     }
 
     public ChiTietSanPham updateCTSP(ChiTietSanPham ctsp) {
-        String sql = "UPDATE ChatLieu SET idsp= ?,idkm=?,gianhap=?,giaban= ?,hinhanh= ? , Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE() WHERE QR=?";
+        String sql = "UPDATE CHITIETSANPHAM SET idsp= ?,idkm=?,gianhap=?,giaban= ?,hinhanh= ? , Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE() WHERE QR=?";
         JDBCHelper.executeUpdate(sql, ctsp.getIdSP(), ctsp.getIdKM(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getHinhanh(), ctsp.getSoLuong(), ctsp.getIdDM(), ctsp.getIdSize(), ctsp.getIdMS(), ctsp.getIdCL(), ctsp.getIdDC(), ctsp.getTrangThai(), ctsp.getMaQR());
         return ctsp;
     }
 
     public Integer deleteCTSP(String qr) {
-        String sql = "DELETE FROM ChatLieu WHERE QR=?";
+        String sql = "DELETE FROM CHITIETSANPHAM WHERE QR=?";
         int row = JDBCHelper.executeUpdate(sql, qr);
         return row;
     }

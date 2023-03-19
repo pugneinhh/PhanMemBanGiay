@@ -37,8 +37,8 @@ public class FormNhanVien extends javax.swing.JFrame {
         this.setSize(xsize, ysize-taskBar);
         getContentPane().setBackground(Color.white);
         cardlayout = (CardLayout) pncardgoc.getLayout();
-            loadtrangchu(index);
-         loadDangNhap();
+        loadtrangchu(index);
+        loadDangNhap();
          
         
     }
