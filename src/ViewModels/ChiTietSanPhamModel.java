@@ -76,8 +76,21 @@ public class ChiTietSanPhamModel {
         this.mota = mota;
         this.trangThai = trangThai;
     }
-    
-    
+
+    public ChiTietSanPhamModel(SanPham idSP, BigDecimal giaNhap, BigDecimal giaBan, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
+        this.idSP = idSP;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.hinhanh = hinhanh;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.mota = mota;
+        this.trangThai = trangThai;
+    }
 
     public String getIdCTSP() {
         return idCTSP;
@@ -215,6 +228,9 @@ public class ChiTietSanPhamModel {
         this.trangThai = trangThai;
     }
 
-   
+    @Override
+    public String toString() {
+        return "ChiTietSanPhamModel{" + "idCTSP=" + idCTSP + ", idSP=" + idSP + ", idKM=" + idKM + ", giaNhap=" + giaNhap + ", giaBan=" + giaBan + ", maQR=" + maQR + ", hinhanh=" + hinhanh + ", soLuong=" + soLuong + ", idDM=" + idDM + ", idSize=" + idSize + ", idMS=" + idMS + ", idCL=" + idCL + ", idDC=" + idDC + ", mota=" + mota + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", trangThai=" + trangThai + '}';
+    }
    
 }

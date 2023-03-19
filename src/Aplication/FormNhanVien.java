@@ -20,29 +20,30 @@ import javax.swing.ImageIcon;
  * @author Phanh
  */
 public class FormNhanVien extends javax.swing.JFrame {
+
     CardLayout cardlayout;
-    int index=0;
-    private String[] images={"giayhome.png","giayhome1.png","giayhome2.png","giayhome3.png"};
+    int index = 0;
+    private String[] images = {"giayhome.png", "giayhome1.png", "giayhome2.png", "giayhome3.png"};
+
     /**
      * Creates new form FormNhanVien
      */
     public FormNhanVien() {
         initComponents();
-        
-        Toolkit tk=Toolkit.getDefaultToolkit();
-        int xsize=(int) tk.getScreenSize().getWidth();
-        int ysize=(int) tk.getScreenSize().getHeight();
-        Insets scrmax=Toolkit.getDefaultToolkit().getScreenInsets(getGraphicsConfiguration());
-        int taskBar=scrmax.bottom;
-        this.setSize(xsize, ysize-taskBar);
+
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xsize = (int) tk.getScreenSize().getWidth();
+        int ysize = (int) tk.getScreenSize().getHeight();
+        Insets scrmax = Toolkit.getDefaultToolkit().getScreenInsets(getGraphicsConfiguration());
+        int taskBar = scrmax.bottom;
+        this.setSize(xsize, ysize - taskBar);
         getContentPane().setBackground(Color.white);
         cardlayout = (CardLayout) pncardgoc.getLayout();
-            loadtrangchu(index);
-         
-        
+        loadtrangchu(index);
+
     }
-    
-    private void resetbtn(){
+
+    private void resetbtn() {
         btnBanHang.setBackground(Color.white);
         btnNhanVien.setBackground(Color.white);
         btnKhachHang.setBackground(Color.white);
@@ -52,30 +53,28 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnTrangchu.setBackground(Color.white);
         btnThongKe.setBackground(Color.white);
     }
-    private void loadtrangchu(int i){
-       
-                String image=images[i];
-                ImageIcon ii=new ImageIcon("src\\icon\\"+image);
-                Image img=ii.getImage().getScaledInstance(lbltrangchu.getWidth(), lbltrangchu.getHeight(), Image.SCALE_SMOOTH);
-                ii=new ImageIcon(img);
-                lbltrangchu.setIcon(ii);
-            
-        
-        
-        
-        
+
+    private void loadtrangchu(int i) {
+
+        String image = images[i];
+        ImageIcon ii = new ImageIcon("src\\icon\\" + image);
+        Image img = ii.getImage().getScaledInstance(lbltrangchu.getWidth(), lbltrangchu.getHeight(), Image.SCALE_SMOOTH);
+        ii = new ImageIcon(img);
+        lbltrangchu.setIcon(ii);
+
     }
     //Width=190;
     //Height=641;
-    int width=190;
-    int height=676;
-    private void hienMenu(){
+    int width = 190;
+    int height = 676;
+
+    private void hienMenu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < width; i++) {
                     Menu.setSize(width, height);
-                  
+
                     try {
                         Thread.sleep(2);
                     } catch (InterruptedException ex) {
@@ -85,11 +84,12 @@ public class FormNhanVien extends javax.swing.JFrame {
             }
         }).start();
     }
-    private void dongMenu(){
+
+    private void dongMenu() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = width; i >0; i--) {
+                for (int i = width; i > 0; i--) {
                     Menu.setSize(0, height);
                     try {
                         Thread.sleep(2);
@@ -100,6 +100,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             }
         }).start();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,6 +174,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         JMain.setBackground(new java.awt.Color(255, 255, 255));
 
+        pncardgoc.setPreferredSize(new java.awt.Dimension(1211, 613));
         pncardgoc.setLayout(new java.awt.CardLayout());
 
         JHome.setBackground(new java.awt.Color(255, 255, 255));
@@ -512,22 +514,22 @@ public class FormNhanVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btnPreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreMouseClicked
-      index--;
-      if(index<0){
-          index=images.length-1;
-      }
+        index--;
+        if (index < 0) {
+            index = images.length - 1;
+        }
         loadtrangchu(index);
     }//GEN-LAST:event_btnPreMouseClicked
 
     private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
-       index++;
-      if(index>=images.length){
-          index=0;
-      }
+        index++;
+        if (index >= images.length) {
+            index = 0;
+        }
         loadtrangchu(index);
     }//GEN-LAST:event_btnNextMouseClicked
 
@@ -537,70 +539,70 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThoatMouseClicked
 
     private void btnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseClicked
-         SanPhamJPanel spl=new SanPhamJPanel();
-         spl.setSize(pncardgoc.getWidth(),pncardgoc.getHeight());
-         JSanPham.add(spl,BorderLayout.CENTER);
-         cardlayout.show(pncardgoc, "cardsp");
-         resetbtn();
-         btnSanPham.setBackground(Color.pink);
-         btnSanPham.setOpaque(true);
-         
+        SanPhamJPanel spl = new SanPhamJPanel();
+        spl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JSanPham.add(spl, BorderLayout.CENTER);
+        cardlayout.show(pncardgoc, "cardsp");
+        resetbtn();
+        btnSanPham.setBackground(Color.pink);
+        btnSanPham.setOpaque(true);
+
     }//GEN-LAST:event_btnSanPhamMouseClicked
 
     private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
-        KhuyenMaiJPanel kml=new KhuyenMaiJPanel();
+        KhuyenMaiJPanel kml = new KhuyenMaiJPanel();
         kml.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JKhuyenMai.add(kml,BorderLayout.CENTER);
+        JKhuyenMai.add(kml, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardkm");
         resetbtn();
         btnKhuyenMai.setBackground(Color.pink);
         btnKhuyenMai.setOpaque(true);
-        
+
     }//GEN-LAST:event_btnKhuyenMaiMouseClicked
 
     private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
-        KhachHang khl=new KhachHang();
+        KhachHang khl = new KhachHang();
         khl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JKhachHang.add(khl,BorderLayout.CENTER);
+        JKhachHang.add(khl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardkh");
         resetbtn();
-         btnKhachHang.setBackground(Color.pink);
-         btnKhachHang.setOpaque(true);
+        btnKhachHang.setBackground(Color.pink);
+        btnKhachHang.setOpaque(true);
     }//GEN-LAST:event_btnKhachHangMouseClicked
 
     private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
-        BanHangJPanel bhl=new BanHangJPanel();
-         bhl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JBanHang.add(bhl,BorderLayout.CENTER);
+        BanHangJPanel bhl = new BanHangJPanel();
+        bhl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
+        JBanHang.add(bhl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardbh");
         resetbtn();
-         btnBanHang.setBackground(Color.pink);
-         btnBanHang.setOpaque(true);
+        btnBanHang.setBackground(Color.pink);
+        btnBanHang.setOpaque(true);
     }//GEN-LAST:event_btnBanHangMouseClicked
 
     private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
-        ThongKeJPanel tkl=new ThongKeJPanel();
+        ThongKeJPanel tkl = new ThongKeJPanel();
         tkl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JThongKe.add(tkl,BorderLayout.CENTER);
+        JThongKe.add(tkl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardtk");
         resetbtn();
-         btnThongKe.setBackground(Color.pink);
-         btnThongKe.setOpaque(true);        
+        btnThongKe.setBackground(Color.pink);
+        btnThongKe.setOpaque(true);
     }//GEN-LAST:event_btnThongKeMouseClicked
 
     private void btnTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangchuMouseClicked
-       
+
         JHome.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-         cardlayout.show(pncardgoc, "cardhome");
-         resetbtn();
-         btnTrangchu.setBackground(Color.pink);
-         btnTrangchu.setOpaque(true);
+        cardlayout.show(pncardgoc, "cardhome");
+        resetbtn();
+        btnTrangchu.setBackground(Color.pink);
+        btnTrangchu.setOpaque(true);
     }//GEN-LAST:event_btnTrangchuMouseClicked
 
     private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
-        NhanVienJPanel nvl=new NhanVienJPanel();
+        NhanVienJPanel nvl = new NhanVienJPanel();
         nvl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JNhanVien.add(nvl,BorderLayout.CENTER);
+        JNhanVien.add(nvl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardnv");
         resetbtn();
         btnNhanVien.setBackground(Color.pink);
@@ -608,13 +610,13 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienMouseClicked
 
     private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
-        LichSuGiaoDich lsl=new LichSuGiaoDich();
+        LichSuGiaoDich lsl = new LichSuGiaoDich();
         lsl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
-        JHoaDon.add(lsl,BorderLayout.CENTER);
+        JHoaDon.add(lsl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardhd");
         resetbtn();
-         btnHoaDon.setBackground(Color.pink);
-         btnHoaDon.setOpaque(true);
+        btnHoaDon.setBackground(Color.pink);
+        btnHoaDon.setOpaque(true);
     }//GEN-LAST:event_btnHoaDonMouseClicked
 
     /**

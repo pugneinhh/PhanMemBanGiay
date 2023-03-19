@@ -37,12 +37,12 @@ public class SanPhamResponsitory {
     }
 
     public SanPham getSPByID(String id) {
-        String sql = "SELECT MaSP,Ten,NgayTao,NgaySua,TrangThai FROM SanPham\n"
-                + "where Id = ?";
+        String sql = "select * from SanPham\n"
+                + "where Id= ?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
-                return new SanPham(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDate(4), rs.getInt(5));
+                return new SanPham(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);

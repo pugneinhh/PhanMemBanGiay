@@ -9,40 +9,36 @@ import java.sql.*;
  * @author Phanh
  */
 public class JDBCHelper {
-    public static ResultSet excuteQuery(String sql, Object... args) {
-        Connection c = null; //để thực hiện câu truy vấn
-        ResultSet rs = null; //để nhận dữ liệu kq của câu truy vấn
-        PreparedStatement pr = null;  //để thực thi câu truy vấn có tham số
+    public static ResultSet excuteQuery(String sql,Object ...args){
+        Connection con=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
         try {
-            c = DBConnection.getConnection();
-            pr = c.prepareStatement(sql);
-            //duyệt mảng
+            con=DBConnection.getConnection();
+            ps=con.prepareStatement(sql);
             for (int i = 0; i < args.length; i++) {
-                pr.setObject(i + 1, args[i]); //gán giá trị cho các tham số của pr
-
+                ps.setObject(i+1, args[i]);
+                
             }
-            rs = pr.executeQuery(); // thực thi câu truy vấn
-           
+            rs=ps.executeQuery();
         } catch (Exception e) {
         }
         return rs;
     }
-
-    public static Integer executeUpdate(String sql, Object... args) {
-        Connection c = null;
-        Integer row = 0;
-        PreparedStatement pr = null;
+    public static Integer executeUpdate(String sql,Object ...args){
+        Connection con=null;
+        PreparedStatement ps=null;
+        int row=0;
         try {
-            c = DBConnection.getConnection();
-            pr = c.prepareStatement(sql);
+            con=DBConnection.getConnection();
+            ps=con.prepareStatement(sql);
             for (int i = 0; i < args.length; i++) {
-                pr.setObject(i+1, args[i]);
+                ps.setObject(i+1, args[i]);
+                
             }
-            row = pr.executeUpdate();
-         return row;
+            row=ps.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
         }
-        return null;
+        return row;
     }
 }

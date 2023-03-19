@@ -29,6 +29,10 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
+    public KhuyenMai(String idKM) {
+        this.idKM = idKM;
+    }
+
     public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loadGiamGia, int trangThai) {
         this.maKM = maKM;
         this.tenKM = tenKM;
@@ -164,8 +168,7 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
-        return "KhuyenMai{" + "tenKM=" + tenKM + '}';
+        return tenKM;
     }
-    
-    
+
 }

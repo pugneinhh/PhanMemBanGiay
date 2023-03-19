@@ -26,6 +26,13 @@ public class ChiTietSanPhamService {
         }
         return list;
     }
+    
+    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByQR(String ma){
+        return ctspr.getChiTietSanPhamByQR(ma);
+    }
+    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByDanhMuc(String danhMuc) {
+        return ctspr.getChiTietSanPhamByDanhMuc(danhMuc);
+    }
 
     public ChiTietSanPhamModel insertCTSP(ChiTietSanPhamModel ctspm) {
         ArrayList<ChiTietSanPham> list = ctspr.getAllChiTietSanPhams();

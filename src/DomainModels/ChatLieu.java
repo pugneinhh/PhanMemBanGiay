@@ -22,6 +22,10 @@ public class ChatLieu {
     public ChatLieu() {
     }
 
+    public ChatLieu(String idCL) {
+        this.idCL = idCL;
+    }
+
     public ChatLieu(String maCL, String tenCL, int trangThai) {
         this.maCL = maCL;
         this.tenCL = tenCL;

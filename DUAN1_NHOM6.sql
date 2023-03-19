@@ -376,8 +376,25 @@ VALUES()
 
 --SanPhamChiTiet--
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
-NgayTao,TrangThai)VALUES(NewID(),'a2589eb4-4e8c-47dc-b950-cfe5314f3431','a8d3889b-b995-44d2-a831-5dad5f90d272',
-89000,267000,'SP03.png',100,'123a3758-5533-4002-bebd-c8a36231a730','75e2183f-fe21-4b6a-ae1e-a06ec0a8d88e',
-'677cda65-a33d-4edd-beac-f1ef149c066d','4d09303b-aeb7-42cd-be0a-2a4fd703092d','bfa2e592-0cb3-41fd-bedb-34b49e1989d8',
-N'Hàng đẹp',getDate(),0)
+NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889b-b995-44d2-a831-5dad5f90d272',
+79000,237000,'SP01.png',100,'a36b9478-8938-4da9-bc2f-37f1a2ebae3e','521b933f-92c3-45cc-adfa-c5cdc643e34a',
+'62dbd908-abb0-425f-a16c-cf4ae6c1ec4b','82425e0e-ecce-45e1-a502-dd9ac2e88430','df1976f9-5b91-4a41-8f38-4b357db04e0a',
+N'Chất lượng cao',getDate(),0)
+
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+NgayTao,TrangThai)VALUES(NewID(),
+'a2589eb4-4e8c-47dc-b950-cfe5314f3431',
+'a8d3889b-b995-44d2-a831-5dad5f90d272',
+89000,267000,
+'SP02.png',
+100,
+'123a3758-5533-4002-bebd-c8a36231a730',
+'75e2183f-fe21-4b6a-ae1e-a06ec0a8d88e',
+'677cda65-a33d-4edd-beac-f1ef149c066d',
+'4d09303b-aeb7-42cd-be0a-2a4fd703092d',
+'bfa2e592-0cb3-41fd-bedb-34b49e1989d8',
+N'Hàng đẹp'
+,getDate(),
+0)
+
 
