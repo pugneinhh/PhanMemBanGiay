@@ -3,9 +3,9 @@ package Utilities;
 import java.sql.*;
 
 public class DBConnection {
-     public static String Url = "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6;encrypt=true;trustServerCertificate=true";
+    public static String Url = "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6;encrypt=true;trustServerCertificate=true";
     public static String Username = "sa";
-    public static String Pass = "123456";
+    public static String Pass = "Anh020903";
 
     static {
         try {          
@@ -23,9 +23,6 @@ public class DBConnection {
            } catch (SQLException ex) {
                java.util.logging.Logger.getLogger(DBConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
            }
-       
-            
-        
         return cn;
     }
     public static void main(String[] args) {

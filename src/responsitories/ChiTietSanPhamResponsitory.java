@@ -177,6 +177,7 @@ public class ChiTietSanPhamResponsitory {
     }
 
     public ChiTietSanPham updateCTSP(ChiTietSanPham ctsp) {
+<<<<<<< HEAD
         String sql = "UPDATE ChiTietSanPham SET idsp= ?,gianhap=?,giaban= ?,hinhanh= ? , "
                 + "Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE(), TrangThai =? WHERE QR=?";
         JDBCHelper.executeUpdate(sql,
@@ -193,6 +194,10 @@ public class ChiTietSanPhamResponsitory {
                 ctsp.getMota(),
                 ctsp.getTrangThai(),
                 ctsp.getMaQR());
+=======
+        String sql = "UPDATE CHITIETSANPHAM SET idsp= ?,idkm=?,gianhap=?,giaban= ?,hinhanh= ? , Soluong = ? , DanhMuc= ?,Size = ?,mausac=?,ChatLieu=?,DoCao = ?,Mota=?,NGAYSUA=GETDATE() WHERE QR=?";
+        JDBCHelper.executeUpdate(sql, ctsp.getIdSP(), ctsp.getIdKM(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getHinhanh(), ctsp.getSoLuong(), ctsp.getIdDM(), ctsp.getIdSize(), ctsp.getIdMS(), ctsp.getIdCL(), ctsp.getIdDC(), ctsp.getTrangThai(), ctsp.getMaQR());
+>>>>>>> origin/master
         return ctsp;
     }
     
@@ -216,7 +221,7 @@ public class ChiTietSanPhamResponsitory {
     }
 
     public Integer deleteCTSP(String qr) {
-        String sql = "DELETE FROM ChatLieu WHERE QR=?";
+        String sql = "DELETE FROM CHITIETSANPHAM WHERE QR=?";
         int row = JDBCHelper.executeUpdate(sql, qr);
         return row;
     }

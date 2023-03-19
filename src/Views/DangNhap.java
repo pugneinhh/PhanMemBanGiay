@@ -1,9 +1,10 @@
-
 package Views;
 
+import Services.NhanVienService;
+import ViewModels.NhanVienModel;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.font.TextAttribute;
+import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,6 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class DangNhap extends javax.swing.JFrame {
 
+    NhanVienService nvs = new NhanVienService();
+    public static NhanVienModel nv = null;
+
     /**
      * Creates new form Login
      */
@@ -21,27 +25,23 @@ public class DangNhap extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-
-        
-
         jLabel1.setIcon(new ImageIcon("src\\icon\\Video1.gif"));
-
 
     }
 
     public boolean check() {
-        if (txtPass.getText().trim().length() == 0 && txtPass.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(this, "Login failed!", "Message", JOptionPane.ERROR_MESSAGE);
+        if (txtUser.getText().trim().length() == 0 && txtPass.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin!", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
             txtPass.requestFocus();
             return false;
         }
-        if (txtPass.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập User name");
+        if (txtUser.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên đăng nhập");
             txtPass.requestFocus();
             return false;
         }
         if (txtPass.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập Password");
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu");
             txtPass.requestFocus();
             return false;
         }
@@ -59,7 +59,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         btnExit = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        txtUser1 = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
         btnHien = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
@@ -87,14 +87,19 @@ public class DangNhap extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 230, 10));
 
-        txtUser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtUser1.setBorder(null);
-        getContentPane().add(txtUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 230, 30));
+        txtUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtUser.setBorder(null);
+        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 230, 30));
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPass.setText("Pass");
         txtPass.setBorder(null);
         txtPass.setEchoChar('\u25cf');
+        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPassFocusGained(evt);
+            }
+        });
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassActionPerformed(evt);
@@ -120,6 +125,11 @@ public class DangNhap extends javax.swing.JFrame {
         btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnDangNhapMouseEntered(evt);
+            }
+        });
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
             }
         });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, 40));
@@ -153,41 +163,23 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btnHienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseEntered
 
-
-        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
-
-        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\Hien.png"));
-
-        
-
         btnHien.setIcon(new ImageIcon("src\\icon\\Hien.png"));
-
 
         txtPass.setEchoChar((char) 0);
     }//GEN-LAST:event_btnHienMouseEntered
 
     private void btnHienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHienMouseExited
 
-
-        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
-
-        btnHien.setIcon(new ImageIcon("D:\\ts\\src\\icon\\An.png"));
-
-       
-
         btnHien.setIcon(new ImageIcon("src\\icon\\An.png"));
-
 
         txtPass.setEchoChar('\u25cf');
     }//GEN-LAST:event_btnHienMouseExited
 
     private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
 
-        btnDangNhap.setIcon(new ImageIcon("D:\\ts\\src\\icon\\LoginAn.png"));
+        btnDangNhap.setIcon(new ImageIcon("src\\icon\\LoginAn.png"));
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
-
-                                      
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
         btnDangNhap.setIcon(new ImageIcon("src\\icon\\Login.png"));
@@ -217,11 +209,48 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        ArrayList<NhanVienModel> list = nvs.getNVLam();
+        boolean kt=false;
+        if (check()) {
+            for (NhanVienModel x : list) {
+                
+                if (x.getMaNV().equals(txtUser.getText().trim()) && x.getMatKhau().equals(String.valueOf(txtPass.getPassword()))) {
+                    kt=true;
+                    nv = x;
+                    
+                } else if (x.getMaNV().equals(txtUser.getText().trim()) && !x.getMatKhau().equals(String.valueOf(txtPass.getPassword()))) {
+                    JOptionPane.showMessageDialog(this, "Sai mật khẩu! Vui lòng nhập lại mật khẩu", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
+                    txtPass.requestFocus();
+                    return;
+                } 
+                    
+                
+            }
+            if(kt==true){
+                
+                this.setVisible(false);
+                    new Loading().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản!Vui lòng kiểm tra lại thông tin đăng nhập", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
+                    
+            }
+        }
+
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+        if (String.valueOf(txtPass.getPassword()).equals("Pass")) {
+            txtPass.setText("");
+        }
+
+    }//GEN-LAST:event_txtPassFocusGained
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -241,7 +270,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblQuen;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtUser1;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
 }
