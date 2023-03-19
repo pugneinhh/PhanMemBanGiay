@@ -222,7 +222,7 @@ public class DangNhap extends javax.swing.JFrame {
                 } else if (x.getMaNV().equals(txtUser.getText().trim()) && !x.getMatKhau().equals(String.valueOf(txtPass.getPassword()))) {
                     JOptionPane.showMessageDialog(this, "Sai mật khẩu! Vui lòng nhập lại mật khẩu", "Lỗi đăng nhập", JOptionPane.ERROR_MESSAGE);
                     txtPass.requestFocus();
-                    kt=false;
+                    return;
                 } 
                     
                 

@@ -6,7 +6,6 @@ package Views;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -43,6 +42,7 @@ public class Loading extends javax.swing.JFrame {
         }).start();
     }
     private void close(){
+        this.dispose();
         new FormNhanVien().setVisible(true);
     }
     /**
