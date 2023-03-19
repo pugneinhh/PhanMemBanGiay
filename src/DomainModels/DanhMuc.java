@@ -94,7 +94,7 @@ public class DanhMuc {
 
     @Override
     public String toString() {
-        return  tenDM ;
+        return tenDM;
     }
-    
+
 }

@@ -86,7 +86,7 @@ public class MauSac {
 
     @Override
     public String toString() {
-        return tenMS ;
+        return tenMS;
     }
-    
+
 }

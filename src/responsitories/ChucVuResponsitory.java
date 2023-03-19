@@ -20,7 +20,7 @@ public class ChucVuResponsitory {
      public ArrayList<ChucVu> getAllChucVu(){
         ArrayList<ChucVu> list=new ArrayList<>();
         String sql="SELECT * FROM CHUCVU";
-        ResultSet rs=JDBCHelper.executeQuery(sql);
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         try {
             while(rs.next()){
                 list.add(new ChucVu(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6)));
@@ -33,7 +33,7 @@ public class ChucVuResponsitory {
     public ChucVu getCVByID(String id){
         
         String sql="SELECT * FROM CHUCVU WHERE ID=?";
-        ResultSet rs=JDBCHelper.executeQuery(sql,id);
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
         try {
             while(rs.next()){
                 return new ChucVu(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));

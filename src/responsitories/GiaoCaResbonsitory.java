@@ -16,7 +16,7 @@ public class GiaoCaResbonsitory {
     public ArrayList<GiaoCa> getAllGC() {
         ArrayList<GiaoCa> list = new ArrayList<>();
         String sql = "SELECT * FROM GiaoCa";
-        ResultSet rs = JDBCHelper.executeQuery(sql);
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
             while (rs.next()) {
@@ -35,7 +35,7 @@ public class GiaoCaResbonsitory {
     public GiaoCa getGCByID(String id) {
 
         String sql = "select * from giaoca where id=?";
-        ResultSet rs = JDBCHelper.executeQuery(sql, id);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
                 NhanVien nv1 = nv.getNVByID(rs.getString(3));
