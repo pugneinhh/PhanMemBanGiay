@@ -126,19 +126,19 @@ private SanPhamService sps = new SanPhamService();
             String date = sdf.format(txtKetThuc.getDate());
         }
         
-//        int compare = NgayBatDau.compareTo(NgayKetThuc);
-//  
-//        if (compare < 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else if (compare == 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else {
-//               SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
-//            String date = sdf.format(txtBD.getDate());
-//            String date1 = sdf.format(txtKetThuc.getDate());
-//        }
+        int compare = NgayBatDau.compareTo(NgayKetThuc);
+  
+        if (compare < 0) {
+            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+            return null;
+        } else if (compare == 0) {
+            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+            return null;
+        } else {
+               SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+            String date = sdf.format(txtBD.getDate());
+            String date1 = sdf.format(txtKetThuc.getDate());
+        }
          
  
         KhuyenMaiModel  km =  new KhuyenMaiModel(makm, tenkm,hinhthuc , giatri, NgayBatDau, NgayKetThuc,1);
