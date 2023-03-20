@@ -221,27 +221,27 @@ public class ChiTietSanPhamResponsitory {
         return row;
     }
 
-    public static void main(String[] args) {
-        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();
-        //System.out.println(ctspR.getAllChiTietSanPhams());
-        //System.out.println(ctspR.getChiTietSanPhamByID("fa51bbd3-1547-4520-8777-25b9b8838d0d"));
-        //System.out.println(ctspR.getChiTietSanPhamByQR("20012007"));
-        //System.out.println(ctspR.getChiTietSanPhamByDanhMuc("Đế vuông"));
-        SanPham sp = new SanPham("873FF970-FFA2-4ACE-AEC0-04E57AB4E5B1");
-        KhuyenMai km = new KhuyenMai("a8d3889b-b995-44d2-a831-5dad5f90d272");
-        DanhMuc dm = new DanhMuc("123a3758-5533-4002-bebd-c8a36231a730");
-        Size s = new Size("75e2183f-fe21-4b6a-ae1e-a06ec0a8d88e");
-        MauSac ms = new MauSac("677cda65-a33d-4edd-beac-f1ef149c066d");
-        ChatLieu cl = new ChatLieu("4d09303b-aeb7-42cd-be0a-2a4fd703092d");
-        DoCao dc = new DoCao("bfa2e592-0cb3-41fd-bedb-34b49e1989d8");
-        BigDecimal giaN = null;
-        BigDecimal giaB = null;
-
-        giaN = BigDecimal.valueOf(Double.parseDouble("111000"));
-        giaB = BigDecimal.valueOf(Double.parseDouble("222000"));
-
-        Integer kq = ctspR.updateCTSP1(new ChiTietSanPham(null, sp, km, giaN, giaB, 20012006, "SP03.png", 111, dm, s, ms, cl, dc, "AAA", null, null, 0));
-        System.out.println(kq);
-
-    }
+//    public static void main(String[] args) {
+//        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();
+//        //System.out.println(ctspR.getAllChiTietSanPhams());
+//        //System.out.println(ctspR.getChiTietSanPhamByID("fa51bbd3-1547-4520-8777-25b9b8838d0d"));
+//        //System.out.println(ctspR.getChiTietSanPhamByQR("20012007"));
+//        //System.out.println(ctspR.getChiTietSanPhamByDanhMuc("Đế vuông"));
+//        SanPham sp = new SanPham("873FF970-FFA2-4ACE-AEC0-04E57AB4E5B1");
+//        KhuyenMai km = new KhuyenMai("a8d3889b-b995-44d2-a831-5dad5f90d272");
+//        DanhMuc dm = new DanhMuc("123a3758-5533-4002-bebd-c8a36231a730");
+//        Size s = new Size("75e2183f-fe21-4b6a-ae1e-a06ec0a8d88e");
+//        MauSac ms = new MauSac("677cda65-a33d-4edd-beac-f1ef149c066d");
+//        ChatLieu cl = new ChatLieu("4d09303b-aeb7-42cd-be0a-2a4fd703092d");
+//        DoCao dc = new DoCao("bfa2e592-0cb3-41fd-bedb-34b49e1989d8");
+//        BigDecimal giaN = null;
+//        BigDecimal giaB = null;
+//
+//        giaN = BigDecimal.valueOf(Double.parseDouble("111000"));
+//        giaB = BigDecimal.valueOf(Double.parseDouble("222000"));
+//
+//        Integer kq = ctspR.updateCTSP1(new ChiTietSanPham(null, sp, km, giaN, giaB, 20012006, "SP03.png", 111, dm, s, ms, cl, dc, "AAA", null, null, 0));
+//        System.out.println(kq);
+//
+//    }
 }

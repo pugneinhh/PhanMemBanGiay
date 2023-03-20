@@ -2,16 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package ViewModels;
 
+import DomainModels.SanPham;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  *
- * @author Phanh
+ * @author Asus
  */
-public class KhuyenMai {
+public class KhuyenMaiModel {
     private String idKM;
     private String maKM;
     private String tenKM;
@@ -20,29 +21,27 @@ public class KhuyenMai {
     private Date ngayBatDau;
     private Date ngayKetThuc;
     private String hinhThucApDung;
+   
     private String apDungGiamGia;
     private String loaiGiamGia;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
 
-    public KhuyenMai() {
+    public KhuyenMaiModel() {
     }
 
-    public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, int trangThai) {
+    public KhuyenMaiModel(String maKM, String tenKM, String hinhThucApDung,BigDecimal giaTri, Date ngayBatDau, Date ngayKetThuc, int trangThai) {
         this.maKM = maKM;
-        this.tenKM = tenKM;
-        this.giaTri = giaTri;
-        this.giamToiDa = giamToiDa;
+        this.tenKM = tenKM; this.hinhThucApDung = hinhThucApDung;   this.giaTri = giaTri;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
-        this.hinhThucApDung = hinhThucApDung;
-        this.apDungGiamGia = apDungGiamGia;
-        this.loaiGiamGia = loaiGiamGia;
+       
+     
         this.trangThai = trangThai;
     }
-    
-    public KhuyenMai(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
+
+    public KhuyenMaiModel(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung,  String apDungGiamGia, String loaiGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
         this.idKM = idKM;
         this.maKM = maKM;
         this.tenKM = tenKM;
@@ -51,10 +50,25 @@ public class KhuyenMai {
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.hinhThucApDung = hinhThucApDung;
+       
         this.apDungGiamGia = apDungGiamGia;
         this.loaiGiamGia = loaiGiamGia;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+
+    public KhuyenMaiModel(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, int trangThai) {
+        this.maKM = maKM;
+        this.tenKM = tenKM;
+        this.giaTri = giaTri;
+        this.giamToiDa = giamToiDa;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.hinhThucApDung = hinhThucApDung;
+        
+        this.apDungGiamGia = apDungGiamGia;
+        this.loaiGiamGia = loaiGiamGia;
         this.trangThai = trangThai;
     }
 
@@ -122,6 +136,9 @@ public class KhuyenMai {
         this.hinhThucApDung = hinhThucApDung;
     }
 
+
+    
+
     public String getApDungGiamGia() {
         return apDungGiamGia;
     }
@@ -134,8 +151,8 @@ public class KhuyenMai {
         return loaiGiamGia;
     }
 
-    public void setLoaiGiamGia(String loadGiamGia) {
-        this.loaiGiamGia = loadGiamGia;
+    public void setLoaiGiamGia(String loaiGiamGia) {
+        this.loaiGiamGia = loaiGiamGia;
     }
 
     public Date getNgayTao() {
@@ -162,10 +179,6 @@ public class KhuyenMai {
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return "KhuyenMai{" + "tenKM=" + tenKM + '}';
-    }
-    
+   
     
 }
