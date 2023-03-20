@@ -180,8 +180,12 @@ apDungGiamGia NVARCHAR(50),
 loaiGiamGia NVARCHAR(50) NULL,
 NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
+TrangThai INT DEFAULT 0		
 )
+select*from KhuyenMai
+
+select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
+from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
 
 CREATE TABLE GioHang(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),

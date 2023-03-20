@@ -43,14 +43,14 @@ public class KhuyenMaiResbonsitory {
     public KhuyenMai insertKM(KhuyenMai KM) {
         String sql = "INSERT INTO KhuyenMai VALUES (NEWID(),?,?,?,?,?,?,?,?,?,GetDate(),null,?)";
         JDBCHelper.executeUpdate(sql, KM.getMaKM(), KM.getTenKM(), KM.getGiaTri(),
-                KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoadGiamGia(), KM.getNgayTao(), KM.getNgaySua(), KM.getTrangThai());
+                KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoaiGiamGia(), KM.getNgayTao(), KM.getNgaySua(), KM.getTrangThai());
         return KM;
     }
 
-    public KhuyenMai updateGC(KhuyenMai KM) {
-        String sql = "UPDATE KhuyenMai SET maKM=?,tenKM=?,giaTri=?,giamToiDa=?,ngayBatDau=?,ngayKetThuc=?,hinhThucApDung=?,apDungGiamGia=?,loaiGiamGia=?,NgayTao=?,NgaySua=GETDATE(),TrangThai=? WHERE ID=?";
-        JDBCHelper.executeUpdate(sql, KM.getMaKM(), KM.getTenKM(), KM.getGiaTri(),
-                KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoadGiamGia(), KM.getNgayTao(), KM.getNgaySua(), KM.getTrangThai(), KM.getIdKM());
+    public KhuyenMai updateKM(KhuyenMai KM) {
+        String sql = "UPDATE KhuyenMai SET tenKM=?,giaTri=?,giamToiDa=?,ngayBatDau=?,ngayKetThuc=?,hinhThucApDung=?,apDungGiamGia=?,loaiGiamGia=?,NgayTao=?,NgaySua=GETDATE(),TrangThai=? WHERE maKM=?";
+        JDBCHelper.executeUpdate(sql, KM.getTenKM(), KM.getGiaTri(),
+                KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoaiGiamGia(), KM.getNgayTao(), KM.getNgaySua(), KM.getTrangThai(),KM.getMaKM());
         return KM;
     }
 
