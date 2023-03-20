@@ -15,7 +15,7 @@ public class PhanMemBanGiay {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hi");
+        System.out.println("hello");
     }
     
 }
