@@ -36,6 +36,13 @@ public class DanhMucModel {
         this.trangThai = trangThai;
     }
 
+    public DanhMucModel(String maDM, String tenDM, Date ngayTao, int trangThai) {
+        this.maDM = maDM;
+        this.tenDM = tenDM;
+        this.ngayTao = ngayTao;
+        this.trangThai = trangThai;
+    }
+
     public String getIdDM() {
         return idDM;
     }

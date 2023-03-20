@@ -27,7 +27,9 @@ public class KhachHangService {
         }
         return list;
     }
-
+    public ArrayList<KhachHangViewModel> gettheomakh(String SDT){
+        return khr.getTheoSDT(SDT);
+    }
     public KhachHangViewModel insertKhachHang(KhachHangViewModel khVM) {
         ArrayList<KhachHang> list = khr.getAllKhachHang();
         for (KhachHang kh : list) {
