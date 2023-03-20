@@ -54,7 +54,16 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         dtmNVLam = (DefaultTableModel) tblNVLam.getModel();
         dtmNVNghi = (DefaultTableModel) tblNVNghi.getModel();
         cbbCV.setModel((DefaultComboBoxModel) dcmCV);
+
+        cbbTimCV.setModel((DefaultComboBoxModel) dcmCV);
+        cbbCV.setModel((DefaultComboBoxModel) dcmCV);
+
         cbbTimCV.setModel((DefaultComboBoxModel) dcmCVM);
+
+        cbbTimCV.setModel((DefaultComboBoxModel) dcmCV);
+        cbbCV.setModel((DefaultComboBoxModel) dcmCV);
+        cbbTimCV.setModel((DefaultComboBoxModel) dcmCVM);
+
         loadTableCV();
         loadComboCV();
         loadComboCVTim();
@@ -92,31 +101,34 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             dtmNVNghi.addRow(nhanVienM.toDataRow());
         }
     }
-    private void loadTimLamByCV( String tenCV) {
+
+    private void loadTimLamByCV(String tenCV) {
         dtmNVLam.setRowCount(0);
         ArrayList<NhanVienModel> list = nvs.getNVLamByCV(tenCV);
         for (NhanVienModel nhanVienM : list) {
             dtmNVLam.addRow(nhanVienM.toDataRow());
         }
     }
-    private void loadTimNghiByCV( String tenCV) {
+
+    private void loadTimNghiByCV(String tenCV) {
         dtmNVNghi.setRowCount(0);
         ArrayList<NhanVienModel> list = nvs.getNVNghiByCV(tenCV);
         for (NhanVienModel nhanVienM : list) {
             dtmNVNghi.addRow(nhanVienM.toDataRow());
         }
     }
-    private void loadTimLamBySdt( String sdt) {
+
+    private void loadTimLamBySdt(String sdt) {
         dtmNVLam.setRowCount(0);
-        ArrayList<NhanVienModel> list = nvs.getNVLamBySdt( sdt);
+        ArrayList<NhanVienModel> list = nvs.getNVLamBySdt(sdt);
         for (NhanVienModel nhanVienM : list) {
             dtmNVLam.addRow(nhanVienM.toDataRow());
         }
     }
 
-    private void loadTimNghiBySdt( String sdt) {
+    private void loadTimNghiBySdt(String sdt) {
         dtmNVNghi.setRowCount(0);
-        ArrayList<NhanVienModel> list = nvs.getNVNghiBySdt( sdt);
+        ArrayList<NhanVienModel> list = nvs.getNVNghiBySdt(sdt);
         for (NhanVienModel nhanVienM : list) {
             dtmNVNghi.addRow(nhanVienM.toDataRow());
         }
@@ -1115,9 +1127,9 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             return;
         }
 
-        loadTimLamBySdt( sdt);
+        loadTimLamBySdt(sdt);
 
-        loadTimNghiBySdt( sdt);
+        loadTimNghiBySdt(sdt);
 
     }//GEN-LAST:event_btnTimSdtActionPerformed
 
