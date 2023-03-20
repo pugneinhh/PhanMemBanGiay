@@ -78,7 +78,7 @@ private SanPhamService sps = new SanPhamService();
     private KhuyenMaiModel getformdata(){
         String makm = txtMaKhuyenMai.getText().trim();
         String tenkm = txtTenKhuyenMai.getText().trim();
-        String hinhthuc = cbbHinhThucGiamGia.getSelectedItem().toString();
+        String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex()==0?"Đang Chạy":"Đã Kết Thúc";
         BigDecimal giatri = null;
         
         Date NgayBatDau = txtBD.getDate();
@@ -114,7 +114,7 @@ private SanPhamService sps = new SanPhamService();
             txtBD.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             String date = sdf.format(txtBD.getDate());
         }
         if (NgayKetThuc == null) {
@@ -122,7 +122,7 @@ private SanPhamService sps = new SanPhamService();
             txtKetThuc.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             String date = sdf.format(txtKetThuc.getDate());
         }
         
@@ -141,7 +141,7 @@ private SanPhamService sps = new SanPhamService();
 //        }
          
  
-        KhuyenMaiModel  km =  new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, NgayBatDau, NgayKetThuc,1);
+        KhuyenMaiModel  km =  new KhuyenMaiModel(makm, tenkm,hinhthuc , giatri, NgayBatDau, NgayKetThuc,1);
         return km;
     }
 
@@ -486,8 +486,7 @@ private SanPhamService sps = new SanPhamService();
         if (km == null) {
             return;
         }
-        String ma = tblKhuyenMai.getValueAt(row, 0).toString();
-
+        String ma = txtMaKhuyenMai.getText().trim();
         km.setMaKM(ma);
         if (kms.updateKM(km) != null) {
             JOptionPane.showMessageDialog(this, "Sửa thành công");
