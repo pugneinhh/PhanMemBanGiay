@@ -27,3 +27,13 @@ a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, a.TrangThai, DanhMuc.Ten from Chi
 join DanhMuc on DanhMuc.Id = a.DanhMuc
 where Ten like N'Đế vuông'
 
+select * from SanPham
+where Id= ?
+
+UPDATE ChiTietSanPham SET idsp= 'BB8FA42C-BFC3-48C7-8215-C9E5C798583E',gianhap=111000,giaban= 220000,hinhanh= 'SP05' ,
+Soluong = 120 , DanhMuc= 'A36B9478-8938-4DA9-BC2F-37F1A2EBAE3E',Size = 
+'521B933F-92C3-45CC-ADFA-C5CDC643E34A',mausac='62DBD908-ABB0-425F-A16C-CF4AE6C1EC4B',
+ChatLieu='82425E0E-ECCE-45E1-A502-DD9AC2E88430',DoCao = 'DF1976F9-5B91-4A41-8F38-4B357DB04E0A',
+Mota='AABB',NGAYSUA=GETDATE() WHERE QR= 20012006
+
+select * from NHANVIEN

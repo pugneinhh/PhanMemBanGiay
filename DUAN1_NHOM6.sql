@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE DUAN1_NHOM6
 USE DUAN1_NHOM6
 GO
-SELECT * FROM NHANVIEN
+
 CREATE TABLE ChucVu(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 Ma VARCHAR(20) UNIQUE,
@@ -308,6 +308,10 @@ INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,ID
 VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
 'anh04','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),1)
 
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV06',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
+'quanh','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),0)
+
 --KhachHang--
 INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
 VALUES(NewID(), 'KH01', 'Cam', 'VIP', 'Hanoi', N'Nam', 'camh123@gmail.com',
@@ -332,7 +336,6 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP09',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Giày Cao Gót Đan Dây',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
-
 
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
@@ -382,7 +385,8 @@ NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889
 '62dbd908-abb0-425f-a16c-cf4ae6c1ec4b','82425e0e-ecce-45e1-a502-dd9ac2e88430','df1976f9-5b91-4a41-8f38-4b357db04e0a',
 N'Chất lượng cao',getDate(),0)
 
-INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,
+DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
 NgayTao,TrangThai)VALUES(NewID(),
 'a2589eb4-4e8c-47dc-b950-cfe5314f3431',
 'a8d3889b-b995-44d2-a831-5dad5f90d272',
@@ -397,5 +401,19 @@ NgayTao,TrangThai)VALUES(NewID(),
 N'Hàng đẹp'
 ,getDate(),
 0)
+
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,TrangThai)
+VALUES(NewID(),'',
+'873ff970-ffa2-4ace-aec0-04e57ab4e5b1',
+'7d0c5e40-8a62-4752-a0b9-bfc6a200c0b9',
+111000,
+222000,
+'SP03.png',
+111,
+'',
+?,
+?,
+?,
+?,getDate(),?)
 
 
