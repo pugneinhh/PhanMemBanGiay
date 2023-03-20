@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE DUAN1_NHOM6
 USE DUAN1_NHOM6
 GO
-SELECT * FROM NHANVIEN
+
 CREATE TABLE ChucVu(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 Ma VARCHAR(20) UNIQUE,
@@ -180,8 +180,12 @@ apDungGiamGia NVARCHAR(50),
 loaiGiamGia NVARCHAR(50) NULL,
 NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
+TrangThai INT DEFAULT 0		
 )
+select*from KhuyenMai
+
+select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
+from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
 
 CREATE TABLE GioHang(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -290,23 +294,23 @@ INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM09',N'Sandal'
 --ChucVu--
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV01',N'Quản lý',getDate(),0)
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Thu Ngân',getDate(),0)
-
+select *from chucVu
 --NhanVien--
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
-'dinhnga123','6d30ddc8-600e-41c7-8870-a5ff87d2564a','nga123.png',getDate(),1)
+'dinhnga123','9B8CD18C-9E92-4391-A0BD-8CE97B6CEB5C','nga123.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV02',N'Nguyễn Thị Phương Anh','02/09/2003',N'Nữ',N'Hà Nội','0982355355','anhdp@gmail.com',
-'panh211','6d30ddc8-600e-41c7-8870-a5ff87d2564a','anh1a.png',getDate(),1)
+'panh211','9B8CD18C-9E92-4391-A0BD-8CE97B6CEB5C','anh1a.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV03',N'Trinh Thị Thủy','05/11/2003',N'Nữ',N'Thanh Hóa','0823556147','thuytt@gmail.com',
-'thuytA23','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','thuyA2.png',getDate(),1)
+'thuytA23','F62CDC0C-94FB-481E-9A83-B83BC135DD3C','thuyA2.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV04',N'Nguyễn Xuân Quang','10/10/2003',N'Nam',N'Hà Nội','0788233551','quangnt@gmail.com',
-'quangM1','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','quangH.png',getDate(),1)
+'quangM1','F62CDC0C-94FB-481E-9A83-B83BC135DD3C','quangH.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
-'anh04','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),1)
+'anh04','F62CDC0C-94FB-481E-9A83-B83BC135DD3C','anhP.png',getDate(),1)
 
 --KhachHang--
 INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
@@ -333,21 +337,21 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
 
-
+select*from nhanvien
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
-VALUES(NEWID(),'MAGC01','d1581676-6e7f-4afc-9279-f69736e8efd3','af2d6fcd-6ccc-4b9c-91cb-7235c13831b9',
+VALUES(NEWID(),'MAGC01','32A7EEED-CD63-450A-B8B9-24207A878DB3','72C76BB2-60D7-4D38-A12C-18C92B22C77C',
 '12h45','12h45',1000000,50000,70000,2000000,N'Đinh Thị Quỳnh Nga Giao Ca',N'Nguyễn Thị Phương Anh Nhận Ca',getDate(),0)
 
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
-VALUES(NEWID(),'MAGC02','b344da87-d77b-4195-b7e3-2e816b156914','18087317-cb23-496b-87a4-40c74028174e',
+VALUES(NEWID(),'MAGC02','FFFFADB7-D66C-49AC-B7DC-83E1CE5C46C5','C2CE73F7-78B8-4B81-904D-DA38E5ABF2D5',
 '12h45','12h45',1110000,52000,70000,3500000,N'Trịnh Thị Thủy Giao Ca',N'Nguyễn Xuân Quang Nhận Ca',getDate(),0)
 
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
-VALUES(NEWID(),'MAGC03','18087317-cb23-496b-87a4-40c74028174e','af2d6fcd-6ccc-4b9c-91cb-7235c13831b9',
+VALUES(NEWID(),'MAGC03','57D86B60-5508-40CF-88CE-DF1757F85931','32A7EEED-CD63-450A-B8B9-24207A878DB3',
 '12h45','12h45',1010000,43000,61000,5240000,N'Nguyễn Xuân Quang Giao Ca',N'Nguyễn Thị Phương Anh Nhận Ca',getDate(),0)
 
 --KhuyenMai--
@@ -359,17 +363,20 @@ VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N
 
 
 --HoaDon--
+select *from NHANVIEN
+select *from KhachHang
+select *from KhuyenMai
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
-VALUES(NewID(),'HD01','d1581676-6e7f-4afc-9279-f69736e8efd3','80681a3e-7487-4d41-ab67-fab685ac70cc',
-'02/02/2022',150000,'a8d3889b-b995-44d2-a831-5dad5f90d272',null,getDate(),0)
+VALUES(NewID(),'HD01','72C76BB2-60D7-4D38-A12C-18C92B22C77C','8AD96BF4-D04B-468F-8994-21EFC56283B4',
+'02/02/2022',150000,'5C7683D6-6BD5-4224-AC9C-3706511F81C6',null,getDate(),0)
 
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
-VALUES(NewID(),'HD02','18087317-cb23-496b-87a4-40c74028174e','edcec5eb-4c44-49ac-91d1-9f522b7b46c4',
-'02/02/2022',300000,'7d0c5e40-8a62-4752-a0b9-bfc6a200c0b9','voucher',getDate(),0)
+VALUES(NewID(),'HD02','32A7EEED-CD63-450A-B8B9-24207A878DB3','8A74875D-1A16-4D09-B119-83E76A4A87D3',
+'02/02/2022',300000,'C18BB59D-7564-412C-931A-7CF608FC61C7','voucher',getDate(),0)
 
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
-VALUES(NewID(),'HD03','af2d6fcd-6ccc-4b9c-91cb-7235c13831b9','5ff5624c-538c-4b9d-b6ea-929c246f716e',
-'02/02/2022',100000,'a8d3889b-b995-44d2-a831-5dad5f90d272',null,getDate(),0)
+VALUES(NewID(),'HD03','57D86B60-5508-40CF-88CE-DF1757F85931','33F54253-38DB-443E-A527-9F6930B0171F',
+'02/02/2022',100000,'C18BB59D-7564-412C-931A-7CF608FC61C7',null,getDate(),0)
 
 --HoaDonChiTiet--
 INSERT INTO ChiTietHoaDon(Id,IDHD,IDCTSP,SoLuong,DonGia,NgayBan,NgayTao,TrangThai)
@@ -377,6 +384,14 @@ VALUES()
 
 --SanPhamChiTiet--
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+<<<<<<< HEAD
+NgayTao,TrangThai)VALUES(NewID(),'33B2639C-74E9-441C-9CBB-2ABF287F0EF1','5C7683D6-6BD5-4224-AC9C-3706511F81C6',
+89000,267000,'SP03.png',100,'9E9C8B02-1440-45A6-8425-042DB956EA11','8AE44247-B48F-4517-922C-6B029FFFC4BC',
+'91EA9048-5690-4A9C-8F9F-05EEF2323B35','907B759C-EDC2-4346-9092-20D701D11950','151CFAE0-F5AF-4B36-B469-0BE3F586D774',
+N'Hàng đẹp',getDate(),0)
+select *from DanhMuc
+select *from SanPham
+=======
 NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889b-b995-44d2-a831-5dad5f90d272',
 79000,237000,'SP01.png',100,'a36b9478-8938-4da9-bc2f-37f1a2ebae3e','521b933f-92c3-45cc-adfa-c5cdc643e34a',
 '62dbd908-abb0-425f-a16c-cf4ae6c1ec4b','82425e0e-ecce-45e1-a502-dd9ac2e88430','df1976f9-5b91-4a41-8f38-4b357db04e0a',
@@ -398,4 +413,37 @@ N'Hàng đẹp'
 ,getDate(),
 0)
 
+>>>>>>> 995d427aef23685767093e0273710ce737f0a2d3
 
+CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
+BEGIN
+    UPDATE KHACHHANG
+	SET DIEM=DIEM+(
+	SELECT THANHTIEN
+	FROM INSERTED
+	)
+	WHERE KHACHHANG.ID= INSERTED.IDKH
+END
+
+CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
+BEGIN
+	IF INSERTED.DIEM>100
+BEGIN
+	UPDATE KHACHHANG 
+	SET LOAIKH =N'VÀNG'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END
+	IF INSERTED.DIEM>500
+BEGIN
+	UPDATE KHACHHANG
+	SET LOAIKH=N'Kim cương'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END
+END	
+
+CREATE TRIGGER HANGMACDINH ON KHACHHANG AFTER INSERT AS
+BEGIN
+	UPDATE KHACHHANG
+	SET LOAIKH=N'Thành viên'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END

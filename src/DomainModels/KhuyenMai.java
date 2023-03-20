@@ -21,7 +21,7 @@ public class KhuyenMai {
     private Date ngayKetThuc;
     private String hinhThucApDung;
     private String apDungGiamGia;
-    private String loadGiamGia;
+    private String loaiGiamGia;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
@@ -29,11 +29,7 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String idKM) {
-        this.idKM = idKM;
-    }
-
-    public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loadGiamGia, int trangThai) {
+    public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, int trangThai) {
         this.maKM = maKM;
         this.tenKM = tenKM;
         this.giaTri = giaTri;
@@ -42,11 +38,11 @@ public class KhuyenMai {
         this.ngayKetThuc = ngayKetThuc;
         this.hinhThucApDung = hinhThucApDung;
         this.apDungGiamGia = apDungGiamGia;
-        this.loadGiamGia = loadGiamGia;
+        this.loaiGiamGia = loaiGiamGia;
         this.trangThai = trangThai;
     }
     
-    public KhuyenMai(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loadGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
+    public KhuyenMai(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
         this.idKM = idKM;
         this.maKM = maKM;
         this.tenKM = tenKM;
@@ -56,7 +52,7 @@ public class KhuyenMai {
         this.ngayKetThuc = ngayKetThuc;
         this.hinhThucApDung = hinhThucApDung;
         this.apDungGiamGia = apDungGiamGia;
-        this.loadGiamGia = loadGiamGia;
+        this.loaiGiamGia = loaiGiamGia;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
@@ -134,12 +130,12 @@ public class KhuyenMai {
         this.apDungGiamGia = apDungGiamGia;
     }
 
-    public String getLoadGiamGia() {
-        return loadGiamGia;
+    public String getLoaiGiamGia() {
+        return loaiGiamGia;
     }
 
-    public void setLoadGiamGia(String loadGiamGia) {
-        this.loadGiamGia = loadGiamGia;
+    public void setLoaiGiamGia(String loadGiamGia) {
+        this.loaiGiamGia = loadGiamGia;
     }
 
     public Date getNgayTao() {
@@ -168,7 +164,8 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
-        return tenKM;
+        return "KhuyenMai{" + "tenKM=" + tenKM + '}';
     }
-
+    
+    
 }
