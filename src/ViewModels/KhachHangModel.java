@@ -10,25 +10,44 @@ import java.util.Date;
  *
  * @author HoiVN
  */
-public class KhachHangViewModel {
+public class KhachHangModel {
+   private String idKH;
     private String maKH;
-    private String tenKH;
     private String loaiKH;
+    private String tenKH;
     private String diaChi;
-    private int gioiTinh;
+    private String gioiTinh;
     private String email;
     private String sdt;
     private Date ngaySinh;
     private Date ngayThamGia;
+    private Date ngayTao;
+    private Date ngaySua;
     private int trangThai;
 
-    public KhachHangViewModel() {
+    public KhachHangModel() {
     }
 
-    public KhachHangViewModel(String maKH, String tenKH, String loaiKH, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
+    public KhachHangModel(String idKH, String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idKH = idKH;
         this.maKH = maKH;
-        this.tenKH = tenKH;
         this.loaiKH = loaiKH;
+        this.tenKH = tenKH;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
+        this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.ngayThamGia = ngayThamGia;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+
+    public KhachHangModel(String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
+        this.maKH = maKH;
+        this.loaiKH = loaiKH;
+        this.tenKH = tenKH;
         this.diaChi = diaChi;
         this.gioiTinh = gioiTinh;
         this.email = email;
@@ -36,6 +55,14 @@ public class KhachHangViewModel {
         this.ngaySinh = ngaySinh;
         this.ngayThamGia = ngayThamGia;
         this.trangThai = trangThai;
+    }
+    
+    public String getIdKH() {
+        return idKH;
+    }
+
+    public void setIdKH(String idKH) {
+        this.idKH = idKH;
     }
 
     public String getMaKH() {
@@ -46,20 +73,20 @@ public class KhachHangViewModel {
         this.maKH = maKH;
     }
 
-    public String getTenKH() {
-        return tenKH;
-    }
-
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
-    }
-
     public String getLoaiKH() {
         return loaiKH;
     }
 
     public void setLoaiKH(String loaiKH) {
         this.loaiKH = loaiKH;
+    }
+
+    public String getTenKH() {
+        return tenKH;
+    }
+
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
 
     public String getDiaChi() {
@@ -70,11 +97,11 @@ public class KhachHangViewModel {
         this.diaChi = diaChi;
     }
 
-    public int getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -110,6 +137,22 @@ public class KhachHangViewModel {
         this.ngayThamGia = ngayThamGia;
     }
 
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public Date getNgaySua() {
+        return ngaySua;
+    }
+
+    public void setNgaySua(Date ngaySua) {
+        this.ngaySua = ngaySua;
+    }
+
     public int getTrangThai() {
         return trangThai;
     }
@@ -117,14 +160,14 @@ public class KhachHangViewModel {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-
+    
     @Override
     public String toString() {
         return "KhachHangViewModel{" + "maKH=" + maKH + ", tenKH=" + tenKH + ", loaiKH=" + loaiKH + ", diaChi=" + diaChi + ", gioiTinh=" + gioiTinh + ", email=" + email + ", sdt=" + sdt + ", ngaySinh=" + ngaySinh + ", ngayThamGia=" + ngayThamGia + ", trangThai=" + trangThai + '}';
     }
     
     public Object[] toDataRow(){
-        return new Object[]{maKH,tenKH,loaiKH,diaChi,gioiTinh==1?"Nam":"Nữ",
+        return new Object[]{maKH,tenKH,loaiKH,diaChi,gioiTinh,
             email,sdt,ngaySinh,ngayThamGia,trangThai==1?"Còn hoạt động":"Ngừng hoạt động"           
         };
     }

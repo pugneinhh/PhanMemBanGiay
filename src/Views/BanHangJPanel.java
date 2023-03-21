@@ -12,7 +12,7 @@ import Services.KhachHangService;
 import Services.SanPhamService;
 import ViewModels.ChiTietSanPhamModel;
 import ViewModels.DanhMucModel;
-import ViewModels.KhachHangViewModel;
+import ViewModels.KhachHangModel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -115,10 +115,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loadkhachhang(ArrayList<KhachHangViewModel> list) {
+    private void loadkhachhang(ArrayList<KhachHangModel> list) {
         modelTable = (DefaultTableModel) tblThongtinKH.getModel();
         modelTable.setRowCount(0);
-        for (KhachHangViewModel khmd : list) {
+        for (KhachHangModel khmd : list) {
             modelTable.addRow(new Object[]{
                 khmd.getMaKH(),
                 khmd.getTenKH(),
@@ -641,31 +641,31 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSanphamActionPerformed
 
     private void txtTimKiemBHCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemBHCaretUpdate
-        if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Khách Hàng") || txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Sản Phẩm")) {
-            txtTimKiemBH.setText("");
-            txtTimKiemBH.setForeground(Color.BLACK);
-        }
+//        if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Khách Hàng") || txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Sản Phẩm")) {
+//            txtTimKiemBH.setText("");
+//            txtTimKiemBH.setForeground(Color.BLACK);
+//        }
     }//GEN-LAST:event_txtTimKiemBHCaretUpdate
 
     private void btnTimKiemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemBHActionPerformed
 
-        if (isSanPhamSelected == true) {
-            if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Sản Phẩm")) {
-                JOptionPane.showMessageDialog(this, "Bạn phải nhập Tên hoặc mã sản phẩm");
-                return;
-            }
-            String maSP = txtTimKiemBH.getText();
-            ArrayList<ChiTietSanPhamModel> listSP = CTSPService.getChiTietSanPhamByMa(maSP);
-            loadTableBanHang(listSP);
-        } else {
-            if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Khách Hàng")) {
-                JOptionPane.showMessageDialog(this, "Bạn phải nhập Tên hoặc mã khách hàng");
-                return;
-            }
-            String makh = txtTimKiemBH.getText();
-            ArrayList<KhachHangViewModel> listSP = khservice.gettheomakh(makh);
-            loadkhachhang(listSP);
-        }
+//        if (isSanPhamSelected == true) {
+//            if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Sản Phẩm")) {
+//                JOptionPane.showMessageDialog(this, "Bạn phải nhập Tên hoặc mã sản phẩm");
+//                return;
+//            }
+//            String maSP = txtTimKiemBH.getText();
+//            ArrayList<ChiTietSanPhamModel> listSP = CTSPService.getChiTietSanPhamByMa(maSP);
+//            loadTableBanHang(listSP);
+//        } else {
+//            if (txtTimKiemBH.getText().equalsIgnoreCase("Tìm Kiếm Khách Hàng")) {
+//                JOptionPane.showMessageDialog(this, "Bạn phải nhập Tên hoặc mã khách hàng");
+//                return;
+//            }
+//            String makh = txtTimKiemBH.getText();
+//            ArrayList<KhachHangModel> listSP = khservice.gettheomakh(makh);
+//            loadkhachhang(listSP);
+//        }
 
 
     }//GEN-LAST:event_btnTimKiemBHActionPerformed

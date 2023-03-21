@@ -571,7 +571,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhuyenMaiMouseClicked
 
     private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
-        KhachHang khl=new KhachHang();
+        KhachHangJPanel khl=new KhachHangJPanel();
         khl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
         JKhachHang.add(khl,BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardkh");
