@@ -15,7 +15,7 @@ public class KhachHangViewModel {
     private String tenKH;
     private String loaiKH;
     private String diaChi;
-    private String gioiTinh;
+    private int gioiTinh;
     private String email;
     private String sdt;
     private Date ngaySinh;
@@ -25,7 +25,7 @@ public class KhachHangViewModel {
     public KhachHangViewModel() {
     }
 
-    public KhachHangViewModel(String maKH, String tenKH, String loaiKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
+    public KhachHangViewModel(String maKH, String tenKH, String loaiKH, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
         this.maKH = maKH;
         this.tenKH = tenKH;
         this.loaiKH = loaiKH;
@@ -70,11 +70,11 @@ public class KhachHangViewModel {
         this.diaChi = diaChi;
     }
 
-    public String getGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(String gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -124,7 +124,7 @@ public class KhachHangViewModel {
     }
     
     public Object[] toDataRow(){
-        return new Object[]{maKH,tenKH,loaiKH,diaChi,gioiTinh,
+        return new Object[]{maKH,tenKH,loaiKH,diaChi,gioiTinh==1?"Nam":"Nữ",
             email,sdt,ngaySinh,ngayThamGia,trangThai==1?"Còn hoạt động":"Ngừng hoạt động"           
         };
     }
