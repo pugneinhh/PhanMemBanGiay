@@ -15,7 +15,11 @@ import responsitories.KhachHangResponsitory;
  */
 public class KhachHangService {
 
-    KhachHangResponsitory khr = new KhachHangResponsitory();
+    private final KhachHangResponsitory Khr;
+
+    public KhachHangService() {
+        this.Khr = new KhachHangResponsitory();
+    }
 
     public ArrayList<KhachHangViewModel> getAllKhachHang() {
         ArrayList<KhachHangViewModel> list = new ArrayList<>();
@@ -46,18 +50,32 @@ public class KhachHangService {
         return new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
                 x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
                 x.getNgayThamGia(), x.getTrangThai());
+=======
+        return Khr.getAllKhachHang();
+>>>>>>> bf2efa103aa04ba8f3c822f4da01bf432f420dff
     }
 
-    public KhachHangViewModel updateKhachHang(KhachHangViewModel khVM) {
-        var x = khr.updateKhachHang(new KhachHang(khVM.getMaKH(), khVM.getLoaiKH(),
-                khVM.getTenKH(), khVM.getDiaChi(), khVM.getGioiTinh(), khVM.getEmail(),
-                khVM.getSdt(), khVM.getNgaySinh(), khVM.getNgayThamGia(), khVM.getTrangThai()));
-        return new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
-                x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
-                x.getNgayThamGia(), x.getTrangThai());
+    public KhachHangViewModel getKhachHangByMa(String ma) {
+        return Khr.getKhachHangByMa(ma);
+    }
+    
+    public ArrayList<KhachHangViewModel> getKHByGT(String gt) {
+        return Khr.getKHByGT(gt);
+    }
+    
+    public ArrayList<KhachHangViewModel> getKHByTrangThai(int TrangThai) {
+        return Khr.getKHByTrangThai(TrangThai);
+    }
+
+    public Integer insertKhachHang(KhachHang kh) {
+        return Khr.insertKhachHang(kh);
+    }
+
+    public Integer updateKhachHang(KhachHang kh) {
+        return Khr.updateKhachHang(kh);
     }
 
     public Integer deleteCV(String ma) {
-        return khr.deleteCV(ma);
+        return Khr.deleteCV(ma);
     }
 }

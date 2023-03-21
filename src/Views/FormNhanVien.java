@@ -43,11 +43,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         
     }
     private void loadDangNhap(){
-//        NhanVienModel nv=new NhanVienModel();
-//        ImageIcon ii=new ImageIcon("src\\AnhNV\\"+DangNhap.nv.getHinh());
-//        Image img=ii.getImage().getScaledInstance(lblAnhNVlogin.getWidth(), lblAnhNVlogin.getHeight(), Image.SCALE_SMOOTH);
-//        ii=new ImageIcon(img);
-//        lblAnhNVlogin.setIcon(ii);
+        NhanVienModel nv=new NhanVienModel();
+        ImageIcon ii=new ImageIcon("src\\AnhNV\\"+DangNhap.nv.getHinh());
+        Image img=ii.getImage().getScaledInstance(lblAnhNVlogin.getWidth(), lblAnhNVlogin.getHeight(), Image.SCALE_SMOOTH);
+        ii=new ImageIcon(img);
+        lblAnhNVlogin.setIcon(ii);
     }
     private void resetbtn(){
         btnBanHang.setBackground(Color.white);

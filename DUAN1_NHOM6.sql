@@ -332,6 +332,10 @@ VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','035
 'anh04','F62CDC0C-94FB-481E-9A83-B83BC135DD3C','anhP.png',getDate(),1)
 >>>>>>> 8b4f47f7153274ff5f9279135fa4487be8327354
 
+INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
+VALUES(NewID(),'NV06',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
+'quanh','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),0)
+
 --KhachHang--
 INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
 VALUES(NewID(), 'KH01', 'Cam', 'VIP', 'Hanoi', N'Nam', 'camh123@gmail.com',
@@ -357,7 +361,10 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
 
+<<<<<<< HEAD
+=======
 select*from nhanvien
+>>>>>>> origin/master
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
@@ -458,7 +465,8 @@ select * from MauSac
 select * from ChatLieu
 select * from DoCao
 
-INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,
+DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
 NgayTao,TrangThai)VALUES(NewID(),
 'a2589eb4-4e8c-47dc-b950-cfe5314f3431',
 'a8d3889b-b995-44d2-a831-5dad5f90d272',
@@ -474,7 +482,24 @@ N'Hàng đẹp'
 ,getDate(),
 0)
 
+<<<<<<< HEAD
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,TrangThai)
+VALUES(NewID(),'',
+'873ff970-ffa2-4ace-aec0-04e57ab4e5b1',
+'7d0c5e40-8a62-4752-a0b9-bfc6a200c0b9',
+111000,
+222000,
+'SP03.png',
+111,
+'',
+?,
+?,
+?,
+?,getDate(),?)
+
+=======
 >>>>>>> 995d427aef23685767093e0273710ce737f0a2d3
+>>>>>>> origin/master
 
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN
