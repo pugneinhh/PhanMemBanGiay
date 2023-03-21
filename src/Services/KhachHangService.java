@@ -22,7 +22,37 @@ public class KhachHangService {
     }
 
     public ArrayList<KhachHangViewModel> getAllKhachHang() {
+        ArrayList<KhachHangViewModel> list = new ArrayList<>();
+        ArrayList<KhachHang> kh = khr.getAllKhachHang();
+        for (KhachHang x : kh) {
+            list.add(new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
+                    x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
+                    x.getNgayThamGia(), x.getTrangThai()));
+        }
+        return list;
+    }
+    public ArrayList<KhachHangViewModel> gettheomakh(String SDT){
+        return khr.getTheoSDT(SDT);
+    }
+     public String getIDHoaDon(String maHD) {
+        return khr.getIDkhachhang(maHD);
+    }
+    public KhachHangViewModel insertKhachHang(KhachHangViewModel khVM) {
+        ArrayList<KhachHang> list = khr.getAllKhachHang();
+        for (KhachHang kh : list) {
+            if (kh.getMaKH().equalsIgnoreCase(khVM.getMaKH())) {
+                return null;
+            }
+        }
+        var x = khr.insertKhachHang(new KhachHang(khVM.getMaKH(), khVM.getLoaiKH(),
+                khVM.getTenKH(), khVM.getDiaChi(), khVM.getGioiTinh(), khVM.getEmail(),
+                khVM.getSdt(), khVM.getNgaySinh(), khVM.getNgayThamGia(), khVM.getTrangThai()));
+        return new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
+                x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
+                x.getNgayThamGia(), x.getTrangThai());
+=======
         return Khr.getAllKhachHang();
+>>>>>>> bf2efa103aa04ba8f3c822f4da01bf432f420dff
     }
 
     public KhachHangViewModel getKhachHangByMa(String ma) {

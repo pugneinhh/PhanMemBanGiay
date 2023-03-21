@@ -131,7 +131,30 @@ public class KhachHangResponsitory {
         );
         return row;
     }
-
+ public String getIDkhachhang(String maHD) { // lay id hoadon
+        String sql = "select id from khachhang where ma=? ";
+        
+        try {
+            Connection c = DBConnection.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, maHD);
+            
+            ResultSet rs = ps.executeQuery();
+            KhachHang hd = new KhachHang();
+            while (rs.next()) {
+                hd = new KhachHang();
+                hd.setIdKH(rs.getString(1));
+                
+            }
+            c.close();
+            ps.close();
+            rs.close();
+            return hd.getIdKH();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public Integer deleteCV(String ma) {
         String sql = "delete from KhachHang\n"
                 + "where MaKH = ?";
