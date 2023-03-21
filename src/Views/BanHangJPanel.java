@@ -4,7 +4,6 @@
  */
 package Views;
 
-import DomainModels.HoaDonChiTiet;
 import DomainModels.SanPham;
 import Services.ChiTietSanPhamService;
 import Services.DanhMucService;
@@ -13,23 +12,19 @@ import Services.SanPhamService;
 import ViewModels.ChiTietSanPhamModel;
 import ViewModels.DanhMucModel;
 import ViewModels.KhachHangViewModel;
+import ViewModels.KhuyenMaiModel;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +37,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private ChiTietSanPhamService CTSPService;
     private SanPhamService spser;
     private KhachHangService khservice;
+    private KhuyenMaiModel km;
     boolean isSanPhamSelected = true;
 //    private HoaDonChiTiet
     DefaultTableModel modelTable = new DefaultTableModel();
@@ -66,11 +62,12 @@ public class BanHangJPanel extends javax.swing.JPanel {
         dtmHoaDon=(DefaultTableModel) tblGioHang.getModel();
         CTSPService = new ChiTietSanPhamService();
         khservice = new KhachHangService();
+        km=new KhuyenMaiModel();
         spser = new SanPhamService();
         this.pnlTabs = pnlTabs;
         loadTableBanHang(CTSPService.getAllChiTietSanPham());
         loadkhachhang(khservice.getAllKhachHang());
-
+        loadgiohang(CTSPService.getAllChiTietSanPham());
     }
 
     /**
@@ -134,16 +131,18 @@ public class BanHangJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loadbanhang() {
-        ArrayList<ChiTietSanPhamModel> list = CTSPService.getAllChiTietSanPham();
+    private void loadgiohang(ArrayList<ChiTietSanPhamModel> list) {
+  modelTable=(DefaultTableModel) tblGioHang.getModel();
         modelTable.setRowCount(0);
-        stt = 0;
+        stt = 1;
         for (ChiTietSanPhamModel ct : list) {
             modelTable.addRow(new Object[]{
                 ct.getIdSP(),
                 ct.getSoLuong(),
-                ct.getGiaBan(), //                 new BigDecimal(ct.getGiaBan()-KhuyenMai.class)
+                ct.getGiaBan(), //                
+                new BigDecimal(ct.getSoLuong() * Double.parseDouble(ct.getGiaBan().toString()))
             });
+            stt++;
         }
     }
 
@@ -700,7 +699,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbDanhMucActionPerformed
 
     private void txtThanhTienFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtThanhTienFocusGained
-        txtSLSP.setText("");
+        txtThanhTien.setText("");
     }//GEN-LAST:event_txtThanhTienFocusGained
 
     private void tblThongtinKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThongtinKHMouseClicked
@@ -708,20 +707,21 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblThongtinKHMouseClicked
 
     private void tblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBanHangMouseClicked
-         int row=tblBanHang.getSelectedRow();
-  if(row==-1){
-      return;
-  }
-  String ten=tblBanHang.getValueAt(row, 0).toString();
-  String sl=tblBanHang.getValueAt(row, 2).toString();
-  String gb=tblBanHang.getValueAt(row, 1).toString();
-       ArrayList<ChiTietSanPhamModel> li = CTSPService.getChiTietSanPhamByMa(ten);
-        HoaDonChiTiet hdct = new HoaDonChiTiet();
-//        hdct.setIdHoaDon(hoadonct_ser.getIDHoaDon(maHD));
-//        hdct.setIdChiTietSP(hoadonct_ser.getIDChiTietSP(maSP));
+//         int row=tblBanHang.getSelectedRow();
+//  if(row==-1){
+//      return;
+//  }
+//  String ten=tblBanHang.getValueAt(row, 0).toString();
+//  String sl=tblBanHang.getValueAt(row, 2).toString();
+//  String gb=tblBanHang.getValueAt(row, 1).toString();
+//       ArrayList<ChiTietSanPhamModel> li = CTSPService.getChiTietSanPhamByMa(ten);
+//        KhachHangViewModel kh = new KhachHangViewModel();
+//        ChiTietSanPhamModel ctsp=new ChiTietSanPhamModel();
+//        kh.setMaKH(khservice.getIDHoaDon(ten));
+//        kh.setMaKH(khservice.getIDHoaDon(ten));
 //
-//        hdct.setDonGia((BigDecimal) tblSanPham.getValueAt(row, 7));
-//        hdct.setSl(1);
+// 
+//        ctsp.setSoLuong(1);
 //        for (HoaDonChiTiet_ChiTietSP_SPham h : li) {
 //            if (h.getMaSP().equalsIgnoreCase(maSP)) {
 //                hdct.setSl(h.getSl() + 1);
@@ -747,8 +747,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
 //            tongTien += hoaDonChiTiet_ChiTietSP_SPham.getSl() * Double.parseDouble(hoaDonChiTiet_ChiTietSP_SPham.getDonGia().toString());
 //
 //        }
-//        txtThanhTien.setText(new BigDecimal(tongTien) + "");
-
 
     }//GEN-LAST:event_tblBanHangMouseClicked
 
