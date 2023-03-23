@@ -465,8 +465,7 @@ select * from MauSac
 select * from ChatLieu
 select * from DoCao
 
-INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,
-DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
 NgayTao,TrangThai)VALUES(NewID(),
 'a2589eb4-4e8c-47dc-b950-cfe5314f3431',
 'a8d3889b-b995-44d2-a831-5dad5f90d272',
@@ -533,3 +532,4 @@ BEGIN
 	SET LOAIKH=N'Thành viên'
 	WHERE KHACHHANG.ID=INSERTED.ID
 END
+select id from khachhang

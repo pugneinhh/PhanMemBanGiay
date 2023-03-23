@@ -161,4 +161,24 @@ public class KhachHangResponsitory {
         Integer row = JDBCHelper.executeUpdate(sql, ma);
         return row;
     }
+
+    public ArrayList<KhachHangViewModel> getTheoSDT(String SDT) {
+         ArrayList<KhachHangViewModel> list = new ArrayList<>();
+        String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
+                + "from KhachHang\n"
+                + "where SDT = ?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                KhachHangViewModel khVM = new KhachHangViewModel(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6),
+                        rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 }

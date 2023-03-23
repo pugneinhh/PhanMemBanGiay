@@ -80,7 +80,7 @@ public class KhachHang extends javax.swing.JPanel {
         String email = txtKHEmail.getText();
         String sdt = txtKHSdt.getText();
         String nSinh = txtKHNgaySinh.getDate().toString();
-        String nThamGia = txtKHNgayThamGia.getDate().toString();
+        String nThamGia = txtKHNgaySinh.getDate().toString();
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
         
         if(ma.trim().length() == 0){
@@ -149,12 +149,12 @@ public class KhachHang extends javax.swing.JPanel {
         }
         if (nThamGia.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày tham gia");
-            txtKHNgayThamGia.requestFocus();
+            txtKHNgaySinh.requestFocus();
             return null;
         } else {
 
             try {
-                date = txtKHNgayThamGia.getDate();
+                date = txtKHNgaySinh.getDate();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -671,7 +671,4 @@ public class KhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenKH;
     // End of variables declaration//GEN-END:variables
 
-    private void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
