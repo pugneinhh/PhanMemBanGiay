@@ -21,6 +21,8 @@ public class KhachHang {
     private String sdt;
     private Date ngaySinh;
     private Date ngayThamGia;
+    private int tichDiem;
+    private int diemEXP;
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
@@ -40,8 +42,8 @@ public class KhachHang {
         this.ngayThamGia = ngayThamGia;
         this.trangThai = trangThai;
     }
-    
-    public KhachHang(String idKH, String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, Date ngayTao, Date ngaySua, int trangThai) {
+
+    public KhachHang(String idKH, String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int tichDiem, int diemEXP, Date ngayTao, Date ngaySua, int trangThai) {
         this.idKH = idKH;
         this.maKH = maKH;
         this.loaiKH = loaiKH;
@@ -52,8 +54,24 @@ public class KhachHang {
         this.sdt = sdt;
         this.ngaySinh = ngaySinh;
         this.ngayThamGia = ngayThamGia;
+        this.tichDiem = tichDiem;
+        this.diemEXP = diemEXP;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+    }
+
+    public KhachHang(String idKH, String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayTao, int trangThai) {
+        this.idKH = idKH;
+        this.maKH = maKH;
+        this.loaiKH = loaiKH;
+        this.tenKH = tenKH;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
+        this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.ngayTao = ngayTao;
         this.trangThai = trangThai;
     }
 
@@ -135,6 +153,22 @@ public class KhachHang {
 
     public void setNgayThamGia(Date ngayThamGia) {
         this.ngayThamGia = ngayThamGia;
+    }
+
+    public int getTichDiem() {
+        return tichDiem;
+    }
+
+    public void setTichDiem(int tichDiem) {
+        this.tichDiem = tichDiem;
+    }
+
+    public int getDiemEXP() {
+        return diemEXP;
+    }
+
+    public void setDiemEXP(int diemEXP) {
+        this.diemEXP = diemEXP;
     }
 
     public Date getNgayTao() {

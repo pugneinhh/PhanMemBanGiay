@@ -144,7 +144,7 @@ NgayNhan DATE DEFAULT NULL,
 NgayTao DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
-CREATE TABLE HoaDon(
+drop TABLE HoaDon(
 ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 MaHD VARCHAR(20) UNIQUE,
 IDNV UNIQUEIDENTIFIER,
@@ -158,7 +158,7 @@ NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
 
-CREATE TABLE ChiTietHoaDon(
+drop TABLE ChiTietHoaDon(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 IDHD UNIQUEIDENTIFIER,
 IDCTSP UNIQUEIDENTIFIER,
@@ -291,14 +291,9 @@ INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM09',N'Sandal'
 
 --ChucVu--
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV01',N'Quản lý',getDate(),0)
-<<<<<<< HEAD
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Thu Ngân',getDate(),0)
-
-=======
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Nhân Viên',getDate(),0)
 
-select * from NHANVIEN
->>>>>>> origin/master
 --NhanVien--
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
@@ -361,15 +356,10 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
 
-<<<<<<< HEAD
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
 VALUES(NEWID(),'MAGC01','2885C9C8-7829-4E2B-98D5-CE43999A2132','9CA0F7FB-AAE9-4AD7-9579-D41D19707883',
-=======
-
-
-select*from nhanvien
 
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
@@ -520,8 +510,9 @@ VALUES(NewID(),'',
 ?,
 ?,getDate(),?)
 
-	SELECT * From chitietsanpham
-	UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+SELECT * From chitietsanpham
+UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN
     UPDATE KHACHHANG

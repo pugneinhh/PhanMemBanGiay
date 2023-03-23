@@ -2085,44 +2085,130 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }//GEN-LAST:event_tblThongTinSPMouseClicked
-    private String checkSP() {
-        ChiTietSanPhamModel ctspM = getCTSPForm();
-        ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
-        for (ChiTietSanPhamModel x : list) {
-            if (x.getIdSP().equals(ctspM.getIdSP()) && x.getGiaNhap() == ctspM.getGiaNhap() && x.getGiaBan() == ctspM.getGiaBan() && x.getIdSize().equals(ctspM.getIdSize()) && x.getIdMS().equals(ctspM.getIdMS()) && x.getSoLuong() == ctspM.getSoLuong() && x.getIdDC().equals(ctspM.getIdDC()) && x.getIdCL().equals(ctspM.getIdCL()) && x.getIdDM().equals(ctspM.getIdDM()) && x.getMota().equals(ctspM.getMota()) && x.getHinhanh().equals(ctspM.getHinhanh()) && x.getTrangThai() == ctspM.getTrangThai()) {
-                return "Có";
-            } else if ((x.getIdSP().equals(ctspM.getIdSP()) && x.getIdSize().equals(ctspM.getIdSize()) && x.getIdMS().equals(ctspM.getIdMS()) && x.getIdDC().equals(ctspM.getIdDC()) && x.getIdCL().equals(ctspM.getIdCL()) && x.getIdDM().equals(ctspM.getIdDM())) && (x.getGiaNhap() != ctspM.getGiaNhap() || x.getGiaBan() != ctspM.getGiaBan() || x.getSoLuong() != ctspM.getSoLuong() || !x.getMota().equals(ctspM.getMota()) || x.getTrangThai() != ctspM.getTrangThai() || !x.getHinhanh().equals(ctspM.getHinhanh()))) {
-                return "Sửa";
-            } else {
-                return "Thêm";
+//    private String checkSP() {
+//        ChiTietSanPhamModel ctspM = getCTSPForm();
+//        ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
+//        for (ChiTietSanPhamModel x : list) {
+//            if (x.getIdSP().equals(ctspM.getIdSP()) && x.getGiaNhap() == ctspM.getGiaNhap() && x.getGiaBan() == ctspM.getGiaBan() && x.getIdSize().equals(ctspM.getIdSize()) && x.getIdMS().equals(ctspM.getIdMS()) && x.getSoLuong() == ctspM.getSoLuong() && x.getIdDC().equals(ctspM.getIdDC()) && x.getIdCL().equals(ctspM.getIdCL()) && x.getIdDM().equals(ctspM.getIdDM()) && x.getMota().equals(ctspM.getMota()) && x.getHinhanh().equals(ctspM.getHinhanh()) && x.getTrangThai() == ctspM.getTrangThai()) {
+//                return "Có";
+//            } else if ((x.getIdSP().equals(ctspM.getIdSP()) && x.getIdSize().equals(ctspM.getIdSize()) && x.getIdMS().equals(ctspM.getIdMS()) && x.getIdDC().equals(ctspM.getIdDC()) && x.getIdCL().equals(ctspM.getIdCL()) && x.getIdDM().equals(ctspM.getIdDM())) && (x.getGiaNhap() != ctspM.getGiaNhap() || x.getGiaBan() != ctspM.getGiaBan() || x.getSoLuong() != ctspM.getSoLuong() || !x.getMota().equals(ctspM.getMota()) || x.getTrangThai() != ctspM.getTrangThai() || !x.getHinhanh().equals(ctspM.getHinhanh()))) {
+//                return "Sửa";
+//            } else {
+//                return "Thêm";
+//            }
+//        }
+//        return "Không";
+//    }
+
+    private ChiTietSanPhamModel checkSanPham(String tenSP) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdSP().equals(tenSP)) {
+                return x;
             }
         }
-        return "Không";
+        return null;
     }
+
+    private ChiTietSanPhamModel checkSize(String Sizec) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdSize().equals(Sizec)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private ChiTietSanPhamModel checkDoCao(String DoCaoc) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdDC().equals(DoCaoc)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private ChiTietSanPhamModel checkChatLieu(String ChatLieuc) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdCL().equals(ChatLieuc)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private ChiTietSanPhamModel checkMauSac(String MauSacc) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdMS().equals(MauSacc)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private ChiTietSanPhamModel checkDanhMuc(String DanhMucc) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getIdDM().equals(DanhMucc)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
+    private ChiTietSanPhamModel checkHinhAnh(String HinhAnhc) {
+        for (ChiTietSanPhamModel x : ctsps.getAllChiTietSanPham()) {
+            if (x.getHinhanh().equalsIgnoreCase(HinhAnhc)) {
+                return x;
+            }
+        }
+        return null;
+    }
+
     private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
+//        ChiTietSanPhamModel ctspM = getCTSPForm();
+//        if (ctspM == null) {
+//            return;
+//        }
+//        ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
+//        if (checkSP().equals("Có")) {
+//            JOptionPane.showMessageDialog(this, "Đã có sản phẩm này");
+//            return;
+//        } else if (checkSP().equals("Sửa")) {
+//            int xn = JOptionPane.showConfirmDialog(this, "Đã có sản phẩm này! Bạn có muốn thay đổi thông tin sản phẩm không?");
+//            if (xn == JOptionPane.YES_OPTION) {
+//                ctsps.updateCTSP(ctspM);
+//            }
+//        } else if (checkSP().equals("Thêm")) {
+//            if (ctsps.insertCTSP(ctspM) != null) {
+//                JOptionPane.showMessageDialog(this, "Thêm thành công");
+//                loadTableThongTinSP();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+//            }
+//        }
+
         ChiTietSanPhamModel ctspM = getCTSPForm();
         if (ctspM == null) {
             return;
         }
-        ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
-//        for (ChiTietSanPhamModel x : list) {
-//            if(x.getIdSP().equals(ctspM.getIdSP()) && x.getGiaNhap()==ctspM.getGiaNhap() && x.getGiaBan().equals(ctspM.getGiaBan()) && x.getIdSize().equals(ctspM.getIdSize()))
-//        }
-        if (checkSP().equals("Có")) {
-            JOptionPane.showMessageDialog(this, "Đã có sản phẩm này");
-            return;
-        } else if (checkSP().equals("Sửa")) {
-            int xn = JOptionPane.showConfirmDialog(this, "Đã có sản phẩm này! Bạn có muốn thay đổi thông tin sản phẩm không?");
-            if (xn == JOptionPane.YES_OPTION) {
-                ctsps.updateCTSP(ctspM);
-            }
-        } else if (checkSP().equals("Thêm")) {
-            if (ctsps.insertCTSP(ctspM) != null) {
-                JOptionPane.showMessageDialog(this, "Thêm thành công");
-                loadTableThongTinSP();
+        if (checkSanPham(ctspM.getIdSP().toString()) != null || checkSize(ctspM.getIdSize().toString()) != null
+                || checkDoCao(ctspM.getIdDC().toString()) != null
+                || checkChatLieu(ctspM.getIdCL().toString()) != null
+                || checkMauSac(ctspM.getIdMS().toString()) != null
+                || checkDanhMuc(ctspM.getIdDM().toString()) != null
+                || checkHinhAnh(ctspM.getHinhanh()) != null) {
+            JOptionPane.showMessageDialog(this, "Sản phẩm này đã tồn tại");
+            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật sản phẩm không?") != JOptionPane.YES_OPTION) {
+                return;
             } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+                return;
             }
+        }
+
+        if (ctsps.insertCTSP(ctspM) != null) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            loadTableThongTinSP();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }
     }//GEN-LAST:event_btnThemSPActionPerformed
 
