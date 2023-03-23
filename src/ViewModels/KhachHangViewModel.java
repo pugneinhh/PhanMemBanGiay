@@ -38,6 +38,20 @@ public class KhachHangViewModel {
         this.trangThai = trangThai;
     }
 
+    public KhachHangViewModel(String maKH, String tenKH, String loaiKH, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, int trangThai) {
+        this.maKH = maKH;
+        this.tenKH = tenKH;
+        this.loaiKH = loaiKH;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
+        this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.trangThai = trangThai;
+    }
+    
+    
+
     public String getMaKH() {
         return maKH;
     }
