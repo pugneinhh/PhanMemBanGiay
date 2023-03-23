@@ -29,9 +29,9 @@ public class KhachHangService {
         }
         return list;
     }
-//    public ArrayList<KhachHangModel> gettheomakh(String SDT){
-//        return khr.getTheoSDT(SDT);
-//    }
+    public KhachHangModel gettheomakh(String SDT){
+        return khr.getKhachHangBysdt(SDT);
+    }
      public String getIDHoaDon(String maHD) {
         return khr.getIDkhachhang(maHD);
     }
