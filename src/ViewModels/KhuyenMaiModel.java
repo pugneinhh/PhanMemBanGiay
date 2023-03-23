@@ -21,7 +21,6 @@ public class KhuyenMaiModel {
     private Date ngayBatDau;
     private Date ngayKetThuc;
     private String hinhThucApDung;
-   
     private String apDungGiamGia;
     private String loaiGiamGia;
     private Date ngayTao;

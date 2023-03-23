@@ -4,8 +4,9 @@
  */
 package Views;
 
+import DomainModels.KhachHang;
 import Services.KhachHangService;
-import ViewModels.KhachHangViewModel;
+import ViewModels.KhachHangModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,24 +17,24 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HoiVN
  */
-public class KhachHang extends javax.swing.JPanel {
+public class KhachHangJPanel extends javax.swing.JPanel {
     private final KhachHangService khService;
     DefaultTableModel tableModelThongTin = new DefaultTableModel();
     /**
      * Creates new form KhachHang
      */
     
-    public KhachHang() {
+    public KhachHangJPanel() {
         initComponents();
         khService = new KhachHangService();
-        tableModelThongTin = (DefaultTableModel) tblThongTinKH.getModel();
+        tableModelThongTin = (DefaultTableModel) tblThongtinKH.getModel();
         loadTableThongTin();
     }
     
     private void loadTableThongTin() {
-        ArrayList<KhachHangViewModel> list = khService.getAllKhachHang();
+        ArrayList<KhachHangModel> list = khService.getAllKhachHang();
         tableModelThongTin.setRowCount(0);
-        for (KhachHangViewModel khachHangViewModel : list) {
+        for (KhachHangModel khachHangViewModel : list) {
             tableModelThongTin.addRow(new Object[]{
                 khachHangViewModel.getMaKH(),
                 khachHangViewModel.getTenKH(),
@@ -60,8 +61,8 @@ public class KhachHang extends javax.swing.JPanel {
         rdoKHNam.setSelected(true);
     }
     
-    public KhachHangViewModel getMa(String ma){
-        for (KhachHangViewModel kh : khService.getAllKhachHang()) {
+    public KhachHangModel getMa(String ma){
+        for (KhachHangModel kh : khService.getAllKhachHang()) {
             if(kh.getMaKH().equalsIgnoreCase(ma)){
                 return kh;
             }
@@ -69,7 +70,7 @@ public class KhachHang extends javax.swing.JPanel {
         return null;
     }
     
-    public DomainModels.KhachHang getFormData(){
+    public KhachHangModel getFormData(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date;
         String ma = txtMaKH.getText();
@@ -80,7 +81,11 @@ public class KhachHang extends javax.swing.JPanel {
         String email = txtKHEmail.getText();
         String sdt = txtKHSdt.getText();
         String nSinh = txtKHNgaySinh.getDate().toString();
+<<<<<<< HEAD:src/Views/KhachHang.java
         String nThamGia = txtKHNgaySinh.getDate().toString();
+=======
+
+>>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
         
         if(ma.trim().length() == 0){
@@ -147,6 +152,7 @@ public class KhachHang extends javax.swing.JPanel {
                 return null;
             }
         }
+<<<<<<< HEAD:src/Views/KhachHang.java
         if (nThamGia.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày tham gia");
             txtKHNgaySinh.requestFocus();
@@ -160,8 +166,11 @@ public class KhachHang extends javax.swing.JPanel {
                 return null;
             }
         }
+=======
+
+>>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
         
-        DomainModels.KhachHang kh = new DomainModels.KhachHang(ma, loai, ten, diaChi, nSinh, email, sdt, date, date, tt);
+        KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, nSinh, email, sdt, date, null, tt);
         return kh;
     }
 
@@ -205,7 +214,7 @@ public class KhachHang extends javax.swing.JPanel {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblThongTinKH = new javax.swing.JTable();
+        tblThongtinKH = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
@@ -285,6 +294,9 @@ public class KhachHang extends javax.swing.JPanel {
                     .addComponent(btnThem))
                 .addGap(19, 19, 19))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLamMoi, btnSua, btnThem});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -403,7 +415,7 @@ public class KhachHang extends javax.swing.JPanel {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
-        tblThongTinKH.setModel(new javax.swing.table.DefaultTableModel(
+        tblThongtinKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -419,7 +431,12 @@ public class KhachHang extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tblThongTinKH);
+        tblThongtinKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblThongtinKHMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblThongtinKH);
 
         jLabel17.setText("Tìm kiếm");
 
@@ -588,12 +605,12 @@ public class KhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        int row = tblThongTinKH.getSelectedRow();
+        int row = tblThongtinKH.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng cần sửa");
             return;
         }
-        DomainModels.KhachHang kh = getFormData();
+        KhachHangModel kh = getFormData();
         if(kh == null){
             return;
         }
@@ -607,7 +624,7 @@ public class KhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-       DomainModels.KhachHang kh = getFormData();
+       KhachHangModel kh = getFormData();
         if(kh == null){
             return;
         }
@@ -623,6 +640,40 @@ public class KhachHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void tblThongtinKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThongtinKHMouseClicked
+        try {
+            int row = tblThongtinKH.getSelectedRow();
+            if (row < 0) {
+                return;
+            } else {
+                txtMaKH.setText(tblThongtinKH.getValueAt(row, 0).toString());
+                txtTenKH.setText(tblThongtinKH.getValueAt(row, 1).toString());
+                txtLoaiKH.setText(tblThongtinKH.getValueAt(row, 2).toString());
+                txtDiaChiKH.setText(tblThongtinKH.getValueAt(row, 3).toString());
+                String gt=tblThongtinKH.getValueAt(row, 4).toString();
+                if(gt.equalsIgnoreCase("Nam")){
+                    rdoKHNam.setSelected(true);
+                }else{
+                    rdoKHNu.setSelected(true);
+                }
+                txtKHEmail.setText(tblThongtinKH.getValueAt(row, 5).toString());
+                txtKHSdt.setText(tblThongtinKH.getValueAt(row, 6).toString());
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 7).toString());
+                txtKHNgaySinh.setDate(date);
+                Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 8).toString());
+                
+                String tt = tblThongtinKH.getValueAt(row, 9).toString();
+                if (tt.equalsIgnoreCase("Còn hoạt động")) {
+                    rdoKHCon.setSelected(true);
+                } else {
+                    rdoKHNgung.setSelected(true);
+                }
+            }
+        } catch (Exception e) {
+        }
+
+    }//GEN-LAST:event_tblThongtinKHMouseClicked
  
     
     
@@ -661,7 +712,7 @@ public class KhachHang extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdoKHNgung;
     private javax.swing.JRadioButton rdoKHNu;
     private javax.swing.JTable tblLichSuGD;
-    private javax.swing.JTable tblThongTinKH;
+    private javax.swing.JTable tblThongtinKH;
     private javax.swing.JTextArea txtDiaChiKH;
     private javax.swing.JTextField txtKHEmail;
     private com.toedter.calendar.JDateChooser txtKHNgaySinh;
@@ -671,4 +722,8 @@ public class KhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenKH;
     // End of variables declaration//GEN-END:variables
 
+<<<<<<< HEAD:src/Views/KhachHang.java
+=======
+
+>>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
 }
