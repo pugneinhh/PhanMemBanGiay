@@ -62,6 +62,12 @@ delete from ChiTietSanPham where QR = '20012021'
 select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai
 from KhachHang
 
+--select KhachHang.MaKH, KhachHang.TenKH, KhachHang.SDT, HoaDon.NgayMua, ChiTietSanPham.IDSP, ChiTietSanPham.SoLuong, ChiTietSanPham.GiaBan from ChiTietSanPham
+--join KhachHang on KhachHang.MaKH =
+
+select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, a.DanhMuc, a.DoCao from ChiTietSanPham as a
+join ChiTietHoaDon as b on b.IdCTSP = a.Id
+
 SELECT * From chitietsanpham
 UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
 
