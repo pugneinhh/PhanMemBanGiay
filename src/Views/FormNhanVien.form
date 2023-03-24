@@ -585,6 +585,9 @@
             <Component class="javax.swing.JSeparator" name="jSeparator9">
             </Component>
             <Component class="javax.swing.JLabel" name="lblAnhNVlogin">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAnhNVloginMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
