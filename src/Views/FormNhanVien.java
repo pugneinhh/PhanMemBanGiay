@@ -48,7 +48,7 @@ public class FormNhanVien extends javax.swing.JFrame {
          
         
 
-        loadDangNhap();
+//        loadDangNhap();
 
 
     }

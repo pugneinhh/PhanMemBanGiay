@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import responsitories.DanhMucResponsitory;
 import responsitories.KhuyenMaiResbonsitory;
+import java.time.LocalDateTime;
 
 public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
@@ -116,8 +118,11 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
         BigDecimal giatri = null;
         BigDecimal giamtoida = null;
-        Date NgayBatDau = txtBD.getDate();
-        Date NgayKetThuc = txtKetThuc.getDate();
+        Date date;
+        Date date1;
+        String nbd = txtBD.getDate().toString();
+        String nkt = txtKetThuc.getDate().toString();
+        String trangthai = null;
 
         if (makm.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
@@ -153,40 +158,152 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             }
         }
 
-        if (NgayBatDau == null) {
+        if (nbd.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày bắt đầu");
             txtBD.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            String date = sdf.format(txtBD.getDate());
+
+            try {
+                date = txtBD.getDate();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
-        if (NgayKetThuc == null) {
+
+        if (nkt.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
             txtKetThuc.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            String date = sdf.format(txtKetThuc.getDate());
+
+            try {
+                date1 = txtKetThuc.getDate();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
-        int compare = NgayBatDau.compareTo(NgayKetThuc);
+//        int compare = nbd.compareTo(nkt);
+//        if (compare > 0) {
+//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+//            return null;
+//        } else if (compare == 0) {
+//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+//            return null;
+//        } else {
+//            date = txtBD.getDate();
+//            date1 = txtKetThuc.getDate();
+//        }
+//        try {
+//            Date currentDate = new Date();
+//            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+//
+//            if (currentDate.after(date) && currentDate.before(date1)) {
+//                trangthai = "Đang Chạy";
+//            } else {
+//                trangthai = "Đã Kết Thúc";
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Đã xảy ra lỗi: " + e.getMessage());
+//        }
 
-        if (compare > 0) {
-            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-            return null;
-        } else if (compare == 0) {
-            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-            return null;
-        } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
-
-            String date = sdf.format(txtBD.getDate());
-            String date1 = sdf.format(txtKetThuc.getDate());
-        }
-
-        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, NgayBatDau, NgayKetThuc, 1);
+        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, date, date1, 1);
         return km;
+
+//        String makm = txtMaKhuyenMai.getText().trim();
+//        String tenkm = txtTenKhuyenMai.getText().trim();
+//        String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
+//        BigDecimal giatri = null;
+//        BigDecimal giamtoida = null;
+//        Date NgayBatDau = txtBD.getDate();
+//        Date NgayKetThuc = txtKetThuc.getDate();
+//        String trangthai = null;
+//        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+//        try {
+//            Date currentDate = new Date();
+//            
+//
+//            if (currentDate.after(NgayBatDau) && currentDate.before(NgayKetThuc)) {
+//                trangthai = "Đang Chạy";
+//            } else {
+//                trangthai = "Đã Kết Thúc";
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Đã xảy ra lỗi: " + e.getMessage());
+//        }
+//
+//        if (makm.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
+//            return null;
+//        }
+//        if (tenkm.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống tên Khuyến Mại");
+//            return null;
+//        }
+//        if (txtGiaTri.getText().trim().length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống giá trị");
+//            return null;
+//        } else {
+//            try {
+//                giatri = BigDecimal.valueOf(Double.parseDouble(txtGiaTri.getText()));
+//
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, "sai định dạng giá trị");
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        if (txtGiamToiDa.getText().trim().length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống giảm tối đa");
+//            return null;
+//        } else {
+//            try {
+//                giamtoida = BigDecimal.valueOf(Double.parseDouble(txtGiamToiDa.getText()));
+//
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, "sai định dạng giảm tối đa");
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        if (NgayBatDau == null) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống ngày bắt đầu");
+//            txtBD.requestFocus();
+//            return null;
+//        } else {
+//            
+//            String date = sdf.format(txtBD.getDate());
+//        }
+//        
+//        if (NgayKetThuc == null) {
+//            JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
+//            txtKetThuc.requestFocus();
+//            return null;
+//        } else {
+//           
+//            String date1 = sdf.format(txtKetThuc.getDate());
+//        }
+//
+//        int compare = NgayBatDau.compareTo(NgayKetThuc);
+//
+//        if (compare > 0) {
+//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+//            return null;
+//        } else if (compare == 0) {
+//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+//            return null;
+//        } else {
+//            
+//
+//            String date = sdf.format(txtBD.getDate());
+//            String date1 = sdf.format(txtKetThuc.getDate());
+//        }
+//
+//        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, date, date1,1);
+//        return km;
     }
 
     @SuppressWarnings("unchecked")
@@ -717,7 +834,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                         System.out.println(ct.getIdCTSP());
                         ctspm.setIdCTSP(ct.getIdCTSP());
                         System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
-                        if(ctsps.updateByID1(ctspm)!=null){
+                        if (ctsps.updateByID1(ctspm) != null) {
                             dem++;
                         }
                     }
