@@ -206,9 +206,9 @@
                                   <Component id="jLabel24" min="-2" pref="59" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbbDanhMucSP" min="-2" pref="142" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="420" max="-2" attributes="0"/>
                                   <Component id="btnUpload" pref="0" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
