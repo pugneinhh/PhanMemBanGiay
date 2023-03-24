@@ -52,9 +52,32 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         pnLoaiKhuyenMai.setVisible(false);
         loadTableKM();
         PanelaLL.setPreferredSize(new Dimension(750, 590));
-        
+        load();
     }
-
+    private void load(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<KhuyenMaiModel> listkm=kms.getAllKhuyenMai();
+                ArrayList<ChiTietSanPhamModel> listsp=ctsps.getAllChiTietSanPham();
+                Date htai=new Date();
+                for (KhuyenMaiModel k : listkm) {
+                    if(htai.after(k.getNgayKetThuc())){
+                        k.setTrangThai(1);
+                        kms.updateKM(k);
+//                        for (ChiTietSanPhamModel c : listsp) {
+//                            if(c.getIdKM().getIdKM().equals(k.getIdKM())){
+//                                c.setIdKM(null);
+//                                ctsps.updateByID1(c);
+//                            }
+//                        }
+                    }
+                } 
+                }
+                
+            
+        }).start();
+    }
     public void loadTableKM() {
         ArrayList<KhuyenMaiModel> list = kms.getAllKhuyenMai();
         dtmKM.setRowCount(0);
@@ -118,6 +141,8 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         String makm = txtMaKhuyenMai.getText().trim();
         String tenkm = txtTenKhuyenMai.getText().trim();
         String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
+        String hinhthuckmai=rdoHoaDon.isSelected()==true?"Hóa đơn":"Sản Phẩm";
+        String loaikmai=rdoDanhMuc.isSelected()==true?"Danh mục":"Sản phẩm";
         BigDecimal giatri = null;
         BigDecimal giamtoida = null;
         String ngayBD=txtBD.getDate().toString();
@@ -198,7 +223,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
           }else if(currentDate.after(NgayKetThuc)){
               trangthai=1;
           }
-        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, NgayBatDau, NgayKetThuc, trangthai);
+        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, giatri, giamtoida, NgayBatDau, NgayKetThuc, hinhthuckmai,hinhthuckmai, loaikmai, trangthai);
         return km;
     }
 
@@ -695,6 +720,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         ArrayList<DanhMucModel> danhmucsp = dms.getAllDanhMuc();
         ArrayList<ChiTietSanPhamModel> listctsp = ctsps.getAllChiTietSanPham();
         DanhMucModel dmm = new DanhMucModel();
+        SanPhamModel spm=new SanPhamModel();
         ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
         // Thêm khuyến mại
         KhuyenMaiModel km = getformdata();
@@ -733,19 +759,28 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             // Lấy ra IDCTSP có trong danh mục
         if(rdoSanPham.isSelected()==true){
             //tìm những checkbox được check
-            for (int i = 0; i < listctsp.size(); i++) {
+            for (int i = 0; i < listsp.size(); i++) {
                  boolean check = (boolean) tblSanPham.getValueAt(i, 0);
                  if(check==true){
+                     spm=listsp.get(i);
+                     ArrayList<ChiTietSanPhamModel> listID=new ArrayList<>();
                      for (ChiTietSanPhamModel ctm : listctsp) {
-                         ctspm.setIdCTSP(ctm.getIdCTSP());
-                         if(ctsps.updateByID1(ctspm)!=null){
+                         if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
+                            listID.add(ctm);
+                        }
+                        }
+                     for (ChiTietSanPhamModel ct : listID) {
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if(ctsps.updateByID1(ctspm)!=null){
                             dem++;
                         }
+                    }
                      }
                      
                  }
             }
-        }    
+           
             if (dem > 0) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
                 LoadSP();
@@ -762,6 +797,13 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLamMOiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+         ArrayList<SanPhamModel> listsp = sps.getAllSanPham();
+        ArrayList<KhuyenMaiModel> listKM = kms.getAllKhuyenMai();
+        ArrayList<DanhMucModel> danhmucsp = dms.getAllDanhMuc();
+        ArrayList<ChiTietSanPhamModel> listctsp = ctsps.getAllChiTietSanPham();
+        DanhMucModel dmm = new DanhMucModel();
+        SanPhamModel spm=new SanPhamModel();
+        ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
         int row = tblKhuyenMai.getSelectedRow();
         if (row < 0) {
             JOptionPane.showMessageDialog(this, "Chọn dòng cần sửa");
@@ -773,6 +815,60 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         }
         String ma = txtMaKhuyenMai.getText().trim();
         km.setMaKM(ma);
+        KhuyenMai k = new KhuyenMai();
+        System.out.println(kms.getIDByMa(km.getMaKM()));
+        // set IDKM vào CTSP
+        ctspm.setIdKM(getkhuyenmai(kms.getIDByMa(km.getMaKM()).get(0).getIdKM()));
+        int dem = 0;
+        // Danh mục được chọn
+        if (rdoDanhMuc.isSelected() == true) {
+            // tìm những checkbox được check
+            for (int i = 0; i < danhmucsp.size(); i++) {
+                boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                if (check == true) {
+                    dmm = danhmucsp.get(i);
+                    ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
+                    for (ChiTietSanPhamModel c : listctsp) {
+                        if (c.getIdDM().getIdDM() != null && c.getIdDM().getIdDM().equals(dmm.getIdDM())) {
+                            listID.add(c);
+                        }
+                    }
+                    // thêm chương trình vào từng IDCTSP
+                    for (ChiTietSanPhamModel ct : listID) {
+                        System.out.println(ct.getIdCTSP());
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if(ctsps.updateByID1(ctspm)!=null){
+                            dem++;
+                        }
+                    }
+                }
+            }}
+            // Lấy ra IDCTSP có trong danh mục
+        if(rdoSanPham.isSelected()==true){
+            //tìm những checkbox được check
+            for (int i = 0; i < listsp.size(); i++) {
+                 boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                 if(check==true){
+                     spm=listsp.get(i);
+                     ArrayList<ChiTietSanPhamModel> listID=new ArrayList<>();
+                     for (ChiTietSanPhamModel ctm : listctsp) {
+                         if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
+                            listID.add(ctm);
+                        }
+                        }
+                     for (ChiTietSanPhamModel ct : listID) {
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if(ctsps.updateByID1(ctspm)!=null){
+                            dem++;
+                        }
+                    }
+                     }
+                     
+                 }
+            }
+           
         if (kms.updateKM(km) != null) {
             JOptionPane.showMessageDialog(this, "Sửa thành công");
         } else {
