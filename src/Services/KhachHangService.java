@@ -21,6 +21,13 @@ public class KhachHangService {
         this.khr = new KhachHangResponsitory();
     }
 
+    public KhachHang getMaKHByID(String id) {
+        return khr.getMaKHByID(id);
+    }
+    public KhachHang getTenKHByID(String id) {
+        return khr.getTenKHByID(id);
+    }
+
     public ArrayList<KhachHangModel> getAllKhachHang() {
         ArrayList<KhachHangModel> list = new ArrayList<>();
         ArrayList<KhachHang> kh = khr.getAllKhachHang();

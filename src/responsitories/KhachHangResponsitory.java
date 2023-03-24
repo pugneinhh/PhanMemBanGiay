@@ -136,6 +136,34 @@ public class KhachHangResponsitory {
         }
         return null;
     }
+    
+    public KhachHang getMaKHByID(String id) {
+
+        String sql = "select ID,MaKH from KhachHang where ID = ?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
+        try {
+            while (rs.next()) {
+                return new KhachHang(rs.getString(1), rs.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public KhachHang getTenKHByID(String id) {
+
+        String sql = "select ID, TenKH from KhachHang where ID = ?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql, id);
+        try {
+            while (rs.next()) {
+                return new KhachHang(rs.getString(1),rs.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public KhachHang insertKhachHang(KhachHang kh) {
         String sql = "INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) \n"
@@ -209,6 +237,7 @@ public class KhachHangResponsitory {
     public static void main(String[] args) {
         KhachHangResponsitory khRes = new KhachHangResponsitory();
         //System.out.println(khRes.getAllKhachHang());
-        System.out.println(khRes.getKhachHangBysdt("0962335335"));
+        //System.out.println(khRes.getKhachHangBysdt("0962335335"));
+        System.out.println(khRes.getMaKHByID("80681A3E-7487-4D41-AB67-FAB685AC70CC"));
     }
 }

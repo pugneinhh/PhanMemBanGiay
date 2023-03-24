@@ -71,7 +71,7 @@ public class NhanVienResponsitory {
         return list;
     }
     public NhanVien getNVByID(String id) {
-        String sql = "SELECT ID,HOTEN FROM NhanVien WHERE ID=?";
+        String sql = "SELECT ID, MANV FROM NhanVien WHERE ID=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
