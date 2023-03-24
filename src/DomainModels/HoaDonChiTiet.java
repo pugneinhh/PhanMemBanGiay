@@ -12,11 +12,12 @@ import java.util.Date;
  * @author Phanh
  */
 public class HoaDonChiTiet {
+
     private String idHDCT;
     private HoaDon idHD;
     private ChiTietSanPham idCTSP;
-    private int soLuong;
     private BigDecimal donGia;
+    private int soLuong;
     private Date ngayBan;
     private Date ngayTao;
     private Date ngaySua;
@@ -33,13 +34,13 @@ public class HoaDonChiTiet {
         this.ngayBan = ngayBan;
         this.trangThai = trangThai;
     }
-    
-    public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
+
+    public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
         this.idHDCT = idHDCT;
         this.idHD = idHD;
         this.idCTSP = idCTSP;
-        this.soLuong = soLuong;
         this.donGia = donGia;
+        this.soLuong = soLuong;
         this.ngayBan = ngayBan;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
@@ -117,6 +118,5 @@ public class HoaDonChiTiet {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-          
-    
+
 }
