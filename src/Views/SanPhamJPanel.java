@@ -30,15 +30,25 @@ import ViewModels.SizeModel;
 import com.barcodelib.barcode.Linear;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.RichTextString;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import responsitories.ChatLieuResponsitory;
 import responsitories.DanhMucResponsitory;
 import responsitories.DoCaoResponsitory;
@@ -52,6 +62,7 @@ import responsitories.SizeResponsitory;
  * @author Asus
  */
 public class SanPhamJPanel extends javax.swing.JPanel {
+
     SanPhamResponsitory spr = new SanPhamResponsitory();
     DanhMucResponsitory dmr = new DanhMucResponsitory();
     SizeResponsitory sizer = new SizeResponsitory();
@@ -59,7 +70,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     ChatLieuResponsitory clr = new ChatLieuResponsitory();
     DoCaoResponsitory dcr = new DoCaoResponsitory();
     KhuyenMaiResbonsitory kmR = new KhuyenMaiResbonsitory();
-    
+
     DanhMucService dms;
     DefaultTableModel dtmDM;
 
@@ -144,8 +155,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
         loadTBSanPham(1);
         lblpage.setText("1/" + soTrang);
-        
+
     }
+
     public void countSP() {
         try {
             String sql = "SELECT count(*) From CHITIETSANPHAM";
@@ -158,6 +170,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
+
     public ArrayList<ChiTietSanPhamModel> getSP() {
         ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
         String sql = "SELECT TOP 6 * FROM CHITIETSANPHAM where qr not in (SELECT TOP " + (Trang * 6 - 6) + "qr FROM CHITIETSANPHAM)";
@@ -178,8 +191,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
         return list;
     }
-     public void loadTBSanPham(long Trang){
-         ArrayList<ChiTietSanPhamModel> list = getSP();
+
+    public void loadTBSanPham(long Trang) {
+        ArrayList<ChiTietSanPhamModel> list = getSP();
         dtmCTSP.setRowCount(0);
         for (ChiTietSanPhamModel ctspM : list) {
             dtmCTSP.addRow(new Object[]{
@@ -198,8 +212,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 ctspM.getTrangThai() == 1 ? "Còn" : "Hết"
             });
         }
-     }      
-             
+    }
+
     //////////////////////////////////////////////TableThongTinSP/////////////////////////////////////////////////////////
     private void loadTableThongTinSP() {
         ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
@@ -502,11 +516,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             return null;
         }
         // lay duong dan tu lblImag di roi set
-        
+
         if (filename == null) {
             filename = "nen.png";
-        }else{
-            filename=filename;
+        } else {
+            filename = filename;
         }
 
         ChiTietSanPhamModel ctspM = new ChiTietSanPhamModel(null, tenSP, null,
@@ -732,6 +746,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         btnNhapExcel.setText("Nhập excel");
 
         btnXuatExcel.setText("Xuất excel");
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Mã BarCore");
 
@@ -2211,6 +2230,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                     rdoHetSP.setSelected(true);
                 }
                 String hinh = this.tblThongTinSP.getValueAt(row, 11).toString();
+                filename = hinh;
                 ImageIcon icon = new ImageIcon(SanPhamJPanel.class.getResource("/AnhNV/" + hinh));
                 Image img = icon.getImage();
                 lblHinhAnh.setIcon(new ImageIcon(img.getScaledInstance(lblHinhAnh.getWidth(), lblHinhAnh.getHeight(), Image.SCALE_SMOOTH)));
@@ -2246,19 +2266,18 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 //                    && 
 //                    (x.getGiaNhap() != ctspM.getGiaNhap() || x.getGiaBan() != ctspM.getGiaBan() || x.getSoLuong() != ctspM.getSoLuong() || !x.getMota().equals(ctspM.getMota()) || x.getTrangThai() != ctspM.getTrangThai() || !x.getHinhanh().equals(ctspM.getHinhanh()))) {
 //                return "Sửa";
-            if (x.getIdSP().getTenSP().equals(ctspM.getIdSP().getTenSP()) &&
-                    x.getIdSize().getTenSize().equals(ctspM.getIdSize().getTenSize()) &&
-                    x.getIdMS().getTenMS().equals(ctspM.getIdMS().getTenMS()) && 
-                    x.getIdDC().getTenDC().equals(ctspM.getIdDC().getTenDC()) &&
-                    x.getIdCL().getTenCL().equals(ctspM.getIdCL().getTenCL()) && 
-                    x.getIdDM().getTenDM().equals(ctspM.getIdDM().getTenDM()) 
-                    ) {
+            if (x.getIdSP().getTenSP().equals(ctspM.getIdSP().getTenSP())
+                    && x.getIdSize().getTenSize().equals(ctspM.getIdSize().getTenSize())
+                    && x.getIdMS().getTenMS().equals(ctspM.getIdMS().getTenMS())
+                    && x.getIdDC().getTenDC().equals(ctspM.getIdDC().getTenDC())
+                    && x.getIdCL().getTenCL().equals(ctspM.getIdCL().getTenCL())
+                    && x.getIdDM().getTenDM().equals(ctspM.getIdDM().getTenDM())) {
                 return "Có";
-            } 
+            }
         }
-       
-                return "Thêm";
-           
+
+        return "Thêm";
+
     }
     private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
         ChiTietSanPhamModel ctspM = getCTSPForm();
@@ -2276,11 +2295,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 //        if (checkSP().equals("Sửa")) {
             int xn = JOptionPane.showConfirmDialog(this, "Đã có sản phẩm này! Bạn có muốn thay đổi thông tin sản phẩm không?");
             if (xn == JOptionPane.YES_OPTION) {
-              
+
                 btnCapNhatSPActionPerformed(evt);
-               
+
                 loadTBSanPham(1);
-                
+
             }
         } else if (checkSP().equals("Thêm")) {
             if (ctsps.insertCTSP(ctspM) != null) {
@@ -2335,7 +2354,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             Trang++;
             loadTBSanPham(Trang);
             lblpage.setText(Trang + "/" + soTrang);
-            
+
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
@@ -2352,12 +2371,12 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnInMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInMaSPActionPerformed
-        int row=tblThongTinSP.getSelectedRow();
-        if(row<0){
+        int row = tblThongTinSP.getSelectedRow();
+        if (row < 0) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sp bạn muốn in mã");
             return;
         }
-        String ma=tblThongTinSP.getValueAt(row, 0).toString();
+        String ma = tblThongTinSP.getValueAt(row, 0).toString();
         try {
             Linear barcode = new Linear();
             barcode.setType(Linear.CODE128B);
@@ -2369,6 +2388,89 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnInMaSPActionPerformed
+
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        FileOutputStream fos = null;
+        try {
+            ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
+            XSSFWorkbook workBook = new XSSFWorkbook();
+            XSSFSheet sheet = workBook.createSheet("Danh sách sản phẩm");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(2);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("STT");
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Mã BarCore");
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Tên sản phẩm");
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Gía nhập");
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Gía bán");
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("Số lượng");
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("Size");
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("Độ cao");
+            cell = row.createCell(8, CellType.STRING);
+            cell.setCellValue("Chất liệu");
+            cell = row.createCell(9, CellType.STRING);
+            cell.setCellValue("Màu sắc");
+            cell = row.createCell(10, CellType.STRING);
+            cell.setCellValue("Danh mục");
+            cell = row.createCell(11, CellType.STRING);
+            cell.setCellValue("Mô tả");
+            cell = row.createCell(12, CellType.STRING);
+            cell.setCellValue("Hình");
+            cell = row.createCell(13, CellType.STRING);
+            cell.setCellValue("Trạng thái");
+            for (int i = 0; i < list.size(); i++) {
+                row = sheet.createRow(3 + i);
+
+                cell = row.createCell(0, CellType.NUMERIC);
+                cell.setCellValue(i + 1);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(list.get(i).getMaQR());
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdSP().getTenSP());
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(list.get(i).getGiaNhap().toString());
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(list.get(i).getGiaBan().toString());
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue(list.get(i).getSoLuong());
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdSize().getTenSize());
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdDC().getTenDC());
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdCL().getTenCL());
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdMS().getTenMS());
+                cell = row.createCell(10, CellType.STRING);
+                cell.setCellValue(list.get(i).getIdDM().getTenDM());
+                cell = row.createCell(11, CellType.STRING);
+                cell.setCellValue(list.get(i).getMota());
+                cell = row.createCell(12, CellType.STRING);
+                cell.setCellValue(list.get(i).getHinhanh());
+                cell = row.createCell(13, CellType.STRING);
+                cell.setCellValue(list.get(i).getTrangThai()==1?"Còn":"Hết");
+            }
+            File f=new File("D:\\PhanMemBanGiay\\Danhsachsanpham.xlsx");
+            fos = new FileOutputStream(f);
+            workBook.write(fos);
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        JOptionPane.showMessageDialog(this, "In thành công");
+            
+        
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
 
     private DanhMuc getDM(int row, String tenDM) {
         ArrayList<DanhMucModel> dmm = dms.getAllDanhMuc();

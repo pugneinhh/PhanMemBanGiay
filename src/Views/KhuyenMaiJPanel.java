@@ -20,6 +20,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,7 +52,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         pnLoaiKhuyenMai.setVisible(false);
         loadTableKM();
         PanelaLL.setPreferredSize(new Dimension(750, 590));
-
+        
     }
 
     public void loadTableKM() {
@@ -111,6 +113,8 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     }
 
     private KhuyenMaiModel getformdata() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("YYYY-dd-MM");
         String makm = txtMaKhuyenMai.getText().trim();
         String tenkm = txtTenKhuyenMai.getText().trim();
         String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
@@ -118,7 +122,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         BigDecimal giamtoida = null;
         Date NgayBatDau = txtBD.getDate();
         Date NgayKetThuc = txtKetThuc.getDate();
-
+        int trangthai = 0;
         if (makm.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
             return null;
@@ -158,16 +162,24 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             txtBD.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            String date = sdf.format(txtBD.getDate());
+            
+            try {
+                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
+            } catch (ParseException ex) {
+                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (NgayKetThuc == null) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
             txtKetThuc.requestFocus();
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            String date = sdf.format(txtKetThuc.getDate());
+            
+            try {
+                NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
+            } catch (ParseException ex) {
+                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         int compare = NgayBatDau.compareTo(NgayKetThuc);
@@ -179,13 +191,28 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
             return null;
         } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
+            
 
-            String date = sdf.format(txtBD.getDate());
-            String date1 = sdf.format(txtKetThuc.getDate());
+            try {
+                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
+                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
+            } catch (ParseException ex) {
+                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
-
-        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, NgayBatDau, NgayKetThuc, 1);
+          Date currentDate = new Date();
+        try {
+            currentDate=sdf1.parse(currentDate.toString());
+        } catch (ParseException ex) {
+            Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          if(currentDate.before(NgayKetThuc)){
+              trangthai=0;
+          }else if(currentDate.after(NgayKetThuc)){
+              trangthai=1;
+          }
+        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, NgayBatDau, NgayKetThuc, trangthai);
         return km;
     }
 
@@ -216,7 +243,6 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         pnSanPham = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         txtGiamToiDa = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -384,28 +410,19 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblSanPham);
 
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("Select All");
-
         javax.swing.GroupLayout pnSanPhamLayout = new javax.swing.GroupLayout(pnSanPham);
         pnSanPham.setLayout(pnSanPhamLayout);
         pnSanPhamLayout.setHorizontalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSanPhamLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(pnSanPhamLayout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnSanPhamLayout.setVerticalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSanPhamLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -491,6 +508,10 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         jLabel6.setText("Thời gian bắt đầu giảm giá");
 
         jLabel7.setText("Thời gian kết thúc giảm giá");
+
+        txtBD.setDateFormatString("yyyy-MM-dd");
+
+        txtKetThuc.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -686,7 +707,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         ArrayList<SanPhamModel> listsp = sps.getAllSanPham();
         ArrayList<KhuyenMaiModel> listKM = kms.getAllKhuyenMai();
         ArrayList<DanhMucModel> danhmucsp = dms.getAllDanhMuc();
-        ArrayList<ChiTietSanPhamModel> iChiTietSanPhamModels = ctsps.getAllChiTietSanPham();
+        ArrayList<ChiTietSanPhamModel> listctsp = ctsps.getAllChiTietSanPham();
         DanhMucModel dmm = new DanhMucModel();
         ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
         // Thêm khuyến mại
@@ -707,7 +728,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                 if (check == true) {
                     dmm = danhmucsp.get(i);
                     ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
-                    for (ChiTietSanPhamModel c : iChiTietSanPhamModels) {
+                    for (ChiTietSanPhamModel c : listctsp) {
                         if (c.getIdDM().getIdDM() != null && c.getIdDM().getIdDM().equals(dmm.getIdDM())) {
                             listID.add(c);
                         }
@@ -724,7 +745,21 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                 }
             }
             // Lấy ra IDCTSP có trong danh mục
-
+        if(rdoSanPham.isSelected()==true){
+            //tìm những checkbox được check
+            for (int i = 0; i < listctsp.size(); i++) {
+                 boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                 if(check==true){
+                     for (ChiTietSanPhamModel ctm : listctsp) {
+                         ctspm.setIdCTSP(ctm.getIdCTSP());
+                         if(ctsps.updateByID1(ctspm)!=null){
+                            dem++;
+                        }
+                     }
+                     
+                 }
+            }
+        }    
             if (dem > 0) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
                 LoadSP();
@@ -828,7 +863,6 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbHinhThucGiamGia;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
