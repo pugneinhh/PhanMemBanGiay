@@ -113,17 +113,16 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     }
 
     private KhuyenMaiModel getformdata() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         String makm = txtMaKhuyenMai.getText().trim();
         String tenkm = txtTenKhuyenMai.getText().trim();
         String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
         BigDecimal giatri = null;
         BigDecimal giamtoida = null;
-        Date date;
-        Date date1;
-        String nbd = txtBD.getDate().toString();
-        String nkt = txtKetThuc.getDate().toString();
-        int tt = 0;
-
+        Date NgayBatDau = txtBD.getDate();
+        Date NgayKetThuc = txtKetThuc.getDate();
+        int trangthai = 0;
         if (makm.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
             return null;
@@ -158,47 +157,33 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             }
         }
 
-        if (nbd.trim().length() == 0) {
+        if (NgayBatDau == null) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày bắt đầu");
             txtBD.requestFocus();
             return null;
         } else {
 
             try {
-<<<<<<< HEAD
-                date = txtBD.getDate();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-=======
                 NgayBatDau = sdf1.parse(txtBD.getDate().toString());
             } catch (ParseException ex) {
                 ex.printStackTrace();
->>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
             }
         }
-
-        if (nkt.trim().length() == 0) {
+        if (NgayKetThuc == null) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
             txtKetThuc.requestFocus();
             return null;
         } else {
 
             try {
-<<<<<<< HEAD
-                date1 = txtKetThuc.getDate();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-=======
                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
             } catch (ParseException ex) {
                 ex.printStackTrace();
->>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
             }
         }
 
-        int compare = nbd.compareTo(nkt);
+        int compare = NgayBatDau.compareTo(NgayKetThuc);
+
         if (compare > 0) {
             JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
             return null;
@@ -206,134 +191,29 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
             return null;
         } else {
-<<<<<<< HEAD
-            date = txtBD.getDate();
-            date1 = txtKetThuc.getDate();
-=======
-            
 
             try {
                 NgayBatDau = sdf1.parse(txtBD.getDate().toString());
-                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
+                NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
             } catch (ParseException ex) {
                 ex.printStackTrace();
             }
-            
->>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
-        }
-        try {
-<<<<<<< HEAD
-            Date currentDate = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
 
-            if (currentDate.after(date) && currentDate.before(date1)) {
-                tt =0;
-            } else {
-                tt = 1;
-            }
-        } catch (Exception e) {
-            System.out.println("Đã xảy ra lỗi: " + e.getMessage());
-=======
-            currentDate=sdf1.parse(currentDate.toString());
+        }
+        Date currentDate = new Date();
+        try {
+            currentDate = sdf1.parse(currentDate.toString());
         } catch (ParseException ex) {
             ex.printStackTrace();
->>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
         }
-
-        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, date, date1,1 );
+        if (currentDate.before(NgayKetThuc)) {
+            trangthai = 0;
+        } else if (currentDate.after(NgayKetThuc)) {
+            trangthai = 1;
+        }
+        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, NgayBatDau, NgayKetThuc, trangthai);
         return km;
 
-//        String makm = txtMaKhuyenMai.getText().trim();
-//        String tenkm = txtTenKhuyenMai.getText().trim();
-//        String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
-//        BigDecimal giatri = null;
-//        BigDecimal giamtoida = null;
-//        Date NgayBatDau = txtBD.getDate();
-//        Date NgayKetThuc = txtKetThuc.getDate();
-//        String trangthai = null;
-//        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
-//        try {
-//            Date currentDate = new Date();
-//            
-//
-//            if (currentDate.after(NgayBatDau) && currentDate.before(NgayKetThuc)) {
-//                trangthai = "Đang Chạy";
-//            } else {
-//                trangthai = "Đã Kết Thúc";
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Đã xảy ra lỗi: " + e.getMessage());
-//        }
-//
-//        if (makm.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
-//            return null;
-//        }
-//        if (tenkm.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống tên Khuyến Mại");
-//            return null;
-//        }
-//        if (txtGiaTri.getText().trim().length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống giá trị");
-//            return null;
-//        } else {
-//            try {
-//                giatri = BigDecimal.valueOf(Double.parseDouble(txtGiaTri.getText()));
-//
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, "sai định dạng giá trị");
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (txtGiamToiDa.getText().trim().length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống giảm tối đa");
-//            return null;
-//        } else {
-//            try {
-//                giamtoida = BigDecimal.valueOf(Double.parseDouble(txtGiamToiDa.getText()));
-//
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, "sai định dạng giảm tối đa");
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (NgayBatDau == null) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống ngày bắt đầu");
-//            txtBD.requestFocus();
-//            return null;
-//        } else {
-//            
-//            String date = sdf.format(txtBD.getDate());
-//        }
-//        
-//        if (NgayKetThuc == null) {
-//            JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
-//            txtKetThuc.requestFocus();
-//            return null;
-//        } else {
-//           
-//            String date1 = sdf.format(txtKetThuc.getDate());
-//        }
-//
-//        int compare = NgayBatDau.compareTo(NgayKetThuc);
-//
-//        if (compare > 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else if (compare == 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else {
-//            
-//
-//            String date = sdf.format(txtBD.getDate());
-//            String date1 = sdf.format(txtKetThuc.getDate());
-//        }
-//
-//        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, date, date1,1);
-//        return km;
     }
 
     @SuppressWarnings("unchecked")
