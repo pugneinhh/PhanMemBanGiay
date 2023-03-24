@@ -30,6 +30,12 @@ public class DanhMucModel {
         this.trangThai = trangThai;
     }
 
+    public DanhMucModel(String maDM, String tenDM) {
+        this.maDM = maDM;
+        this.tenDM = tenDM;
+    }
+    
+
     public DanhMucModel(String maDM, String tenDM, int trangThai) {
         this.maDM = maDM;
         this.tenDM = tenDM;

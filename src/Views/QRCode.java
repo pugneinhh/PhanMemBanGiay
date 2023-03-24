@@ -4,6 +4,7 @@
  */
 package Views;
 
+import DomainModels.ChiTietSanPham;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -19,6 +20,9 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import responsitories.ChiTietSanPhamResponsitory;
 
 /**
  *
@@ -30,11 +34,15 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
     private Webcam webcam = null;
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
-
+    public static ChiTietSanPham ctsp;
+    ChiTietSanPhamResponsitory ctspr=new ChiTietSanPhamResponsitory();
+    JTable tblGioHang;
+    BanHangJPanel banHangfr;
     public QRCode() {
         initComponents();
         initWebcam();
-
+        this.setLocationRelativeTo(null);
+        ctsp=new ChiTietSanPham();
     }
 
     /**
@@ -107,9 +115,9 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new QRCode().setVisible(true);
-        });
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new QRCode().setVisible(true);
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -174,6 +182,10 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
             }
             if (result != null) {
                 txtKQ.setText(result.getText());
+                ctsp=ctspr.getChiTietSanPhamByQR(result.getText()).get(0);
+                if(ctsp!=null & ctsp.getMaQR()!=0){
+                    JOptionPane.showConfirmDialog(this, "Đã tìm thấy sản phẩm "+ ctsp.getIdSP().getTenSP()+ ", size "+ctsp.getIdSize().getTenSize()+", màu "+ctsp.getIdMS().getTenMS()+", cao "+ctsp.getIdDC().getTenDC()+"\n Bạn có muốn thêm sản phẩm này vào giỏ hàng không?");
+                }
             }
         } while (true);
     }

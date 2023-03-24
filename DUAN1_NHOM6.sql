@@ -184,6 +184,21 @@ NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0		
 )
+<<<<<<< HEAD
+=======
+delete  from KhuyenMai where makm ='M22234'
+select *From khuyenmai
+9E9C8B02-1440-45A6-8425-042DB956EA11
+select *from DanhMuc
+select *from ChatLieu
+select *from SanPham
+select *from ChiTietSanPham
+select * from khuyenmai
+select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11'
+update ChiTietSanPham set idkm = 'F86B6461-D3F8-4454-BFB8-127B07DF675B' where id in  (select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11')
+select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
+from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
+>>>>>>> origin/master
 
 CREATE TABLE GioHang(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -406,6 +421,11 @@ INSERT INTO KhuyenMai(Id,maKM,tenKM,giaTri,giamToiDa,ngayBatDau,ngayKetThuc,hinh
 VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N'Giảm theo %',N'Hóa Đơn Trên 300000',N'Chương trình',getDate(),0)
 
 
+
+INSERT INTO KhuyenMai VALUES (NEWID(),'KM03',N'Mừng Sinh Nhật',10,30000,'01/12/2023','11/01/2023',N'Giảm theo %',N'Hóa Đơn Trên 3020000',N'Chương trình',GetDate(),null,1)
+
+
+
 --HoaDon--
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
 <<<<<<< HEAD
@@ -495,20 +515,25 @@ N'Hàng đẹp'
 ,getDate(),
 0)
 
-
+SELECT * FROM SanPham
+SELECT * FROM DanhMuc
+SELECT * FROM Size
+SELECT * FROM MauSac
+SELECT * FROM ChatLieu
+SELECT * FROM DOCAO
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,TrangThai)
-VALUES(NewID(),'',
-'873ff970-ffa2-4ace-aec0-04e57ab4e5b1',
-'7d0c5e40-8a62-4752-a0b9-bfc6a200c0b9',
+VALUES(NewID(),
+'FE33BC47-7F7F-4BE6-9D7C-05BD015B6623',
+null,
 111000,
 222000,
-'SP03.png',
+'SP01.png',
 111,
-'',
-?,
-?,
-?,
-?,getDate(),?)
+'471840E0-C49A-4975-92EA-862218BFD95B',
+'6EEA4437-0941-42BB-9086-373E640EFF2F',
+'4BFE8527-1F19-4CBD-B068-4F8214CDD590',
+'52802728-9070-4639-A88E-72E8BD28C7AC',
+'DED76EC4-528B-480A-80F3-C731E668A21E','TT',getDate(),1)
 
 SELECT * From chitietsanpham
 UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
@@ -516,26 +541,28 @@ UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN
     UPDATE KHACHHANG
-	SET DIEM=DIEM+(
-	SELECT THANHTIEN
+	SET DIEMEXP+=(
+	SELECT THANHTIEN * 0.01 
 	FROM INSERTED
-	)
-	WHERE KHACHHANG.ID= INSERTED.IDKH
+	), TICHDIEM+=(SELECT THANHTIEN *0.01 FROM INSERTED)
+	from KhachHang join inserted 
+	on KHACHHANG.ID= inserted.IDKH
 END
-
+select * from KhachHang
+select * from HoaDon
 CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
 BEGIN
-	IF INSERTED.DIEM>100
+	IF inserted.TICHDIEM>50000
 BEGIN
 	UPDATE KHACHHANG 
 	SET LOAIKH =N'VÀNG'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
-	IF INSERTED.DIEM>500
+	IF inserted.TICHDIEM>100000
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Kim cương'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
 END	
 
@@ -543,5 +570,5 @@ CREATE TRIGGER HANGMACDINH ON KHACHHANG AFTER INSERT AS
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Thành viên'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=inserted.ID
 END
