@@ -5,7 +5,7 @@
 package Services;
 
 import DomainModels.KhachHang;
-import ViewModels.KhachHangViewModel;
+import ViewModels.KhachHangModel;
 import java.util.ArrayList;
 import responsitories.KhachHangResponsitory;
 
@@ -15,22 +15,27 @@ import responsitories.KhachHangResponsitory;
  */
 public class KhachHangService {
 
-    KhachHangResponsitory khr = new KhachHangResponsitory();
+    private final KhachHangResponsitory khr;
 
-    public ArrayList<KhachHangViewModel> getAllKhachHang() {
-        ArrayList<KhachHangViewModel> list = new ArrayList<>();
+    public KhachHangService() {
+        this.khr = new KhachHangResponsitory();
+    }
+
+    public ArrayList<KhachHangModel> getAllKhachHang() {
+        ArrayList<KhachHangModel> list = new ArrayList<>();
         ArrayList<KhachHang> kh = khr.getAllKhachHang();
         for (KhachHang x : kh) {
-            list.add(new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
-                    x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
-                    x.getNgayThamGia(), x.getTrangThai()));
+            list.add(new KhachHangModel(x.getIdKH(),x.getMaKH(),x.getLoaiKH(),x.getTenKH(),x.getDiaChi(),x.getGioiTinh(),x.getEmail(),x.getSdt(),x.getNgaySinh(),x.getNgayThamGia(),x.getNgayTao(),x.getNgaySua(),x.getTrangThai()));
         }
         return list;
     }
-    public ArrayList<KhachHangViewModel> gettheomakh(String SDT){
-        return khr.getTheoSDT(SDT);
+    public KhachHangModel gettheomakh(String SDT){
+        return khr.getKhachHangBysdt(SDT);
     }
-    public KhachHangViewModel insertKhachHang(KhachHangViewModel khVM) {
+     public String getIDHoaDon(String maHD) {
+        return khr.getIDkhachhang(maHD);
+    }
+    public KhachHangModel insertKhachHang(KhachHangModel khVM) {
         ArrayList<KhachHang> list = khr.getAllKhachHang();
         for (KhachHang kh : list) {
             if (kh.getMaKH().equalsIgnoreCase(khVM.getMaKH())) {
@@ -40,16 +45,31 @@ public class KhachHangService {
         var x = khr.insertKhachHang(new KhachHang(khVM.getMaKH(), khVM.getLoaiKH(),
                 khVM.getTenKH(), khVM.getDiaChi(), khVM.getGioiTinh(), khVM.getEmail(),
                 khVM.getSdt(), khVM.getNgaySinh(), khVM.getNgayThamGia(), khVM.getTrangThai()));
-        return new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
+        return new KhachHangModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
                 x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
                 x.getNgayThamGia(), x.getTrangThai());
+
+        
+
     }
 
-    public KhachHangViewModel updateKhachHang(KhachHangViewModel khVM) {
-        var x = khr.updateKhachHang(new KhachHang(khVM.getMaKH(), khVM.getLoaiKH(),
+    public KhachHangModel getKhachHangByMa(String ma) {
+        return khr.getKhachHangByMa(ma);
+    }
+    
+    public ArrayList<KhachHangModel> getKHByGT(String gt) {
+        return khr.getKHByGT(gt);
+    }
+    
+    public ArrayList<KhachHangModel> getKHByTrangThai(int TrangThai) {
+        return khr.getKHByTrangThai(TrangThai);
+    }
+
+    public KhachHangModel updateKhachHang(KhachHangModel khVM) {
+       var x = khr.updateKhachHang(new KhachHang(khVM.getMaKH(), khVM.getLoaiKH(),
                 khVM.getTenKH(), khVM.getDiaChi(), khVM.getGioiTinh(), khVM.getEmail(),
                 khVM.getSdt(), khVM.getNgaySinh(), khVM.getNgayThamGia(), khVM.getTrangThai()));
-        return new KhachHangViewModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
+        return new KhachHangModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
                 x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
                 x.getNgayThamGia(), x.getTrangThai());
     }

@@ -116,7 +116,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="rdoKHNgung" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtNgaySinh" min="-2" pref="241" max="-2" attributes="0"/>
+                                      <Component id="txtKHNgaySinh" min="-2" pref="241" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -176,7 +176,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtNgaySinh" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtKHNgaySinh" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -236,7 +236,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="txtDiaChi">
+            <Component class="javax.swing.JTextArea" name="txtDiaChiKH">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -310,9 +310,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnLamMoiFromKH" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSuaKH" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnThemKH" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLamMoi" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSua" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnThem" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -322,35 +322,44 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="16" max="32767" attributes="0"/>
-                      <Component id="btnThemKH" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnThem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnSuaKH" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSua" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnLamMoiFromKH" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLamMoi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnThemKH">
+            <Component class="javax.swing.JButton" name="btnThem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnSuaKH">
+            <Component class="javax.swing.JButton" name="btnSua">
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLamMoiFromKH">
+            <Component class="javax.swing.JButton" name="btnLamMoi">
               <Properties>
                 <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtNgaySinh">
+        <Component class="com.toedter.calendar.JDateChooser" name="txtKHNgaySinh">
         </Component>
       </SubComponents>
     </Container>
@@ -479,6 +488,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblThongtinKHMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
