@@ -6,6 +6,7 @@ public class DBConnection {
     public static String Url = "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6;encrypt=true;trustServerCertificate=true";
     public static String Username = "sa";
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static String Pass = "Anh020903";
 =======
 <<<<<<< HEAD
@@ -13,6 +14,12 @@ public class DBConnection {
 =======
     public static String Pass = "123456";
 >>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45
+>>>>>>> origin/master
+=======
+
+    public static String Pass = "123456789";
+
+
 >>>>>>> origin/master
 
     static {
