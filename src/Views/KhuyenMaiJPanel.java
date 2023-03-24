@@ -186,17 +186,17 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             }
         }
 
-//        int compare = nbd.compareTo(nkt);
-//        if (compare > 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else if (compare == 0) {
-//            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
-//            return null;
-//        } else {
-//            date = txtBD.getDate();
-//            date1 = txtKetThuc.getDate();
-//        }
+        int compare = nbd.compareTo(nkt);
+        if (compare > 0) {
+            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+            return null;
+        } else if (compare == 0) {
+            JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
+            return null;
+        } else {
+            date = txtBD.getDate();
+            date1 = txtKetThuc.getDate();
+        }
         try {
             Date currentDate = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
