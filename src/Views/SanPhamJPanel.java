@@ -43,9 +43,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.RichTextString;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -2410,6 +2417,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             XSSFSheet sheet = workBook.createSheet("Danh sách sản phẩm");
             XSSFRow row = null;
             Cell cell = null;
+            row=sheet.createRow(1);
+            cell = (XSSFCell) row.createCell(0, CellType.STRING);
+            cell.setCellValue("BẢNG DANH SÁCH CHI TIẾT SẢN PHẨM");
+            sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 13));
+            
             row = sheet.createRow(2);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");

@@ -194,7 +194,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         String dchi = txtDchi.getText().trim();
         String sdt = txtSdt.getText().trim();
         String email = txtEmail.getText().trim();
-        String mk = new String(String.valueOf(txtPass.getPassword()));
+        String mk = String.valueOf(txtPass.getPassword());
         ChucVu cv = (ChucVu) cbbCV.getModel().getSelectedItem();
         int tt = rdoDiLam.isSelected() == true ? 1 : 0;
         if (ma.length() == 0) {

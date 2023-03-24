@@ -114,14 +114,16 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
     private KhuyenMaiModel getformdata() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        SimpleDateFormat sdf1 = new SimpleDateFormat("YYYY-dd-MM");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         String makm = txtMaKhuyenMai.getText().trim();
         String tenkm = txtTenKhuyenMai.getText().trim();
         String hinhthuc = cbbHinhThucGiamGia.getSelectedIndex() == 0 ? "Giảm theo%" : "Giảm Theo Tiền";
         BigDecimal giatri = null;
         BigDecimal giamtoida = null;
-        Date NgayBatDau = txtBD.getDate();
-        Date NgayKetThuc = txtKetThuc.getDate();
+        String ngayBD=txtBD.getDate().toString();
+        String ngayKT=txtKetThuc.getDate().toString();
+        Date NgayBatDau ;
+        Date NgayKetThuc ;
         int trangthai = 0;
         if (makm.length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống mã Khuyến Mại");
@@ -157,29 +159,21 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             }
         }
 
-        if (NgayBatDau == null) {
+        if (ngayBD == null) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày bắt đầu");
             txtBD.requestFocus();
             return null;
         } else {
             
-            try {
-                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+            NgayBatDau = txtBD.getDate();
         }
-        if (NgayKetThuc == null) {
+        if (ngayKT == null) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày kết thúc");
             txtKetThuc.requestFocus();
             return null;
         } else {
             
-            try {
-                NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+            NgayKetThuc = txtKetThuc.getDate();
         }
 
         int compare = NgayBatDau.compareTo(NgayKetThuc);
@@ -193,20 +187,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         } else {
             
 
-            try {
-                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
-                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+            NgayBatDau = txtBD.getDate();
+            NgayKetThuc = txtKetThuc.getDate();
             
         }
           Date currentDate = new Date();
-        try {
-            currentDate=sdf1.parse(currentDate.toString());
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+        
           if(currentDate.before(NgayKetThuc)){
               trangthai=0;
           }else if(currentDate.after(NgayKetThuc)){
