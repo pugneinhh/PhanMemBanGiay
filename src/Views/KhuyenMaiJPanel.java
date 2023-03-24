@@ -166,7 +166,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             try {
                 NgayBatDau = sdf1.parse(txtBD.getDate().toString());
             } catch (ParseException ex) {
-                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
         if (NgayKetThuc == null) {
@@ -178,7 +178,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             try {
                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
             } catch (ParseException ex) {
-                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
 
@@ -197,7 +197,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                 NgayBatDau = sdf1.parse(txtBD.getDate().toString());
                  NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
             } catch (ParseException ex) {
-                Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
             
         }
@@ -205,7 +205,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         try {
             currentDate=sdf1.parse(currentDate.toString());
         } catch (ParseException ex) {
-            Logger.getLogger(KhuyenMaiJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
           if(currentDate.before(NgayKetThuc)){
               trangthai=0;
