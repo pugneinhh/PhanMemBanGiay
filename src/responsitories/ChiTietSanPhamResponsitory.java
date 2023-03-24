@@ -58,7 +58,99 @@ public class ChiTietSanPhamResponsitory {
                 list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaNhapLonHon(BigDecimal giaNhap) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaNhap >= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaNhap);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaNhapNhoHon(BigDecimal giaNhap) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaNhap <= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaNhap);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaBanNhoHon(BigDecimal giaBan) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaBan <= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaBan);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaBanLonHon(BigDecimal giaBan) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaBan >= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaBan);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
         return list;
@@ -80,7 +172,7 @@ public class ChiTietSanPhamResponsitory {
                 return new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ChiTietSanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
     }
@@ -259,4 +351,5 @@ public class ChiTietSanPhamResponsitory {
 //        System.out.println(kq);
 //
 //    }
+    
 }

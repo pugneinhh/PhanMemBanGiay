@@ -3,11 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/ts/src/Views/FormNhanVien.java</file>
             <file>file:/D:/ts/src/Views/DangNhap.java</file>
             <file>file:/D:/ts/src/responsitories/KhuyenMaiResbonsitory.java</file>
             <file>file:/D:/ts/src/Views/KhuyenMaiJPanel.java</file>
             <file>file:/D:/ts/src/Views/KhachHangJPanel.java</file>
+=======
+            <file>file:/D:/PhanMemBanGiay/src/Views/SanPhamJPanel.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Services/ChiTietSanPhamService.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/Barcode.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/QRCode.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/DangNhap.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/responsitories/ChiTietSanPhamResponsitory.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Views/BanHangJPanel.java</file>
+            <file>file:/D:/PhanMemBanGiay/src/Utilities/DBConnection.java</file>
+>>>>>>> 26b11a9de2f4a5f2598237e7d6ea23de07f41530
         </group>
     </open-files>
 </project-private>
