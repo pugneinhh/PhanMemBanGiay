@@ -165,10 +165,16 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         } else {
 
             try {
+<<<<<<< HEAD
                 date = txtBD.getDate();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
+=======
+                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+>>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
             }
         }
 
@@ -179,10 +185,16 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         } else {
 
             try {
+<<<<<<< HEAD
                 date1 = txtKetThuc.getDate();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
+=======
+                NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+>>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
             }
         }
 
@@ -194,10 +206,23 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "ngày kết thúc phải sau ngày bắt đầu");
             return null;
         } else {
+<<<<<<< HEAD
             date = txtBD.getDate();
             date1 = txtKetThuc.getDate();
+=======
+            
+
+            try {
+                NgayBatDau = sdf1.parse(txtBD.getDate().toString());
+                 NgayKetThuc = sdf1.parse(txtKetThuc.getDate().toString());
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            
+>>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
         }
         try {
+<<<<<<< HEAD
             Date currentDate = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-dd-MM");
 
@@ -208,6 +233,11 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             }
         } catch (Exception e) {
             System.out.println("Đã xảy ra lỗi: " + e.getMessage());
+=======
+            currentDate=sdf1.parse(currentDate.toString());
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+>>>>>>> 9812632860548f3eb7e7ed2873443241285b77c8
         }
 
         KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, hinhthuc, giatri, giamtoida, date, date1,1 );

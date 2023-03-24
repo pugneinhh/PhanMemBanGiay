@@ -1025,6 +1025,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             String chucvu = tblNVLam.getValueAt(row, 9).toString();
             cbbCV.getModel().setSelectedItem(getCV(row, chucvu));
             String hinh = tblNVLam.getValueAt(row, 10).toString();
+            
             ImageIcon icon = new ImageIcon(getClass().getResource("/AnhNV/" + hinh));
             Image img = icon.getImage();
             lblHinh.setIcon(new ImageIcon(img.getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_SMOOTH)));
