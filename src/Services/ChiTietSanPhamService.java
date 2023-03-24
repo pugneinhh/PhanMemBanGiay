@@ -51,6 +51,12 @@ public class ChiTietSanPhamService {
         var x = ctspr.updateCTSP(new ChiTietSanPham(ctspm.getIdSP(), ctspm.getIdKM(),ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getMaQR(),ctspm.getHinhanh(),ctspm.getSoLuong(),ctspm.getIdDM(),ctspm.getIdSize(),ctspm.getIdMS(),ctspm.getIdCL(),ctspm.getIdDC(),ctspm.getMota(),ctspm.getTrangThai()));
        return new ChiTietSanPhamModel(ctspm.getIdSP(), ctspm.getIdKM(),ctspm.getGiaNhap(), ctspm.getGiaBan(),ctspm.getMaQR(),ctspm.getHinhanh(),ctspm.getSoLuong(),ctspm.getIdDM(),ctspm.getIdSize(),ctspm.getIdMS(),ctspm.getIdCL(),ctspm.getIdDC(),ctspm.getMota(),ctspm.getTrangThai());
     }
+    
+    public ChiTietSanPhamModel updateKM (ChiTietSanPhamModel ctspm){
+        var x = ctspr.updateKM(new ChiTietSanPham(ctspm.getIdKM(), ctspm.getIdDM()));
+        return new ChiTietSanPhamModel(ctspm.getIdKM(),ctspm.getIdDM());
+        
+    }
 
     public Integer deleteCTSP(String qr) {
         return ctspr.deleteCTSP(qr);

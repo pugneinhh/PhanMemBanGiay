@@ -34,6 +34,11 @@ public class ChiTietSanPham {
     public ChiTietSanPham() {
     }
 
+    public ChiTietSanPham(KhuyenMai idKM, DanhMuc idDM) {
+        this.idKM = idKM;
+        this.idDM = idDM;
+    }
+
     public ChiTietSanPham(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;

@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Duan1_Nhom7/src/Services/ChiTietSanPhamService.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/FormNhanVien.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Services/DanhMucService.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/ViewModels/DanhMucModel.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/responsitories/ChiTietSanPhamResponsitory.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/Barcode.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/BanHangJPanel.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Services/SanPhamService.java</file>
+            <file>file:/D:/ts/src/Services/KhachHangService.java</file>
+            <file>file:/D:/ts/src/Views/QLGiaoCa.java</file>
+            <file>file:/D:/ts/src/responsitories/GiaoCaResbonsitory.java</file>
         </group>
     </open-files>
 </project-private>

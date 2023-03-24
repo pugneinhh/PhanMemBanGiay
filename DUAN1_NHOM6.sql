@@ -182,8 +182,16 @@ NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0		
 )
-select*from KhuyenMai
-
+delete  from KhuyenMai where makm ='M22234'
+select *From khuyenmai
+9E9C8B02-1440-45A6-8425-042DB956EA11
+select *from DanhMuc
+select *from ChatLieu
+select *from SanPham
+select *from ChiTietSanPham
+select * from khuyenmai
+select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11'
+update ChiTietSanPham set idkm = 'F86B6461-D3F8-4454-BFB8-127B07DF675B' where id in  (select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11')
 select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
 from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
 
@@ -392,6 +400,11 @@ VALUES(NewID(),'KM01',N'Mừng 8/3',20000,30000,'08/03/2023','11/03/2023',N'Gi�
 
 INSERT INTO KhuyenMai(Id,maKM,tenKM,giaTri,giamToiDa,ngayBatDau,ngayKetThuc,hinhThucApDung,apDungGiamGia,loaiGiamGia,NgayTao,TrangThai)
 VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N'Giảm theo %',N'Hóa Đơn Trên 300000',N'Chương trình',getDate(),0)
+
+
+
+INSERT INTO KhuyenMai VALUES (NEWID(),'KM03',N'Mừng Sinh Nhật',10,30000,'01/12/2023','11/01/2023',N'Giảm theo %',N'Hóa Đơn Trên 3020000',N'Chương trình',GetDate(),null,1)
+
 
 
 --HoaDon--

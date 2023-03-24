@@ -195,6 +195,15 @@ public class ChiTietSanPhamResponsitory {
                 ctsp.getMaQR());
         return ctsp;
     }
+    
+    public ChiTietSanPham updateKM(ChiTietSanPham ctsp){
+        String sql = "update chitietsanpham set idkm= ? where id in (select id from chitietsanpham where danhmuc = ?)";
+        JDBCHelper.executeUpdate(sql, 
+                ctsp.getIdKM(),
+                ctsp.getIdDM());
+        return ctsp;
+    }
+            
 
     public Integer updateCTSP1(ChiTietSanPham ctsp) {
         String sql = "UPDATE ChiTietSanPham SET idsp= ?,gianhap=?,giaban= ?,hinhanh= ? , "

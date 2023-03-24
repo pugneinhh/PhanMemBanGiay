@@ -46,8 +46,20 @@ public class KhuyenMaiService {
         
     
     }
+    
+    
     public Integer deleteKM(String id){
         return kmr.deleteKM(id);
     }
-    
+     public ArrayList<KhuyenMaiModel> getIDByMa(String ma){
+        ArrayList<KhuyenMaiModel> list = new ArrayList<>();
+        ArrayList<KhuyenMai> km = kmr.getIDByMa(ma);
+        for(KhuyenMai x : km){          
+            list.add(new KhuyenMaiModel(x.getIdKM(), x.getMaKM(), x.getTenKM(),x.getGiaTri(),x.getGiamToiDa(), x.getNgayKetThuc(),
+   x.getNgayKetThuc(),x.getHinhThucApDung(), x.getApDungGiamGia(),x.getLoaiGiamGia(),x.getNgayTao(),x.getNgaySua(),x.getTrangThai()));
+        }
+        return list;
+    }
+           
+     
 }
