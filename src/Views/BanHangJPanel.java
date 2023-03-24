@@ -760,7 +760,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbDanhMucActionPerformed
 
     private void txtThanhTienFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtThanhTienFocusGained
-        txtSLSP.setText("");
+        txtThanhTien.setText("");
     }//GEN-LAST:event_txtThanhTienFocusGained
 
     private void tblThongtinKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThongtinKHMouseClicked

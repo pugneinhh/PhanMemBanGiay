@@ -7,6 +7,7 @@ package Views;
 import DomainModels.KhachHang;
 import Services.KhachHangService;
 import ViewModels.KhachHangModel;
+import ViewModels.KhachHangViewModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,11 +82,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         String email = txtKHEmail.getText();
         String sdt = txtKHSdt.getText();
         String nSinh = txtKHNgaySinh.getDate().toString();
-<<<<<<< HEAD:src/Views/KhachHang.java
-        String nThamGia = txtKHNgaySinh.getDate().toString();
-=======
 
->>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
+        String nThamGia = txtKHNgaySinh.getDate().toString();
+
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
         
         if(ma.trim().length() == 0){
@@ -152,7 +151,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 return null;
             }
         }
-<<<<<<< HEAD:src/Views/KhachHang.java
+
         if (nThamGia.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày tham gia");
             txtKHNgaySinh.requestFocus();
@@ -166,9 +165,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 return null;
             }
         }
-=======
 
->>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
         
         KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, nSinh, email, sdt, date, null, tt);
         return kh;
@@ -722,8 +719,5 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenKH;
     // End of variables declaration//GEN-END:variables
 
-<<<<<<< HEAD:src/Views/KhachHang.java
-=======
-
->>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45:src/Views/KhachHangJPanel.java
 }
+
