@@ -40,6 +40,11 @@ public class ChiTietSanPhamModel {
     public ChiTietSanPhamModel() {
     }
 
+    public ChiTietSanPhamModel(KhuyenMai idKM, DanhMuc idDM) {
+        this.idKM = idKM;
+        this.idDM = idDM;
+    }
+
     public ChiTietSanPhamModel(String idCTSP, SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, Date ngayTao, Date ngaySua, int trangThai) {
         this.idCTSP = idCTSP;
         this.idSP = idSP;
