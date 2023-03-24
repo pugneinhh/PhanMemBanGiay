@@ -85,8 +85,8 @@ public class ChiTietSanPhamResponsitory {
         return null;
     }
 
-    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByQR(String ma) {
-        ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
+    public ArrayList<ChiTietSanPham> getChiTietSanPhamByQR(String ma) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
         String sql = "select a.IDSP, a.IDKM, a.GiaNhap, a.GiaBan, a.QR, a.HinhAnh, "
                 + "a.SoLuong, a.DanhMuc,a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, "
                 + "a.TrangThai from ChiTietSanPham as a where QR like ?";
@@ -105,10 +105,10 @@ public class ChiTietSanPhamResponsitory {
                 MauSac ms = msr.getMSByID(rs.getString(10));
                 ChatLieu cl = clr.getCLByID(rs.getString(11));
                 DoCao dc = dcr.getDCByID(rs.getString(12));
-                ChiTietSanPhamModel ctspM = new ChiTietSanPhamModel(sp, km, rs.getBigDecimal(3), rs.getBigDecimal(4),
+                ChiTietSanPham ctsp = new ChiTietSanPham(sp, km, rs.getBigDecimal(3), rs.getBigDecimal(4),
                         rs.getInt(5), rs.getString(6), rs.getInt(7), dm, size, ms, cl, dc, rs.getString(13), rs.getInt(14));
 
-                list.add(ctspM);
+                list.add(ctsp);
             }
             c.close();
             ps.close();
