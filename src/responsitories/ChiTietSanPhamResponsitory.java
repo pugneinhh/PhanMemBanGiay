@@ -229,6 +229,12 @@ public class ChiTietSanPhamResponsitory {
         int row = JDBCHelper.executeUpdate(sql, qr);
         return row;
     }
+    public ChiTietSanPham updateByID1(ChiTietSanPham ctsp){
+        String sql = "update chitietsanpham set IDKM = ? Where ID = ?";
+        JDBCHelper.executeUpdate(sql,ctsp.getIdKM().getIdKM(), ctsp.getIdCTSP());
+        return ctsp;
+    }
+
 
 //    public static void main(String[] args) {
 //        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();

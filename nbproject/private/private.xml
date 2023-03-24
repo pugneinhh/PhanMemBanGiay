@@ -3,26 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/D:/ts/src/Views/SanPhamJPanel.java</file>
+            <file>file:/D:/ts/src/responsitories/ChiTietSanPhamResponsitory.java</file>
+            <file>file:/D:/ts/src/Services/ChiTietSanPhamService.java</file>
+            <file>file:/D:/ts/src/Views/FormNhanVien.java</file>
             <file>file:/D:/ts/src/Services/KhachHangService.java</file>
+            <file>file:/D:/ts/src/responsitories/KhuyenMaiResbonsitory.java</file>
+            <file>file:/D:/ts/src/Views/KhuyenMaiJPanel.java</file>
             <file>file:/D:/ts/src/Views/QLGiaoCa.java</file>
             <file>file:/D:/ts/src/responsitories/GiaoCaResbonsitory.java</file>
-=======
-            <file>file:/D:/PhanMemBanGiay/src/responsitories/NhanVienResponsitory.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Services/MauSacService.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/BanHangJPanel.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/responsitories/KhachHangResponsitory.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/SanPhamJPanel.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/KhachHangJPanel.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/LichSuGiaoDich.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Services/KhachHangService.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/KhachLe.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Services/DanhMucService.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Services/SanPhamService.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/DangNhap.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/FormNhanVien.java</file>
-            <file>file:/D:/PhanMemBanGiay/src/Views/Barcode.java</file>
->>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45
         </group>
     </open-files>
 </project-private>
