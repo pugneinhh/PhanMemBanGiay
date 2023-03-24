@@ -28,6 +28,7 @@ import ViewModels.MauSacModel;
 import ViewModels.SanPhamModel;
 import ViewModels.SizeModel;
 import com.barcodelib.barcode.Linear;
+import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,8 +42,12 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -202,7 +207,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     public void loadTBSanPham(long Trang) {
         ArrayList<ChiTietSanPhamModel> list = getSP();
         dtmCTSP.setRowCount(0);
+        JLabel lAnhSPTB=new JLabel();
+                    
         for (ChiTietSanPhamModel ctspM : list) {
+            
+                    
             dtmCTSP.addRow(new Object[]{
                 ctspM.getMaQR(),
                 ctspM.getIdSP(),
@@ -218,9 +227,25 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 ctspM.getHinhanh(),
                 ctspM.getTrangThai() == 1 ? "Còn" : "Hết"
             });
+            
         }
+        
     }
+    class myTableCellRenderer implements TableCellRenderer {
 
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+
+//            Change Image column minimum width and maximum width
+            TableColumn tb = table.getColumn("Hình");
+            tb.setMaxWidth(60);
+            tb.setMinWidth(60);
+            table.setRowHeight(60);
+            return (Component) value;
+
+        }
+
+    }
     //////////////////////////////////////////////TableThongTinSP/////////////////////////////////////////////////////////
     private void loadTableThongTinSP() {
         ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
@@ -824,9 +849,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbbDanhMucSP, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(423, 423, 423)
+                        .addGap(420, 420, 420)
                         .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(71, 71, 71))))
+                        .addGap(74, 74, 74))))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addComponent(btnThemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
