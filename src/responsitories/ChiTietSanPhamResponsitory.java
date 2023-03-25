@@ -15,6 +15,7 @@ import DomainModels.Size;
 import Utilities.DBConnection;
 import Utilities.JDBCHelper;
 import ViewModels.ChiTietSanPhamModel;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -175,7 +176,7 @@ public class ChiTietSanPhamResponsitory {
         }
         return null;
     }
-<<<<<<< HEAD
+
     public  ChiTietSanPham  getChiTietSanPhamByIDkmd(String idCTSP) {
  ArrayList<ChiTietSanPham> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietSanPham WHERE ID=?";
@@ -197,13 +198,10 @@ public class ChiTietSanPhamResponsitory {
         return null;
     }
     
-    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByQR(String ma) {
-        ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
-=======
-
+ 
     public ArrayList<ChiTietSanPham> getChiTietSanPhamByQR(String ma) {
         ArrayList<ChiTietSanPham> list = new ArrayList<>();
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+
         String sql = "select a.IDSP, a.IDKM, a.GiaNhap, a.GiaBan, a.QR, a.HinhAnh, "
                 + "a.SoLuong, a.DanhMuc,a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, "
                 + "a.TrangThai from ChiTietSanPham as a where QR like ?";

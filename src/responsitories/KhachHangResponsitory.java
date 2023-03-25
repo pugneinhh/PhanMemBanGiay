@@ -34,12 +34,9 @@ public class KhachHangResponsitory {
         return kh;
     }
 
-<<<<<<< HEAD
     public KhachHangModel getKhachHangByid(String ma) {
         ArrayList<KhachHangModel>list=new ArrayList<>();
-=======
-    public KhachHangModel gettheomakh(String ma) {
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+
         String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
                 + "from KhachHang\n"
                 + "where ID = ?";
@@ -229,7 +226,7 @@ public class KhachHangResponsitory {
         return row;
     }
 
-<<<<<<< HEAD
+
     public ArrayList<KhachHangModel> getTheoSDT(String SDT) {
          ArrayList<KhachHangModel> list = new ArrayList<>();
         String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
@@ -250,11 +247,11 @@ public class KhachHangResponsitory {
         return list;
     }
 
-=======
+
     public static void main(String[] args) {
         KhachHangResponsitory khRes = new KhachHangResponsitory();
         //System.out.println(khRes.getAllKhachHang());
         System.out.println(khRes.getKhachHangBysdt("0962335335"));
     }
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+
 }

@@ -7,7 +7,6 @@ package Views;
 import DomainModels.KhachHang;
 import Services.KhachHangService;
 import ViewModels.KhachHangModel;
-import ViewModels.KhachHangViewModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,8 +83,6 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         String sdt = txtKHSdt.getText();
         String nSinh = txtKHNgaySinh.getDate().toString();
 
-        String nThamGia = txtKHNgaySinh.getDate().toString();
-
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
 
         if (ma.trim().length() == 0) {
@@ -153,26 +150,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         }
 
-<<<<<<< HEAD
-        if (nThamGia.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Không được để trống ngày tham gia");
-            txtKHNgaySinh.requestFocus();
-            return null;
-        } else {
-
-            try {
-                date = txtKHNgaySinh.getDate();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        
-        KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, nSinh, email, sdt, date, null, tt);
-=======
         KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, gt, email, sdt, date, null, tt);
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
         return kh;
     }
 
@@ -542,11 +520,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tên SP", "Số lượng", "Giá bán", "Tổng tiền", "Trạng thái"
+                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tên SP", "Số lượng", "Giá bán", "Tổng tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -814,4 +792,3 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
 }
-

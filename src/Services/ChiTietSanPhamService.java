@@ -73,17 +73,14 @@ public class ChiTietSanPhamService {
     public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByDanhMuc(String danhMuc) {
         return ctspr.getChiTietSanPhamByDanhMuc(danhMuc);
     }
-<<<<<<< HEAD
+
    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByid(String ma) {
         return ctspr.getChiTietSanPhamByID(ma);
     }
       public ChiTietSanPham getChiTietSanPhamByidkmd(String ma) {
         return ctspr.getChiTietSanPhamByIDkmd(ma);
-=======
 
-    public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByMa(String ma) {
-        return ctspr.getChiTietSanPhamByDanhMuc(ma);
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+
     }
 
     public ChiTietSanPhamModel insertCTSP(ChiTietSanPhamModel ctspm) {

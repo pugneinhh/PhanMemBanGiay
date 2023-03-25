@@ -5,13 +5,9 @@ import java.sql.*;
 public class DBConnection {
     public static String Url = "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6;encrypt=true;trustServerCertificate=true";
     public static String Username = "sa";
-<<<<<<< HEAD
-    public static String Pass = "123";
-=======
 
-    public static String Pass = "123456789";
 
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+    public static String Pass = "Anh020903";
 
     static {
         try {          

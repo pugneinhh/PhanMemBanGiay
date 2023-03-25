@@ -19,38 +19,41 @@ import responsitories.HoaDonCTResbonsitory;
  * @author HP
  */
 public class HoaDonChiTieservice {
-     private final HoaDonCTResbonsitory hdctrs;
 
-    public HoaDonChiTieservice(){
-              this.hdctrs=new HoaDonCTResbonsitory();
+    private final HoaDonCTResbonsitory hdctrs;
+
+    public HoaDonChiTieservice() {
+        this.hdctrs = new HoaDonCTResbonsitory();
     }
 
-
-    
-       public ArrayList<HoaDonChiTiet> getAllhoadon() {
+    public ArrayList<HoaDonChiTiet> getAllhoadon() {
         ArrayList<HoaDonChiTiet> list = new ArrayList<>();
         ArrayList<DomainModels.HoaDonChiTiet> kh = hdctrs.getAllhoadonct();
         for (DomainModels.HoaDonChiTiet x : kh) {
-            list.add(new DomainModels.HoaDonChiTiet(x.getIdCTSP(), x.getSoLuong(),x.getDonGia()));
+            list.add(new DomainModels.HoaDonChiTiet(x.getIdCTSP(), x.getSoLuong(), x.getDonGia()));
         }
         return list;
     }
-    public ArrayList<Hoadonct_SanpCT_Sp> gettheoMAhd(String MA){
+
+    public ArrayList<Hoadonct_SanpCT_Sp> gettheoMAhd(String MA) {
         return hdctrs.gethdByID(MA);
     }
-        public HoaDon gettheoidhd(String id){
+
+    public HoaDon gettheoidhd(String id) {
         return hdctrs.getIDHoaDon(id);
     }
-    public  hoadonchitietviewmodel inserthdct(HoaDonChiTiet hd){
-          ArrayList<HoaDonChiTiet> list = hdctrs.getAllhoadonct();
-      
-        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia(), hd.getNgayBan(),
+
+    public hoadonchitietviewmodel inserthdct(HoaDonChiTiet hd) {
+        ArrayList<HoaDonChiTiet> list = hdctrs.getAllhoadonct();
+
+        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getDonGia(), hd.getSoLuong(), hd.getNgayBan(),
                 hd.getNgayTao(), hd.getNgaySua(), hd.getTrangThai()));
         return new hoadonchitietviewmodel(x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
     }
-       public boolean updateKhachHang(HoaDonChiTiet hd) {
- var x = hdctrs.updatehoadon(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia(), hd.getNgayBan(),
+
+    public boolean updateKhachHang(HoaDonChiTiet hd) {
+        var x = hdctrs.updatehoadon(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getDonGia(), hd.getSoLuong(), hd.getNgayBan(),
                 hd.getNgayTao(), hd.getNgaySua(), hd.getTrangThai()));
-         return x;
+        return x;
     }
 }

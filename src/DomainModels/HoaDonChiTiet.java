@@ -32,12 +32,11 @@ public class HoaDonChiTiet {
         this.donGia = donGia;
     }
 
-<<<<<<< HEAD
+
     
-    public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
-=======
+
     public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
->>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
+
         this.idHDCT = idHDCT;
         this.idHD = idHD;
         this.idCTSP = idCTSP;
