@@ -207,11 +207,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     public void loadTBSanPham(long Trang) {
         ArrayList<ChiTietSanPhamModel> list = getSP();
         dtmCTSP.setRowCount(0);
-        JLabel lAnhSPTB=new JLabel();
-                    
+        JLabel lAnhSPTB = new JLabel();
+
         for (ChiTietSanPhamModel ctspM : list) {
-            
-                    
+
             dtmCTSP.addRow(new Object[]{
                 ctspM.getMaQR(),
                 ctspM.getIdSP(),
@@ -227,10 +226,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 ctspM.getHinhanh(),
                 ctspM.getTrangThai() == 1 ? "Còn" : "Hết"
             });
-            
+
         }
-        
+
     }
+
     class myTableCellRenderer implements TableCellRenderer {
 
         @Override
@@ -246,6 +246,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
 
     }
+
     //////////////////////////////////////////////TableThongTinSP/////////////////////////////////////////////////////////
     private void loadTableThongTinSP() {
         ArrayList<ChiTietSanPhamModel> list = ctsps.getAllChiTietSanPham();
@@ -2357,15 +2358,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         if (checkSP().equals("Có")) {
             JOptionPane.showMessageDialog(this, "Đã có sản phẩm này");
 
-//        if (checkSP().equals("Sửa")) {
-            int xn = JOptionPane.showConfirmDialog(this, "Đã có sản phẩm này! Bạn có muốn thay đổi thông tin sản phẩm không?");
-            if (xn == JOptionPane.YES_OPTION) {
-
                 btnCapNhatSPActionPerformed(evt);
 
                 loadTBSanPham(1);
 
-            }
+            
         } else if (checkSP().equals("Thêm")) {
             if (ctsps.insertCTSP(ctspM) != null) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
@@ -2387,12 +2384,26 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             return;
         }
         ctspM.setMaQR(Integer.parseInt(tblThongTinSP.getValueAt(row, 0).toString()));
-        if (ctsps.updateCTSP(ctspM) != null) {
-            JOptionPane.showMessageDialog(this, "Sửa thành công");
-            loadTBSanPham(1);
-        } else {
-            JOptionPane.showMessageDialog(this, "Sửa thất bại");
+        if (checkSP().equals("Có")) {
+            int xn = JOptionPane.showConfirmDialog(this, "Bạn có muốn thay đổi thông tin sản phẩm không?");
+            if (xn == JOptionPane.YES_OPTION) {
+                if (ctsps.updateCTSP(ctspM) != null) {
+                    JOptionPane.showMessageDialog(this, "Sửa thành công");
+                    loadTBSanPham(1);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sửa thất bại");
+                }
+            }
+
+        } else if (checkSP().equals("Thêm")) {
+            if (ctsps.insertCTSP(ctspM) != null) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+                loadTBSanPham(1);
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            }
         }
+
     }//GEN-LAST:event_btnCapNhatSPActionPerformed
 
     private void btnTimTheoMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimTheoMaActionPerformed
@@ -2462,11 +2473,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             XSSFSheet sheet = workBook.createSheet("Danh sách sản phẩm");
             XSSFRow row = null;
             Cell cell = null;
-            row=sheet.createRow(1);
+            row = sheet.createRow(1);
             cell = (XSSFCell) row.createCell(0, CellType.STRING);
             cell.setCellValue("BẢNG DANH SÁCH CHI TIẾT SẢN PHẨM");
             sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 13));
-            
+
             row = sheet.createRow(2);
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("STT");
@@ -2526,27 +2537,27 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 cell = row.createCell(12, CellType.STRING);
                 cell.setCellValue(list.get(i).getHinhanh());
                 cell = row.createCell(13, CellType.STRING);
-                cell.setCellValue(list.get(i).getTrangThai()==1?"Còn":"Hết");
+                cell.setCellValue(list.get(i).getTrangThai() == 1 ? "Còn" : "Hết");
             }
-            File f=new File("D:\\PhanMemBanGiay\\Danhsachsanpham.xlsx");
+            File f = new File("D:\\PhanMemBanGiay\\Danhsachsanpham.xlsx");
             fos = new FileOutputStream(f);
             workBook.write(fos);
             fos.close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        }catch (IOException ex) {
-                ex.printStackTrace();
-            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         JOptionPane.showMessageDialog(this, "In thành công");
-            
-        
+
+
     }//GEN-LAST:event_btnXuatExcelActionPerformed
 
     private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
         loadTBSanPham(1);
     }//GEN-LAST:event_btnAllActionPerformed
-    private void loadTimGiaNhapLonHon(BigDecimal giaTien){
-        ArrayList<ChiTietSanPhamModel> ds=ctsps.getSPTheoGiaNhapLonHon(giaTien);
+    private void loadTimGiaNhapLonHon(BigDecimal giaTien) {
+        ArrayList<ChiTietSanPhamModel> ds = ctsps.getSPTheoGiaNhapLonHon(giaTien);
         dtmCTSP.setRowCount(0);
         for (ChiTietSanPhamModel ctspM : ds) {
             dtmCTSP.addRow(new Object[]{
@@ -2566,8 +2577,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             });
         }
     }
-    private void loadTimGiaNhapNhoHon(BigDecimal giaTien){
-        ArrayList<ChiTietSanPhamModel> ds=ctsps.getSPTheoGiaNhapNhoHon(giaTien);
+
+    private void loadTimGiaNhapNhoHon(BigDecimal giaTien) {
+        ArrayList<ChiTietSanPhamModel> ds = ctsps.getSPTheoGiaNhapNhoHon(giaTien);
         dtmCTSP.setRowCount(0);
         for (ChiTietSanPhamModel ctspM : ds) {
             dtmCTSP.addRow(new Object[]{
@@ -2587,8 +2599,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             });
         }
     }
-    private void loadTimGiaBanNhoHon(BigDecimal giaTien){
-        ArrayList<ChiTietSanPhamModel> ds=ctsps.getSPTheoGiaBanNhoHon(giaTien);
+
+    private void loadTimGiaBanNhoHon(BigDecimal giaTien) {
+        ArrayList<ChiTietSanPhamModel> ds = ctsps.getSPTheoGiaBanNhoHon(giaTien);
         dtmCTSP.setRowCount(0);
         for (ChiTietSanPhamModel ctspM : ds) {
             dtmCTSP.addRow(new Object[]{
@@ -2608,8 +2621,9 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             });
         }
     }
-    private void loadTimGiaBanLonHon(BigDecimal giaTien){
-        ArrayList<ChiTietSanPhamModel> ds=ctsps.getSPTheoGiaBanLonHon(giaTien);
+
+    private void loadTimGiaBanLonHon(BigDecimal giaTien) {
+        ArrayList<ChiTietSanPhamModel> ds = ctsps.getSPTheoGiaBanLonHon(giaTien);
         dtmCTSP.setRowCount(0);
         for (ChiTietSanPhamModel ctspM : ds) {
             dtmCTSP.addRow(new Object[]{
@@ -2631,44 +2645,44 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }
     private void btnTimTheoGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimTheoGiaActionPerformed
 
-        BigDecimal giaTien=null;
-        giaTien=BigDecimal.valueOf(Double.parseDouble(txtTimGia.getText()));
-        if(cbbDkienGia.getSelectedIndex()==0&cbbGia.getSelectedIndex()==0){
-            if(ctsps.getSPTheoGiaNhapLonHon(giaTien).size()>0){
-                
+        BigDecimal giaTien = null;
+        giaTien = BigDecimal.valueOf(Double.parseDouble(txtTimGia.getText()));
+        if (cbbDkienGia.getSelectedIndex() == 0 & cbbGia.getSelectedIndex() == 0) {
+            if (ctsps.getSPTheoGiaNhapLonHon(giaTien).size() > 0) {
+
                 JOptionPane.showMessageDialog(this, "Tìm thành công");
                 loadTimGiaNhapLonHon(giaTien);
-            }else{
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá nhập lớn hơn giá "+giaTien);
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá nhập lớn hơn giá " + giaTien);
                 loadTBSanPham(1);
-            } 
-        }else if(cbbDkienGia.getSelectedIndex()==1&cbbGia.getSelectedIndex()==0){
-            if(ctsps.getSPTheoGiaNhapNhoHon(giaTien).size()>0){
-                
+            }
+        } else if (cbbDkienGia.getSelectedIndex() == 1 & cbbGia.getSelectedIndex() == 0) {
+            if (ctsps.getSPTheoGiaNhapNhoHon(giaTien).size() > 0) {
+
                 JOptionPane.showMessageDialog(this, "Tìm thành công");
                 loadTimGiaNhapNhoHon(giaTien);
-            }else{
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá nhập nhỏ hơn giá "+giaTien);
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá nhập nhỏ hơn giá " + giaTien);
                 loadTBSanPham(1);
-            } 
-        }else if(cbbDkienGia.getSelectedIndex()==0&cbbGia.getSelectedIndex()==1){
-            if(ctsps.getSPTheoGiaBanLonHon(giaTien).size()>0){
-                
+            }
+        } else if (cbbDkienGia.getSelectedIndex() == 0 & cbbGia.getSelectedIndex() == 1) {
+            if (ctsps.getSPTheoGiaBanLonHon(giaTien).size() > 0) {
+
                 JOptionPane.showMessageDialog(this, "Tìm thành công");
                 loadTimGiaBanLonHon(giaTien);
-            }else{
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá bán lớn hơn giá "+giaTien);
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá bán lớn hơn giá " + giaTien);
                 loadTBSanPham(1);
-            } 
-        }else if(cbbDkienGia.getSelectedIndex()==1&cbbGia.getSelectedIndex()==1){
-            if(ctsps.getSPTheoGiaBanNhoHon(giaTien).size()>0){
-                
+            }
+        } else if (cbbDkienGia.getSelectedIndex() == 1 & cbbGia.getSelectedIndex() == 1) {
+            if (ctsps.getSPTheoGiaBanNhoHon(giaTien).size() > 0) {
+
                 JOptionPane.showMessageDialog(this, "Tìm thành công");
                 loadTimGiaBanNhoHon(giaTien);
-            }else{
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá bán nhỏ hơn giá "+giaTien);
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sản phẩm nào có giá bán nhỏ hơn giá " + giaTien);
                 loadTBSanPham(1);
-            } 
+            }
         }
     }//GEN-LAST:event_btnTimTheoGiaActionPerformed
 
