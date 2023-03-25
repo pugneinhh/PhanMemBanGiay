@@ -1,39 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package DomainModels;
 
+package ViewModels;
+
+import DomainModels.KhachHang;
+import DomainModels.KhuyenMai;
+import DomainModels.NhanVien;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- *
- * @author Phanh
- */
-public class HoaDon {
-    private String idHD;
-        private String maHD;
+
+public class HoaDonViewModel {
     private NhanVien idNV;
     private KhachHang idKH;
-    private Date ngayTao;
+    private Date ngaymua;
     private BigDecimal thanhTien;
     private KhuyenMai idKM;
     private String ghiChu;
     private Date ngaySua;
-    private Date ngaytao;
+     private Date ngaytao;
     private int trangThai;
     private String mahd;
 
-    public HoaDon() {
+    public HoaDonViewModel() {
     }
 
-    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
-        this.idHD = idHD;
-        this.maHD = maHD;
+    public HoaDonViewModel(NhanVien idNV, KhachHang idKH, Date ngaymua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
         this.idNV = idNV;
         this.idKH = idKH;
-        this.ngayTao = ngayTao;
+        this.ngaymua = ngaymua;
         this.thanhTien = thanhTien;
         this.idKM = idKM;
         this.ghiChu = ghiChu;
@@ -41,27 +34,6 @@ public class HoaDon {
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
         this.mahd = mahd;
-    }
-
-    public HoaDon(String idHD, String maHD) {
-        this.idHD = idHD;
-        this.maHD = maHD;
-    }
-
-    public String getIdHD() {
-        return idHD;
-    }
-
-    public void setIdHD(String idHD) {
-        this.idHD = idHD;
-    }
-
-    public String getMaHD() {
-        return maHD;
-    }
-
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
     }
 
     public NhanVien getIdNV() {
@@ -80,12 +52,12 @@ public class HoaDon {
         this.idKH = idKH;
     }
 
-    public Date getNgayTao() {
-        return ngayTao;
+    public Date getNgaymua() {
+        return ngaymua;
     }
 
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
+    public void setNgaymua(Date ngaymua) {
+        this.ngaymua = ngaymua;
     }
 
     public BigDecimal getThanhTien() {
@@ -144,7 +116,6 @@ public class HoaDon {
         this.mahd = mahd;
     }
 
+
     
-
-
 }

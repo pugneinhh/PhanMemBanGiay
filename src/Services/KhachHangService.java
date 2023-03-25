@@ -30,6 +30,17 @@ public class KhachHangService {
         return list;
     }
 
+    public KhachHangModel gettheomakh(String SDT){
+        return khr.getKhachHangByid(SDT);
+    }
+     public ArrayList<KhachHangModel> gettheosdt(String SDT){
+        return khr.getKhachHangBysdt(SDT);
+    }
+     public String getIDHoaDon(String maHD) {
+        return khr.getIDkhachhang(maHD);
+    }
+
+
     public KhachHangModel insertKhachHang(KhachHangModel khVM) {
         ArrayList<KhachHang> list = khr.getAllKhachHang();
         for (KhachHang kh : list) {
@@ -46,17 +57,25 @@ public class KhachHangService {
 
     }
 
+//
+//    public KhachHang getKhachHangByMa(String ma) {
+//        return khr.getKhachHangByMa(ma);
+//    }
+    
+
+
     public ArrayList<KhachHangModel> getKhachHangBysdt(String sdt) {
         return khr.getKhachHangBysdt(sdt);
     }
 
-    public String getIDHoaDon(String maHD) {
-        return khr.getIDkhachhang(maHD);
-    }
+//    public String getIDHoaDon(String maHD) {
+//        return khr.getIDkhachhang(maHD);
+//    }
+//
+//    public KhachHangModel gettheomakh(String ma) {
+//        return khr.gettheomakh(ma);
+//    }
 
-    public KhachHangModel gettheomakh(String ma) {
-        return khr.gettheomakh(ma);
-    }
 
     public ArrayList<KhachHangModel> getKHByGT(String gt) {
         return khr.getKHByGT(gt);
