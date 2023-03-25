@@ -1,4 +1,4 @@
-/*
+          /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
@@ -185,6 +185,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         btnKhBh = new javax.swing.JButton();
         txtTimKiemBH = new javax.swing.JTextField();
         btnTimKiemBH = new javax.swing.JButton();
+        btnQuetSp = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -279,6 +280,13 @@ public class BanHangJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnQuetSp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/barcode-scan.png"))); // NOI18N
+        btnQuetSp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuetSpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -290,7 +298,9 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTimKiemBH, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTimKiemBH, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnTimKiemBH, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(btnQuetSp))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnKhBh, btnSanpham});
@@ -307,6 +317,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
                         .addComponent(btnTimKiemBH, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                         .addComponent(txtTimKiemBH)))
                 .addGap(7, 7, 7))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnQuetSp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(33, 33, 33))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnKhBh, btnSanpham});
@@ -849,7 +863,28 @@ public class BanHangJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblGioHangMouseEntered
 
+<<<<<<< HEAD
     private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
+=======
+    private void btnQuetSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuetSpActionPerformed
+        new QRCode().setVisible(true);
+    }//GEN-LAST:event_btnQuetSpActionPerformed
+
+    public void loadDataToCBBDM() {
+        this.dcmDanhMuc.removeAllElements();
+        List<DanhMucModel> list = new ArrayList<>();
+        try {
+            list = this.dmsv.getAllDanhMuc();
+            DanhMuc dm = new DanhMuc("", "ALL", 0);
+            this.dcmDanhMuc.addElement(dm);
+            for (DanhMucModel danhMuc : list) {
+                this.dcmDanhMuc.addElement(dm);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(BanHangJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
 
     }//GEN-LAST:event_tblGioHangMouseClicked
 
@@ -890,6 +925,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel Khach;
     private javax.swing.JScrollPane Sanpham;
     private javax.swing.JButton btnKhBh;
+    private javax.swing.JButton btnQuetSp;
     private javax.swing.JButton btnSanpham;
     private javax.swing.JButton btnTimKiemBH;
     private javax.swing.JButton btnUpdate;

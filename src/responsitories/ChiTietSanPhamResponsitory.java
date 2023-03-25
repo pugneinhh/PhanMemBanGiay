@@ -57,7 +57,99 @@ public class ChiTietSanPhamResponsitory {
                 list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaNhapLonHon(BigDecimal giaNhap) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaNhap >= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaNhap);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaNhapNhoHon(BigDecimal giaNhap) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaNhap <= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaNhap);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaBanNhoHon(BigDecimal giaBan) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaBan <= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaBan);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<ChiTietSanPham> getSPTheoGiaBanLonHon(BigDecimal giaBan) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "select * from ChiTietSanPham where giaBan >= ?";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql,giaBan);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
         return list;
@@ -79,10 +171,11 @@ public class ChiTietSanPhamResponsitory {
                list.add( new ChiTietSanPhamModel(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ChiTietSanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
     }
+<<<<<<< HEAD
     public  ChiTietSanPham  getChiTietSanPhamByIDkmd(String idCTSP) {
  ArrayList<ChiTietSanPham> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietSanPham WHERE ID=?";
@@ -106,6 +199,11 @@ public class ChiTietSanPhamResponsitory {
     
     public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByQR(String ma) {
         ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
+=======
+
+    public ArrayList<ChiTietSanPham> getChiTietSanPhamByQR(String ma) {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
         String sql = "select a.IDSP, a.IDKM, a.GiaNhap, a.GiaBan, a.QR, a.HinhAnh, "
                 + "a.SoLuong, a.DanhMuc,a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, "
                 + "a.TrangThai from ChiTietSanPham as a where QR like ?";
@@ -124,10 +222,10 @@ public class ChiTietSanPhamResponsitory {
                 MauSac ms = msr.getMSByID(rs.getString(10));
                 ChatLieu cl = clr.getCLByID(rs.getString(11));
                 DoCao dc = dcr.getDCByID(rs.getString(12));
-                ChiTietSanPhamModel ctspM = new ChiTietSanPhamModel(sp, km, rs.getBigDecimal(3), rs.getBigDecimal(4),
+                ChiTietSanPham ctsp = new ChiTietSanPham(sp, km, rs.getBigDecimal(3), rs.getBigDecimal(4),
                         rs.getInt(5), rs.getString(6), rs.getInt(7), dm, size, ms, cl, dc, rs.getString(13), rs.getInt(14));
 
-                list.add(ctspM);
+                list.add(ctsp);
             }
             c.close();
             ps.close();
@@ -214,6 +312,15 @@ public class ChiTietSanPhamResponsitory {
                 ctsp.getMaQR());
         return ctsp;
     }
+    
+    public ChiTietSanPham updateKM(ChiTietSanPham ctsp){
+        String sql = "update chitietsanpham set idkm= ? where id in (select id from chitietsanpham where danhmuc = ?)";
+        JDBCHelper.executeUpdate(sql, 
+                ctsp.getIdKM(),
+                ctsp.getIdDM());
+        return ctsp;
+    }
+            
 
     public Integer updateCTSP1(ChiTietSanPham ctsp) {
         String sql = "UPDATE ChiTietSanPham SET idsp= ?,gianhap=?,giaban= ?,hinhanh= ? , "
@@ -239,6 +346,12 @@ public class ChiTietSanPhamResponsitory {
         int row = JDBCHelper.executeUpdate(sql, qr);
         return row;
     }
+    public ChiTietSanPham updateByID1(ChiTietSanPham ctsp){
+        String sql = "update chitietsanpham set IDKM = ? Where ID = ?";
+        JDBCHelper.executeUpdate(sql,ctsp.getIdKM().getIdKM(), ctsp.getIdCTSP());
+        return ctsp;
+    }
+
 
 //    public static void main(String[] args) {
 //        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();
@@ -263,4 +376,5 @@ public class ChiTietSanPhamResponsitory {
 //        System.out.println(kq);
 //
 //    }
+    
 }

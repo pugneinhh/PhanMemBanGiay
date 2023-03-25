@@ -144,7 +144,7 @@ NgayNhan DATE DEFAULT NULL,
 NgayTao DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
-CREATE TABLE HoaDon(
+drop TABLE HoaDon(
 ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 MaHD VARCHAR(20) UNIQUE,
 IDNV UNIQUEIDENTIFIER,
@@ -158,7 +158,7 @@ NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
 
-CREATE TABLE ChiTietHoaDon(
+drop TABLE ChiTietHoaDon(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 IDHD UNIQUEIDENTIFIER,
 IDCTSP UNIQUEIDENTIFIER,
@@ -184,10 +184,21 @@ NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0		
 )
-select*from KhuyenMai
-
+<<<<<<< HEAD
+=======
+delete  from KhuyenMai where makm ='M22234'
+select *From khuyenmai
+9E9C8B02-1440-45A6-8425-042DB956EA11
+select *from DanhMuc
+select *from ChatLieu
+select *from SanPham
+select *from ChiTietSanPham
+select * from khuyenmai
+select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11'
+update ChiTietSanPham set idkm = 'F86B6461-D3F8-4454-BFB8-127B07DF675B' where id in  (select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11')
 select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
 from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
+>>>>>>> origin/master
 
 CREATE TABLE GioHang(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -295,9 +306,9 @@ INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM09',N'Sandal'
 
 --ChucVu--
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV01',N'Quản lý',getDate(),0)
+INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Thu Ngân',getDate(),0)
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Nhân Viên',getDate(),0)
 
-select * from NHANVIEN
 --NhanVien--
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
@@ -314,8 +325,7 @@ VALUES(NewID(),'NV04',N'Nguyễn Xuân Quang','10/10/2003',N'Nam',N'Hà Nội','
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
 'anh04','1B50EED8-0CEB-4612-AE2F-BA52D24208F9','anhP.png',getDate(),1)
-=======
-select *from chucVu
+
 --NhanVien--
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
@@ -332,8 +342,6 @@ VALUES(NewID(),'NV04',N'Nguyễn Xuân Quang','10/10/2003',N'Nam',N'Hà Nội','
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
 'anh04','F62CDC0C-94FB-481E-9A83-B83BC135DD3C','anhP.png',getDate(),1)
->>>>>>> 8b4f47f7153274ff5f9279135fa4487be8327354
-
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV06',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','0355242668','anhqpt@gmail.com',
 'quanh','4a9c5cec-a0f7-4d8a-bd6b-db8c6fae92e2','anhP.png',getDate(),0)
@@ -363,9 +371,10 @@ INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP10',N'Già
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP11',N'Giày Cao Gót Phối Đá',getDate(),0)
 INSERT INTO SanPham (Id,MaSP,Ten,NgayTao,TrangThai) VALUES(NewID(),'SP12',N'Giày Sandal Đế Xuồng Dày',getDate(),0)
 
-
-
-select*from nhanvien
+--GiaoCa--
+INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
+GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
+VALUES(NEWID(),'MAGC01','2885C9C8-7829-4E2B-98D5-CE43999A2132','9CA0F7FB-AAE9-4AD7-9579-D41D19707883',
 
 --GiaoCa--
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
@@ -375,26 +384,35 @@ VALUES(NEWID(),'MAGC01','2885C9C8-7829-4E2B-98D5-CE43999A2132','9CA0F7FB-AAE9-4A
 
 VALUES(NEWID(),'MAGC01','32A7EEED-CD63-450A-B8B9-24207A878DB3','72C76BB2-60D7-4D38-A12C-18C92B22C77C',
 
+>>>>>>> origin/master
 '12h45','12h45',1000000,50000,70000,2000000,N'Đinh Thị Quỳnh Nga Giao Ca',N'Nguyễn Thị Phương Anh Nhận Ca',getDate(),0)
 
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
+<<<<<<< HEAD
+VALUES(NEWID(),'MAGC02','E3341015-82D6-4603-9E5F-15B7B51BBFC6','E429A1F4-F84A-4AE7-A7C6-1A222929BECE',
+=======
 
 VALUES(NEWID(),'MAGC02','E3341015-82D6-4603-9E5F-15B7B51BBFC6','E429A1F4-F84A-4AE7-A7C6-1A222929BECE',
 
 VALUES(NEWID(),'MAGC02','FFFFADB7-D66C-49AC-B7DC-83E1CE5C46C5','C2CE73F7-78B8-4B81-904D-DA38E5ABF2D5',
 
+>>>>>>> origin/master
 '12h45','12h45',1110000,52000,70000,3500000,N'Trịnh Thị Thủy Giao Ca',N'Nguyễn Xuân Quang Nhận Ca',getDate(),0)
 
 INSERT INTO GiaoCa(Id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,
 GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
+<<<<<<< HEAD
+VALUES(NEWID(),'MAGC03','57D86B60-5508-40CF-88CE-DF1757F85931','32A7EEED-CD63-450A-B8B9-24207A878DB3',
+=======
 
 VALUES(NEWID(),'MAGC03','E429A1F4-F84A-4AE7-A7C6-1A222929BECE','9CA0F7FB-AAE9-4AD7-9579-D41D19707883',
 
 VALUES(NEWID(),'MAGC03','57D86B60-5508-40CF-88CE-DF1757F85931','32A7EEED-CD63-450A-B8B9-24207A878DB3',
 
+>>>>>>> origin/master
 '12h45','12h45',1010000,43000,61000,5240000,N'Nguyễn Xuân Quang Giao Ca',N'Nguyễn Thị Phương Anh Nhận Ca',getDate(),0)
-select * from NHANVIEN
+
 --KhuyenMai--
 INSERT INTO KhuyenMai(Id,maKM,tenKM,giaTri,giamToiDa,ngayBatDau,ngayKetThuc,hinhThucApDung,apDungGiamGia,loaiGiamGia,NgayTao,TrangThai)
 VALUES(NewID(),'KM01',N'Mừng 8/3',20000,30000,'08/03/2023','11/03/2023',N'Giảm theo tiền',N'Hóa Đơn Đầu Tiên',N'Bạn Mới',getDate(),0)
@@ -403,6 +421,7 @@ INSERT INTO KhuyenMai(Id,maKM,tenKM,giaTri,giamToiDa,ngayBatDau,ngayKetThuc,hinh
 VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N'Giảm theo %',N'Hóa Đơn Trên 300000',N'Chương trình',getDate(),0)
 
 
+<<<<<<< HEAD
 --HoaDon--
 select *from NHANVIEN
 select *from KhachHang
@@ -411,6 +430,19 @@ select *from ChiTietHoaDon
 select *from KhuyenMai
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
 select *from Chitiethoadon
+=======
+
+INSERT INTO KhuyenMai VALUES (NEWID(),'KM03',N'Mừng Sinh Nhật',10,30000,'01/12/2023','11/01/2023',N'Giảm theo %',N'Hóa Đơn Trên 3020000',N'Chương trình',GetDate(),null,1)
+
+
+
+--HoaDon--
+INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
 VALUES(NewID(),'HD01','E3341015-82D6-4603-9E5F-15B7B51BBFC6','89D43549-A371-4536-A561-80C805AF6D26',
 '02/02/2022',150000,'38941BF7-B3F5-407C-BDBA-1A357F486512',null,getDate(),0)
 
@@ -421,10 +453,15 @@ VALUES(NewID(),'HD02','3A75CE97-7659-4BE4-9D3D-A7AB670E84E3','560DCF60-5E56-497E
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
 VALUES(NewID(),'HD03','2885C9C8-7829-4E2B-98D5-CE43999A2132','29C2CCF2-0398-434D-9689-AE734FA36B1E',
 '02/02/2022',100000,'C978F3E1-48AA-4317-9D9D-B739D2CB130D',null,getDate(),0)
+<<<<<<< HEAD
+
+INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
+=======
 select *from nhanvien
 select *from khuyenmai
 select *from khachhang
 
+>>>>>>> origin/master
 VALUES(NewID(),'HD01','72C76BB2-60D7-4D38-A12C-18C92B22C77C','8AD96BF4-D04B-468F-8994-21EFC56283B4',
 '02/02/2022',150000,'5C7683D6-6BD5-4224-AC9C-3706511F81C6',null,getDate(),0)
 
@@ -444,14 +481,24 @@ VALUES(NewID(),'150A646B-0615-4B0B-BEFB-0DCA5466B4D5','F056F4EB-9096-43A0-92D0-6
 --SanPhamChiTiet--
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
 
+<<<<<<< HEAD
+=======
 NgayTao,TrangThai)VALUES(NewID(),'1B2BAEA2-7EAC-433D-9BAD-5031B914A4E6','38941BF7-B3F5-407C-BDBA-1A357F486512',
 79000,237000,'SP01.png',100,'F270F10F-4983-4B65-8C79-72D2A2F97CCC','BF9BD25C-7FC8-4181-8FC7-8407DC2789FD',
 '89362E6F-75E3-46E8-9AAE-5BB1053DACAA','A85ACB1B-9876-4103-BB6C-63F27990F801','8C586CA7-595C-4349-A32A-DAADC9D7F7E0',
 
+>>>>>>> origin/master
 NgayTao,TrangThai)VALUES(NewID(),'33B2639C-74E9-441C-9CBB-2ABF287F0EF1','5C7683D6-6BD5-4224-AC9C-3706511F81C6',
 89000,267000,'SP03.png',100,'9E9C8B02-1440-45A6-8425-042DB956EA11','8AE44247-B48F-4517-922C-6B029FFFC4BC',
 '91EA9048-5690-4A9C-8F9F-05EEF2323B35','907B759C-EDC2-4346-9092-20D701D11950','151CFAE0-F5AF-4B36-B469-0BE3F586D774',
 N'Hàng đẹp',getDate(),0)
+<<<<<<< HEAD
+
+INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
+NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889b-b995-44d2-a831-5dad5f90d272',
+79000,237000,'SP01.png',100,'a36b9478-8938-4da9-bc2f-37f1a2ebae3e','521b933f-92c3-45cc-adfa-c5cdc643e34a',
+'62dbd908-abb0-425f-a16c-cf4ae6c1ec4b','82425e0e-ecce-45e1-a502-dd9ac2e88430','df1976f9-5b91-4a41-8f38-4b357db04e0a',
+=======
 select *from DanhMuc
 select *from SanPham
 select * from chitiethoadon
@@ -460,14 +507,8 @@ NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889
 79000,237000,'SP01.png',100,'a36b9478-8938-4da9-bc2f-37f1a2ebae3e','521b933f-92c3-45cc-adfa-c5cdc643e34a',
 '62dbd908-abb0-425f-a16c-cf4ae6c1ec4b','82425e0e-ecce-45e1-a502-dd9ac2e88430','df1976f9-5b91-4a41-8f38-4b357db04e0a',
 
+>>>>>>> origin/master
 N'Chất lượng cao',getDate(),0)
-select * from sanpham
-select * from khuyenmai
-select *from DanhMuc
-select * from Size
-select * from MauSac
-select * from ChatLieu
-select * from DoCao
 
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
 NgayTao,TrangThai)VALUES(NewID(),
@@ -485,46 +526,54 @@ N'Hàng đẹp'
 ,getDate(),
 0)
 
-
+SELECT * FROM SanPham
+SELECT * FROM DanhMuc
+SELECT * FROM Size
+SELECT * FROM MauSac
+SELECT * FROM ChatLieu
+SELECT * FROM DOCAO
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,TrangThai)
-VALUES(NewID(),'',
-'873ff970-ffa2-4ace-aec0-04e57ab4e5b1',
-'7d0c5e40-8a62-4752-a0b9-bfc6a200c0b9',
+VALUES(NewID(),
+'FE33BC47-7F7F-4BE6-9D7C-05BD015B6623',
+null,
 111000,
 222000,
-'SP03.png',
+'SP01.png',
 111,
-'',
-?,
-?,
-?,
-?,getDate(),?)
+'471840E0-C49A-4975-92EA-862218BFD95B',
+'6EEA4437-0941-42BB-9086-373E640EFF2F',
+'4BFE8527-1F19-4CBD-B068-4F8214CDD590',
+'52802728-9070-4639-A88E-72E8BD28C7AC',
+'DED76EC4-528B-480A-80F3-C731E668A21E','TT',getDate(),1)
 
-	SELECT * From chitietsanpham
-	UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+SELECT * From chitietsanpham
+UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN
     UPDATE KHACHHANG
-	SET DIEM=DIEM+(
-	SELECT THANHTIEN
+	SET DIEMEXP+=(
+	SELECT THANHTIEN * 0.01 
 	FROM INSERTED
-	)
-	WHERE KHACHHANG.ID= INSERTED.IDKH
+	), TICHDIEM+=(SELECT THANHTIEN *0.01 FROM INSERTED)
+	from KhachHang join inserted 
+	on KHACHHANG.ID= inserted.IDKH
 END
-
+select * from KhachHang
+select * from HoaDon
 CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
 BEGIN
-	IF INSERTED.DIEM>100
+	IF inserted.TICHDIEM>50000
 BEGIN
 	UPDATE KHACHHANG 
 	SET LOAIKH =N'VÀNG'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
-	IF INSERTED.DIEM>500
+	IF inserted.TICHDIEM>100000
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Kim cương'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
 END	
 
@@ -532,6 +581,7 @@ CREATE TRIGGER HANGMACDINH ON KHACHHANG AFTER INSERT AS
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Thành viên'
+<<<<<<< HEAD
 	WHERE KHACHHANG.ID=INSERTED.ID
 END
 select * from khachhang
@@ -544,3 +594,7 @@ select  SanPham.ma , sanpham.ten , HoaDonChiTiet.SoLuong,HoaDonChiTiet.DonGia ,C
 
 SELECT SanPham.MaSP,SanPham.Ten,ChiTietHoaDon.DonGia,ChiTietSanPham.IDSP,N'Thành tiền'=ChiTietHoaDon.SoLuong*ChiTietHoaDon.DonGia  FROM ChiTietHoaDon JOIN ChiTietSanPham ON ChiTietHoaDon.IDCTSP=ChiTietSanPham.Id 
 JOIN HoaDon ON ChiTietHoaDon.IDHD=HoaDon.ID JOIN SanPham ON ChiTietSanPham.IDSP=SanPham.Id WHERE HoaDon.MaHD=?
+=======
+	from khachhang join inserted on KHACHHANG.ID=inserted.ID
+END
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735

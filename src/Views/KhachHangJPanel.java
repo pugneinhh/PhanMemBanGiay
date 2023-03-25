@@ -11,6 +11,7 @@ import ViewModels.KhachHangViewModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,19 +20,20 @@ import javax.swing.table.DefaultTableModel;
  * @author HoiVN
  */
 public class KhachHangJPanel extends javax.swing.JPanel {
+
     private final KhachHangService khService;
     DefaultTableModel tableModelThongTin = new DefaultTableModel();
+
     /**
      * Creates new form KhachHang
      */
-    
     public KhachHangJPanel() {
         initComponents();
         khService = new KhachHangService();
         tableModelThongTin = (DefaultTableModel) tblThongtinKH.getModel();
         loadTableThongTin();
     }
-    
+
     private void loadTableThongTin() {
         ArrayList<KhachHangModel> list = khService.getAllKhachHang();
         tableModelThongTin.setRowCount(0);
@@ -45,13 +47,12 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 khachHangViewModel.getEmail(),
                 khachHangViewModel.getSdt(),
                 khachHangViewModel.getNgaySinh(),
-                khachHangViewModel.getNgayThamGia(),
-                khachHangViewModel.getTrangThai()==1?"Còn hoạt động":"Ngừng hoạt động"
+                khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
             });
         }
-        }
-        
-    private void clearForm(){
+    }
+
+    private void clearForm() {
         txtMaKH.setText("");
         txtTenKH.setText("");
         txtLoaiKH.setText("");
@@ -61,24 +62,24 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         rdoKHCon.setSelected(true);
         rdoKHNam.setSelected(true);
     }
-    
-    public KhachHangModel getMa(String ma){
+
+    public KhachHangModel getMa(String ma) {
         for (KhachHangModel kh : khService.getAllKhachHang()) {
-            if(kh.getMaKH().equalsIgnoreCase(ma)){
+            if (kh.getMaKH().equalsIgnoreCase(ma)) {
                 return kh;
             }
         }
         return null;
     }
-    
-    public KhachHangModel getFormData(){
+
+    public KhachHangModel getFormData() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date;
         String ma = txtMaKH.getText();
         String ten = txtTenKH.getText();
         String loai = txtLoaiKH.getText();
         String diaChi = txtDiaChiKH.getText();
-        int gt = rdoKHNam.isSelected() == true ? 1 : 0;
+        String gt = rdoKHNam.isSelected() == true ? "Nam" : "Nữ";
         String email = txtKHEmail.getText();
         String sdt = txtKHSdt.getText();
         String nSinh = txtKHNgaySinh.getDate().toString();
@@ -86,24 +87,24 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         String nThamGia = txtKHNgaySinh.getDate().toString();
 
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
-        
-        if(ma.trim().length() == 0){
+
+        if (ma.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã không được trống");
             return null;
         }
-        if(ten.trim().length() == 0){
+        if (ten.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã không được trống");
             return null;
         }
-        if(loai.trim().length() == 0){
+        if (loai.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã không được trống");
             return null;
         }
-        if(diaChi.trim().length() == 0){
+        if (diaChi.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã không được trống");
             return null;
         }
-        
+
         if (email.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống email");
             txtKHEmail.requestFocus();
@@ -116,7 +117,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 return null;
             }
         }
-        
+
         if (sdt.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống số điện thoại");
             txtKHSdt.requestFocus();
@@ -137,7 +138,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 return null;
             }
         }
-        
+
         if (nSinh.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày sinh");
             txtKHNgaySinh.requestFocus();
@@ -152,6 +153,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         }
 
+<<<<<<< HEAD
         if (nThamGia.trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống ngày tham gia");
             txtKHNgaySinh.requestFocus();
@@ -168,6 +170,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         
         KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, nSinh, email, sdt, date, null, tt);
+=======
+        KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, gt, email, sdt, date, null, tt);
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
         return kh;
     }
 
@@ -176,11 +181,12 @@ public class KhachHangJPanel extends javax.swing.JPanel {
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
@@ -213,7 +219,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblThongtinKH = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        lblTimSDT = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         cbbKHGioitinh = new javax.swing.JComboBox<>();
@@ -240,8 +246,10 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Giới tính");
 
+        buttonGroup1.add(rdoKHNam);
         rdoKHNam.setText("Nam");
 
+        buttonGroup1.add(rdoKHNu);
         rdoKHNu.setText("Nữ");
 
         jLabel6.setText("Email");
@@ -252,8 +260,10 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Trạng thái");
 
+        buttonGroup2.add(rdoKHCon);
         rdoKHCon.setText("Còn hoạt động");
 
+        buttonGroup2.add(rdoKHNgung);
         rdoKHNgung.setText("Ngừng hoạt động");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
@@ -417,11 +427,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "Loại KH", "Địa chỉ", "Giới tính", "Email", "SDT", "Ngày sinh", "Ngày tham gia", "Trạng thái"
+                "Mã KH", "Tên KH", "Loại KH", "Địa chỉ", "Giới tính", "Email", "SDT", "Ngày sinh", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -435,17 +445,33 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblThongtinKH);
 
-        jLabel17.setText("Tìm kiếm");
+        jLabel17.setText("Tìm theo SDT");
+
+        lblTimSDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblTimSDTActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lọc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel18.setText("Giới tính");
 
-        cbbKHGioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        cbbKHGioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cbbKHGioitinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbKHGioitinhActionPerformed(evt);
+            }
+        });
 
         jLabel19.setText("Trạng thái");
 
-        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn hoạt động", "Ngừng hoạt động" }));
+        cbbKHTrangThai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbKHTrangThaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -454,7 +480,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbbKHGioitinh, 0, 125, Short.MAX_VALUE)
+                    .addComponent(cbbKHGioitinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
@@ -484,11 +510,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField10)))
+                        .addComponent(lblTimSDT)))
                 .addGap(28, 28, 28)
                 .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -499,7 +525,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTimSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -562,7 +588,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -583,12 +609,12 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 663, Short.MAX_VALUE)
+            .addGap(0, 669, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(388, Short.MAX_VALUE)))
+                    .addContainerGap(394, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(284, 284, 284)
@@ -608,10 +634,10 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             return;
         }
         KhachHangModel kh = getFormData();
-        if(kh == null){
+        if (kh == null) {
             return;
         }
-        if(khService.updateKhachHang(kh) != null){
+        if (khService.updateKhachHang(kh) != null) {
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             loadTableThongTin();
             clearForm();
@@ -621,15 +647,15 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-       KhachHangModel kh = getFormData();
-        if(kh == null){
+        KhachHangModel kh = getFormData();
+        if (kh == null) {
             return;
         }
         if (getMa(kh.getMaKH()) != null) {
             JOptionPane.showMessageDialog(this, "Đã có mã này");
             return;
         }
-        if(khService.insertKhachHang(kh) != null){
+        if (khService.insertKhachHang(kh) != null) {
             JOptionPane.showMessageDialog(this, "Thêm thành công");
             loadTableThongTin();
             clearForm();
@@ -648,19 +674,19 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 txtTenKH.setText(tblThongtinKH.getValueAt(row, 1).toString());
                 txtLoaiKH.setText(tblThongtinKH.getValueAt(row, 2).toString());
                 txtDiaChiKH.setText(tblThongtinKH.getValueAt(row, 3).toString());
-                String gt=tblThongtinKH.getValueAt(row, 4).toString();
-                if(gt.equalsIgnoreCase("Nam")){
+                String gt = tblThongtinKH.getValueAt(row, 4).toString();
+                if (gt.equalsIgnoreCase("Nam")) {
                     rdoKHNam.setSelected(true);
-                }else{
+                } else {
                     rdoKHNu.setSelected(true);
                 }
                 txtKHEmail.setText(tblThongtinKH.getValueAt(row, 5).toString());
                 txtKHSdt.setText(tblThongtinKH.getValueAt(row, 6).toString());
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 7).toString());
                 txtKHNgaySinh.setDate(date);
-                Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 8).toString());
-                
-                String tt = tblThongtinKH.getValueAt(row, 9).toString();
+//                Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 8).toString());
+
+                String tt = tblThongtinKH.getValueAt(row, 8).toString();
                 if (tt.equalsIgnoreCase("Còn hoạt động")) {
                     rdoKHCon.setSelected(true);
                 } else {
@@ -671,14 +697,82 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_tblThongtinKHMouseClicked
- 
-    
-    
-    
+
+    private void lblTimSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblTimSDTActionPerformed
+        loadTableTimKiem();
+    }//GEN-LAST:event_lblTimSDTActionPerformed
+
+    private void cbbKHGioitinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKHGioitinhActionPerformed
+        String gioiTinh = cbbKHGioitinh.getSelectedItem().toString();
+        loadTableTimGioiTinh(gioiTinh);
+    }//GEN-LAST:event_cbbKHGioitinhActionPerformed
+
+    private void cbbKHTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKHTrangThaiActionPerformed
+        String tt = cbbKHTrangThai.getSelectedItem().toString();
+        loadTableTimTrangThai(tt);
+    }//GEN-LAST:event_cbbKHTrangThaiActionPerformed
+   
+    private void loadTableTimKiem() {
+        ArrayList<KhachHangModel> list = khService.getKhachHangBysdt(lblTimSDT.getText());
+        tableModelThongTin.setRowCount(0);
+        for (KhachHangModel khachHangViewModel : list) {
+            tableModelThongTin.addRow(new Object[]{
+                khachHangViewModel.getMaKH(),
+                khachHangViewModel.getTenKH(),
+                khachHangViewModel.getLoaiKH(),
+                khachHangViewModel.getDiaChi(),
+                khachHangViewModel.getGioiTinh(),
+                khachHangViewModel.getEmail(),
+                khachHangViewModel.getSdt(),
+                khachHangViewModel.getNgaySinh(),
+                khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
+            });
+        }
+    }
+
+    private void loadTableTimGioiTinh(String gioiTinh) {
+        ArrayList<KhachHangModel> list = khService.getKHByGT(gioiTinh);
+        tableModelThongTin.setRowCount(0);
+        for (KhachHangModel khachHangViewModel : list) {
+            tableModelThongTin.addRow(new Object[]{
+                khachHangViewModel.getMaKH(),
+                khachHangViewModel.getTenKH(),
+                khachHangViewModel.getLoaiKH(),
+                khachHangViewModel.getDiaChi(),
+                khachHangViewModel.getGioiTinh(),
+                khachHangViewModel.getEmail(),
+                khachHangViewModel.getSdt(),
+                khachHangViewModel.getNgaySinh(),
+                khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
+            });
+        }
+    }
+
+    private void loadTableTimTrangThai(String tt) {
+        ArrayList<KhachHangModel> list = khService.getKhachHangBysdt(tt);
+        tableModelThongTin.setRowCount(0);
+        for (KhachHangModel khachHangViewModel : list) {
+            tableModelThongTin.addRow(new Object[]{
+                khachHangViewModel.getMaKH(),
+                khachHangViewModel.getTenKH(),
+                khachHangViewModel.getLoaiKH(),
+                khachHangViewModel.getDiaChi(),
+                khachHangViewModel.getGioiTinh(),
+                khachHangViewModel.getEmail(),
+                khachHangViewModel.getSdt(),
+                khachHangViewModel.getNgaySinh(),
+                khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
+            });
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbKHGioitinh;
     private javax.swing.JComboBox<String> cbbKHTrangThai;
     private javax.swing.JLabel jLabel1;
@@ -703,7 +797,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField lblTimSDT;
     private javax.swing.JRadioButton rdoKHCon;
     private javax.swing.JRadioButton rdoKHNam;
     private javax.swing.JRadioButton rdoKHNgung;

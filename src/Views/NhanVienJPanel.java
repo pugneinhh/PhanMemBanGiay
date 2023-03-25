@@ -194,7 +194,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         String dchi = txtDchi.getText().trim();
         String sdt = txtSdt.getText().trim();
         String email = txtEmail.getText().trim();
-        String mk = new String(String.valueOf(txtPass.getPassword()));
+        String mk = String.valueOf(txtPass.getPassword());
         ChucVu cv = (ChucVu) cbbCV.getModel().getSelectedItem();
         int tt = rdoDiLam.isSelected() == true ? 1 : 0;
         if (ma.length() == 0) {
@@ -1025,6 +1025,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             String chucvu = tblNVLam.getValueAt(row, 9).toString();
             cbbCV.getModel().setSelectedItem(getCV(row, chucvu));
             String hinh = tblNVLam.getValueAt(row, 10).toString();
+            
             ImageIcon icon = new ImageIcon(getClass().getResource("/AnhNV/" + hinh));
             Image img = icon.getImage();
             lblHinh.setIcon(new ImageIcon(img.getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_SMOOTH)));

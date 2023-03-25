@@ -1,110 +1,25 @@
-﻿USE DUAN1_NHOM6
+﻿USE DUAN1_QLBanGiay
 GO
-
-<<<<<<< HEAD
-CREATE TABLE ChucVu(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(50) DEFAULT NULL,
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-Create TABLE NHANVIEN(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-MANV VARCHAR(20) UNIQUE,
-HoTen NVARCHAR(50) DEFAULT NULL,
-NgaySinh DATE DEFAULT NULL,
-GioiTinh NVARCHAR(25) DEFAULT NULL,
-DiaChi NVARCHAR(200) DEFAULT NULL,
-Sdt VARCHAR(10) DEFAULT NULL,
-Email VARCHAR(100) DEFAULT NULL,
-MatKhau VARCHAR(20),
-IDCV UNIQUEIDENTIFIER,
-Hinh VARCHAR(50),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE MauSac(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(30),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE ChatLieu(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(30),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE DoCao(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(30),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE DanhMuc(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(30),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE Size(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-Ma VARCHAR(20) UNIQUE,
-Ten NVARCHAR(30),
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-CREATE TABLE GiaoCa(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-MaGC VARCHAR(20) UNIQUE,
-MaNVGiao UNIQUEIDENTIFIER,
-MaNVNhan UNIQUEIDENTIFIER,
-GioNhanCa VARCHAR(20) DEFAULT NULL,
-GioGiaoCa VARCHAR(20) DEFAULT NULL,
-TienCoso DECIMAL(20,0) DEFAULT 0,
-TienPhatSinh DECIMAL(20,0) DEFAULT 0,
-DoanhThuCa DECIMAL(20,0) DEFAULT 0,
-TongTien DECIMAL(20,0) DEFAULT 0,
-GhiChuGiao NVARCHAR(200) DEFAULT NULL,
-GhiChuNhan NVARCHAR(200) DEFAULT NULL,
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
-INSERT INTO GiaoCa(id,MaGC,MaNVGiao,MaNVNhan,GioNhanCa,GioGiaoCa,TienCoso,TienPhatSinh,DoanhThuCa,TongTien,GhiChuGiao,GhiChuNhan,NgayTao,TrangThai)
-values(NEWID(),'MAGC01','NV01','NV02','12h43','12h45',1000000,50000,70000,2000000,'Đinh Thị Quỳnh Nga Giao Ca','Nguyễn Thị Phương Anh Nhận Ca',getDate(),1)
-=======
+USE DUAN1_NHOM6
+GO
 select * from MauSac
 select * from ChatLieu
 select * from ChiTietSanPham
-select b.MaSP , b.Ten ,a.GiaBan,a.SoLuong , a.Size , a.MauSac ,a.SoLuong,a.DoCao, a.ChatLieu ,a.DanhMuc, a.TrangThai,a.MoTa from ChiTietSanPham as a 
+select b.Ma , b.Ten ,a.GiaBan,a.SoLuong , a.Size , a.MauSac ,a.SoLuong,a.DoCao, a.ChatLieu ,a.DanhMuc, a.TrangThai,a.MoTa from ChiTietSanPham as a 
 join SanPham as b on a.IDSP = b.Id 
->>>>>>> 3509fe098102f0494e13bba029c73873fb14c8a2
 
-SELECT Id,MaSP,Ten,NgayTao,NgaySua,TrangThai FROM SanPham
-where MaSP = 'SP11'
+SELECT Id,Ma,Ten,NgayTao,NgaySua,TrangThai FROM SanPham
+where Ma = 'SP11'
 
 select Id,IDSP,IDKM,GiaNhap,GiaBan,QR,HinhAnh,SoLuong, DanhMuc,Size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,NgaySua,TrangThai
 from ChiTietSanPham
 
 SELECT * FROM DanhMuc
-where Id ='6328DCA6-E605-444D-91F1-05F6E90FA9CB'
+where Id ='689A4DE2-5886-4E77-8DB2-B794036ED024'
 
 select a.IDSP, a.IDKM, a.GiaNhap, a.GiaBan, a.QR, a.HinhAnh, a.SoLuong, a.DanhMuc,
 a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, a.TrangThai from ChiTietSanPham as a
-where QR = '20012007'
+where QR = '20012005'
 
 select * from ChiTietSanPham
 
@@ -113,20 +28,78 @@ a.size, a.MauSac, a.ChatLieu, a.DoCao, a.MoTa, a.TrangThai, DanhMuc.Ten from Chi
 join DanhMuc on DanhMuc.Id = a.DanhMuc
 where Ten like N'Đế vuông'
 
-<<<<<<< HEAD
 select * from SanPham
 where Id= ?
 
-UPDATE ChiTietSanPham SET idsp= 'BB8FA42C-BFC3-48C7-8215-C9E5C798583E',gianhap=111000,giaban= 220000,hinhanh= 'SP05' ,
-Soluong = 120 , DanhMuc= 'A36B9478-8938-4DA9-BC2F-37F1A2EBAE3E',Size = 
-'521B933F-92C3-45CC-ADFA-C5CDC643E34A',mausac='62DBD908-ABB0-425F-A16C-CF4AE6C1EC4B',
-ChatLieu='82425E0E-ECCE-45E1-A502-DD9AC2E88430',DoCao = 'DF1976F9-5B91-4A41-8F38-4B357DB04E0A',
-Mota='AABB',NGAYSUA=GETDATE() WHERE QR= 20012006
+UPDATE ChiTietSanPham SET idsp= '60ACA814-58C4-4D2B-BABA-8CA2C84E6ACB',gianhap=111000,giaban= 220000,hinhanh= 'SP05' ,
+Soluong = 120 , DanhMuc= '58FF1A77-4D6A-4DAB-A3BB-ADEEEE05703A',Size = 
+'09826C17-DF84-4B93-B27E-C067016D05E9',mausac='121c993e-f583-4f93-945f-0fbe776ee53d',
+ChatLieu='4ae2e322-9e35-455e-a4d2-d647f86525c6',DoCao = 'cea96a63-7e55-4ea5-8871-045393732bd2',
+Mota='AABB',NGAYSUA=GETDATE() WHERE QR= 20012004
 
 select * from NHANVIEN
-=======
-<<<<<<< HEAD
+
 select *from NHANVIEN
-=======
->>>>>>> 3509fe098102f0494e13bba029c73873fb14c8a2
->>>>>>> origin/master
+
+select*from KhuyenMai
+
+select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
+from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
+
+select * from chucvu
+
+select * from sanpham
+select * from khuyenmai
+select *from DanhMuc
+select * from Size
+select * from MauSac
+select * from ChatLieu
+select * from DoCao
+select * from ChiTietSanPham
+select * from KhachHang
+delete from ChiTietSanPham where QR = '20012021'
+
+select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai
+from KhachHang
+
+--select KhachHang.MaKH, KhachHang.TenKH, KhachHang.SDT, HoaDon.NgayMua, ChiTietSanPham.IDSP, ChiTietSanPham.SoLuong, ChiTietSanPham.GiaBan from ChiTietSanPham
+--join KhachHang on KhachHang.MaKH =
+
+select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, a.DanhMuc, a.DoCao from ChiTietSanPham as a
+join ChiTietHoaDon as b on b.IdCTSP = a.Id
+
+SELECT * From chitietsanpham
+UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+
+CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
+BEGIN
+    UPDATE KHACHHANG
+	SET DIEM=DIEM+(
+	SELECT THANHTIEN
+	FROM INSERTED
+	)
+	WHERE KHACHHANG.ID= INSERTED.IDKH
+END
+
+CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
+BEGIN
+	IF INSERTED.DIEM>100
+BEGIN
+	UPDATE KHACHHANG 
+	SET LOAIKH =N'VÀNG'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END
+	IF INSERTED.DIEM>500
+BEGIN
+	UPDATE KHACHHANG
+	SET LOAIKH=N'Kim cương'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END
+END	
+
+CREATE TRIGGER HANGMACDINH ON KHACHHANG AFTER INSERT AS
+BEGIN
+	UPDATE KHACHHANG
+	SET LOAIKH=N'Thành viên'
+	WHERE KHACHHANG.ID=INSERTED.ID
+END

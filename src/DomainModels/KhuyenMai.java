@@ -29,6 +29,8 @@ public class KhuyenMai {
     public KhuyenMai() {
     }
 
+  
+    
     public KhuyenMai(String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, int trangThai) {
         this.maKM = maKM;
         this.tenKM = tenKM;
@@ -40,6 +42,14 @@ public class KhuyenMai {
         this.apDungGiamGia = apDungGiamGia;
         this.loaiGiamGia = loaiGiamGia;
         this.trangThai = trangThai;
+    }
+
+//    public KhuyenMai(String maKM) {
+//        this.maKM = maKM;
+//    }
+
+    public KhuyenMai(String idKM) {
+        this.idKM = idKM;
     }
     
     public KhuyenMai(String idKM, String maKM, String tenKM, BigDecimal giaTri, BigDecimal giamToiDa, Date ngayBatDau, Date ngayKetThuc, String hinhThucApDung, String apDungGiamGia, String loaiGiamGia, Date ngayTao, Date ngaySua, int trangThai) {
@@ -164,8 +174,14 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return  tenKM ;
+=======
+        return "KhuyenMai{" + "idKM=" + idKM + ", maKM=" + maKM + ", tenKM=" + tenKM + ", giaTri=" + giaTri + ", giamToiDa=" + giamToiDa + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", hinhThucApDung=" + hinhThucApDung + ", apDungGiamGia=" + apDungGiamGia + ", loaiGiamGia=" + loaiGiamGia + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", trangThai=" + trangThai + '}';
+>>>>>>> 1f95eb57ed2f075285b8faf652ab924e20354735
     }
+
+   
     
     
 }
