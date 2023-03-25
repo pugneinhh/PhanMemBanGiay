@@ -292,7 +292,7 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
         if(getData()) {
         for(NhanVienModel x : list) {
             if(x.getMaNV().equalsIgnoreCase(user)) {
-                nvs.updateNV(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+                nvs.updateNV(new NhanVienModel(x.getIdNV(),x.getMaNV(), x.getHoTen(),x.getNgaySinh(),x.getGioiTinh(),x.getDiaChi(),x.getSdt(),x.getEmail(),x.getMaNV(),x.getIdCV(), x.getHinh(),x.getTrangThai()));
                                 JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
                                 this.dispose();
                 }
