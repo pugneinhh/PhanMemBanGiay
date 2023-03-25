@@ -30,6 +30,9 @@ public class KhachHangService {
         return list;
     }
     public KhachHangModel gettheomakh(String SDT){
+        return khr.getKhachHangByid(SDT);
+    }
+     public KhachHangModel gettheosdt(String SDT){
         return khr.getKhachHangBysdt(SDT);
     }
      public String getIDHoaDon(String maHD) {
@@ -52,10 +55,10 @@ public class KhachHangService {
         
 
     }
-
-    public KhachHangModel getKhachHangByMa(String ma) {
-        return khr.getKhachHangByMa(ma);
-    }
+//
+//    public KhachHang getKhachHangByMa(String ma) {
+//        return khr.getKhachHangByMa(ma);
+//    }
     
     public ArrayList<KhachHangModel> getKHByGT(String gt) {
         return khr.getKHByGT(gt);

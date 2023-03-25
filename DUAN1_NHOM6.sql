@@ -406,9 +406,11 @@ VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N
 --HoaDon--
 select *from NHANVIEN
 select *from KhachHang
+select *from HoaDon
+select *from ChiTietHoaDon
 select *from KhuyenMai
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
-
+select *from Chitiethoadon
 VALUES(NewID(),'HD01','E3341015-82D6-4603-9E5F-15B7B51BBFC6','89D43549-A371-4536-A561-80C805AF6D26',
 '02/02/2022',150000,'38941BF7-B3F5-407C-BDBA-1A357F486512',null,getDate(),0)
 
@@ -437,7 +439,7 @@ VALUES(NewID(),'HD03','57D86B60-5508-40CF-88CE-DF1757F85931','33F54253-38DB-443E
 
 --HoaDonChiTiet--
 INSERT INTO ChiTietHoaDon(Id,IDHD,IDCTSP,SoLuong,DonGia,NgayBan,NgayTao,TrangThai)
-VALUES()
+VALUES(NewID(),'150A646B-0615-4B0B-BEFB-0DCA5466B4D5','F056F4EB-9096-43A0-92D0-67C61713E641',1,'160000',getdate(),getdate(),0)
 
 --SanPhamChiTiet--
 INSERT INTO ChiTietSanPham(Id,IDSP,IDKM,GiaNhap,GiaBan,HinhAnh,SoLuong,DanhMuc,size,MauSac,ChatLieu,DoCao,MoTa,
@@ -452,6 +454,7 @@ NgayTao,TrangThai)VALUES(NewID(),'33B2639C-74E9-441C-9CBB-2ABF287F0EF1','5C7683D
 N'Hàng đẹp',getDate(),0)
 select *from DanhMuc
 select *from SanPham
+select * from chitiethoadon
 
 NgayTao,TrangThai)VALUES(NewID(),'bb8fa42c-bfc3-48c7-8215-c9e5c798583e','a8d3889b-b995-44d2-a831-5dad5f90d272',
 79000,237000,'SP01.png',100,'a36b9478-8938-4da9-bc2f-37f1a2ebae3e','521b933f-92c3-45cc-adfa-c5cdc643e34a',
@@ -531,4 +534,13 @@ BEGIN
 	SET LOAIKH=N'Thành viên'
 	WHERE KHACHHANG.ID=INSERTED.ID
 END
-select id from khachhang
+select * from khachhang
+select * from hoadon
+select * from Chitietsanpham
+select * from sanpham
+SELECT idctsp,soluong,dongia,N'Thành tiền'=SoLuong*dongia  FROM chitiethoadon
+select  SanPham.ma , sanpham.ten , HoaDonChiTiet.SoLuong,HoaDonChiTiet.DonGia ,ChiTietSP.idSP ,N'Thành tiền'=HoaDonChiTiet.SoLuong*HoaDonChiTiet.DonGia   from HoaDonChiTiet  join ChiTietSP  
+                on HoaDonChiTiet.IdChiTietSP = ChiTietSP.Id  join SanPham on sanpham.id=ChiTietSP.IdSp join hoadon on hoadon.id = HoaDonChiTiet.IdHoaDon where HoaDon.Ma =?
+
+SELECT SanPham.MaSP,SanPham.Ten,ChiTietHoaDon.DonGia,ChiTietSanPham.IDSP,N'Thành tiền'=ChiTietHoaDon.SoLuong*ChiTietHoaDon.DonGia  FROM ChiTietHoaDon JOIN ChiTietSanPham ON ChiTietHoaDon.IDCTSP=ChiTietSanPham.Id 
+JOIN HoaDon ON ChiTietHoaDon.IDHD=HoaDon.ID JOIN SanPham ON ChiTietSanPham.IDSP=SanPham.Id WHERE HoaDon.MaHD=?

@@ -15,7 +15,6 @@ import DomainModels.Size;
 import Utilities.DBConnection;
 import Utilities.JDBCHelper;
 import ViewModels.ChiTietSanPhamModel;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -64,8 +63,8 @@ public class ChiTietSanPhamResponsitory {
         return list;
     }
 
-    public ChiTietSanPham getChiTietSanPhamByID(String idCTSP) {
-
+    public  ArrayList<ChiTietSanPhamModel>  getChiTietSanPhamByID(String idCTSP) {
+ ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
         String sql = "SELECT * FROM ChiTietSanPham WHERE ID=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, idCTSP);
         try {
@@ -77,14 +76,34 @@ public class ChiTietSanPhamResponsitory {
                 MauSac ms = msr.getMSByID(rs.getString(11));
                 ChatLieu cl = clr.getCLByID(rs.getString(12));
                 DoCao dc = dcr.getDCByID(rs.getString(13));
-                return new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17));
+               list.add( new ChiTietSanPhamModel(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ChiTietSanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
+    public  ChiTietSanPham  getChiTietSanPhamByIDkmd(String idCTSP) {
+ ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "SELECT * FROM ChiTietSanPham WHERE ID=?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql, idCTSP);
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+               list.add( new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ChiTietSanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamByQR(String ma) {
         ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
         String sql = "select a.IDSP, a.IDKM, a.GiaNhap, a.GiaBan, a.QR, a.HinhAnh, "

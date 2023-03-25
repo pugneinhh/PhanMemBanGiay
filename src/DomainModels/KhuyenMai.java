@@ -164,7 +164,7 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
-        return "KhuyenMai{" + "tenKM=" + tenKM + '}';
+        return  tenKM ;
     }
     
     

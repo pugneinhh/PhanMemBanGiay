@@ -3,16 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Duan1_Nhom7/src/Services/HoaDonChiTieservice.java</file>
             <file>file:/D:/Duan1_Nhom7/src/responsitories/KhachHangResponsitory.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/SanPhamJPanel.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Services/KhachHangService.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/FormNhanVien.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Utilities/DBConnection.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/DangNhap.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/responsitories/ChiTietSanPhamResponsitory.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Views/KhachHangJPanel.java</file>
-            <file>file:/D:/Duan1_Nhom7/src/Aplication/FormNhanVien.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/ViewModels/ChiTietSanPhamModel.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/ViewModels/hoadonchitietviewmodel.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/responsitories/HoaDonCTResbonsitory.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/Services/hoadonservice.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/Views/Barcode.java</file>
             <file>file:/D:/Duan1_Nhom7/src/Views/BanHangJPanel.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/DomainModels/HoaDonChiTiet.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/DomainModels/ChiTietSanPham.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/Services/KhachHangService.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/responsitories/HoaDonresbonsitory.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/Views/FormNhanVien.java</file>
+            <file>file:/D:/Duan1_Nhom7/src/DomainModels/SanPham.java</file>
         </group>
     </open-files>
 </project-private>

@@ -181,7 +181,7 @@ public class NhanVienModel {
 
     @Override
     public String toString() {
-        return maNV+" - "+ hoTen ;
+        return maNV ;
     }
     public Object[] toDataRow() {
         return new Object[]{idNV, maNV,hoTen,ngaySinh,gioiTinh,diaChi,sdt,email,matKhau,idCV,hinh,trangThai==1?"Đi làm":"Nghỉ làm"};

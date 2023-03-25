@@ -32,14 +32,32 @@ public class KhachHangResponsitory {
         return khVModel;
     }
 
-    public KhachHangModel getKhachHangByMa(String ma) {
+    public KhachHangModel getKhachHangByid(String ma) {
+        ArrayList<KhachHangModel>list=new ArrayList<>();
         String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
                 + "from KhachHang\n"
-                + "where MaKH = ?";
+                + "where ID = ?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, ma);
         try {
             while (rs.next()) {
-                return new KhachHangModel(rs.getString(1), rs.getString(2),
+                return (new KhachHangModel(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public KhachHang getKhachHangByidkmd(String ma) {
+        ArrayList<KhachHangModel>list=new ArrayList<>();
+        String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
+                + "from KhachHang\n"
+                + "where ID = ?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql, ma);
+        try {
+            while (rs.next()) {
+                return new KhachHang(rs.getString(1), rs.getString(2),
                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
                         rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
             }
@@ -47,6 +65,7 @@ public class KhachHangResponsitory {
             e.printStackTrace();
         }
         return null;
+      
     }
   public KhachHangModel getKhachHangBysdt(String ma) {
         String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
@@ -172,9 +191,8 @@ public class KhachHangResponsitory {
         return row;
     }
 
-<<<<<<< HEAD
-    public ArrayList<KhachHangViewModel> getTheoSDT(String SDT) {
-         ArrayList<KhachHangViewModel> list = new ArrayList<>();
+    public ArrayList<KhachHangModel> getTheoSDT(String SDT) {
+         ArrayList<KhachHangModel> list = new ArrayList<>();
         String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
                 + "from KhachHang\n"
                 + "where SDT = ?";
@@ -182,8 +200,8 @@ public class KhachHangResponsitory {
 
         try {
             while (rs.next()) {
-                KhachHangViewModel khVM = new KhachHangViewModel(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6),
+                KhachHangModel khVM = new KhachHangModel(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
                         rs.getString(7), rs.getDate(8), rs.getDate(9), rs.getInt(10));
             }
         } catch (SQLException e) {
@@ -192,7 +210,5 @@ public class KhachHangResponsitory {
 
         return list;
     }
-=======
-  
->>>>>>> 2d67a0fd7e6445d4823165cc724ca40916745a45
+
 }

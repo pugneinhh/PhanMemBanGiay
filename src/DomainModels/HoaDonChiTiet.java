@@ -25,14 +25,12 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, int trangThai) {
-        this.idHD = idHD;
+    public HoaDonChiTiet(ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia) {
         this.idCTSP = idCTSP;
         this.soLuong = soLuong;
         this.donGia = donGia;
-        this.ngayBan = ngayBan;
-        this.trangThai = trangThai;
     }
+
     
     public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
         this.idHDCT = idHDCT;
