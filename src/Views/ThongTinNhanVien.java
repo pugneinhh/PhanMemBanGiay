@@ -36,11 +36,11 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
     }
 
     private boolean getData() {
-        if(txtmatkhaumoi.getText() == null || txtxacnhanmkmoi.getText() == null) {
+        if(txtmatkhaumoi.getPassword().length==0 || txtxacnhanmkmoi.getPassword().length==0) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ dữ liệu");
             return false;
         }
-        if(!txtmatkhaumoi.getText().equalsIgnoreCase(txtxacnhanmkmoi.getText())) {
+        if(!String.valueOf(txtmatkhaumoi.getPassword()).equals(String.valueOf(txtxacnhanmkmoi.getPassword()))) {
             JOptionPane.showMessageDialog(this, "Mật khẩu mới và xác nhận mật khẩu mới phải trùng nhau");
             return false;
         }
@@ -209,8 +209,18 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
         jLabel26.setText("Xác Nhận Mật Khẩu Mới");
 
         txtxacnhanmkmoi.setText("jPasswordField1");
+        txtxacnhanmkmoi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtxacnhanmkmoiFocusGained(evt);
+            }
+        });
 
         txtmatkhaumoi.setText("jPasswordField1");
+        txtmatkhaumoi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtmatkhaumoiFocusGained(evt);
+            }
+        });
         txtmatkhaumoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtmatkhaumoiActionPerformed(evt);
@@ -292,9 +302,13 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
         if(getData()) {
         for(NhanVienModel x : list) {
             if(x.getMaNV().equalsIgnoreCase(user)) {
-                nvs.updateNV(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(), x.getMatKhau(), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+                int xn=JOptionPane.showConfirmDialog(this, "Bạn có muốn thay đổi mật khẩu không?");
+                if(xn==JOptionPane.YES_OPTION){
+                    nvs.updateNV(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(),String.valueOf(txtmatkhaumoi.getPassword()), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
                                 JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
                                 this.dispose();
+                }
+                
                 }
             }
         }
@@ -307,6 +321,14 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
     private void txtmatkhaumoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmatkhaumoiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtmatkhaumoiActionPerformed
+
+    private void txtmatkhaumoiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmatkhaumoiFocusGained
+       txtmatkhaumoi.setText("");
+    }//GEN-LAST:event_txtmatkhaumoiFocusGained
+
+    private void txtxacnhanmkmoiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtxacnhanmkmoiFocusGained
+        txtxacnhanmkmoi.setText("");
+    }//GEN-LAST:event_txtxacnhanmkmoiFocusGained
 
     /**
      * @param args the command line arguments
