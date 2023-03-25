@@ -174,7 +174,9 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
-        return "KhuyenMai{" + "idKM=" + idKM + ", maKM=" + maKM + ", tenKM=" + tenKM + ", giaTri=" + giaTri + ", giamToiDa=" + giamToiDa + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", hinhThucApDung=" + hinhThucApDung + ", apDungGiamGia=" + apDungGiamGia + ", loaiGiamGia=" + loaiGiamGia + ", ngayTao=" + ngayTao + ", ngaySua=" + ngaySua + ", trangThai=" + trangThai + '}';
+
+        return  tenKM ;
+
     }
 
    

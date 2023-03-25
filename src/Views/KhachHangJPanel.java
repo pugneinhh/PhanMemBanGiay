@@ -520,11 +520,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tên SP", "Số lượng", "Giá bán", "Tổng tiền", "Trạng thái"
+                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tên SP", "Số lượng", "Giá bán", "Tổng tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

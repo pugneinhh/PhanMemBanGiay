@@ -65,12 +65,6 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     if(htai.after(k.getNgayKetThuc())){
                         k.setTrangThai(1);
                         kms.updateKM(k);
-//                        for (ChiTietSanPhamModel c : listsp) {
-//                            if(c.getIdKM().getIdKM().equals(k.getIdKM())){
-//                                c.setIdKM(null);
-//                                ctsps.updateByID1(c);
-//                            }
-//                        }
                     }
                 } 
                 }

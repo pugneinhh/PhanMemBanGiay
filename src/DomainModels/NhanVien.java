@@ -181,7 +181,13 @@ public class NhanVien {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return maNV;
     }   
+=======
+        return maNV ;
+    }
+    
+>>>>>>> origin/master
     
 }

@@ -203,7 +203,7 @@ public class KhachHang {
 
     @Override
     public String toString() {
-        return  tenKH ;
+        return  maKH ;
     }
     
     

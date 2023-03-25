@@ -44,6 +44,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         cardlayout = (CardLayout) pncardgoc.getLayout();
         loadtrangchu(index);
         loadDangNhap();
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
     }
 
     private void loadDangNhap() {
@@ -433,6 +438,12 @@ public class FormNhanVien extends javax.swing.JFrame {
             }
         });
 
+        lblAnhNVlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAnhNVloginMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -663,6 +674,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         btnHoaDon.setBackground(Color.pink);
         btnHoaDon.setOpaque(true);
     }//GEN-LAST:event_btnHoaDonMouseClicked
+
+    private void lblAnhNVloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhNVloginMouseClicked
+        new ThongTinNhanVien().setVisible(true);
+    }//GEN-LAST:event_lblAnhNVloginMouseClicked
 
     /**
      * @param args the command line arguments
