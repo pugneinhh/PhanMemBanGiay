@@ -66,7 +66,7 @@ public class KhuyenMaiResbonsitory {
     }
 
     public KhuyenMai updateKM(KhuyenMai KM) {
-        String sql = "UPDATE KhuyenMai SET tenKM=?,giaTri=?,giamToiDa=?,ngayBatDau=?,ngayKetThuc=?,hinhThucApDung=?,apDungGiamGia=?,loaiGiamGia=?,NgaySua=GETDATE(),TrangThai=? WHERE maKM=?";
+        String sql = "UPDATE KhuyenMai SET tenKM=?,giaTri=?,giamToiDa=?, ngayBatDau=?, ngayKetThuc=?,hinhThucApDung=?,apDungGiamGia=?,loaiGiamGia=?,NgaySua=GETDATE(),TrangThai=? WHERE maKM=?";
         JDBCHelper.executeUpdate(sql, KM.getTenKM(), KM.getGiaTri(),
                 KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoaiGiamGia(), KM.getTrangThai(), KM.getMaKM());
         return KM;
