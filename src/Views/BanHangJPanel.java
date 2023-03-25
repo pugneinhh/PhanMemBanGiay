@@ -5,7 +5,7 @@
 package Views;
 
 import DomainModels.DanhMuc;
-import DomainModels.HoaDonChiTiet;
+import DomainModels.HoaDonChiTiet_LichSu;
 import DomainModels.SanPham;
 import Services.ChiTietSanPhamService;
 import Services.DanhMucService;
@@ -790,7 +790,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
   String sl=tblBanHang.getValueAt(row, 2).toString();
   String gb=tblBanHang.getValueAt(row, 1).toString();
        ArrayList<ChiTietSanPhamModel> li = CTSPService.getChiTietSanPhamByMa(ten);
-        HoaDonChiTiet hdct = new HoaDonChiTiet();
+        HoaDonChiTiet_LichSu hdct = new HoaDonChiTiet_LichSu();
 //        hdct.setIdHoaDon(hoadonct_ser.getIDHoaDon(maHD));
 //        hdct.setIdChiTietSP(hoadonct_ser.getIDChiTietSP(maSP));
 //

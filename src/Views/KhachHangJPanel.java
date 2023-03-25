@@ -444,7 +444,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jLabel19.setText("Trạng thái");
 
-        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn hoạt động", "Ngừng hoạt động" }));
+        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngừng hoạt động", "Còn hoạt động" }));
         cbbKHTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbKHTrangThaiActionPerformed(evt);
@@ -686,7 +686,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbKHGioitinhActionPerformed
 
     private void cbbKHTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKHTrangThaiActionPerformed
-        String tt = cbbKHTrangThai.getSelectedItem().toString();
+        int tt = cbbKHTrangThai.getSelectedIndex();
         loadTableTimTrangThai(tt);
     }//GEN-LAST:event_cbbKHTrangThaiActionPerformed
    
@@ -726,8 +726,8 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void loadTableTimTrangThai(String tt) {
-        ArrayList<KhachHangModel> list = khService.getKhachHangBysdt(tt);
+    private void loadTableTimTrangThai(int tt) {
+        ArrayList<KhachHangModel> list = khService.getKHByTrangThai(tt);
         tableModelThongTin.setRowCount(0);
         for (KhachHangModel khachHangViewModel : list) {
             tableModelThongTin.addRow(new Object[]{

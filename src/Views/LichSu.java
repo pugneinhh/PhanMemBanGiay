@@ -4,7 +4,7 @@
  */
 package Views;
 
-import Services.HoaDonChiTietService;
+import Services.HoaDonChiTietLichSuService;
 import ViewModels.GiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.text.SimpleDateFormat;
@@ -18,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LichSu extends javax.swing.JFrame {
 
-    private HoaDonChiTietService hdCTSPs;
+    private HoaDonChiTietLichSuService hdCTSPs;
     private DefaultTableModel dtmD = new DefaultTableModel();
     private DefaultTableModel dtmT = new DefaultTableModel();
     
     public LichSu() {
         initComponents();
-        hdCTSPs = new HoaDonChiTietService();
+        hdCTSPs = new HoaDonChiTietLichSuService();
         dtmD = (DefaultTableModel) tblHoaDon_CTSP.getModel();
         dtmT = (DefaultTableModel) tblGiaoHang.getModel();
         loadTableHdCTSP();

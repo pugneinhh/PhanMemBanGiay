@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Phanh
  */
-public class HoaDonChiTiet {
+public class HoaDonChiTiet_LichSu {
 
     private String idHDCT;
     private HoaDon idHD;
@@ -23,10 +23,10 @@ public class HoaDonChiTiet {
     private Date ngaySua;
     private int trangThai;
 
-    public HoaDonChiTiet() {
+    public HoaDonChiTiet_LichSu() {
     }
 
-    public HoaDonChiTiet(HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, int trangThai) {
+    public HoaDonChiTiet_LichSu(HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, int trangThai) {
         this.idHD = idHD;
         this.idCTSP = idCTSP;
         this.soLuong = soLuong;
@@ -35,7 +35,7 @@ public class HoaDonChiTiet {
         this.trangThai = trangThai;
     }
 
-    public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
+    public HoaDonChiTiet_LichSu(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
         this.idHDCT = idHDCT;
         this.idHD = idHD;
         this.idCTSP = idCTSP;

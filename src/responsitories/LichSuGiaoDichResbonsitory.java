@@ -9,7 +9,7 @@ import DomainModels.ChiTietSanPham;
 import DomainModels.ChucVu;
 import DomainModels.DanhMuc;
 import DomainModels.DoCao;
-import DomainModels.HoaDonChiTiet;
+import DomainModels.HoaDonChiTiet_LichSu;
 import DomainModels.KhuyenMai;
 import DomainModels.MauSac;
 import DomainModels.NhanVien;
@@ -37,8 +37,8 @@ public class LichSuGiaoDichResbonsitory {
     ChatLieuResponsitory clr = new ChatLieuResponsitory();
     DoCaoResponsitory dcr = new DoCaoResponsitory();
     KhuyenMaiResbonsitory kmR = new KhuyenMaiResbonsitory();
-    public ArrayList<HoaDonChiTiet> getAllhdct() {
-        ArrayList<HoaDonChiTiet> list = new ArrayList<>();
+    public ArrayList<HoaDonChiTiet_LichSu> getAllhdct() {
+        ArrayList<HoaDonChiTiet_LichSu> list = new ArrayList<>();
         String sql = "SELECT * FROM NHANVIEN ";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 

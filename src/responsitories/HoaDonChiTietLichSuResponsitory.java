@@ -24,7 +24,7 @@ import java.sql.*;
  *
  * @author HoiVN
  */
-public class HoaDonChiTietResponsitory {
+public class HoaDonChiTietLichSuResponsitory {
 
     SanPhamResponsitory spR = new SanPhamResponsitory();
     HoaDonResponsitory hdR = new HoaDonResponsitory();
@@ -81,7 +81,7 @@ public class HoaDonChiTietResponsitory {
     }
 
     public static void main(String[] args) {
-        HoaDonChiTietResponsitory hdR = new HoaDonChiTietResponsitory();
+        HoaDonChiTietLichSuResponsitory hdR = new HoaDonChiTietLichSuResponsitory();
 //        System.out.println(hdR.getAllHoaDonCTSP());
         System.out.println(hdR.getAllHoaDonGiaoHang());
     }

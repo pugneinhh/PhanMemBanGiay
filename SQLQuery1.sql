@@ -68,32 +68,63 @@ from KhachHang
 select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, a.DanhMuc, a.DoCao from ChiTietSanPham as a
 join ChiTietHoaDon as b on b.IdCTSP = a.Id
 
+select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao from ChiTietHoaDon
+join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
+join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
+
+
+select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.GiamGia, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+join GiaoHang on GiaoHang.IDHD = HoaDon.ID
+join KhachHang on KhachHang.ID = HoaDon.IDKH
+
+select MaKH, TenKH from KhachHang where ID = '5FF5624C-538C-4B9D-B6EA-929C246F716E'
+
+select * from NHANVIEN where ID = '18087317-CB23-496B-87A4-40C74028174E'
+
+select ID, IDKH from HoaDon where Id = '29735070-D7FC-408D-AD91-239E43934250'
 SELECT * From chitietsanpham
 UPDATE CHITIETSANPHAM SET QR=2003123 WHERE ID='FE811B08-807C-4AFF-B037-5B1A8C591D50'
+
+delete  from KhuyenMai where makm ='M22234'
+select *From khuyenmai
+9E9C8B02-1440-45A6-8425-042DB956EA11
+select *from DanhMuc
+select *from ChatLieu
+select *from SanPham
+select *from ChiTietSanPham
+select * from khuyenmai
+select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11'
+update ChiTietSanPham set idkm = 'F86B6461-D3F8-4454-BFB8-127B07DF675B' where id in  (select id from ChiTietSanPham where DanhMuc ='9E9C8B02-1440-45A6-8425-042DB956EA11')
+select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
+from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
+
 
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN
     UPDATE KHACHHANG
-	SET DIEM=DIEM+(
-	SELECT THANHTIEN
+	SET DIEMEXP+=(
+	SELECT THANHTIEN * 0.01 
 	FROM INSERTED
-	)
-	WHERE KHACHHANG.ID= INSERTED.IDKH
+	), TICHDIEM+=(SELECT THANHTIEN *0.01 FROM INSERTED)
+	from KhachHang join inserted 
+	on KHACHHANG.ID= inserted.IDKH
 END
-
+select * from KhachHang
+select * from HoaDon
 CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
 BEGIN
-	IF INSERTED.DIEM>100
+	IF inserted.TICHDIEM>50000
 BEGIN
 	UPDATE KHACHHANG 
 	SET LOAIKH =N'VÀNG'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
-	IF INSERTED.DIEM>500
+	IF inserted.TICHDIEM>100000
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Kim cương'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
 END	
 
@@ -101,5 +132,5 @@ CREATE TRIGGER HANGMACDINH ON KHACHHANG AFTER INSERT AS
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Thành viên'
-	WHERE KHACHHANG.ID=INSERTED.ID
+	from khachhang join inserted on KHACHHANG.ID=inserted.ID
 END

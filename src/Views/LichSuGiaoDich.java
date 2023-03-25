@@ -5,7 +5,7 @@
 package Views;
 
 import DomainModels.GiaoHang;
-import Services.HoaDonChiTietService;
+import Services.HoaDonChiTietLichSuService;
 import ViewModels.GiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.text.SimpleDateFormat;
@@ -19,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LichSuGiaoDich extends javax.swing.JPanel {
 
-    private HoaDonChiTietService hdCTSPs;
+    private HoaDonChiTietLichSuService hdCTSPs;
     private DefaultTableModel dtmD = new DefaultTableModel();
     private DefaultTableModel dtmT = new DefaultTableModel();
 
     public LichSuGiaoDich() {
         initComponents();
-        hdCTSPs = new HoaDonChiTietService();
+        hdCTSPs = new HoaDonChiTietLichSuService();
         dtmD = (DefaultTableModel) tblHoaDon_CTSP.getModel();
         dtmT = (DefaultTableModel) tblGiaoHang.getModel();
         loadTableHdCTSP();
@@ -321,9 +321,9 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(txtNgayMua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtGiamGia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)

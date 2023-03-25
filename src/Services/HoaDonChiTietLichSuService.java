@@ -7,17 +7,17 @@ package Services;
 import ViewModels.GiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.util.ArrayList;
-import responsitories.HoaDonChiTietResponsitory;
+import responsitories.HoaDonChiTietLichSuResponsitory;
 
 /**
  *
  * @author HoiVN
  */
-public class HoaDonChiTietService {
-    public HoaDonChiTietResponsitory hoaDonChiTietResponsitory;
+public class HoaDonChiTietLichSuService {
+    public HoaDonChiTietLichSuResponsitory hoaDonChiTietResponsitory;
 
-    public HoaDonChiTietService() {
-        this.hoaDonChiTietResponsitory = new HoaDonChiTietResponsitory();
+    public HoaDonChiTietLichSuService() {
+        this.hoaDonChiTietResponsitory = new HoaDonChiTietLichSuResponsitory();
     }
         
     public ArrayList<HoaDonChiTiet_CTSanPham> getAllHoaDonCTSP() {
