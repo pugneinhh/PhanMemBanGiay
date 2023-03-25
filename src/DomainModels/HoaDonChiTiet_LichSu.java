@@ -26,26 +26,16 @@ public class HoaDonChiTiet_LichSu {
     public HoaDonChiTiet_LichSu() {
     }
 
-<<<<<<< HEAD:src/DomainModels/HoaDonChiTiet_LichSu.java
     public HoaDonChiTiet_LichSu(HoaDon idHD, ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia, Date ngayBan, int trangThai) {
         this.idHD = idHD;
-=======
-    public HoaDonChiTiet(ChiTietSanPham idCTSP, int soLuong, BigDecimal donGia) {
->>>>>>> origin/master:src/DomainModels/HoaDonChiTiet.java
         this.idCTSP = idCTSP;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.ngayBan = ngayBan;
+        this.trangThai = trangThai;
     }
 
-<<<<<<< HEAD:src/DomainModels/HoaDonChiTiet_LichSu.java
     public HoaDonChiTiet_LichSu(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
-=======
-
-    
-
-    public HoaDonChiTiet(String idHDCT, HoaDon idHD, ChiTietSanPham idCTSP, BigDecimal donGia, int soLuong, Date ngayBan, Date ngayTao, Date ngaySua, int trangThai) {
-
->>>>>>> origin/master:src/DomainModels/HoaDonChiTiet.java
         this.idHDCT = idHDCT;
         this.idHD = idHD;
         this.idCTSP = idCTSP;

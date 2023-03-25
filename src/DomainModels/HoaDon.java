@@ -13,11 +13,7 @@ import java.util.Date;
  */
 public class HoaDon {
     private String idHD;
-<<<<<<< HEAD
     private String maHD;
-=======
-        private String maHD;
->>>>>>> origin/master
     private NhanVien idNV;
     private KhachHang idKH;
     private Date ngayTao;
@@ -32,32 +28,7 @@ public class HoaDon {
     public HoaDon() {
     }
 
-<<<<<<< HEAD
-    public HoaDon(String idHD, String maHD) {
-        this.idHD = idHD;
-        this.maHD = maHD;
-    }
-
-    public HoaDon(String idHD, String maHD, KhachHang idKH) {
-        this.idHD = idHD;
-        this.maHD = maHD;
-        this.idKH = idKH;
-    }
-
-    public HoaDon(NhanVien idNV, KhachHang idKH, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, int trangThai) {
-        this.idNV = idNV;
-        this.idKH = idKH;
-        this.thanhTien = thanhTien;
-        this.tienShip = tienShip;
-        this.idKM = idKM;
-        this.ghiChu = ghiChu;
-        this.trangThai = trangThai;
-    }
-
-    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, Date ngaySua, int trangThai) {
-=======
     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
->>>>>>> origin/master
         this.idHD = idHD;
         this.maHD = maHD;
         this.idNV = idNV;
@@ -165,12 +136,6 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-<<<<<<< HEAD
-    @Override
-    public String toString() {
-        return maHD;
-    }
-=======
     public String getMahd() {
         return mahd;
     }
@@ -180,7 +145,6 @@ public class HoaDon {
     }
 
     
->>>>>>> origin/master
 
 
 }

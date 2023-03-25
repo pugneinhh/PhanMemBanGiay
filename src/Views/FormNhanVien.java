@@ -44,11 +44,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         cardlayout = (CardLayout) pncardgoc.getLayout();
         loadtrangchu(index);
         loadDangNhap();
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
     }
 
     private void loadDangNhap() {
