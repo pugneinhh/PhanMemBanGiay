@@ -259,36 +259,29 @@
                       <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtmatkhaumoi" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
-                                  <Component id="jLabel26" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                                  <Component id="jLabel25" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtxacnhanmkmoi" min="-2" pref="315" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtxacnhanmkmoi" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                          <Component id="jLabel26" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
+                          <Component id="txtmatkhaumoi" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                          <Component id="jLabel25" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                       <Component id="jLabel25" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtmatkhaumoi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel26" min="-2" pref="27" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtxacnhanmkmoi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Xacnhan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -318,6 +311,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="jPasswordField1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtmatkhaumoiActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Xacnhan">
               <Properties>
@@ -331,9 +327,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="H&#x1ee7;y B&#x1ecf;"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
