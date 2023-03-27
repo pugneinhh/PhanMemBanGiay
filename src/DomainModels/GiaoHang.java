@@ -16,7 +16,6 @@ public class GiaoHang {
     private String idGiaoHang;
     private HoaDon idHD;
     private KhachHang idKH;
-    private KhuyenMai idKM;
     private String sdt;
     private String diaChi;
     private BigDecimal tienHang;
@@ -31,10 +30,10 @@ public class GiaoHang {
     public GiaoHang() {
     }
 
-    public GiaoHang(HoaDon idHD, KhachHang idKH, KhuyenMai idKM, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, int trangThai) {
+    public GiaoHang(HoaDon idHD, KhachHang idKH, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, int trangThai) {
         this.idHD = idHD;
         this.idKH = idKH;
-        this.idKM = idKM;
+       
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.tienHang = tienHang;
@@ -45,11 +44,11 @@ public class GiaoHang {
         this.trangThai = trangThai;
     }
 
-    public GiaoHang(String idGiaoHang, HoaDon idHD, KhachHang idKH, KhuyenMai idKM, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
+    public GiaoHang(String idGiaoHang, HoaDon idHD, KhachHang idKH, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
         this.idGiaoHang = idGiaoHang;
         this.idHD = idHD;
         this.idKH = idKH;
-        this.idKM = idKM;
+        
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.tienHang = tienHang;
@@ -86,13 +85,7 @@ public class GiaoHang {
         this.idKH = idKH;
     }
 
-    public KhuyenMai getIdKM() {
-        return idKM;
-    }
-
-    public void setIdKM(KhuyenMai idKM) {
-        this.idKM = idKM;
-    }
+    
 
     public String getSdt() {
         return sdt;
