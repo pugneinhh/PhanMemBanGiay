@@ -27,6 +27,7 @@ public class HoaDon {
     public HoaDon() {
     }
 
+<<<<<<< HEAD
     public HoaDon(String idHD, String maHD) {
         this.idHD = idHD;
         this.maHD = maHD;
@@ -49,6 +50,13 @@ public class HoaDon {
     }
 
     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, Date ngaySua, int trangThai) {
+=======
+    public HoaDon(String maHD) {
+        this.maHD = maHD;
+    }
+
+    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
+>>>>>>> origin/master
         this.idHD = idHD;
         this.maHD = maHD;
         this.idNV = idNV;
@@ -155,4 +163,20 @@ public class HoaDon {
         return maHD;
     }
 
+<<<<<<< HEAD
 }
+=======
+    public void setMahd(String mahd) {
+        this.mahd = mahd;
+    }
+
+    @Override
+    public String toString() {
+        return  maHD;
+    }
+
+    
+
+
+}
+>>>>>>> origin/master

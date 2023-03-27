@@ -100,7 +100,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return maSP;
+        return tenSP;
     }
     public String getTen(){
         return tenSP;

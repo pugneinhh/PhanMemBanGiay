@@ -129,7 +129,7 @@ NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
 
-CREATE TABLE GiaoHang(
+Drop TABLE GiaoHang(
 IDGH UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 IDHD UNIQUEIDENTIFIER,
 IDKH UNIQUEIDENTIFIER,
@@ -138,12 +138,16 @@ DiaChi NVARCHAR(50) DEFAULT NULL,
 TienHang DECIMAL(20,0) DEFAULT 0,
 TienShip DECIMAL(20,0) DEFAULT 0,
 TongTien DECIMAL(20,0) DEFAULT 0,
-GiamGia VARCHAR(50) DEFAULT NULL,
 NgayGiao DATE DEFAULT NULL,
 NgayNhan DATE DEFAULT NULL,
 NgayTao DATE DEFAULT NULL,
+NgayTao DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
+Delete from GiaoHang
+INSERT INTO GiaoHang Values(NewID(),'3FFDE3B6-DD66-44D6-BFE2-28FDD6626E86' , '8AD96BF4-D04B-468F-8994-21EFC56283B4', '0987808709', 'Hanoi',1000, 100,100,
+'01/01/2003', '10/10/2022', getDate(), 1)
+
 CREATE TABLE HoaDon(
 ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 MaHD VARCHAR(20) UNIQUE,
@@ -357,7 +361,18 @@ VALUES(NewID(),'KM01',N'Mừng 8/3',20000,30000,'08/03/2023','11/03/2023',N'Gi�
 INSERT INTO KhuyenMai(Id,maKM,tenKM,giaTri,giamToiDa,ngayBatDau,ngayKetThuc,hinhThucApDung,apDungGiamGia,loaiGiamGia,NgayTao,TrangThai)
 VALUES(NewID(),'KM02',N'Mừng Sinh Nhật',10,30000,'06/12/2023','06/16/2023',N'Giảm theo %',N'Hóa Đơn Trên 300000',N'Chương trình',getDate(),0)
 
+<<<<<<< HEAD
 --HoaDon--
+=======
+
+
+--HoaDon--
+select *from NHANVIEN
+select *from KhachHang
+select *from giaohang
+select *from ChiTietHoaDon
+select *from KhuyenMai
+>>>>>>> origin/master
 INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
 VALUES(NewID(),'HD01','48f5e882-3987-43f8-b8c3-433a5ddd0a7e','d91876a6-7527-4487-ba4d-a2cc9d443c0a',
 '02/02/2022',150000,'d79be8c1-c4e5-4c32-8fde-89311866505e',null,getDate(),0)

@@ -282,5 +282,20 @@ public class KhachHangResponsitory {
         //System.out.println(khRes.getKhachHangBysdt("0962335335"));
         System.out.println(khRes.getMaKHByID("80681A3E-7487-4D41-AB67-FAB685AC70CC"));
     }
-
+   public KhachHang getKHByID(String id){
+        
+        String sql="SELECT * FROM KhachHang WHERE ID = ? ";
+        ResultSet rs=JDBCHelper.excuteQuery(sql,id);
+        try {
+            while(rs.next()){
+                return new KhachHang(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getDate(9), rs.getDate(10),
+                        rs.getInt(11), rs.getInt(12), rs.getDate(13), rs.getDate(14), rs.getInt(15));
+            }
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
+       return null;
+    }
 }

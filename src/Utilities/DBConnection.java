@@ -7,7 +7,11 @@ public class DBConnection {
     public static String Username = "sa";
 
 
+<<<<<<< HEAD
     public static String Pass = "123456";
+=======
+    public static String Pass = "123456789";
+>>>>>>> origin/master
 
     static {
         try {          

@@ -205,6 +205,11 @@ public class KhachHang {
     public String toString() {
         return  tenKH ;
     }
+
+//    @Override
+//    public String toString() {
+//        return  tenKH ;
+//    }
     
     
 }

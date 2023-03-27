@@ -40,7 +40,7 @@ public class HoaDonresbonsitory {
     }
 
     public ArrayList<HoaDonViewModel> gethdByID(String id) {
-ArrayList<HoaDon> list = new ArrayList<>();
+         ArrayList<HoaDon> list = new ArrayList<>();
         String sql = "select * from hoadon where id=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
@@ -56,6 +56,24 @@ ArrayList<HoaDon> list = new ArrayList<>();
             Logger.getLogger(ChucVuResponsitory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+      public HoaDon getHDbyID(String id) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        String sql = "SELECT * FROM hoadon";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+              
+                
+                list.add(new HoaDon(rs.getString(1),rs.getString(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GiaoCaResbonsitory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+       return null;
     }
 
 
