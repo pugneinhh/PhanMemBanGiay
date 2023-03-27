@@ -5,7 +5,10 @@
 package Views;
 
 import DomainModels.KhachHang;
+import Services.HoaDonChiTietLichSuService;
 import Services.KhachHangService;
+import ViewModels.GiaoCaModel;
+import ViewModels.GiaoHangModel;
 import ViewModels.KhachHangModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,15 +25,19 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
     private final KhachHangService khService;
     DefaultTableModel tableModelThongTin = new DefaultTableModel();
-
+    DefaultTableModel tableLichSu = new DefaultTableModel();
+    HoaDonChiTietLichSuService hdctService;
     /**
      * Creates new form KhachHang
      */
     public KhachHangJPanel() {
         initComponents();
         khService = new KhachHangService();
+        hdctService = new HoaDonChiTietLichSuService();
         tableModelThongTin = (DefaultTableModel) tblThongtinKH.getModel();
+        tableLichSu =  (DefaultTableModel) tblLichSuGD.getModel();
         loadTableThongTin();
+        loadTableLichSu();
     }
 
     private void loadTableThongTin() {
@@ -47,6 +54,21 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 khachHangViewModel.getSdt(),
                 khachHangViewModel.getNgaySinh(),
                 khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
+            });
+        }
+    }
+    
+    private void loadTableLichSu(){
+        ArrayList<GiaoHangModel> ghList = hdctService.getAllHoaDonGiaoHang();
+        tableLichSu.setRowCount(0);
+        for (GiaoHangModel giaoHangModel : ghList) {
+            tableLichSu.addRow(new Object[]{
+                giaoHangModel.getMaKH(),
+                giaoHangModel.getHoTen(),
+                giaoHangModel.getSdt(),
+                giaoHangModel.getNgayMua(),
+                giaoHangModel.getThanhTien(),
+                giaoHangModel.getTrangThai()
             });
         }
     }
@@ -520,11 +542,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tên SP", "Số lượng", "Giá bán", "Tổng tiền"
+                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tổng tiền", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

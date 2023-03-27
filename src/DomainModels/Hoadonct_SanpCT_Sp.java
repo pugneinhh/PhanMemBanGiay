@@ -11,13 +11,12 @@ import java.math.BigDecimal;
  * @author HP
  */
 public class Hoadonct_SanpCT_Sp {
-        private String maSP;
+
+    private String maSP;
     private String tenSP;
     private int sl;
     private BigDecimal donGia;
-    //
     private String idSP;
-    //
 
     public Hoadonct_SanpCT_Sp() {
     }
@@ -69,5 +68,5 @@ public class Hoadonct_SanpCT_Sp {
     public void setIdSP(String idSP) {
         this.idSP = idSP;
     }
-    
+
 }

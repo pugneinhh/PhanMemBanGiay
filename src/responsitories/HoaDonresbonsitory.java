@@ -49,8 +49,8 @@ ArrayList<HoaDon> list = new ArrayList<>();
                 KhachHang kh1=kh.getKhachHangByidkmd(rs.getString(5));
                 KhuyenMai km1=km.getKMByID(rs.getString(8));
                 
-                list.add( new HoaDon(rs.getString(1),rs.getString(2), nv1, kh1, rs.getDate(6),rs.getBigDecimal(7)
-                        , km1, rs.getString(9), rs.getDate(10), rs.getDate(11), rs.getInt(12),rs.getString(3)));
+//                list.add( new HoaDon(rs.getString(1),rs.getString(2), nv1, kh1, rs.getDate(6),rs.getBigDecimal(7)
+//                        , km1, rs.getString(9), rs.getDate(10), rs.getDate(11), rs.getInt(12),rs.getString(3)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ChucVuResponsitory.class.getName()).log(Level.SEVERE, null, ex);

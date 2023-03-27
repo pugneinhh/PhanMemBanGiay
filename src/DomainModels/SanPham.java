@@ -102,7 +102,8 @@ public class SanPham {
     public String toString() {
         return maSP;
     }
-
- 
-
+    public String getTen(){
+        return tenSP;
+    }
+    
 }

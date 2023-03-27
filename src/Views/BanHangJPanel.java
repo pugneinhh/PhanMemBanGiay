@@ -5,13 +5,9 @@
 package Views;
 
 import DomainModels.DanhMuc;
-<<<<<<< HEAD
-import DomainModels.HoaDonChiTiet_LichSu;
-=======
 import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
 import DomainModels.Hoadonct_SanpCT_Sp;
->>>>>>> origin/master
 import DomainModels.SanPham;
 import Services.ChiTietSanPhamService;
 import Services.DanhMucService;
@@ -742,54 +738,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblhoadonMouseClicked
 
     private void tblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBanHangMouseClicked
-<<<<<<< HEAD
-         int row=tblBanHang.getSelectedRow();
-  if(row==-1){
-      return;
-  }
-  String ten=tblBanHang.getValueAt(row, 0).toString();
-  String sl=tblBanHang.getValueAt(row, 2).toString();
-  String gb=tblBanHang.getValueAt(row, 1).toString();
-       ArrayList<ChiTietSanPhamModel> li = CTSPService.getChiTietSanPhamByMa(ten);
-        HoaDonChiTiet_LichSu hdct = new HoaDonChiTiet_LichSu();
-//        hdct.setIdHoaDon(hoadonct_ser.getIDHoaDon(maHD));
-//        hdct.setIdChiTietSP(hoadonct_ser.getIDChiTietSP(maSP));
-//
-//        hdct.setDonGia((BigDecimal) tblSanPham.getValueAt(row, 7));
-//        hdct.setSl(1);
-//        for (HoaDonChiTiet_ChiTietSP_SPham h : li) {
-//            if (h.getMaSP().equalsIgnoreCase(maSP)) {
-//                hdct.setSl(h.getSl() + 1);
-//                hoadonct_ser.updateHoaDonChiTiet(hdct);
-//                loadGioHang(hoadonct_ser.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(maHD));
-//                ArrayList<HoaDonChiTiet_ChiTietSP_SPham> li2 = hoadonct_ser.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(maHD);
-//                double tongTien = 0;
-//                for (HoaDonChiTiet_ChiTietSP_SPham hoaDonChiTiet_ChiTietSP_SPham : li2) {
-//                    tongTien += hoaDonChiTiet_ChiTietSP_SPham.getSl() * Double.parseDouble(hoaDonChiTiet_ChiTietSP_SPham.getDonGia().toString());
-//
-//                }
-//                txtTongTien.setText(new BigDecimal(tongTien) + "");
-//                return;
-//            }
-//
-//        }
-//        if (hoadonct_ser.addHoaDonChiTiet(hdct)) {
-//            loadGioHang(hoadonct_ser.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(maHD));
-//        }
-//        ArrayList<HoaDonChiTiet_ChiTietSP_SPham> li2 = hoadonct_ser.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(maHD);
-//        double tongTien = 0;
-//        for (HoaDonChiTiet_ChiTietSP_SPham hoaDonChiTiet_ChiTietSP_SPham : li2) {
-//            tongTien += hoaDonChiTiet_ChiTietSP_SPham.getSl() * Double.parseDouble(hoaDonChiTiet_ChiTietSP_SPham.getDonGia().toString());
-//
-//        }
-//        txtThanhTien.setText(new BigDecimal(tongTien) + "");
-=======
   int row1 = tblhoadon.getSelectedRow();
         if (row1 < 0) {
             JOptionPane.showMessageDialog(this, "Ban khong chon hoa don nao !");
             return;
         }
->>>>>>> origin/master
 
         Hoadonct_SanpCT_Sp hdct_ = new Hoadonct_SanpCT_Sp();
         int row = tblBanHang.getSelectedRow();

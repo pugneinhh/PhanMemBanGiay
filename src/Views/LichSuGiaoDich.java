@@ -32,24 +32,6 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
         loadTableHdGiaoDich();
     }
 
-    private void loadTableHdCTSP(){
-        ArrayList<HoaDonChiTiet_CTSanPham> list = hdCTSPs.getAllHoaDonCTSP();
-        dtmD.setRowCount(0);
-        for (HoaDonChiTiet_CTSanPham hoaDonChiTiet_CTSanPham : list) {
-            dtmD.addRow(new Object[]{
-                hoaDonChiTiet_CTSanPham.getMaHD(),
-                hoaDonChiTiet_CTSanPham.getTenSP(),
-                hoaDonChiTiet_CTSanPham.getGiaBan(),
-                hoaDonChiTiet_CTSanPham.getSoLuong(),
-                hoaDonChiTiet_CTSanPham.getSize(),
-                hoaDonChiTiet_CTSanPham.getMauSac(),
-                hoaDonChiTiet_CTSanPham.getChatLieu(),
-                hoaDonChiTiet_CTSanPham.getDanhMuc(),
-                hoaDonChiTiet_CTSanPham.getDoCao()
-            });
-        }
-    }
-    
     private void loadTableHdGiaoDich(){
         ArrayList<GiaoHangModel> list = hdCTSPs.getAllHoaDonGiaoHang();
         dtmT.setRowCount(0);
@@ -66,7 +48,26 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 giaoHangModel.getGiamGia(),
                 giaoHangModel.getTienShip(),
                 giaoHangModel.getThanhTien(),
-                giaoHangModel.getTrangThai()
+                giaoHangModel.getTrangThai()==0?"Đã thanh toán":"Chưa thanh toán"
+            });
+        }
+//        System.out.println(list);
+    }
+    
+    private void loadTableHdCTSP(){
+        ArrayList<HoaDonChiTiet_CTSanPham> list = hdCTSPs.getAllHoaDonCTSP();
+        dtmD.setRowCount(0);
+        for (HoaDonChiTiet_CTSanPham hoaDonChiTiet_CTSanPham : list) {
+            dtmD.addRow(new Object[]{
+                hoaDonChiTiet_CTSanPham.getMaHD(),
+                hoaDonChiTiet_CTSanPham.getTenSP(),
+                hoaDonChiTiet_CTSanPham.getGiaBan(),
+                hoaDonChiTiet_CTSanPham.getSoLuong(),
+                hoaDonChiTiet_CTSanPham.getSize(),
+                hoaDonChiTiet_CTSanPham.getMauSac(),
+                hoaDonChiTiet_CTSanPham.getChatLieu(),
+                hoaDonChiTiet_CTSanPham.getDanhMuc(),
+                hoaDonChiTiet_CTSanPham.getDoCao()
             });
         }
     }

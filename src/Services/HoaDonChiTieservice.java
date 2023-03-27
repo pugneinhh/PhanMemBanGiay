@@ -24,14 +24,11 @@ public class HoaDonChiTieservice {
     public HoaDonChiTieservice(){
               this.hdctrs=new HoaDonCTResbonsitory();
     }
-
-
-    
        public ArrayList<HoaDonChiTiet> getAllhoadon() {
         ArrayList<HoaDonChiTiet> list = new ArrayList<>();
-        ArrayList<DomainModels.HoaDonChiTiet> kh = hdctrs.getAllhoadonct();
-        for (DomainModels.HoaDonChiTiet x : kh) {
-            list.add(new DomainModels.HoaDonChiTiet(x.getIdCTSP(), x.getSoLuong(),x.getDonGia()));
+        ArrayList<HoaDonChiTiet> kh = hdctrs.getAllhoadonct();
+        for (HoaDonChiTiet x : kh) {
+            //list.add(new HoaDonChiTiet(x.getIdCTSP(), x.getSoLuong(),x.getDonGia()));
         }
         return list;
     }

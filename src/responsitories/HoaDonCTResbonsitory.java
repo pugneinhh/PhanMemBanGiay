@@ -23,7 +23,7 @@ public class HoaDonCTResbonsitory {
         try {
             while (rs.next()) {
                 ChiTietSanPham ct = ctsp.getChiTietSanPhamByIDkmd(rs.getString(1));
-                list.add(new HoaDonChiTiet(ct, rs.getInt(2), rs.getBigDecimal(3)));
+                //list.add(new HoaDonChiTiet(ct, rs.getInt(2), rs.getBigDecimal(3)));
             }
         } catch (Exception e) {
         }

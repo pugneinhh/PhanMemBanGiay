@@ -44,8 +44,8 @@ public class SanPhamResponsitory {
             while (rs.next()) {
                 return new SanPham(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5), rs.getInt(6));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(SanPhamResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }

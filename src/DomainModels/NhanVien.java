@@ -29,11 +29,11 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String idNV, String hoTen) {
+    public NhanVien(String idNV, String maNV) {
         this.idNV = idNV;
-        this.hoTen = hoTen;
+        this.maNV = maNV;
     }
-    
+   
     public NhanVien(String idNV, String maNV, String hoTen, Date ngaySinh, String gioiTinh, String diaChi, String sdt, String email, String matKhau, ChucVu idCV, String hinh, int trangThai) {
         this.idNV = idNV;
         this.maNV = maNV;
@@ -180,8 +180,7 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return maNV ;
-    }
-    
+        return maNV;
+    }   
     
 }
