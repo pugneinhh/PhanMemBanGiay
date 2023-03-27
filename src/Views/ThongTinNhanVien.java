@@ -302,13 +302,11 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
         if(getData()) {
         for(NhanVienModel x : list) {
             if(x.getMaNV().equalsIgnoreCase(user)) {
-<<<<<<< HEAD
                 nvs.updateNV(new NhanVienModel(x.getIdNV(),x.getMaNV(), x.getHoTen(),x.getNgaySinh(),x.getGioiTinh(),x.getDiaChi(),x.getSdt(),x.getEmail(),x.getMaNV(),x.getIdCV(), x.getHinh(),x.getTrangThai()));
-=======
                 int xn=JOptionPane.showConfirmDialog(this, "Bạn có muốn thay đổi mật khẩu không?");
                 if(xn==JOptionPane.YES_OPTION){
                     nvs.updateNV(new NhanVienModel(x.getIdNV(), x.getMaNV(), x.getHoTen(), x.getNgaySinh(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getEmail(),String.valueOf(txtmatkhaumoi.getPassword()), x.getIdCV(), x.getHinh(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
->>>>>>> 685159306de6ab7e81827e68b0dfafaf64442292
+
                                 JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
                                 this.dispose();
                 }

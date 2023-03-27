@@ -28,6 +28,10 @@ public class HoaDon {
     public HoaDon() {
     }
 
+    public HoaDon(String maHD) {
+        this.maHD = maHD;
+    }
+
     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
         this.idHD = idHD;
         this.maHD = maHD;
@@ -142,6 +146,11 @@ public class HoaDon {
 
     public void setMahd(String mahd) {
         this.mahd = mahd;
+    }
+
+    @Override
+    public String toString() {
+        return  maHD;
     }
 
     
