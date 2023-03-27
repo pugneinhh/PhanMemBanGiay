@@ -185,6 +185,8 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
                 ctsp=ctspr.getChiTietSanPhamByQR(result.getText()).get(0);
                 if(ctsp!=null & ctsp.getMaQR()!=0){
                     JOptionPane.showConfirmDialog(this, "Đã tìm thấy sản phẩm "+ ctsp.getIdSP().getTenSP()+ ", size "+ctsp.getIdSize().getTenSize()+", màu "+ctsp.getIdMS().getTenMS()+", cao "+ctsp.getIdDC().getTenDC()+"\n Bạn có muốn thêm sản phẩm này vào giỏ hàng không?");
+                
+                
                 }
             }
         } while (true);
