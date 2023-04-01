@@ -6,77 +6,77 @@ package ViewModels;
 
 import DomainModels.HoaDon;
 import DomainModels.KhachHang;
-import DomainModels.NhanVien;
+import DomainModels.KhuyenMai;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  *
- * @author HoiVN
+ * @author Asus
  */
 public class GiaoHangModel {
-    private HoaDon maHD;
-    private NhanVien maNV;
-    private KhachHang maKH;
-    private KhachHang hoTen;
+
+    private String idGiaoHang;
+    private HoaDon idHD;
+    private KhachHang idKH;
     private String sdt;
     private String diaChi;
-    private Date ngayMua;
-    private Date ngayGiao;
-    private String giamGia;
+    private BigDecimal tienHang;
     private BigDecimal tienShip;
-    private BigDecimal thanhTien;
+    private BigDecimal tongTien;
+    private Date ngayGiao;
+    private Date ngayNhan;
+    private Date ngayTao;
+    private Date ngaySua;
     private int trangThai;
 
     public GiaoHangModel() {
     }
 
-    public GiaoHangModel(HoaDon maHD, NhanVien maNV, KhachHang maKH, KhachHang hoTen, String sdt, String diaChi, Date ngayMua, Date ngayGiao, String giamGia, BigDecimal tienShip, BigDecimal thanhTien, int trangThai) {
-        this.maHD = maHD;
-        this.maNV = maNV;
-        this.maKH = maKH;
-        this.hoTen = hoTen;
+    public GiaoHangModel(String idGiaoHang, HoaDon idHD, KhachHang idKH,  String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
+        this.idGiaoHang = idGiaoHang;
+        this.idHD = idHD;
+        this.idKH = idKH;
+        
         this.sdt = sdt;
         this.diaChi = diaChi;
-        this.ngayMua = ngayMua;
-        this.ngayGiao = ngayGiao;
-        this.giamGia = giamGia;
+        this.tienHang = tienHang;
         this.tienShip = tienShip;
-        this.thanhTien = thanhTien;
+        this.tongTien = tongTien;
+        this.ngayGiao = ngayGiao;
+        this.ngayNhan = ngayNhan;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
 
-    public HoaDon getMaHD() {
-        return maHD;
+  
+
+    public String getIdGiaoHang() {
+        return idGiaoHang;
     }
 
-    public void setMaHD(HoaDon maHD) {
-        this.maHD = maHD;
+    public void setIdGiaoHang(String idGiaoHang) {
+        this.idGiaoHang = idGiaoHang;
     }
 
-    public NhanVien getMaNV() {
-        return maNV;
+    public HoaDon getIdHD() {
+        return idHD;
     }
 
-    public void setMaNV(NhanVien maNV) {
-        this.maNV = maNV;
+    public void setIdHD(HoaDon idHD) {
+        this.idHD = idHD;
     }
 
-    public KhachHang getMaKH() {
-        return maKH;
+    public KhachHang getIdKH() {
+        return idKH;
     }
 
-    public void setMaKH(KhachHang maKH) {
-        this.maKH = maKH;
+    public void setIdKH(KhachHang idKH) {
+        this.idKH = idKH;
     }
 
-    public KhachHang getHoTen() {
-        return hoTen;
-    }
-
-    public void setHoTen(KhachHang hoTen) {
-        this.hoTen = hoTen;
-    }
+   
 
     public String getSdt() {
         return sdt;
@@ -94,28 +94,12 @@ public class GiaoHangModel {
         this.diaChi = diaChi;
     }
 
-    public Date getNgayMua() {
-        return ngayMua;
+    public BigDecimal getTienHang() {
+        return tienHang;
     }
 
-    public void setNgayMua(Date ngayMua) {
-        this.ngayMua = ngayMua;
-    }
-
-    public Date getNgayGiao() {
-        return ngayGiao;
-    }
-
-    public void setNgayGiao(Date ngayGiao) {
-        this.ngayGiao = ngayGiao;
-    }
-
-    public String getGiamGia() {
-        return giamGia;
-    }
-
-    public void setGiamGia(String giamGia) {
-        this.giamGia = giamGia;
+    public void setTienHang(BigDecimal tienHang) {
+        this.tienHang = tienHang;
     }
 
     public BigDecimal getTienShip() {
@@ -126,12 +110,44 @@ public class GiaoHangModel {
         this.tienShip = tienShip;
     }
 
-    public BigDecimal getThanhTien() {
-        return thanhTien;
+    public BigDecimal getTongTien() {
+        return tongTien;
     }
 
-    public void setThanhTien(BigDecimal thanhTien) {
-        this.thanhTien = thanhTien;
+    public void setTongTien(BigDecimal tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public Date getNgayGiao() {
+        return ngayGiao;
+    }
+
+    public void setNgayGiao(Date ngayGiao) {
+        this.ngayGiao = ngayGiao;
+    }
+
+    public Date getNgayNhan() {
+        return ngayNhan;
+    }
+
+    public void setNgayNhan(Date ngayNhan) {
+        this.ngayNhan = ngayNhan;
+    }
+
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public Date getNgaySua() {
+        return ngaySua;
+    }
+
+    public void setNgaySua(Date ngaySua) {
+        this.ngaySua = ngaySua;
     }
 
     public int getTrangThai() {
@@ -142,9 +158,21 @@ public class GiaoHangModel {
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return "GiaoHangModel{" + "maHD=" + maHD + ", maNV=" + maNV + ", maKH=" + maKH + ", hoTen=" + hoTen + ", sdt=" + sdt + ", diaChi=" + diaChi + ", ngayMua=" + ngayMua + ", ngayGiao=" + ngayGiao + ", giamGia=" + giamGia + ", tienShip=" + tienShip + ", thanhTien=" + thanhTien + ", trangThai=" + trangThai + '}';
+    public String trangthai() {
+        if (trangThai == 0) {
+            return "Chờ Giao Hàng";
+        } else if (trangThai == 1) {
+            return "Đang Giao Hàng";
+        } else if (trangThai == 2) {
+            return "Giao Hàng";
+        } else if (trangThai == 3) {
+            return "Hủy Giao Hàng";
+        } else {
+            return null;
+
+        }
+
     }
-    
+
 }
+

@@ -8,7 +8,7 @@ import DomainModels.KhachHang;
 import Services.HoaDonChiTietLichSuService;
 import Services.KhachHangService;
 import ViewModels.GiaoCaModel;
-import ViewModels.GiaoHangModel;
+import ViewModels.LichSuGiaoHangModel;
 import ViewModels.KhachHangModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,9 +59,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     }
     
     private void loadTableLichSu(){
-        ArrayList<GiaoHangModel> ghList = hdctService.getAllHoaDonGiaoHang();
+        ArrayList<LichSuGiaoHangModel> ghList = hdctService.getAllHoaDonGiaoHang();
         tableLichSu.setRowCount(0);
-        for (GiaoHangModel giaoHangModel : ghList) {
+        for (LichSuGiaoHangModel giaoHangModel : ghList) {
             tableLichSu.addRow(new Object[]{
                 giaoHangModel.getMaKH(),
                 giaoHangModel.getHoTen(),

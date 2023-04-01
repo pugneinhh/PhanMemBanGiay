@@ -29,8 +29,8 @@ public class HoaDonresbonsitory {
                 KhachHang kh1=kh.getKhachHangByidkmd(rs.getString(4));
                 KhuyenMai km1=km.getKMByID(rs.getString(7));
                 
-                list.add(new HoaDonViewModel( nv1, kh1, rs.getDate(5),rs.getBigDecimal(6)
-                        , km1, rs.getString(8), rs.getDate(9), rs.getDate(10), rs.getInt(11),rs.getString(2)));
+                list.add(new HoaDonViewModel(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(9), rs.getDate(10), rs.getInt(11)));
+           
             }
         } catch (SQLException ex) {
             Logger.getLogger(GiaoCaResbonsitory.class.getName()).log(Level.SEVERE, null, ex);

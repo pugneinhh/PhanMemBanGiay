@@ -54,7 +54,7 @@ public class KhachHangResponsitory {
     }
     public KhachHang getKhachHangByidkmd(String ma) {
         ArrayList<KhachHangModel>list=new ArrayList<>();
-        String sql = "select MaKH, TenKH, LoaiKH, DiaChi, GioiTinh, Email, SDT, NgaySinh, NgayThamGia, TrangThai \n"
+        String sql = "select * \n"
                 + "from KhachHang\n"
                 + "where ID = ?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, ma);

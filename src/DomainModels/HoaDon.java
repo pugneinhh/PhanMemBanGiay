@@ -13,53 +13,50 @@ import java.util.Date;
  */
 public class HoaDon {
     private String idHD;
-    private String maHD;
+        private String maHD;
     private NhanVien idNV;
     private KhachHang idKH;
-    private Date ngayTao;
+    private Date ngayMua;
     private BigDecimal thanhTien;
-    private BigDecimal tienShip;
     private KhuyenMai idKM;
     private String ghiChu;
     private Date ngaySua;
+    private Date ngaytao;
     private int trangThai;
+
 
     public HoaDon() {
     }
 
-    public HoaDon(String idHD, String maHD) {
-        this.idHD = idHD;
-        this.maHD = maHD;
-    }
-
-    public HoaDon(String idHD, String maHD, KhachHang idKH) {
-        this.idHD = idHD;
-        this.maHD = maHD;
-        this.idKH = idKH;
-    }
-
-    public HoaDon(NhanVien idNV, KhachHang idKH, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, int trangThai) {
-        this.idNV = idNV;
-        this.idKH = idKH;
-        this.thanhTien = thanhTien;
-        this.tienShip = tienShip;
-        this.idKM = idKM;
-        this.ghiChu = ghiChu;
-        this.trangThai = trangThai;
-    }
-
-    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayTao, BigDecimal thanhTien, BigDecimal tienShip, KhuyenMai idKM, String ghiChu, Date ngaySua, int trangThai) {
+    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayMua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
         this.idNV = idNV;
         this.idKH = idKH;
-        this.ngayTao = ngayTao;
+        this.ngayMua = ngayMua;
         this.thanhTien = thanhTien;
-        this.tienShip = tienShip;
         this.idKM = idKM;
         this.ghiChu = ghiChu;
         this.ngaySua = ngaySua;
+        this.ngaytao = ngaytao;
         this.trangThai = trangThai;
+    }
+
+     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.ngaytao = ngaytao;
+        this.trangThai = trangThai;
+    }
+
+
+
+
+    public HoaDon(String idHD, String maHD) {
+        this.idHD = idHD;
+        this.maHD = maHD;
     }
 
     public String getIdHD() {
@@ -94,13 +91,15 @@ public class HoaDon {
         this.idKH = idKH;
     }
 
-    public Date getNgayTao() {
-        return ngayTao;
+    public Date getNgayMua() {
+        return ngayMua;
     }
 
-    public void setNgayTao(Date ngayTao) {
-        this.ngayTao = ngayTao;
+    public void setNgayMua(Date ngayMua) {
+        this.ngayMua = ngayMua;
     }
+
+
 
     public BigDecimal getThanhTien() {
         return thanhTien;
@@ -108,14 +107,6 @@ public class HoaDon {
 
     public void setThanhTien(BigDecimal thanhTien) {
         this.thanhTien = thanhTien;
-    }
-
-    public BigDecimal getTienShip() {
-        return tienShip;
-    }
-
-    public void setTienShip(BigDecimal tienShip) {
-        this.tienShip = tienShip;
     }
 
     public KhuyenMai getIdKM() {
@@ -142,6 +133,14 @@ public class HoaDon {
         this.ngaySua = ngaySua;
     }
 
+    public Date getNgaytao() {
+        return ngaytao;
+    }
+
+    public void setNgaytao(Date ngaytao) {
+        this.ngaytao = ngaytao;
+    }
+
     public int getTrangThai() {
         return trangThai;
     }
@@ -150,9 +149,9 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return maHD;
-    }
+
+
+    
+
 
 }

@@ -1,38 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package responsitories;
 
 import DomainModels.HoaDon;
 import DomainModels.KhachHang;
+import DomainModels.KhuyenMai;
+import DomainModels.NhanVien;
 import Utilities.JDBCHelper;
-import java.math.BigDecimal;
-import java.sql.*;
-/**
- *
- * @author HoiVN
- */
-public class HoaDonResponsitory {
-    
-    KhachHangResponsitory khr = new KhachHangResponsitory();
-    
-    public HoaDon getHDByID(String id) {
+import ViewModels.HoaDonViewModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-        String sql = "select ID,MaHD from HoaDon where Id = ?";
+public class HoaDonResponsitory {
+
+    NhanVienResponsitory nv = new NhanVienResponsitory();
+    KhachHangResponsitory kh = new KhachHangResponsitory();
+    KhuyenMaiResbonsitory km = new KhuyenMaiResbonsitory();
+
+    public ArrayList<HoaDonViewModel> getAllhoadon() {
+        ArrayList<HoaDonViewModel> list = new ArrayList<>();
+        String sql = "SELECT * FROM hoadon";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                NhanVien nv1 = nv.getNVByID(rs.getString(3));
+                KhachHang kh1 = kh.getKhachHangByidkmd(rs.getString(4));
+                KhuyenMai km1 = km.getKMByID(rs.getString(7));
+
+                list.add(new HoaDonViewModel(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(9), rs.getDate(10), rs.getInt(11)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public HoaDon gethdByID(String id) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        String sql = "select * from hoadon where id=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
-                return new HoaDon(rs.getString(1),rs.getString(2));
+                NhanVien nv1 = nv.getNVByID(rs.getString(3));
+                KhachHang kh1 = kh.getKhachHangByidkmd(rs.getString(4));
+                KhuyenMai km1 = km.getKMByID(rs.getString(7));
+               return new HoaDon(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(10), rs.getDate(9), rs.getInt(11));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return null;
     }
-    
-    public static void main(String[] args) {
-        HoaDonResponsitory hd = new HoaDonResponsitory();
-        System.out.println(hd.getHDByID("29735070-D7FC-408D-AD91-239E43934250"));
+
+    public HoaDon inserthoadon(HoaDon hd) {
+        String sql = "INSERT INTO dbo.HoaDon(ID,MaHD,IDNV,NgayTao,TrangThai) VALUES(NewID(),?,?,getdate(),?)";
+        JDBCHelper.executeUpdate(sql,
+                hd.getMaHD(),
+                hd.getIdNV().getIdNV(),
+                hd.getTrangThai()
+        );
+        return hd;
     }
+        public HoaDon updatehoadon(HoaDon hd) {
+        String sql = "UPDATE  dbo.HoaDon SET IDKH = ? WHERE MAHD = ?";
+        JDBCHelper.executeUpdate(sql,
+                hd.getIdKH().getIdKH(),
+                hd.getMaHD()
+        );
+        return hd;
+    }
+//    public static void main(String[] args) {
+//        HoaDonresbonsitory hdR = new HoaDonresbonsitory();
+//        System.out.println(hdR.getAllhoadon());
+//    }
+//    public HoaDonresbonsitory() {
+//    }
+
 }
