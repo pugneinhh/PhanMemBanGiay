@@ -2,6 +2,15 @@
 GO
 USE DUAN1_NHOM6
 GO
+SELECT * FROM HoaDon
+SELECT * FROM NHANVIEN
+SELECT * FROM KHACHHANG
+SELECT * FROM KHUYENMAI
+INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
+VALUES(NewID(),'HD03','12ce26a3-5f6f-48f2-8d46-157d13d015c5','a54bf9ce-9623-49f3-8ed3-4045650a1ac8',
+'02/02/2022',100000,'93c78624-9ce0-403f-a1c7-e9f20e2bbfdb',null,getDate(),0)
+INSERT INTO GiaoHang(IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,GiamGia,NgayGiao,NgayNhan,NgayTao,TrangThai)
+VALUES('3A906CC5-903D-465A-9429-19276B4C2468','A4F1FD4A-13AC-47F6-9B00-027DEE10F113','0325668668',N'HaNoi',150000,15000,150000,N'Theo %','02/03/2023',null,getDate(),0)
 select * from MauSac
 select * from ChatLieu
 select * from ChiTietSanPham
@@ -13,6 +22,10 @@ where Ma = 'SP11'
 
 select Id,IDSP,IDKM,GiaNhap,GiaBan,QR,HinhAnh,SoLuong, DanhMuc,Size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,NgaySua,TrangThai
 from ChiTietSanPham
+
+select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+join GiaoHang on GiaoHang.IDHD = HoaDon.ID
+join KhachHang on KhachHang.ID = HoaDon.IDKH
 
 SELECT * FROM DanhMuc
 where Id ='689A4DE2-5886-4E77-8DB2-B794036ED024'

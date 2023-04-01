@@ -5,6 +5,14 @@
 package Views;
 
 import DomainModels.ChiTietSanPham;
+import DomainModels.HoaDon;
+import DomainModels.HoaDonChiTiet;
+import Services.ChiTietSanPhamService;
+import Services.HoaDonChiTieservice;
+import Services.hoadonservice;
+import ViewModels.ChiTietSanPhamModel;
+import ViewModels.HoaDonViewModel;
+import ViewModels.hoadonchitietviewmodel;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -17,6 +25,7 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -30,19 +39,28 @@ import responsitories.ChiTietSanPhamResponsitory;
  */
 public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactory {
 
-    private WebcamPanel panel = null;
+   private WebcamPanel panel = null;
     private Webcam webcam = null;
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
-    public static ChiTietSanPham ctsp;
-    ChiTietSanPhamResponsitory ctspr=new ChiTietSanPhamResponsitory();
+    public static ChiTietSanPham ctsp = null;
+    HoaDonChiTieservice hoaDonChiTieservice = new HoaDonChiTieservice();
+    ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
     JTable tblGioHang;
+    JTable tblHoaDon;
     BanHangJPanel banHangfr;
-    public QRCode() {
+    private final hoadonservice hoaDonService;
+    private final ChiTietSanPhamService chiTietSanPhamService;
+    public QRCode(JTable tblGioHang, JTable tblHoaDon, BanHangJPanel banhangfr) {
         initComponents();
         initWebcam();
         this.setLocationRelativeTo(null);
-        ctsp=new ChiTietSanPham();
+        ctsp = new ChiTietSanPham();
+        this.tblGioHang = tblGioHang;
+        this.tblHoaDon = tblHoaDon;
+        this.banHangfr = banhangfr;
+        chiTietSanPhamService = new ChiTietSanPhamService();
+        hoaDonService = new hoadonservice();
     }
 
     /**
@@ -60,7 +78,7 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -118,6 +136,22 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
 //        java.awt.EventQueue.invokeLater(() -> {
 //            new QRCode().setVisible(true);
 //        });
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+
+        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new QRCode().setVisible(true);
+//        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -180,16 +214,74 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
             } catch (NotFoundException e) {
                 //no result
             }
+            ChiTietSanPham c = new ChiTietSanPham();
             if (result != null) {
                 txtKQ.setText(result.getText());
-                ctsp=ctspr.getChiTietSanPhamByQR(result.getText()).get(0);
-                if(ctsp!=null & ctsp.getMaQR()!=0){
-                    JOptionPane.showConfirmDialog(this, "Đã tìm thấy sản phẩm "+ ctsp.getIdSP().getTenSP()+ ", size "+ctsp.getIdSize().getTenSize()+", màu "+ctsp.getIdMS().getTenMS()+", cao "+ctsp.getIdDC().getTenDC()+"\n Bạn có muốn thêm sản phẩm này vào giỏ hàng không?");
-                
-                
+                ArrayList<ChiTietSanPhamModel> listCTSP = chiTietSanPhamService.getAllChiTietSanPham();
+                ArrayList<HoaDonViewModel> listHD = hoaDonService.getAllhoadon();
+                HoaDon h = new HoaDon();
+                ArrayList<HoaDonChiTiet> listHDCT = hoaDonChiTieservice.getAllhoadon();
+                ArrayList<HoaDonChiTiet> listHDCTNew = new ArrayList<>();
+                hoadonchitietviewmodel hdct = new hoadonchitietviewmodel();
+                ctsp = ctspr.getChiTietSanPhamByMaQR(Integer.valueOf(result.getText())); // lấy ra gì đây
+
+                if (ctsp != null & ctsp.getMaQR() != 0) {
+                    JOptionPane.showMessageDialog(this, "Đã tìm thấy sản phẩm " + ctsp.getIdSP().getTenSP() + ", size " + ctsp.getIdSize().getTenSize() + ", màu " + ctsp.getIdMS().getTenMS() + ", cao " + ctsp.getIdDC().getTenDC() + "\n Bạn có muốn thêm sản phẩm này vào giỏ hàng không?");
+                    int SLTon = ctsp.getSoLuong();
+
+                    for (ChiTietSanPhamModel cm : listCTSP) {
+                        if (cm.getIdCTSP() != null && cm.getIdCTSP().equals(ctsp.getIdCTSP())) {
+                            SLTon = cm.getSoLuong();
+                        }
+                    }
+                    int indexHD = tblHoaDon.getSelectedRow();
+                    String maHD = tblHoaDon.getValueAt(indexHD, 0).toString();
+
+                    for (HoaDonViewModel x : listHD) {
+                        if (x.getMaHD() != null && x.getMaHD().equals(maHD)) {
+                            h.setIdHD(x.getIdHD());
+                        }
+                    }
+                    
+                    hdct.setIdHD(h);
+                    hdct.setIdCTSP(ctsp);
+                    hdct.setSoLuong(1);
+                    hdct.setDonGia(ctsp.getGiaBan());
+                    System.out.println(hdct.getIdCTSP()+"sanpham quet");
+                    System.out.println(hdct);
+                    for (HoaDonChiTiet y : listHDCT) {
+                        if (y.getIdHD().getIdHD() != null && y.getIdHD().getIdHD().equals(h.getIdHD())) {
+                            listHDCTNew.add(y);
+                        }
+                    }
+                    int dem = 0;
+                    for (HoaDonChiTiet y1 : listHDCTNew) {
+
+                        if (y1.getIdCTSP().getIdCTSP().equals(ctsp.getIdCTSP())) {
+                            if (y1.getSoLuong() == SLTon || ((y1.getSoLuong()) + 1) > SLTon) {
+                                JOptionPane.showMessageDialog(this, "Không thể vượt quá số lượng đang có");
+                                return;
+                            }
+                            hdct.setSoLuong(y1.getSoLuong() + 1);
+                            hoaDonChiTieservice.updateHDCT(hdct);
+                            banHangfr.loadGioHangbyID(h.getIdHD());
+                            dem++;
+//                banHangfr.loadTableBanHang();
+                        }
+
+                    }
+                    if (dem == 0) {
+                        hdct.setSoLuong(1);
+                        hoaDonChiTieservice.inserthdct(hdct);
+                        banHangfr.loadGioHangbyID(h.getIdHD());
+                    }
+
                 }
             }
+            
+
         } while (true);
+        
     }
 
     @Override

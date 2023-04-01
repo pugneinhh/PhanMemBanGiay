@@ -9,32 +9,47 @@ import java.util.Date;
 
 
 public class HoaDonViewModel {
+     private String idHD;
+        private String maHD;
     private NhanVien idNV;
     private KhachHang idKH;
-    private Date ngaymua;
+    private Date ngayMua;
     private BigDecimal thanhTien;
     private KhuyenMai idKM;
     private String ghiChu;
     private Date ngaySua;
-     private Date ngaytao;
+    private Date ngaytao;
     private int trangThai;
-    private String mahd;
 
     public HoaDonViewModel() {
     }
 
-    public HoaDonViewModel(NhanVien idNV, KhachHang idKH, Date ngaymua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai, String mahd) {
+    public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayMua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai) {
+        this.idHD = idHD;
+        this.maHD = maHD;
         this.idNV = idNV;
         this.idKH = idKH;
-        this.ngaymua = ngaymua;
+        this.ngayMua = ngayMua;
         this.thanhTien = thanhTien;
         this.idKM = idKM;
         this.ghiChu = ghiChu;
         this.ngaySua = ngaySua;
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
-        this.mahd = mahd;
     }
+
+      public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.ngaytao = ngaytao;
+        this.trangThai = trangThai;
+    }
+
+    
+
+
 
     public NhanVien getIdNV() {
         return idNV;
@@ -52,13 +67,31 @@ public class HoaDonViewModel {
         this.idKH = idKH;
     }
 
-    public Date getNgaymua() {
-        return ngaymua;
+    public String getIdHD() {
+        return idHD;
     }
 
-    public void setNgaymua(Date ngaymua) {
-        this.ngaymua = ngaymua;
+    public void setIdHD(String idHD) {
+        this.idHD = idHD;
     }
+
+    public String getMaHD() {
+        return maHD;
+    }
+
+    public void setMaHD(String maHD) {
+        this.maHD = maHD;
+    }
+
+    public Date getNgayMua() {
+        return ngayMua;
+    }
+
+    public void setNgayMua(Date ngayMua) {
+        this.ngayMua = ngayMua;
+    }
+
+
 
     public BigDecimal getThanhTien() {
         return thanhTien;
@@ -108,13 +141,8 @@ public class HoaDonViewModel {
         this.trangThai = trangThai;
     }
 
-    public String getMahd() {
-        return mahd;
-    }
+ 
 
-    public void setMahd(String mahd) {
-        this.mahd = mahd;
-    }
 
 
     

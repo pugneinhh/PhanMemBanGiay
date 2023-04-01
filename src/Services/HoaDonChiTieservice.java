@@ -4,9 +4,11 @@
  */
 package Services;
 
+import DomainModels.ChiTietSanPham;
 import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
 import DomainModels.Hoadonct_SanpCT_Sp;
+import DomainModels.KhachHang;
 import ViewModels.KhachHangModel;
 import ViewModels.hoadonchitietviewmodel;
 import java.math.BigDecimal;
@@ -19,35 +21,49 @@ import responsitories.HoaDonCTResbonsitory;
  * @author HP
  */
 public class HoaDonChiTieservice {
-     private final HoaDonCTResbonsitory hdctrs;
 
-    public HoaDonChiTieservice(){
-              this.hdctrs=new HoaDonCTResbonsitory();
+    private final HoaDonCTResbonsitory hdctrs;
+
+    public HoaDonChiTieservice() {
+        this.hdctrs = new HoaDonCTResbonsitory();
     }
-       public ArrayList<HoaDonChiTiet> getAllhoadon() {
+
+    public ArrayList<HoaDonChiTiet> getAllhoadon() {
         ArrayList<HoaDonChiTiet> list = new ArrayList<>();
-        ArrayList<HoaDonChiTiet> kh = hdctrs.getAllhoadonct();
-        for (HoaDonChiTiet x : kh) {
-            //list.add(new HoaDonChiTiet(x.getIdCTSP(), x.getSoLuong(),x.getDonGia()));
+        ArrayList<DomainModels.HoaDonChiTiet> kh = hdctrs.getAllhoadonct();
+        for (DomainModels.HoaDonChiTiet x : kh) {
+            list.add(new HoaDonChiTiet(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getDonGia(), x.getSoLuong(), x.getNgayBan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
         }
         return list;
     }
-    public ArrayList<Hoadonct_SanpCT_Sp> gettheoMAhd(String MA){
+
+    public ArrayList<Hoadonct_SanpCT_Sp> gettheoMAhd(String MA) {
         return hdctrs.gethdByID(MA);
     }
-        public HoaDon gettheoidhd(String id){
+
+    public HoaDon gettheoidhd(String id) {
         return hdctrs.getIDHoaDon(id);
     }
-    public  hoadonchitietviewmodel inserthdct(HoaDonChiTiet hd){
-          ArrayList<HoaDonChiTiet> list = hdctrs.getAllhoadonct();
-      
-        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia(), hd.getNgayBan(),
-                hd.getNgayTao(), hd.getNgaySua(), hd.getTrangThai()));
-        return new hoadonchitietviewmodel(x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
+
+ public KhachHang getKhachHangByidkmd(String ma){
+     return hdctrs.getKhachHangByidkmd(ma);
+ }
+    public hoadonchitietviewmodel inserthdct(hoadonchitietviewmodel hd) {
+        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(),hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia()));
+        System.out.println(x.getIdCTSP().getIdCTSP());
+        System.out.println(x.getIdHD().getIdHD());
+        return new hoadonchitietviewmodel(x.getIdHDCT(),x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
     }
-       public boolean updateKhachHang(HoaDonChiTiet hd) {
- var x = hdctrs.updatehoadon(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia(), hd.getNgayBan(),
+   
+    public boolean updateKhachHang(HoaDonChiTiet hd) {
+        var x = hdctrs.updatehoadon(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getDonGia(), hd.getSoLuong(), hd.getNgayBan(),
                 hd.getNgayTao(), hd.getNgaySua(), hd.getTrangThai()));
-         return x;
+        return x;
+    }
+    
+    public hoadonchitietviewmodel updateHDCT(hoadonchitietviewmodel hdct){
+        var x = hdctrs.updateHDCT(new HoaDonChiTiet(hdct.getIdHDCT(),hdct.getIdHD(), hdct.getIdCTSP(), hdct.getSoLuong(), hdct.getDonGia()));
+    return new hoadonchitietviewmodel(x.getIdHDCT(),x.getIdHD(),x.getIdCTSP(),x.getSoLuong(),x.getDonGia());
+    
     }
 }

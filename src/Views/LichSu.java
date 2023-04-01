@@ -5,7 +5,7 @@
 package Views;
 
 import Services.HoaDonChiTietLichSuService;
-import ViewModels.GiaoHangModel;
+import ViewModels.LichSuGiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class LichSu extends javax.swing.JFrame {
     }
 
     private void loadTableHdGiaoDich(){
-        ArrayList<GiaoHangModel> list = hdCTSPs.getAllHoaDonGiaoHang();
+        ArrayList<LichSuGiaoHangModel> list = hdCTSPs.getAllHoaDonGiaoHang();
         dtmT.setRowCount(0);
-        for (GiaoHangModel giaoHangModel : list) {
+        for (LichSuGiaoHangModel giaoHangModel : list) {
             dtmT.addRow(new Object[]{
                 giaoHangModel.getMaHD(),
                 giaoHangModel.getMaNV(),

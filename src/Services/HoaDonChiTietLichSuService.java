@@ -4,7 +4,7 @@
  */
 package Services;
 
-import ViewModels.GiaoHangModel;
+import ViewModels.LichSuGiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.util.ArrayList;
 import responsitories.HoaDonChiTietLichSuResponsitory;
@@ -24,7 +24,7 @@ public class HoaDonChiTietLichSuService {
         return hoaDonChiTietResponsitory.getAllHoaDonCTSP();
     }
     
-    public ArrayList<GiaoHangModel> getAllHoaDonGiaoHang() {
+    public ArrayList<LichSuGiaoHangModel> getAllHoaDonGiaoHang() {
         return hoaDonChiTietResponsitory.getAllHoaDonGiaoHang();
     }
 }
