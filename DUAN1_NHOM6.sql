@@ -129,7 +129,7 @@ NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
 
-Drop TABLE GiaoHang(
+CREATE TABLE GiaoHang(
 IDGH UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 IDHD UNIQUEIDENTIFIER,
 IDKH UNIQUEIDENTIFIER,
@@ -141,7 +141,7 @@ TongTien DECIMAL(20,0) DEFAULT 0,
 NgayGiao DATE DEFAULT NULL,
 NgayNhan DATE DEFAULT NULL,
 NgayTao DATE DEFAULT NULL,
-NgayTao DATE DEFAULT NULL,
+NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
 Delete from GiaoHang
@@ -422,5 +422,13 @@ NgayTao,TrangThai)VALUES(NewID(),'325dbd1a-22c6-4ad4-9765-c0276e617ddb','a015cd0
 N'Hàng đẹp',getDate(),0)
 
 --Giao Hang--
-INSERT INTO GiaoHang(IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,GiamGia,NgayGiao,NgayNhan,NgayTao,TrangThai)
-VALUES('4b44def7-68ee-4c59-9106-06a437d03902','c6ecd884-4e4b-4e1b-9794-81025f8af7a2','0325668668',N'HaNoi',150000,15000,150000,N'Theo %','02/03/2023',null,getDate(),0)
+INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
+VALUES(NewID(),'4b44def7-68ee-4c59-9106-06a437d03902','c6ecd884-4e4b-4e1b-9794-81025f8af7a2','0325668668',N'HaNoi',150000,15000,150000,'02/03/2023',null,getDate(),0)
+
+INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
+VALUES(NewID(),'3a66dbd4-c230-4c71-8e19-0a2d67992b42' ,'d91876a6-7527-4487-ba4d-a2cc9d443c0a', '0987808709', 'Hanoi',100000, 10000,110000,
+'01/01/2003', '10/10/2022', getDate(), 1)
+
+INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
+VALUES(NewID(),'a54bf9ce-9623-49f3-8ed3-4045650a1ac8' ,'d91876a6-7527-4487-ba4d-a2cc9d443c0a', '0987808709', 'Hanoi',100000, 10000,110000,
+'01/01/2003', '10/10/2022', getDate(), 0)

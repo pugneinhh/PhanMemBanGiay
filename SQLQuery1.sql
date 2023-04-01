@@ -69,14 +69,20 @@ select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, 
 join ChiTietHoaDon as b on b.IdCTSP = a.Id
 
 select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
-ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao from ChiTietHoaDon
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
 join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
 join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
 
 
+select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+join GiaoHang on GiaoHang.IDHD = HoaDon.ID
+join KhachHang on KhachHang.ID = HoaDon.IDKH
+where GiaoHang.TrangThai = 1
+
 select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.GiamGia, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
 join GiaoHang on GiaoHang.IDHD = HoaDon.ID
 join KhachHang on KhachHang.ID = HoaDon.IDKH
+
 
 select MaKH, TenKH from KhachHang where ID = '5FF5624C-538C-4B9D-B6EA-929C246F716E'
 
@@ -99,6 +105,13 @@ update ChiTietSanPham set idkm = 'F86B6461-D3F8-4454-BFB8-127B07DF675B' where id
 select KhuyenMai.maKM, KhuyenMai.tenKM,KhuyenMai.hinhThucApDung, KhuyenMai.loaiGiamGia,ChiTietSanPham.IDSP,KhuyenMai.ngayBatDau,KhuyenMai.ngayKetThuc,KhuyenMai.TrangThai,ChiTietSanPham.MoTa, giaTri,giamToiDa,apDungGiamGia,KhuyenMai.NgayTao,KhuyenMai.NgaySua
 from KhuyenMai join ChiTietSanPham  on KhuyenMai.Id= ChiTietSanPham.IDKM
 
+
+Delete from GiaoHang
+select *from NHANVIEN
+select *from KhachHang
+select *from giaohang
+select *from ChiTietHoaDon
+select *from KhuyenMai
 
 CREATE TRIGGER TICHDIEM ON HOADON AFTER INSERT AS
 BEGIN

@@ -187,7 +187,7 @@ public class KhachHangResponsitory {
 
     public KhachHang insertKhachHang(KhachHang kh) {
         String sql = "INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) \n"
-                + "VALUES(NewID(), ?, ?, ?, ?, ?, ?, ?, ?, ?, getDate(), ?)";
+                + "VALUES(NewID(), ?, ?, ?, ?, ?, ?, ?, ?, getDate(), getDate(), ?)";
         JDBCHelper.executeUpdate(sql,
                 kh.getMaKH(),
                 kh.getLoaiKH(),
@@ -197,7 +197,7 @@ public class KhachHangResponsitory {
                 kh.getEmail(),
                 kh.getSdt(),
                 kh.getNgaySinh(),
-                kh.getNgayThamGia(),
+//              kh.getNgayThamGia(),
                 kh.getTrangThai()
         );
         return kh;
