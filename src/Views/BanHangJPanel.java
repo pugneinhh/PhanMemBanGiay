@@ -163,7 +163,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
             dtmHD.addRow(new Object[]{
                 hd.getMaHD(),
                 hd.getIdNV(),
-                hd.getIdKH(),
+                hd.getIdKH()==null?"Khách lẻ":""+hd.getIdKH(),
                 hd.getNgaytao(),
                 hd.getTrangThai() == 1 ? "Đã thanh toán" : "Chờ thanh toán"
             });
