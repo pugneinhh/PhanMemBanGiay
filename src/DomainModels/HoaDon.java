@@ -149,6 +149,11 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return "HoaDon{" + "idHD=" + idHD + ", maHD=" + maHD + ", idNV=" + idNV + ", idKH=" + idKH + ", ngayMua=" + ngayMua + ", thanhTien=" + thanhTien + ", idKM=" + idKM + ", ghiChu=" + ghiChu + ", ngaySua=" + ngaySua + ", ngaytao=" + ngaytao + ", trangThai=" + trangThai + '}';
+    }
+    
 
 
     

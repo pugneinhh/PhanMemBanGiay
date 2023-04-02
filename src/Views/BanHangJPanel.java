@@ -9,6 +9,7 @@ import DomainModels.DanhMuc;
 import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
 import DomainModels.KhachHang;
+import DomainModels.KhuyenMai;
 import DomainModels.NhanVien;
 import Services.ChiTietSanPhamService;
 import Services.DanhMucService;
@@ -22,7 +23,6 @@ import ViewModels.DanhMucModel;
 import ViewModels.HoaDonViewModel;
 import ViewModels.KhachHangModel;
 import ViewModels.NhanVienModel;
-import ViewModels.SanPhamModel;
 import ViewModels.hoadonchitietviewmodel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -39,6 +39,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
+import responsitories.HoaDonResponsitory;
+import responsitories.KhachHangResponsitory;
+import responsitories.KhuyenMaiResbonsitory;
+import responsitories.NhanVienResponsitory;
 
 /**
  *
@@ -50,8 +54,12 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private final ChiTietSanPhamService chiTietSanPhamService;
     private final SanPhamService sanPhamService;
     private final KhachHangService khachHangService;
+    private final KhachHangResponsitory khachHangrespon;
     private final hoadonservice hoaDonService;
+    private final HoaDonResponsitory hoaDonRespon;
     private final NhanVienService nhanVienService;
+    private final NhanVienResponsitory nhanVienRespon;
+    public static HoaDon hd=null;
     int chon = 0;
     private final HoaDonChiTieservice hoaDonChiTieservice;
 
@@ -84,10 +92,13 @@ public class BanHangJPanel extends javax.swing.JPanel {
         dtmSP = (DefaultTableModel) tblSanPham.getModel();
         chiTietSanPhamService = new ChiTietSanPhamService();
         khachHangService = new KhachHangService();
+        khachHangrespon=new KhachHangResponsitory();
         sanPhamService = new SanPhamService();
         hoaDonChiTieservice = new HoaDonChiTieservice();
         hoaDonService = new hoadonservice();
+        hoaDonRespon=new HoaDonResponsitory();
         nhanVienService = new NhanVienService();
+        nhanVienRespon=new NhanVienResponsitory();
         CardLayout layout = (CardLayout) pncardgoc.getLayout();
         // cbbDanhMuc.setModel((DefaultComboBoxModel) dcmDanhMuc);
 //        this.pnlTabs = pnlTabs;
@@ -431,6 +442,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
         jLabel6.setText("-");
 
         jButton11.setText("Thanh Toán");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         btnTaoHoaDon.setText("Hóa Đơn Mới");
         btnTaoHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -508,7 +524,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbltongtien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -987,7 +1003,25 @@ public class BanHangJPanel extends javax.swing.JPanel {
            
 
     }//GEN-LAST:event_tblKhachHangMouseClicked
-
+public void loadGioHangbyIDCoKM(String id, double giamGia) {
+        ArrayList<HoaDonChiTiet> listHDCT = hoaDonChiTieservice.getAllhoadon();
+        ArrayList<HoaDonChiTiet> listHDCTNew = new ArrayList<>();
+        for (HoaDonChiTiet h : listHDCT) {
+            if (h.getIdHD().getIdHD() != null && h.getIdHD().getIdHD().equals(id)) {
+                listHDCTNew.add(h);
+            }
+        }
+        dtmGH = (DefaultTableModel) tblGioHang.getModel();
+        dtmGH.setRowCount(0);
+        for (HoaDonChiTiet hd : listHDCTNew) {
+            dtmGH.addRow(new Object[]{
+                hd.getIdCTSP().getIdSP().getTenSP(),
+                hd.getSoLuong(),
+                hd.getDonGia(),
+                Double.valueOf(hd.getDonGia().toString()) * hd.getSoLuong()*giamGia/100
+            });
+        }
+    }
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
         // lấy ra index của bảng hóa đơn
         int indexHD = tblHoaDon.getSelectedRow();
@@ -1076,7 +1110,12 @@ public class BanHangJPanel extends javax.swing.JPanel {
             hoaDonChiTieservice.inserthdct(h);
             loadGioHangbyID(newHD.getIdHD());
         }
-
+        KhuyenMaiResbonsitory kmr = new KhuyenMaiResbonsitory();
+        for (KhuyenMai x : kmr.getAllKM()) {
+            if (chiTietSanPhamService.getChiTietSanPhamByidkmd(ctspNew.getIdCTSP()).getIdKM().equals(x.getIdKM())) {
+                loadGioHangbyIDCoKM(newHD.getIdHD(),Double.valueOf(String.valueOf(x.getGiaTri())));
+            }
+        }
 //        ArrayList<Hoadonct_SanpCT_Sp> li = hdct.gettheoMAhd(maHD);
 //        HoaDonChiTiet hdct1 = new HoaDonChiTiet();
 //      
@@ -1186,18 +1225,21 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
-
+    
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         int indexHD = tblHoaDon.getSelectedRow();
         ArrayList<HoaDonViewModel> listHD = hoaDonService.getAllhoadon();
+        
         String idHD = "";
         for (HoaDonViewModel x : listHD) {
             if (x.getMaHD() != null && x.getMaHD().equals(tblHoaDon.getValueAt(indexHD, 0).toString())) {
                 idHD = x.getIdHD();
+                hd=hoaDonRespon.gethdByID(idHD);
             }
         }
         
         lblHoaDon.setText(tblHoaDon.getValueAt(indexHD, 0).toString());
+        lbltenkh.setText(tblHoaDon.getValueAt(indexHD, 2).toString());
 //        String kh=tblHoaDon.getValueAt(indexHD, 2).toString();
 //        if(kh.isEmpty()){
 //            lbltenkh.setText("Khách lẻ");
@@ -1374,6 +1416,19 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private void btnGiaoHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoHangActionPerformed
         new GiaoHang().setVisible(true);
     }//GEN-LAST:event_btnGiaoHangActionPerformed
+    private NhanVien getNV(String id){
+        ArrayList<NhanVien> listnv=nhanVienRespon.getNVLam();
+        for (NhanVien nhanVien : listnv) {
+            if(nhanVien.getIdNV().equals(id)){
+                return nhanVien;
+            }
+        }
+        return null;
+    }
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        
+        new ThanhToanHoaDonJFrame(this,hd).setVisible(true);
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void changeBackgroud_SP_KH() {
         switch (chon) {

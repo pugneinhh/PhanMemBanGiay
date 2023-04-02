@@ -71,7 +71,7 @@ public class Voucher extends javax.swing.JDialog {
        }
        voucher= tblKhuyenMai.getValueAt(row, 0).toString();
        this.dispose();
-       new ThanhToanHoaDonJFrame().setVisible(true);
+//       new ThanhToanHoaDonJFrame(h).setVisible(true);
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
     /**
