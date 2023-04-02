@@ -4,8 +4,10 @@
  */
 package Views;
 
+import DomainModels.HoaDon;
 import DomainModels.KhuyenMai;
 import Services.KhuyenMaiService;
+import ViewModels.HoaDonViewModel;
 import ViewModels.KhuyenMaiModel;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     public ThanhToanHoaDonJFrame() {
         initComponents();
         txtVoucher.setText(Voucher.voucher);
+        
+        HoaDonViewModel hdV = new HoaDonViewModel();
+        lblTongtien.setText(hdV.getThanhTien() +"");
     }
     private KhuyenMaiModel getKhuyenMai(String ma){
         ArrayList<KhuyenMaiModel> list=kms.getAllKhuyenMai();
