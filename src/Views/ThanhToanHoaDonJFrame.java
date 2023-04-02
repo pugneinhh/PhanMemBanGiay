@@ -7,10 +7,24 @@ package Views;
 import DomainModels.HoaDon;
 import DomainModels.KhuyenMai;
 import Services.KhuyenMaiService;
+import Services.hoadonservice;
 import ViewModels.HoaDonViewModel;
+import Utilities.DBConnection;
 import ViewModels.KhuyenMaiModel;
+import java.lang.System.Logger.Level;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -18,15 +32,21 @@ import java.util.ArrayList;
  */
 public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     KhuyenMaiService kms=new KhuyenMaiService();
+    JPanel banHang;
+    HoaDon hd;
+    hoadonservice hds = new hoadonservice();
     /**
      * Creates new form ThanhToanHoaDonJFrame
      */
-    public ThanhToanHoaDonJFrame() {
+    public ThanhToanHoaDonJFrame(JPanel banHang,HoaDon hd) {
         initComponents();
+        this.banHang=banHang;
+        this.hd=hd;
         txtVoucher.setText(Voucher.voucher);
         
         HoaDonViewModel hdV = new HoaDonViewModel();
         lblTongtien.setText(hdV.getThanhTien() +"");
+        System.out.println(hd);
     }
     private KhuyenMaiModel getKhuyenMai(String ma){
         ArrayList<KhuyenMaiModel> list=kms.getAllKhuyenMai();
@@ -122,6 +142,11 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         jButton3.setText("Thanh Toán");
 
         jButton4.setText("Thanh Toán + In");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Hủy");
 
@@ -257,6 +282,24 @@ txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.p
         txtGiam.setText(diem+Double.parseDouble(txtGiam.getText())+"");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            Hashtable map = new Hashtable();
+            JasperReport rpt;
+       
+            rpt = JasperCompileManager.compileReport("src\\Views\\rptHoaDon.jrxml");
+        
+            map.put("MaHD", hd.getMaHD());
+            
+            JasperPrint p = JasperFillManager.fillReport(rpt, map, DBConnection.getConnection());
+
+            JasperViewer.viewReport(p, false);
+            
+        } catch (JRException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,11 +328,11 @@ txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.p
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThanhToanHoaDonJFrame().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ThanhToanHoaDonJFrame().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

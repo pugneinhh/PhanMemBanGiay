@@ -146,7 +146,7 @@ public class HoaDon {
     @Override
     public String toString() {
         return maHD;
-    }
+    }    
 
     public BigDecimal getThanhToan(){
         return thanhTien;

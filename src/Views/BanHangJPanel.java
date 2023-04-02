@@ -1410,7 +1410,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGiaoHangActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        new ThanhToanHoaDonJFrame().setVisible(true);
+        //new ThanhToanHoaDonJFrame().setVisible(true);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void changeBackgroud_SP_KH() {

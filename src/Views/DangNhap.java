@@ -17,6 +17,9 @@ public class DangNhap extends javax.swing.JFrame {
 
     NhanVienService nvs = new NhanVienService();
     public static NhanVienModel nv = null;
+    
+    
+    
 
     /**
      * Creates new form Login
@@ -67,7 +70,7 @@ public class DangNhap extends javax.swing.JFrame {
         lblQuen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

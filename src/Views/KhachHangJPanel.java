@@ -564,7 +564,6 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         tblLichSuGD.setBackground(new java.awt.Color(245, 255, 250));
         tblLichSuGD.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tblLichSuGD.setFont(new java.awt.Font("Barlow Condensed Light", 1, 12)); // NOI18N
         tblLichSuGD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
