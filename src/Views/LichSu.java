@@ -10,6 +10,7 @@ import ViewModels.HoaDonChiTiet_CTSanPham;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,16 +22,25 @@ public class LichSu extends javax.swing.JFrame {
     private HoaDonChiTietLichSuService hdCTSPs;
     private DefaultTableModel dtmD = new DefaultTableModel();
     private DefaultTableModel dtmT = new DefaultTableModel();
+    private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
     
     public LichSu() {
         initComponents();
         hdCTSPs = new HoaDonChiTietLichSuService();
         dtmD = (DefaultTableModel) tblHoaDon_CTSP.getModel();
         dtmT = (DefaultTableModel) tblGiaoHang.getModel();
+        cbbTrangThaiHD.setModel((DefaultComboBoxModel)dcm);
         loadTableHdCTSP();
         loadTableHdGiaoDich();
+        loadCombo();
     }
 
+    private void loadCombo(){
+        for (LichSuGiaoHangModel list : hdCTSPs.getAllHoaDonGiaoHang()) {
+            cbbTrangThaiHD.addItem(list.getTrangThaiDon());
+        }
+    }
+    
     private void loadTableHdGiaoDich(){
         ArrayList<LichSuGiaoHangModel> list = hdCTSPs.getAllHoaDonGiaoHang();
         dtmT.setRowCount(0);
@@ -44,10 +54,9 @@ public class LichSu extends javax.swing.JFrame {
                 giaoHangModel.getDiaChi(),
                 giaoHangModel.getNgayMua(),
                 giaoHangModel.getNgayGiao(),
-                giaoHangModel.getGiamGia(),
                 giaoHangModel.getTienShip(),
                 giaoHangModel.getThanhTien(),
-                giaoHangModel.getTrangThai()==0?"Đã thanh toán":"Chưa thanh toán"
+                giaoHangModel.getTrangThaiDon()
             });
         }
 //        System.out.println(list);
@@ -98,7 +107,6 @@ public class LichSu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -107,7 +115,6 @@ public class LichSu extends javax.swing.JFrame {
         txtMaHD = new javax.swing.JTextField();
         txtMaNV = new javax.swing.JTextField();
         txtMaKH = new javax.swing.JTextField();
-        txtGiamGia = new javax.swing.JTextField();
         txtTienShip = new javax.swing.JTextField();
         txtThanhTien = new javax.swing.JTextField();
         txtGhiChu = new javax.swing.JTextField();
@@ -143,17 +150,17 @@ public class LichSu extends javax.swing.JFrame {
 
         tblGiaoHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã hóa đơn", "Mã nhân viên", "Mã khách hàng", "Họ tên", "SĐT", "Địa chỉ", "Ngày mua", "Ngày giao", "Giảm giá", "Tiền ship", "Thành tiền ", "Trạng thái"
+                "Mã hóa đơn", "Mã nhân viên", "Mã khách hàng", "Họ tên", "SĐT", "Địa chỉ", "Ngày mua", "Ngày giao", "Tiền ship", "Thành tiền ", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -280,8 +287,6 @@ public class LichSu extends javax.swing.JFrame {
 
         jLabel8.setText("Ngày mua");
 
-        jLabel9.setText("Giảm giá");
-
         jLabel10.setText("Ngày giao hàng");
 
         jLabel11.setText("Tiền  ship");
@@ -304,7 +309,6 @@ public class LichSu extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
@@ -315,7 +319,6 @@ public class LichSu extends javax.swing.JFrame {
                     .addComponent(txtMaHD)
                     .addComponent(txtMaNV)
                     .addComponent(txtMaKH)
-                    .addComponent(txtGiamGia)
                     .addComponent(txtTienShip)
                     .addComponent(txtThanhTien)
                     .addComponent(txtGhiChu)
@@ -346,14 +349,9 @@ public class LichSu extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(txtNgayMua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10))
+                    .addComponent(jLabel10)
                     .addComponent(txtNgayGiaoHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -476,10 +474,9 @@ public class LichSu extends javax.swing.JFrame {
                 txtNgayMua.setDate(date);
                 Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblGiaoHang.getValueAt(row, 7).toString());
                 txtNgayGiaoHang.setDate(date1);
-                txtGiamGia.setText(tblGiaoHang.getValueAt(row, 8).toString());
-                txtTienShip.setText(tblGiaoHang.getValueAt(row, 9).toString());
-                txtThanhTien.setText(tblGiaoHang.getValueAt(row, 10).toString());
-                cbbTrangThaiHD.setSelectedItem(tblGiaoHang.getValueAt(row,11));
+                txtTienShip.setText(tblGiaoHang.getValueAt(row, 8).toString());
+                txtThanhTien.setText(tblGiaoHang.getValueAt(row, 9).toString());
+                cbbTrangThaiHD.setSelectedItem(tblGiaoHang.getValueAt(row,10));
             }
         } catch (Exception e) {
         }
@@ -537,7 +534,6 @@ public class LichSu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
@@ -551,7 +547,6 @@ public class LichSu extends javax.swing.JFrame {
     private javax.swing.JTable tblGiaoHang;
     private javax.swing.JTable tblHoaDon_CTSP;
     private javax.swing.JTextField txtGhiChu;
-    private javax.swing.JTextField txtGiamGia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtMaNV;

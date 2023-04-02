@@ -1,4 +1,3 @@
-
 package ViewModels;
 
 import DomainModels.KhachHang;
@@ -7,14 +6,14 @@ import DomainModels.NhanVien;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
 public class HoaDonViewModel {
-     private String idHD;
-        private String maHD;
+
+    private String idHD;
+    private String maHD;
     private NhanVien idNV;
     private KhachHang idKH;
     private Date ngayMua;
-    private BigDecimal thanhTien;
+    private static BigDecimal thanhTien;
     private KhuyenMai idKM;
     private String ghiChu;
     private Date ngaySua;
@@ -38,7 +37,7 @@ public class HoaDonViewModel {
         this.trangThai = trangThai;
     }
 
-      public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
+    public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
         this.idNV = idNV;
@@ -46,10 +45,6 @@ public class HoaDonViewModel {
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
     }
-
-    
-
-
 
     public NhanVien getIdNV() {
         return idNV;
@@ -90,8 +85,6 @@ public class HoaDonViewModel {
     public void setNgayMua(Date ngayMua) {
         this.ngayMua = ngayMua;
     }
-
-
 
     public BigDecimal getThanhTien() {
         return thanhTien;
@@ -141,9 +134,4 @@ public class HoaDonViewModel {
         this.trangThai = trangThai;
     }
 
- 
-
-
-
-    
 }

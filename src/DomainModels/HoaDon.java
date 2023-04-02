@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class HoaDon {
     private String idHD;
-        private String maHD;
+    private String maHD;
     private NhanVien idNV;
     private KhachHang idKH;
     private Date ngayMua;
@@ -23,7 +23,6 @@ public class HoaDon {
     private Date ngaySua;
     private Date ngaytao;
     private int trangThai;
-
 
     public HoaDon() {
     }
@@ -42,7 +41,7 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
+    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
         this.idNV = idNV;
@@ -50,9 +49,6 @@ public class HoaDon {
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
     }
-
-
-
 
     public HoaDon(String idHD, String maHD) {
         this.idHD = idHD;
@@ -98,8 +94,6 @@ public class HoaDon {
     public void setNgayMua(Date ngayMua) {
         this.ngayMua = ngayMua;
     }
-
-
 
     public BigDecimal getThanhTien() {
         return thanhTien;
@@ -149,9 +143,12 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
+    @Override
+    public String toString() {
+        return maHD;
+    }
 
-
-    
-
-
+    public BigDecimal getThanhToan(){
+        return thanhTien;
+    }
 }

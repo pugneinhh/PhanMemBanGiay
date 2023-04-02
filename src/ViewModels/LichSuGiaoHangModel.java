@@ -23,7 +23,6 @@ public class LichSuGiaoHangModel {
     private String diaChi;
     private Date ngayMua;
     private Date ngayGiao;
-    private String giamGia;
     private BigDecimal tienShip;
     private BigDecimal thanhTien;
     private int trangThai;
@@ -31,7 +30,7 @@ public class LichSuGiaoHangModel {
     public LichSuGiaoHangModel() {
     }
 
-    public LichSuGiaoHangModel(HoaDon maHD, NhanVien maNV, KhachHang maKH, KhachHang hoTen, String sdt, String diaChi, Date ngayMua, Date ngayGiao, String giamGia, BigDecimal tienShip, BigDecimal thanhTien, int trangThai) {
+    public LichSuGiaoHangModel(HoaDon maHD, NhanVien maNV, KhachHang maKH, KhachHang hoTen, String sdt, String diaChi, Date ngayMua, Date ngayGiao, BigDecimal tienShip, BigDecimal thanhTien, int trangThai) {
         this.maHD = maHD;
         this.maNV = maNV;
         this.maKH = maKH;
@@ -40,7 +39,6 @@ public class LichSuGiaoHangModel {
         this.diaChi = diaChi;
         this.ngayMua = ngayMua;
         this.ngayGiao = ngayGiao;
-        this.giamGia = giamGia;
         this.tienShip = tienShip;
         this.thanhTien = thanhTien;
         this.trangThai = trangThai;
@@ -110,14 +108,6 @@ public class LichSuGiaoHangModel {
         this.ngayGiao = ngayGiao;
     }
 
-    public String getGiamGia() {
-        return giamGia;
-    }
-
-    public void setGiamGia(String giamGia) {
-        this.giamGia = giamGia;
-    }
-
     public BigDecimal getTienShip() {
         return tienShip;
     }
@@ -142,9 +132,24 @@ public class LichSuGiaoHangModel {
         this.trangThai = trangThai;
     }
 
-    @Override
-    public String toString() {
-        return "GiaoHangModel{" + "maHD=" + maHD + ", maNV=" + maNV + ", maKH=" + maKH + ", hoTen=" + hoTen + ", sdt=" + sdt + ", diaChi=" + diaChi + ", ngayMua=" + ngayMua + ", ngayGiao=" + ngayGiao + ", giamGia=" + giamGia + ", tienShip=" + tienShip + ", thanhTien=" + thanhTien + ", trangThai=" + trangThai + '}';
+    public String getTrangThaiDon(){
+        if (trangThai == 0) {
+            return "Chờ Giao Hàng";
+        } else if (trangThai == 1) {
+            return "Đang Giao Hàng";
+        } else if (trangThai == 2) {
+            return "Giao Hàng";
+        } else if (trangThai == 3) {
+            return "Hủy Giao Hàng";
+        } else {
+            return null;
+
+        }
     }
     
+    @Override
+    public String toString() {
+        return "LichSuGiaoHangModel{" + "maHD=" + maHD + ", maNV=" + maNV + ", maKH=" + maKH + ", hoTen=" + hoTen + ", sdt=" + sdt + ", diaChi=" + diaChi + ", ngayMua=" + ngayMua + ", ngayGiao=" + ngayGiao + ", tienShip=" + tienShip + ", thanhTien=" + thanhTien + ", trangThai=" + trangThai + '}';
+    }
+
 }

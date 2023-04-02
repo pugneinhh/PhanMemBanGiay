@@ -62,7 +62,7 @@ public class HoaDonChiTietLichSuResponsitory {
 
     public ArrayList<LichSuGiaoHangModel> getAllHoaDonGiaoHang() {
         ArrayList<LichSuGiaoHangModel> list = new ArrayList<>();
-        String sql = "select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.GiamGia, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon\n"
+        String sql = "select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon\n"
                 + "join GiaoHang on GiaoHang.IDHD = HoaDon.ID\n"
                 + "join KhachHang on KhachHang.ID = HoaDon.IDKH";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
@@ -72,7 +72,7 @@ public class HoaDonChiTietLichSuResponsitory {
                 NhanVien nv = nvr.getNVByID(rs.getString(2));
                 KhachHang kh = khr.getMaKHByID(rs.getString(3));
                 KhachHang khTen = khr.getTenKHByID(rs.getString(4));
-                list.add(new LichSuGiaoHangModel(hd, nv, kh, khTen, rs.getString(5), rs.getString(6), rs.getDate(7), rs.getDate(8), rs.getString(9), rs.getBigDecimal(10), rs.getBigDecimal(11), rs.getInt(12)));
+                list.add(new LichSuGiaoHangModel(hd, nv, kh, khTen, rs.getString(5), rs.getString(6), rs.getDate(7), rs.getDate(8), rs.getBigDecimal(9), rs.getBigDecimal(10), rs.getInt(11)));
             }
         } catch (Exception e) {
             e.printStackTrace();

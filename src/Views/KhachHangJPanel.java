@@ -27,6 +27,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     DefaultTableModel tableModelThongTin = new DefaultTableModel();
     DefaultTableModel tableLichSu = new DefaultTableModel();
     HoaDonChiTietLichSuService hdctService;
+
     /**
      * Creates new form KhachHang
      */
@@ -35,7 +36,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         khService = new KhachHangService();
         hdctService = new HoaDonChiTietLichSuService();
         tableModelThongTin = (DefaultTableModel) tblThongtinKH.getModel();
-        tableLichSu =  (DefaultTableModel) tblLichSuGD.getModel();
+        tableLichSu = (DefaultTableModel) tblLichSuGD.getModel();
         loadTableThongTin();
         loadTableLichSu();
     }
@@ -57,8 +58,8 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             });
         }
     }
-    
-    private void loadTableLichSu(){
+
+    private void loadTableLichSu() {
         ArrayList<LichSuGiaoHangModel> ghList = hdctService.getAllHoaDonGiaoHang();
         tableLichSu.setRowCount(0);
         for (LichSuGiaoHangModel giaoHangModel : ghList) {
@@ -68,7 +69,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 giaoHangModel.getSdt(),
                 giaoHangModel.getNgayMua(),
                 giaoHangModel.getThanhTien(),
-                giaoHangModel.getTrangThai()
+                giaoHangModel.getTrangThaiDon()
             });
         }
     }
@@ -229,7 +230,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblLichSuGD = new javax.swing.JTable();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(245, 255, 250));
+
+        jPanel1.setBackground(new java.awt.Color(173, 216, 230));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thiết lập thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel1.setText("Mã khách hàng");
@@ -266,8 +269,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         buttonGroup2.add(rdoKHNgung);
         rdoKHNgung.setText("Ngừng hoạt động");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
+        jPanel2.setBackground(new java.awt.Color(245, 255, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        btnThem.setBackground(new java.awt.Color(152, 251, 152));
+        btnThem.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +281,8 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSua.setBackground(new java.awt.Color(152, 251, 152));
+        btnSua.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +290,8 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnLamMoi.setBackground(new java.awt.Color(152, 251, 152));
+        btnLamMoi.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +372,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                                         .addComponent(rdoKHNgung))
                                     .addComponent(txtKHNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -419,11 +429,15 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(245, 255, 250));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
+        jTabbedPane3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel10.setBackground(new java.awt.Color(173, 216, 230));
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.lightGray));
 
+        tblThongtinKH.setBackground(new java.awt.Color(245, 255, 250));
         tblThongtinKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -447,6 +461,8 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblThongtinKH);
 
+        jLabel17.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel17.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
         jLabel17.setText("Tìm theo SDT");
 
         lblTimSDT.addActionListener(new java.awt.event.ActionListener() {
@@ -455,11 +471,14 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel11.setBackground(new java.awt.Color(245, 255, 250));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lọc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel18.setText("Giới tính");
 
-        cbbKHGioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cbbKHGioitinh.setBackground(new java.awt.Color(152, 251, 152));
+        cbbKHGioitinh.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
+        cbbKHGioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Nam", "Nữ" }));
         cbbKHGioitinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbKHGioitinhActionPerformed(evt);
@@ -468,7 +487,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jLabel19.setText("Trạng thái");
 
-        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngừng hoạt động", "Còn hoạt động" }));
+        cbbKHTrangThai.setBackground(new java.awt.Color(152, 251, 152));
+        cbbKHTrangThai.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
+        cbbKHTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngừng hoạt động", "Còn hoạt động", "All" }));
         cbbKHTrangThai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbKHTrangThaiActionPerformed(evt);
@@ -488,7 +509,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cbbKHTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbbKHTrangThai, 0, 121, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -502,7 +523,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
                 .addComponent(cbbKHTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -512,7 +533,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
@@ -539,6 +560,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jTabbedPane3.addTab("Thông tin khách hàng", jPanel10);
 
+        jPanel12.setBackground(new java.awt.Color(173, 216, 230));
+
+        tblLichSuGD.setBackground(new java.awt.Color(245, 255, 250));
+        tblLichSuGD.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        tblLichSuGD.setFont(new java.awt.Font("Barlow Condensed Light", 1, 12)); // NOI18N
         tblLichSuGD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -563,7 +589,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                 .addGap(55, 55, 55))
         );
         jPanel12Layout.setVerticalGroup(
@@ -597,7 +623,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 996, Short.MAX_VALUE)
+            .addGap(0, 999, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -706,14 +732,24 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
     private void cbbKHGioitinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKHGioitinhActionPerformed
         String gioiTinh = cbbKHGioitinh.getSelectedItem().toString();
-        loadTableTimGioiTinh(gioiTinh);
+        if (gioiTinh.equalsIgnoreCase("All")) {
+            loadTableThongTin();
+        } else {
+            loadTableTimGioiTinh(gioiTinh);
+        }
+
     }//GEN-LAST:event_cbbKHGioitinhActionPerformed
 
     private void cbbKHTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKHTrangThaiActionPerformed
-        int tt = cbbKHTrangThai.getSelectedIndex();
-        loadTableTimTrangThai(tt);
+        String tt = cbbKHTrangThai.getSelectedItem().toString();
+        if (tt.equalsIgnoreCase("All")) {
+            loadTableThongTin();
+        } else {
+            loadTableTimTrangThai(cbbKHTrangThai.getSelectedIndex());
+        }
+
     }//GEN-LAST:event_cbbKHTrangThaiActionPerformed
-   
+
     private void loadTableTimKiem() {
         ArrayList<KhachHangModel> list = khService.getKhachHangBysdt(lblTimSDT.getText());
         tableModelThongTin.setRowCount(0);

@@ -5,7 +5,10 @@
 
 package Views;
 
+import Services.KhuyenMaiService;
 import ViewModels.KhuyenMaiModel;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +16,36 @@ import ViewModels.KhuyenMaiModel;
  */
 public class Voucher extends javax.swing.JDialog {
     public static String voucher;
+    private KhuyenMaiService kms = new KhuyenMaiService();
+    DefaultTableModel dtm = new DefaultTableModel();
     /** Creates new form Voucher */
     public Voucher(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        dtm = (DefaultTableModel) tblKhuyenMai.getModel();
+        loadKM();
     }
 
-    
+    public void loadKM(){
+        ArrayList<KhuyenMaiModel> list = kms.getAllKhuyenMai();
+        dtm.setRowCount(0);
+        for (KhuyenMaiModel x : list) {
+            if(x.getTrangThai() == 0){
+                Object[] rowdata = {
+                x.getMaKM(),
+                x.getTenKM(),
+                x.getHinhThucApDung(),
+                x.getGiaTri(),
+                x.getGiamToiDa(),
+                x.getNgayBatDau(),
+                x.getNgayKetThuc(),
+            };
+            dtm.addRow(rowdata);
+            } else{
+                return;
+            }                    
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

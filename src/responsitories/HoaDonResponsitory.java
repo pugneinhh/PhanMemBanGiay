@@ -37,18 +37,17 @@ public class HoaDonResponsitory {
     }
 
     public HoaDon gethdByID(String id) {
-        ArrayList<HoaDon> list = new ArrayList<>();
-        String sql = "select * from hoadon where id=?";
+        String sql = "select * from HoaDon where ID = ?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
                 NhanVien nv1 = nv.getNVByID(rs.getString(3));
                 KhachHang kh1 = kh.getKhachHangByidkmd(rs.getString(4));
                 KhuyenMai km1 = km.getKMByID(rs.getString(7));
-               return new HoaDon(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(10), rs.getDate(9), rs.getInt(11));
+                return new HoaDon(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(10), rs.getDate(9), rs.getInt(11));
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -62,7 +61,8 @@ public class HoaDonResponsitory {
         );
         return hd;
     }
-        public HoaDon updatehoadon(HoaDon hd) {
+
+    public HoaDon updatehoadon(HoaDon hd) {
         String sql = "UPDATE  dbo.HoaDon SET IDKH = ? WHERE MAHD = ?";
         JDBCHelper.executeUpdate(sql,
                 hd.getIdKH().getIdKH(),
@@ -70,11 +70,5 @@ public class HoaDonResponsitory {
         );
         return hd;
     }
-//    public static void main(String[] args) {
-//        HoaDonresbonsitory hdR = new HoaDonresbonsitory();
-//        System.out.println(hdR.getAllhoadon());
-//    }
-//    public HoaDonresbonsitory() {
-//    }
 
 }
