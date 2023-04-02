@@ -165,6 +165,10 @@ public class NhanVienResponsitory {
         return list;
     }
     
-    
+    public String updatePass(String pass, String ma) {
+        String sql = "UPDATE NHANVIEN SET MATKHAU = ? WHERE MANV = ?";
+        JDBCHelper.executeUpdate(sql, pass,ma);
+        return pass;
+    }
             
 }

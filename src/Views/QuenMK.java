@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Random;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -54,6 +55,16 @@ public class QuenMK extends javax.swing.JFrame {
 
         txtMa.setText(" " + sb.toString());
     }
+    private String randomPass(){
+        String alpha = "0123456789ABCDEFGHIKLMOPQRSTUVWXYZabcdefghiklmopqrstuvwxyz";
+        SecureRandom rd = new SecureRandom();
+
+        StringBuilder sb = new StringBuilder(6);
+        for (int i = 0; i < 6; i++) {
+            sb.append(alpha.charAt(rd.nextInt(alpha.length())));
+        }
+        return sb.toString();
+    }
 
     private void loadlai() {
         goiy();
@@ -95,33 +106,23 @@ public class QuenMK extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         txtCapcha = new javax.swing.JTextField();
         txtMa = new javax.swing.JTextField();
         btnGui = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setOpaque(false);
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Quên Mật Khẩu?");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
-
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmail.setBorder(null);
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 250, 30));
 
         txtCapcha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCapcha.setBorder(null);
@@ -133,14 +134,12 @@ public class QuenMK extends javax.swing.JFrame {
                 txtCapchaFocusLost(evt);
             }
         });
-        getContentPane().add(txtCapcha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 150, 30));
 
         txtMa.setEditable(false);
-        txtMa.setBackground(new java.awt.Color(204, 204, 204));
+        txtMa.setBackground(new java.awt.Color(255, 255, 204));
         txtMa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtMa.setBorder(null);
         txtMa.setEnabled(false);
-        getContentPane().add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 90, 30));
 
         btnGui.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Send.png"))); // NOI18N
@@ -151,7 +150,6 @@ public class QuenMK extends javax.swing.JFrame {
                 btnGuiActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGui, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 100, 40));
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back.png"))); // NOI18N
@@ -165,7 +163,61 @@ public class QuenMK extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 90, 40));
+
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmail.setBorder(null);
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(364, 364, 364)
+                .addComponent(jLabel2)
+                .addGap(134, 134, 134))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btnGui, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtCapcha)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel2)
+                .addGap(37, 37, 37)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCapcha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGui, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 330));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/rsz_thiết_kế_chưa_có_tên_4.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 330));
@@ -209,15 +261,17 @@ public class QuenMK extends javax.swing.JFrame {
     private void btnGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiActionPerformed
          if (check() == true) {
            ArrayList<NhanVien> list=nvr.getNVLam();
+             String random=randomPass();
             for (NhanVien x : list) {
                 if(x.getEmail().equals(txtEmail.getText().trim())){
-                    guiMail(x.getMatKhau());
+                    guiMail(random);
+                    nvr.updatePass(random, x.getMaNV());
                 }
             }
             
         }
     }//GEN-LAST:event_btnGuiActionPerformed
-    private void guiMail(String txtMessage){
+    private void guiMail(String pass){
         try {
             Properties p = new Properties();
             p.put("mail.smtp.auth", "true");
@@ -242,7 +296,8 @@ public class QuenMK extends javax.swing.JFrame {
             msg.setFrom(new InternetAddress(accountname));
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             msg.setSubject(title);
-            msg.setContent("Mật khẩu đăng nhập hệ thống là:" +txtMessage ,"text/html;charset=utf-8");
+            msg.setContent("Mật khẩu đăng nhập hệ thống là:" +pass ,"text/html;charset=utf-8");
+            
             Transport.send(msg);
             JOptionPane.showMessageDialog(this, "Gửi thành công đến email "+to);
         } catch (MessagingException e) {
@@ -294,6 +349,7 @@ public class QuenMK extends javax.swing.JFrame {
     private javax.swing.JButton btnGui;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCapcha;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMa;
