@@ -24,6 +24,14 @@ public class hoadonservice {
         }
         return list;
     }
+    public ArrayList<HoaDonViewModel> getHoaDonCho() {
+        ArrayList<HoaDonViewModel> list = new ArrayList<>();
+        ArrayList<HoaDonViewModel> kh = hd.getHoaDonCho();
+        for (HoaDonViewModel x : kh) {
+            list.add(new HoaDonViewModel(x.getIdHD(), x.getMaHD(), x.getIdNV(), x.getIdKH(), x.getNgayMua(), x.getThanhTien(), x.getIdKM(), x.getGhiChu(), x.getNgaytao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
 
 //    public ArrayList<HoaDonViewModel> gettheoidhd(String id) {
 //        return hd.gethdByID(id);

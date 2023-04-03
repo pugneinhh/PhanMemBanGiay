@@ -52,7 +52,7 @@ public class KhuyenMaiResbonsitory {
                 return new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getDate(6), rs.getDate(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getDate(11), rs.getDate(12), rs.getInt(13));
             }
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(KhuyenMaiResbonsitory.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
     }
