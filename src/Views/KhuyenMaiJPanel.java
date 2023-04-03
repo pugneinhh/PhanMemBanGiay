@@ -783,8 +783,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
+<<<<<<< HEAD
             }
+=======
+>>>>>>> origin/master
         }
+            }
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnLamMOiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMOiActionPerformed

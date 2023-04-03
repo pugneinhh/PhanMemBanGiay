@@ -13,6 +13,7 @@ import DomainModels.MauSac;
 import DomainModels.NhanVien;
 import DomainModels.SanPham;
 import DomainModels.Size;
+import Utilities.DBConnection;
 import Utilities.JDBCHelper;
 import ViewModels.LichSuGiaoHangModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
@@ -80,9 +81,43 @@ public class HoaDonChiTietLichSuResponsitory {
         return list;
     }
 
+    public ArrayList<HoaDonChiTiet_CTSanPham> getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(String maHD) {
+        String sql = "select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,\n"
+                + "ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon\n"
+                + "join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP\n"
+                + "join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD\n"
+                + "where HoaDon.MaHD = ?";
+        ArrayList<HoaDonChiTiet_CTSanPham> list = new ArrayList<>();
+        try {
+            Connection c = DBConnection.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, maHD);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                HoaDon hd = hdR.gethdByID(rs.getString(1));
+                SanPham sp = spR.getSPByID(rs.getString(2));
+                Size size = sizer.getSizeByID(rs.getString(5));
+                MauSac ms = msr.getMSByID(rs.getString(6));
+                ChatLieu cl = clr.getCLByID(rs.getString(7));
+                DanhMuc dm = dmr.getDMByID(rs.getString(8));
+                DoCao dc = dcr.getDCByID(rs.getString(9));
+                list.add(new HoaDonChiTiet_CTSanPham(hd, sp, rs.getBigDecimal(3), rs.getInt(4), size, ms, cl, dm, dc));            
+            }
+            c.close();
+            ps.close();
+            rs.close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         HoaDonChiTietLichSuResponsitory hdR = new HoaDonChiTietLichSuResponsitory();
 //        System.out.println(hdR.getAllHoaDonCTSP());
-        System.out.println(hdR.getAllHoaDonGiaoHang());
+//        System.out.println(hdR.getAllHoaDonGiaoHang());
+        System.out.println(hdR.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd("HD01"));
     }
 }
