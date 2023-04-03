@@ -79,8 +79,8 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         txtDiem = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnApVoucher = new javax.swing.JButton();
+        btnSDPoint = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -125,17 +125,17 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Áp Dụng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnApVoucher.setText("Áp Dụng");
+        btnApVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnApVoucherActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sử Dụng");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSDPoint.setText("Sử Dụng");
+        btnSDPoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSDPointActionPerformed(evt);
             }
         });
 
@@ -176,8 +176,8 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                                 .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnApVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSDPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -215,12 +215,12 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnApVoucher))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnSDPoint))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -258,10 +258,10 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiamActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnApVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApVoucherActionPerformed
         new Voucher(this, true).setVisible(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnApVoucherActionPerformed
 
     private void txtVoucherInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtVoucherInputMethodTextChanged
         // TODO add your handling code here:
@@ -277,10 +277,10 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
 txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.parseInt(txtVoucher.getText())/100));
     }//GEN-LAST:event_txtVoucherCaretUpdate
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSDPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSDPointActionPerformed
         double diem= Double.valueOf(txtDiem.getText());
         txtGiam.setText(diem+Double.parseDouble(txtGiam.getText())+"");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSDPointActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
@@ -336,8 +336,8 @@ txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.p
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnApVoucher;
+    private javax.swing.JButton btnSDPoint;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
