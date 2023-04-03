@@ -23,25 +23,26 @@ public class LichSu extends javax.swing.JFrame {
     private DefaultTableModel dtmD = new DefaultTableModel();
     private DefaultTableModel dtmT = new DefaultTableModel();
     private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
-    
+    int stt = 0;
+
     public LichSu() {
         initComponents();
         hdCTSPs = new HoaDonChiTietLichSuService();
         dtmD = (DefaultTableModel) tblHoaDon_CTSP.getModel();
         dtmT = (DefaultTableModel) tblGiaoHang.getModel();
-        cbbTrangThaiHD.setModel((DefaultComboBoxModel)dcm);
-        loadTableHdCTSP();
+        cbbTrangThaiHD.setModel((DefaultComboBoxModel) dcm);
+        //loadTableHdCTSP();
         loadTableHdGiaoDich();
         loadCombo();
     }
 
-    private void loadCombo(){
+    private void loadCombo() {
         for (LichSuGiaoHangModel list : hdCTSPs.getAllHoaDonGiaoHang()) {
             cbbTrangThaiHD.addItem(list.getTrangThaiDon());
         }
     }
-    
-    private void loadTableHdGiaoDich(){
+
+    private void loadTableHdGiaoDich() {
         ArrayList<LichSuGiaoHangModel> list = hdCTSPs.getAllHoaDonGiaoHang();
         dtmT.setRowCount(0);
         for (LichSuGiaoHangModel giaoHangModel : list) {
@@ -61,25 +62,43 @@ public class LichSu extends javax.swing.JFrame {
         }
 //        System.out.println(list);
     }
-    
-    private void loadTableHdCTSP(){
-        ArrayList<HoaDonChiTiet_CTSanPham> list = hdCTSPs.getAllHoaDonCTSP();
+
+    private void loadTableHdCTSP(ArrayList<HoaDonChiTiet_CTSanPham> list) {
+        //        ArrayList<HoaDonChiTiet_CTSanPham> list = hdCTSPs.getAllHoaDonCTSP();
+        //        dtmD.setRowCount(0);
+        //        for (HoaDonChiTiet_CTSanPham hoaDonChiTiet_CTSanPham : list) {
+        //            dtmD.addRow(new Object[]{
+        //                hoaDonChiTiet_CTSanPham.getMaHD(),
+        //                hoaDonChiTiet_CTSanPham.getTenSP(),
+        //                hoaDonChiTiet_CTSanPham.getGiaBan(),
+        //                hoaDonChiTiet_CTSanPham.getSoLuong(),
+        //                hoaDonChiTiet_CTSanPham.getSize(),
+        //                hoaDonChiTiet_CTSanPham.getMauSac(),
+        //                hoaDonChiTiet_CTSanPham.getChatLieu(),
+        //                hoaDonChiTiet_CTSanPham.getDanhMuc(),
+        //                hoaDonChiTiet_CTSanPham.getDoCao()
+        //            });
+        //        }
+
         dtmD.setRowCount(0);
         for (HoaDonChiTiet_CTSanPham hoaDonChiTiet_CTSanPham : list) {
             dtmD.addRow(new Object[]{
-                hoaDonChiTiet_CTSanPham.getMaHD(),
-                hoaDonChiTiet_CTSanPham.getTenSP(),
-                hoaDonChiTiet_CTSanPham.getGiaBan(),
-                hoaDonChiTiet_CTSanPham.getSoLuong(),
-                hoaDonChiTiet_CTSanPham.getSize(),
-                hoaDonChiTiet_CTSanPham.getMauSac(),
-                hoaDonChiTiet_CTSanPham.getChatLieu(),
-                hoaDonChiTiet_CTSanPham.getDanhMuc(),
-                hoaDonChiTiet_CTSanPham.getDoCao()
+                //stt,
+                //hoaDonChiTiet_CTSanPham.getMaHD(),
+                        hoaDonChiTiet_CTSanPham.getMaHD(),
+                        hoaDonChiTiet_CTSanPham.getTenSP(),
+                        hoaDonChiTiet_CTSanPham.getGiaBan(),
+                        hoaDonChiTiet_CTSanPham.getSoLuong(),
+                        hoaDonChiTiet_CTSanPham.getSize(),
+                        hoaDonChiTiet_CTSanPham.getMauSac(),
+                        hoaDonChiTiet_CTSanPham.getChatLieu(),
+                        hoaDonChiTiet_CTSanPham.getDanhMuc(),
+                        hoaDonChiTiet_CTSanPham.getDoCao()
             });
+            stt++;
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -464,9 +483,9 @@ public class LichSu extends javax.swing.JFrame {
     private void tblGiaoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGiaoHangMouseClicked
         try {
             int row = tblGiaoHang.getSelectedRow();
-            if(row < 0){
+            if (row < 0) {
                 return;
-            }else{
+            } else {
                 txtMaHD.setText(tblGiaoHang.getValueAt(row, 0).toString());
                 txtMaNV.setText(tblGiaoHang.getValueAt(row, 1).toString());
                 txtMaKH.setText(tblGiaoHang.getValueAt(row, 2).toString());
@@ -476,7 +495,9 @@ public class LichSu extends javax.swing.JFrame {
                 txtNgayGiaoHang.setDate(date1);
                 txtTienShip.setText(tblGiaoHang.getValueAt(row, 8).toString());
                 txtThanhTien.setText(tblGiaoHang.getValueAt(row, 9).toString());
-                cbbTrangThaiHD.setSelectedItem(tblGiaoHang.getValueAt(row,10));
+                cbbTrangThaiHD.setSelectedItem(tblGiaoHang.getValueAt(row, 10));
+                ArrayList<HoaDonChiTiet_CTSanPham> li = hdCTSPs.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(tblGiaoHang.getValueAt(row, 0).toString());
+                loadTableHdCTSP(li);
             }
         } catch (Exception e) {
         }
