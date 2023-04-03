@@ -492,11 +492,11 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                         .addGroup(PanelaLLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbbHinhThucGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGiaTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtGiamToiDa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelaLLLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -716,7 +716,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         ArrayList<DanhMucModel> danhmucsp = dms.getAllDanhMuc();
         ArrayList<ChiTietSanPhamModel> listctsp = ctsps.getAllChiTietSanPham();
         DanhMucModel dmm = new DanhMucModel();
-        SanPhamModel spm = new SanPhamModel();
+        SanPhamModel spm=new SanPhamModel();
         ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
         // Thêm khuyến mại
         KhuyenMaiModel km = getformdata();
@@ -724,60 +724,68 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             loadTableKM();
         }
         KhuyenMai k = new KhuyenMai();
-        k.setIdKM(km.getIdKM());
         System.out.println(kms.getIDByMa(km.getMaKM()));
         // set IDKM vào CTSP
         ctspm.setIdKM(getkhuyenmai(kms.getIDByMa(km.getMaKM()).get(0).getIdKM()));
         int dem = 0;
         // Danh mục được chọn
-        ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
         if (rdoDanhMuc.isSelected() == true) {
             // tìm những checkbox được check
             for (int i = 0; i < danhmucsp.size(); i++) {
                 boolean check = (boolean) tblSanPham.getValueAt(i, 0);
                 if (check == true) {
                     dmm = danhmucsp.get(i);
+                    ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
                     for (ChiTietSanPhamModel c : listctsp) {
                         if (c.getIdDM().getIdDM() != null && c.getIdDM().getIdDM().equals(dmm.getIdDM())) {
                             listID.add(c);
                         }
                     }
-
-                }
-            }
-            // thêm chương trình vào từng IDCTSP
-        }
-        // Lấy ra IDCTSP có trong danh mục
-        if (rdoSanPham.isSelected() == true) {
-            //tìm những checkbox được check
-            for (int i = 0; i < listsp.size(); i++) {
-                boolean check = (boolean) tblSanPham.getValueAt(i, 0);
-                if (check == true) {
-                    spm = listsp.get(i);
-                    for (ChiTietSanPhamModel ctm : listctsp) {
-                        if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
-                            listID.add(ctm);
+                    // thêm chương trình vào từng IDCTSP
+                    for (ChiTietSanPhamModel ct : listID) {
+                        System.out.println(ct.getIdCTSP());
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if(ctsps.updateByID1(ctspm)!=null){
+                            dem++;
                         }
                     }
                 }
-
             }
-        }
-        for (ChiTietSanPhamModel ct : listID) {
-            
-            System.out.println(ct.getIdCTSP());
-            ctspm.setIdCTSP(ct.getIdCTSP());
-            System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
-            if (ctsps.updateByID1(ctspm) != null) {
-                dem++;
+            // Lấy ra IDCTSP có trong danh mục
+        if(rdoSanPham.isSelected()==true){
+            //tìm những checkbox được check
+            for (int i = 0; i < listsp.size(); i++) {
+                 boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                 if(check==true){
+                     spm=listsp.get(i);
+                     ArrayList<ChiTietSanPhamModel> listID=new ArrayList<>();
+                     for (ChiTietSanPhamModel ctm : listctsp) {
+                         if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
+                            listID.add(ctm);
+                        }
+                        }
+                     for (ChiTietSanPhamModel ct : listID) {
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if(ctsps.updateByID1(ctspm)!=null){
+                            dem++;
+                        }
+                    }
+                     }
+                     
+                 }
             }
-        }
-        if (dem > 0) {
-            JOptionPane.showMessageDialog(this, "Thêm thành công");
-            LoadSP();
+           
+            if (dem > 0) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+                LoadSP();
 
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+            }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 

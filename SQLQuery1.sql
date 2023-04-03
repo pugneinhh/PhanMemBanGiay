@@ -73,8 +73,18 @@ ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietS
 join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
 join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
 
+<<<<<<< HEAD
 
 select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+=======
+SELECT * FROM HoaDon
+SELECT * FROM ChiTietHoaDon
+select * from ChiTietSanPham
+Select(SoLuong*DonGia)as thanhtien from ChiTietHoaDon
+select sum(SoLuong*DonGia)as thanhtien from ChiTietHoaDon WHERE IDHD='B8AC3455-E068-47E0-ADC6-AF9E1F86DE3C'
+UPDATE HoaDon SET ThanhTien=(select sum(SoLuong*DonGia)as thanhtien from ChiTietHoaDon WHERE IDHD='B8AC3455-E068-47E0-ADC6-AF9E1F86DE3C')  WHERE ID='B8AC3455-E068-47E0-ADC6-AF9E1F86DE3C'
+select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.GiamGia, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+>>>>>>> origin/master
 join GiaoHang on GiaoHang.IDHD = HoaDon.ID
 join KhachHang on KhachHang.ID = HoaDon.IDKH
 where GiaoHang.TrangThai = 1
@@ -125,17 +135,17 @@ BEGIN
 	from KhachHang join inserted 
 	on KHACHHANG.ID= inserted.IDKH
 END
-select * from KhachHang
+delete from KhachHang
 select * from HoaDon
 CREATE TRIGGER THANGHANG ON KHACHHANG AFTER UPDATE AS
 BEGIN
-	IF inserted.TICHDIEM>50000
+	IF (SELECT Inserted.TichDiem FROM KHACHHANG JOIN inserted on KHACHHANG.ID=INSERTED.ID) >50000
 BEGIN
 	UPDATE KHACHHANG 
 	SET LOAIKH =N'VÀNG'
 	from khachhang join inserted on KHACHHANG.ID=INSERTED.ID
 END
-	IF inserted.TICHDIEM>100000
+	IF (SELECT Inserted.TICHDIEM FROM KHACHHANG JOIN inserted on KHACHHANG.ID=INSERTED.ID)>100000
 BEGIN
 	UPDATE KHACHHANG
 	SET LOAIKH=N'Kim cương'

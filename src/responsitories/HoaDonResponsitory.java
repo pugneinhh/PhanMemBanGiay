@@ -18,7 +18,26 @@ public class HoaDonResponsitory {
 
     public ArrayList<HoaDonViewModel> getAllhoadon() {
         ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT * FROM hoadon";
+        String sql = "SELECT * FROM HOADON";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                NhanVien nv1 = nv.getNVByID(rs.getString(3));
+                KhachHang kh1 = kh.getKhachHangByidkmd(rs.getString(4));
+                KhuyenMai km1 = km.getKMByID(rs.getString(7));
+
+                list.add(new HoaDonViewModel(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(9), rs.getDate(10), rs.getInt(11)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<HoaDonViewModel> getHoaDonCho() {
+        ArrayList<HoaDonViewModel> list = new ArrayList<>();
+        String sql = "SELECT * FROM HOADON WHERE TRANGTHAI=0";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {

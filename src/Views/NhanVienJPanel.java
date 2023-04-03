@@ -1045,13 +1045,12 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         if (nvm == null) {
             return;
         }
-        int row = tblNVLam.getSelectedRow();
-
-        if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng muốn sửa");
+        
+        String ma = txtMaNV.getText().trim();
+        if(ma.length()==0){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên muốn sửa?");
             return;
         }
-        String ma = txtMaNV.getText().trim();
         nvm.setMaNV(ma);
 
         if (nvs.updateNV(nvm) != null) {

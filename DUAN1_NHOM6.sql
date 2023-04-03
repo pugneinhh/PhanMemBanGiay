@@ -66,23 +66,7 @@ NgayTao DATE DEFAULT NULL,
 NgaySua DATE DEFAULT NULL,
 TrangThai INT DEFAULT 0
 )
-CREATE TABLE GiaoCa(
-Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-MaGC VARCHAR(20) UNIQUE,
-MaNVGiao UNIQUEIDENTIFIER,
-MaNVNhan UNIQUEIDENTIFIER,
-GioNhanCa VARCHAR(20) DEFAULT NULL,
-GioGiaoCa VARCHAR(20) DEFAULT NULL,
-TienCoso DECIMAL(20,0) DEFAULT 0,
-TienPhatSinh DECIMAL(20,0) DEFAULT 0,
-DoanhThuCa DECIMAL(20,0) DEFAULT 0,
-TongTien DECIMAL(20,0) DEFAULT 0,
-GhiChuGiao NVARCHAR(200) DEFAULT NULL,
-GhiChuNhan NVARCHAR(200) DEFAULT NULL,
-NgayTao DATE DEFAULT NULL,
-NgaySua DATE DEFAULT NULL,
-TrangThai INT DEFAULT 0
-)
+
 
 CREATE TABLE KhachHang(
 ID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -295,14 +279,14 @@ INSERT INTO DanhMuc(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'DM09',N'Sandal'
 --ChucVu--
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV01',N'Quản lý',getDate(),0)
 INSERT INTO ChucVu(Id,Ma,Ten,NgayTao,TrangThai) VALUES(NewID(),'CV02',N'Nhân Viên',getDate(),0)
-
+select * from ChucVu
 --NhanVien--
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV01',N'Đinh Thị Quỳnh Nga','01/01/2003',N'Nữ',N'Ninh Bình','0377648225','ngad@gmail.com',
 'dinhnga123','2fc0d544-f2b0-40ea-aafd-6395d3d18642','Nga.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
-VALUES(NewID(),'NV02',N'Nguyễn Thị Phương Anh','2003-09-02',N'Nữ',N'Hà Nội','0348055118','anhntpph28990@fpt.edu.vn',
-'123a','2fc0d544-f2b0-40ea-aafd-6395d3d18642','Phanh.png',getDate(),1)
+VALUES(NewID(),'NV1',N'Nguyễn Thị Phương Anh','2003-09-02',N'Nữ',N'Hà Nội','0348055118','anhntpph28990@fpt.edu.vn',
+'123','92A9CCDC-4501-4B02-80C7-D6B5874C28ED','Phanh.png',getDate(),1)
 INSERT INTO NHANVIEN(Id,MANV,HoTen,NgaySinh,GioiTinh,DiaChi,Sdt,Email,MatKhau,IDCV,Hinh,NgayTao,TrangThai)
 VALUES(NewID(),'NV03',N'Trinh Thị Thủy','05/11/2003',N'Nữ',N'Thanh Hóa','0823556147','thuytt@gmail.com',
 'thuytA23','eb9eee84-02e7-4b71-9c11-fcae6469fdb9','Thuy.png',getDate(),1)
@@ -314,9 +298,10 @@ VALUES(NewID(),'NV05',N'Phạm Quang Anh','04/06/2003',N'Nam',N'Ninh Bình','035
 'anh04','eb9eee84-02e7-4b71-9c11-fcae6469fdb9','Quanh.png',getDate(),1)
 
 --KhachHang--
-INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
-VALUES(NewID(), 'KH01', N'Thành viên', 'Cam', 'Hanoi', N'Nam', 'camh123@gmail.com',
+INSERT INTO KhachHang(ID,MaKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
+VALUES(NewID(), 'KH01',  'Cam', 'Hanoi', N'Nam', 'camh123@gmail.com',
 '0962335335','01/01/2003', '10/10/2022', getDate(), 1)
+select * from KhachHang
 INSERT INTO KhachHang(ID,MaKH,LoaiKH,TenKH,DiaChi,GioiTinh,Email,SDT,NgaySinh,NgayThamGia,NgayTao,TrangThai) 
 VALUES(NewID(), 'KH02', N'Thành viên', N'Đông', N'Đông Anh Hanoi', N'Nam', 'dongq@fpt.edu',
 '0912355355', '09/06/2003', '01/01/2023', getDate(), 1)

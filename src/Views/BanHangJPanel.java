@@ -100,7 +100,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
         loadKhachHang();
         loadhoadon();
         loadComBoDanhMucSP();
-
+        tblSanPham.getTableHeader().setBackground(Color.pink);
+        tblKhachHang.getTableHeader().setBackground(Color.pink);
+        tblHoaDon.getTableHeader().setBackground(Color.pink);
+        tblGioHang.getTableHeader().setBackground(Color.pink);
     }
 
 
@@ -180,7 +183,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }
 
     public void loadhoadon() {
-        ArrayList<HoaDonViewModel> list = hoaDonService.getAllhoadon();
+        ArrayList<HoaDonViewModel> list = hoaDonService.getHoaDonCho();
         dtmHD = (DefaultTableModel) tblHoaDon.getModel();
         dtmHD.setRowCount(0);
         for (HoaDonViewModel hd : list) {
@@ -189,7 +192,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 hd.getIdNV(),
                 hd.getIdKH() == null ? "Khách lẻ" : "" + hd.getIdKH(),
                 hd.getNgaytao(),
-                hd.getTrangThai() == 1 ? "Đã thanh toán" : "Chờ thanh toán"
+                hd.getTrangThai() == 0 ? "Chờ thanh toán":"Đã thanh toán" 
             });
         }
     }
@@ -224,14 +227,12 @@ public class BanHangJPanel extends javax.swing.JPanel {
         for (ChiTietSanPhamModel ctspM : list) {
             dtmSP.addRow(new Object[]{
                 ctspM.getIdCTSP(),
-                ctspM.getIdSP().getMaSP(),
+                ctspM.getIdSP().getTenSP()+","+ctspM.getIdSize().getTenSize()+","+
+                ctspM.getIdDC().getTenDC()+","+
+                ctspM.getIdCL().getTenCL()+","+
+                ctspM.getIdMS().getTenMS(),
                 ctspM.getGiaBan(),
                 ctspM.getSoLuong(),
-                ctspM.getIdSize().getTenSize(),
-                ctspM.getIdDC().getTenDC(),
-                ctspM.getIdCL().getTenCL(),
-                ctspM.getIdMS().getTenMS(),
-                ctspM.getIdDM().getTenDM(),
                 ctspM.getMota()
             });
         }
@@ -545,7 +546,11 @@ public class BanHangJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                                 .addComponent(btnXoaDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                                .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> origin/master
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -799,29 +804,35 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "IDCTSP", "Mã SP", "Giá Bán", "Số Lượng", "Size", "Độ Cao", "Chất Liệu", "Màu Sắc", "Danh Mục", "Mô Tả"
+                "IDCTSP", "Tên SP", "Giá Bán", "Số Lượng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPham.setRowHeight(40);
         tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSanPhamMouseClicked(evt);
             }
         });
         Sanpham.setViewportView(tblSanPham);
+        if (tblSanPham.getColumnModel().getColumnCount() > 0) {
+            tblSanPham.getColumnModel().getColumn(1).setMinWidth(400);
+            tblSanPham.getColumnModel().getColumn(1).setPreferredWidth(400);
+            tblSanPham.getColumnModel().getColumn(1).setMaxWidth(400);
+        }
 
         pncardgoc.add(Sanpham, "sanpham");
 
