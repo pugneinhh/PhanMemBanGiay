@@ -58,7 +58,7 @@ public class GiaoHang extends javax.swing.JFrame {
         for(GiaoHangModel x : list){
             Object[]rowdata ={
                 x.getIdGiaoHang(),
-                 x.getIdHD(),
+                x.getIdHD(),
                 x.getIdKH().getTenKH(),
                 x.getSdt(),
                 x.getDiaChi(),
@@ -485,9 +485,23 @@ public class GiaoHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-     cardlayout.show(PnCacGoc, "CardDangGiao");
-     loadtableGiaoHang();
-       
+//     cardlayout.show(PnCacGoc, "CardDangGiao");
+//     loadtableGiaoHang();
+//       
+    int row=TblDangGiaoHang.getSelectedRow();
+    if(row<0){
+        return;
+    }
+    String id=TblDangGiaoHang.getValueAt(row, 0).toString();
+    GiaoHangModel gh=new GiaoHangModel();
+    gh.setIdGiaoHang(id);
+    int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang hủy giao hàng không");
+      if(cd==JOptionPane.YES_OPTION)
+      {
+          ghs.updateHuyGH(gh);
+          loadtableDangGiaoHang();
+      }
+    
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void tblChoGiaoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChoGiaoHangMouseClicked
@@ -518,7 +532,7 @@ public class GiaoHang extends javax.swing.JFrame {
         if(row==-1){
             return;
         }
-        int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang  giao hàng không");
+        int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang đã giao hàng không");
       if(cd!=JOptionPane.YES_OPTION)
       {
           return;
@@ -541,7 +555,7 @@ public class GiaoHang extends javax.swing.JFrame {
         if(row==-1){
             return;
         }
-        int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái giao hàng sang hủy giao hàng không");
+        int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang hủy giao hàng không");
       if(cd!=JOptionPane.YES_OPTION)
       {
           return;

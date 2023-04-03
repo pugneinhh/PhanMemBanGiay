@@ -260,6 +260,10 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
 
         cbbTrangThaiHD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đã thanh toán", "Chờ thanh toán", "Đã hủy" }));
 
+        txtNgayMua.setDateFormatString("yyyy-MM-dd");
+
+        txtNgayGiaoHang.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -404,8 +408,8 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 txtMaHD.setText(tblGiaoHang.getValueAt(row, 0).toString());
                 txtMaNV.setText(tblGiaoHang.getValueAt(row, 1).toString());
                 txtMaKH.setText(tblGiaoHang.getValueAt(row, 2).toString());
-                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblGiaoHang.getValueAt(row, 6).toString());
-                txtNgayMua.setDate(date);
+//                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tblGiaoHang.getValueAt(row, 6).toString());
+//                txtNgayMua.setDate(date);
                 Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblGiaoHang.getValueAt(row, 7).toString());
                 txtNgayGiaoHang.setDate(date1);
                 txtTienShip.setText(tblGiaoHang.getValueAt(row, 8).toString());
