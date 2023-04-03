@@ -42,7 +42,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         getContentPane().setBackground(Color.white);
         cardlayout = (CardLayout) pncardgoc.getLayout();
         loadtrangchu(index);
-        //loadDangNhap();
+        loadDangNhap();
     }
 
     private void loadDangNhap() {
@@ -188,7 +188,9 @@ public class FormNhanVien extends javax.swing.JFrame {
         lblAnhNVlogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(214, 214));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(900, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(239, 185, 169));
@@ -215,9 +217,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         );
 
         JMain.setBackground(new java.awt.Color(255, 255, 255));
-        JMain.setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        pncardgoc.setPreferredSize(new java.awt.Dimension(1211, 809));
         pncardgoc.setLayout(new java.awt.CardLayout());
 
         JHome.setBackground(new java.awt.Color(255, 255, 255));
@@ -550,14 +550,14 @@ public class FormNhanVien extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JMain, javax.swing.GroupLayout.PREFERRED_SIZE, 1407, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(JMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JMain, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
