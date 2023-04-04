@@ -66,6 +66,14 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     if (htai.after(k.getNgayKetThuc())) {
                         k.setTrangThai(1);
                         kms.updateKM(k);
+//                        for (ChiTietSanPhamModel c : listsp) {
+//                            System.out.println(c);
+//                            if(c.getIdKM().getIdKM().equals(k.getIdKM())){
+//                                System.out.println(c.getIdKM().getIdKM());
+//                                c.setIdKM(null);
+//                                ctsps.updateByID1(c);
+//                            }
+//                        }
                     }
                 }
             }
@@ -813,7 +821,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         String ma = txtMaKhuyenMai.getText().trim();
         km.setMaKM(ma);
         KhuyenMai k = new KhuyenMai();
-        System.out.println(kms.getIDByMa(km.getMaKM()));
+        
         // set IDKM vào CTSP
         ctspm.setIdKM(getkhuyenmai(kms.getIDByMa(km.getMaKM()).get(0).getIdKM()));
         int dem = 0;
@@ -832,9 +840,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     }
                     // thêm chương trình vào từng IDCTSP
                     for (ChiTietSanPhamModel ct : listID) {
-                        System.out.println(ct.getIdCTSP());
-                        ctspm.setIdCTSP(ct.getIdCTSP());
-                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        
                         if (ctsps.updateByID1(ctspm) != null) {
                             dem++;
                         }
@@ -857,7 +863,6 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     }
                     for (ChiTietSanPhamModel ct : listID) {
                         ctspm.setIdCTSP(ct.getIdCTSP());
-                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
                         if (ctsps.updateByID1(ctspm) != null) {
                             dem++;
                         }

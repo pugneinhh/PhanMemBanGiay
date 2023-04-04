@@ -7,7 +7,9 @@ package Views;
 
 import Services.KhuyenMaiService;
 import ViewModels.KhuyenMaiModel;
+import static Views.BanHangJPanel.hd;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +20,7 @@ public class Voucher extends javax.swing.JDialog {
     public static String voucher;
     private KhuyenMaiService kms = new KhuyenMaiService();
     DefaultTableModel dtm = new DefaultTableModel();
+    JPanel banHang;
     /** Creates new form Voucher */
     public Voucher(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -27,7 +30,7 @@ public class Voucher extends javax.swing.JDialog {
     }
 
     public void loadKM(){
-        ArrayList<KhuyenMaiModel> list = kms.getAllKhuyenMai();
+        ArrayList<KhuyenMaiModel> list = kms.getKhuyenMaiAD();
         dtm.setRowCount(0);
         for (KhuyenMaiModel x : list) {
             if(x.getTrangThai() == 0){
@@ -57,7 +60,7 @@ public class Voucher extends javax.swing.JDialog {
 
         tblKhuyenMai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"KM1", "Khai trương"}
+
             },
             new String [] {
                 "Mã", "Tên chương trình"
@@ -97,7 +100,7 @@ public class Voucher extends javax.swing.JDialog {
        }
        voucher= tblKhuyenMai.getValueAt(row, 0).toString();
        this.dispose();
-//       new ThanhToanHoaDonJFrame(h).setVisible(true);
+       new ThanhToanHoaDonJFrame(banHang, hd).setVisible(true);
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
     /**

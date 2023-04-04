@@ -38,7 +38,7 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     KhuyenMaiService kms = new KhuyenMaiService();
     JPanel banHang;
     HoaDon hd;
-
+    
     /**
      * Creates new form ThanhToanHoaDonJFrame
      */
@@ -47,8 +47,9 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         lblTongtien.setText(hd.getThanhTien().toString());
         this.banHang = banHang;
         this.hd = hd;
+        
         txtVoucher.setText(Voucher.voucher);
-        System.out.println(hd);
+        txtDiem.setText(""+hd.getIdKH().getDiemEXP());
     }
 
     private KhuyenMaiModel getKhuyenMai(String ma) {
@@ -89,7 +90,7 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         btnThanhToanVaIn = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -302,15 +303,16 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
 //        KhuyenMaiModel km=getKhuyenMai(txtVoucher.getText());
 //        BigDecimal gia=new BigDecimal(lblTongtien.getText());
 //        txtGiam.setText(String.valueOf(km.getGiaTri().doubleValue()*gia.doubleValue()/100));
-        if (txtVoucher.getText().length() == 0) {
-            return;
-        }
-        txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText()) * Integer.parseInt(txtVoucher.getText()) / 100));
+//        if (txtVoucher.getText().length() == 0) {
+//            return;
+//        }
+//        txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText()) * Integer.parseInt(txtVoucher.getText()) / 100));
     }//GEN-LAST:event_txtVoucherCaretUpdate
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         double diem = Double.valueOf(txtDiem.getText());
         txtGiam.setText(diem + Double.parseDouble(txtGiam.getText()) + "");
+        txtDiem.setText("0");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnThanhToanVaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanVaInActionPerformed
@@ -397,7 +399,12 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
        HoaDonViewModel hdHuy = new HoaDonViewModel();
        hdHuy.setMaHD(hd.getMaHD());
-        hoaDonService.updateHoaDon(hdHuy);
+       String lydo=JOptionPane.showInputDialog(this, "Vui lòng nhập lý do hủy?");
+       hdHuy.setGhiChu(lydo);
+       if(hoaDonService.updateHoaDon_HUY(hdHuy)!=null){
+          JOptionPane.showMessageDialog(this, "Hủy hóa đơn thành công");
+       }
+        
     }//GEN-LAST:event_btnHuyActionPerformed
 
     /**

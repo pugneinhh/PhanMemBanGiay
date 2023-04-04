@@ -31,6 +31,9 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -100,6 +103,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
         nhanVienService = new NhanVienService();
         nhanVienRespon = new NhanVienResponsitory();
         CardLayout layout = (CardLayout) pncardgoc.getLayout();
+        tblSanPham.getTableHeader().setBackground(Color.pink);
+        tblKhachHang.getTableHeader().setBackground(Color.pink);
+        tblHoaDon.getTableHeader().setBackground(Color.pink);
+        tblGioHang.getTableHeader().setBackground(Color.pink);
         // cbbDanhMuc.setModel((DefaultComboBoxModel) dcmDanhMuc);
 //        this.pnlTabs = pnlTabs;
 //        loadTableBanHang(CTSPService.getAllChiTietSanPham());
@@ -116,6 +123,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         ArrayList<KhachHangModel> listKH = khachHangService.getAllKhachHang();
         dtmKH = (DefaultTableModel) tblKhachHang.getModel();
         dtmKH.setRowCount(0);
+        Collections.sort(listKH,Comparator.comparing(KhachHangModel->KhachHangModel.getMaKH()));
         for (KhachHangModel kh : listKH) {
             dtmKH.addRow(new Object[]{
                 kh.getMaKH(),
@@ -171,9 +179,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }
 
     public void loadhoadon() {
-        ArrayList<HoaDonViewModel> list = hoaDonService.getAllhoadon();
+        ArrayList<HoaDonViewModel> list = hoaDonService.gethoadonCho();
         dtmHD = (DefaultTableModel) tblHoaDon.getModel();
         dtmHD.setRowCount(0);
+        Collections.sort(list,Comparator.comparing(HoaDonModel->HoaDonModel.getMaHD()));
         for (HoaDonViewModel hd : list) {
             dtmHD.addRow(new Object[]{
                 hd.getMaHD(),
@@ -226,20 +235,16 @@ public class BanHangJPanel extends javax.swing.JPanel {
     }
 
     private void loadSanPham() {
-        ArrayList<ChiTietSanPhamModel> list = chiTietSanPhamService.getAllChiTietSanPham();
+        ArrayList<ChiTietSanPhamModel> list = chiTietSanPhamService.getChiTietSanPhamBan();
         dtmSP = (DefaultTableModel) tblSanPham.getModel();
         dtmSP.setRowCount(0);
+        Collections.sort(list,Comparator.comparing(ChiTietSanPhamModel->ChiTietSanPhamModel.getIdSP().getTen()));
         for (ChiTietSanPhamModel ctspM : list) {
             dtmSP.addRow(new Object[]{
                 ctspM.getIdCTSP(),
-                ctspM.getIdSP().getTenSP(),
+                ctspM.getIdSP().getTenSP()+", "+ctspM.getIdSize().getTenSize()+", "+ctspM.getIdDC().getTenDC()+", "+ctspM.getIdMS().getTenMS(),
                 ctspM.getGiaBan(),
                 ctspM.getSoLuong(),
-                ctspM.getIdSize().getTenSize(),
-                ctspM.getIdDC().getTenDC(),
-                ctspM.getIdCL().getTenCL(),
-                ctspM.getIdMS().getTenMS(),
-                ctspM.getIdDM().getTenDM(),
                 ctspM.getIdKM()==null?"Nguyên giá":ctspM.getIdKM().getTenKM(),
                 ctspM.getIdKM()==null?df.format(ctspM.getGiaBan()) :df.format(thanhTien(ctspM.getIdKM().getApDungGiamGia(), ctspM.getIdKM().getGiaTri(), ctspM.getIdKM().getGiamToiDa(), ctspM.getGiaBan()))
 
@@ -820,23 +825,24 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "IDCTSP", "Tên SP", "Giá Bán", "Số Lượng", "Size", "Độ Cao", "Chất Liệu", "Màu Sắc", "Danh Mục", "CTKM", "Thành Tiền"
+                "IDCTSP", "Tên SP", "Giá Bán", "Số Lượng", "CTKM", "Thành Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPham.setRowHeight(40);
         tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSanPhamMouseClicked(evt);
@@ -1475,8 +1481,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
         return null;
     }
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        int indexHD = tblHoaDon.getSelectedRow();
-        if (indexHD < 0) {
+
+        if (lblHoaDon.getText().equalsIgnoreCase("hóa đơn trống")) {
             JOptionPane.showMessageDialog(this, "Mời bạn chọn hóa đơn");
             return;
         }
@@ -1484,7 +1490,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         ArrayList<HoaDonChiTiet> listHDCT = hoaDonChiTieservice.getAllhoadon();
         ArrayList<HoaDonChiTiet> listHDCTNew = new ArrayList<>();
         for (HoaDonChiTiet y : listHDCT) {
-            if (y.getIdHD().getMaHD() != null && y.getIdHD().getMaHD().equals(tblHoaDon.getValueAt(indexHD, 0).toString())) {
+            if (y.getIdHD().getMaHD() != null && y.getIdHD().getMaHD().equals(lblHoaDon.getText())) {
                 listHDCTNew.add(y);
             }
         }
@@ -1500,12 +1506,20 @@ public class BanHangJPanel extends javax.swing.JPanel {
             }
         }
 
-        hd.setMaHD(tblHoaDon.getValueAt(indexHD, 0).toString());
+        hd.setMaHD(lblHoaDon.getText());
         hd.setThanhTien(BigDecimal.valueOf(Float.valueOf(txtThanhTien.getText())));
-
+        hd.setIdKH(getKHByTen(lbltenkh.getText()));
         new ThanhToanHoaDonJFrame(this, hd).setVisible(true);
     }//GEN-LAST:event_btnThanhToanActionPerformed
-
+    public KhachHang getKHByTen(String ten){
+        ArrayList<KhachHang> listkh=khachHangrespon.getAllKhachHang();
+        for (KhachHang k : listkh) {
+            if(k.getTenKH().equals(ten)){
+                return k;
+            }
+        } 
+        return null;
+    }
     private void btnDatHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHangActionPerformed
        new GiaoHang().setVisible(true);
     }//GEN-LAST:event_btnDatHangActionPerformed

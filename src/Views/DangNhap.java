@@ -18,8 +18,6 @@ public class DangNhap extends javax.swing.JFrame {
     NhanVienService nvs = new NhanVienService();
     public static NhanVienModel nv = null;
     
-    
-    
 
     /**
      * Creates new form Login

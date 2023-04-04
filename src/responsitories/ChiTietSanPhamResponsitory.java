@@ -40,9 +40,31 @@ public class ChiTietSanPhamResponsitory {
 
     public ArrayList<ChiTietSanPham> getAllChiTietSanPhams() {
         ArrayList<ChiTietSanPham> list = new ArrayList<>();
-        String sql = "select Id,IDSP,IDKM,GiaNhap,GiaBan,QR,HinhAnh,SoLuong, "
-                + "DanhMuc,Size,MauSac,ChatLieu,DoCao,MoTa,NgayTao,NgaySua,TrangThai\n"
-                + "from ChiTietSanPham";
+        String sql = "SELECT * from ChiTietSanPham";
+
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                SanPham sp = spr.getSPByID(rs.getString(2));
+                KhuyenMai km = kmR.getKMByID(rs.getString(3));
+                DanhMuc dm = dmr.getDMByID(rs.getString(9));
+                Size size = sizer.getSizeByID(rs.getString(10));
+                MauSac ms = msr.getMSByID(rs.getString(11));
+                ChatLieu cl = clr.getCLByID(rs.getString(12));
+                DoCao dc = dcr.getDCByID(rs.getString(13));
+                list.add(new ChiTietSanPham(rs.getString(1), sp, km, rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getInt(6), rs.getString(7), rs.getInt(8), dm, size, ms, cl, dc, rs.getString(14), rs.getDate(15), rs.getDate(16), rs.getInt(17)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    
+    public ArrayList<ChiTietSanPham> getChiTietSanPhamBan() {
+        ArrayList<ChiTietSanPham> list = new ArrayList<>();
+        String sql = "SELECT * from ChiTietSanPham WHERE TRANGTHAI=1";
 
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
@@ -376,6 +398,7 @@ public class ChiTietSanPhamResponsitory {
         JDBCHelper.executeUpdate(sql, ctsp.getSoLuong(), ctsp.getIdCTSP());
         return ctsp;
     }
+        
 
 //    public static void main(String[] args) {
 //        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();
