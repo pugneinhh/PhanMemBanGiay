@@ -68,11 +68,6 @@ from KhachHang
 select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, a.DanhMuc, a.DoCao from ChiTietSanPham as a
 join ChiTietHoaDon as b on b.IdCTSP = a.Id
 
-select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
-ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
-join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
-join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
-
 <<<<<<< HEAD
 
 select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
@@ -95,6 +90,17 @@ select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, Gia
 join GiaoHang on GiaoHang.IDHD = HoaDon.ID
 join KhachHang on KhachHang.ID = HoaDon.IDKH
 
+select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
+join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
+join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
+where HoaDon.ID = '3A66DBD4-C230-4C71-8E19-0A2D67992B42'
+
+select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
+join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
+join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
+where HoaDon.MaHD = 'HD01'
 
 select MaKH, TenKH from KhachHang where ID = '5FF5624C-538C-4B9D-B6EA-929C246F716E'
 
