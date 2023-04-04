@@ -41,6 +41,7 @@ public class KhuyenMaiResbonsitory {
 
         return list;
     }
+    
     public ArrayList<KhuyenMai> getKMAD() {
         ArrayList<KhuyenMai> list = new ArrayList<>();
         String sql = "select *from KhuyenMai where trangthai=0";

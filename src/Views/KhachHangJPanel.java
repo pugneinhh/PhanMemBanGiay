@@ -60,7 +60,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     }
 
     private void loadTableLichSu() {
-        ArrayList<LichSuGiaoHangModel> ghList = hdctService.getAllHoaDonGiaoHang();
+        ArrayList<LichSuGiaoHangModel> ghList = hdctService.getAllLichSuKhachHang();
         tableLichSu.setRowCount(0);
         for (LichSuGiaoHangModel giaoHangModel : ghList) {
             tableLichSu.addRow(new Object[]{
@@ -69,7 +69,6 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 giaoHangModel.getSdt(),
                 giaoHangModel.getNgayMua(),
                 giaoHangModel.getThanhTien(),
-                giaoHangModel.getTrangThaiDon()
             });
         }
     }
@@ -569,11 +568,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "SDT", "Ngày GD", "Tổng tiền", "Trạng thái"
+                "Mã KH", "Tên KH", "SDT", "Ngày mua", "Tổng tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -153,4 +153,14 @@ public class HoaDonViewModel {
         this.trangThai = trangThai;
     }
 
+    public String trangthai() {
+        if (trangThai == 1) {
+            return "Đã thanh toán";
+        } else if (trangThai == 2) {
+            return "Hủy hóa đơn";
+        } else {
+            return null;
+        }
+    }
+    
 }

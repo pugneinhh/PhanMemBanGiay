@@ -68,16 +68,14 @@ from KhachHang
 select b.Id, b.IDHD, a.IDSP, b.DonGia, b.SoLuong, a.Size, a.MauSac, a.ChatLieu, a.DanhMuc, a.DoCao from ChiTietSanPham as a
 join ChiTietHoaDon as b on b.IdCTSP = a.Id
 
-select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
-ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
-join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
-join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
-
 <<<<<<< HEAD
 
 select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
 =======
+
 SELECT * FROM HoaDon
+where TrangThai = 1 or TrangThai = 2
+
 SELECT * FROM ChiTietHoaDon
 select * from ChiTietSanPham
 Select(SoLuong*DonGia)as thanhtien from ChiTietHoaDon
@@ -89,12 +87,29 @@ join GiaoHang on GiaoHang.IDHD = HoaDon.ID
 join KhachHang on KhachHang.ID = HoaDon.IDKH
 where GiaoHang.TrangThai = 1
 
-select * from 
+select * from KhachHang
 
-select HoaDon.MaHD, HoaDon.IDNV, HoaDon.IDKH, KhachHang.TenKH, GiaoHang.SDT, GiaoHang.DiaChi, HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai from HoaDon
+select HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, 
+HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, SUM(GiaoHang.TongTien) as TongTien, GiaoHang.TrangThai from HoaDon
 join GiaoHang on GiaoHang.IDHD = HoaDon.ID
 join KhachHang on KhachHang.ID = HoaDon.IDKH
+GROUP BY HoaDon.ID, HoaDon.IDNV, HoaDon.IDKH, KhachHang.ID, GiaoHang.SDT, GiaoHang.DiaChi, 
+HoaDon.NgayMua, GiaoHang.NgayGiao, GiaoHang.TienShip, GiaoHang.TongTien, GiaoHang.TrangThai
 
+SELECT HoaDon.IDKH,KhachHang.ID,SDT,NGAYMUA,SUM(THANHTIEN) as THANHTIEN FROM HoaDon 
+JOIN KhachHang ON KHACHHANG.ID=HOADON.IDKH GROUP BY HoaDon.IDKH,KhachHang.ID,SDT,NGAYMUA,THANHTIEN
+
+select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
+join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
+join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
+where HoaDon.ID = '3A66DBD4-C230-4C71-8E19-0A2D67992B42'
+
+select HoaDon.ID, ChiTietSanPham.IDSP, ChiTietHoaDon.DonGia, ChiTietHoaDon.SoLuong, ChiTietSanPham.size,
+ChiTietSanPham.MauSac, ChiTietSanPham.ChatLieu, ChiTietSanPham.DanhMuc, ChiTietSanPham.DoCao, HoaDon.ThanhTien from ChiTietHoaDon
+join ChiTietSanPham on ChiTietSanPham.Id = ChiTietHoaDon.IDCTSP
+join HoaDon on HoaDon.ID = ChiTietHoaDon.IDHD
+where HoaDon.MaHD = 'HD01'
 
 select MaKH, TenKH from KhachHang where ID = '5FF5624C-538C-4B9D-B6EA-929C246F716E'
 
@@ -159,3 +174,8 @@ BEGIN
 	SET LOAIKH=N'Thành viên'
 	from khachhang join inserted on KHACHHANG.ID=inserted.ID
 END
+
+select * from HoaDon
+select * from GiaoHang
+delete from HoaDon where ID = 'CDC6F6A6-6356-46D3-A62B-A30E006FC54C'
+delete from GiaoHang where IDGH = '9B83205E-B0C9-4378-9E72-7E370A466E76'

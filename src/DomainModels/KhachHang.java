@@ -11,6 +11,7 @@ import java.util.Date;
  * @author Phanh
  */
 public class KhachHang {
+
     private String idKH;
     private String maKH;
     private String loaiKH;
@@ -26,16 +27,10 @@ public class KhachHang {
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
- 
+
     public KhachHang() {
     }
-
-    public KhachHang(String idKH, String tenKH) {
-        this.idKH = idKH;
-        this.tenKH = tenKH;
-    }
-
-
+    
     public KhachHang(String maKH, String loaiKH, String tenKH, String diaChi, String gioiTinh, String email, String sdt, Date ngaySinh, Date ngayThamGia, int trangThai) {
         this.maKH = maKH;
         this.loaiKH = loaiKH;
@@ -203,13 +198,6 @@ public class KhachHang {
 
     @Override
     public String toString() {
-        return  tenKH ;
+        return tenKH;
     }
-
-//    @Override
-//    public String toString() {
-//        return  tenKH ;
-//    }
-    
-    
 }

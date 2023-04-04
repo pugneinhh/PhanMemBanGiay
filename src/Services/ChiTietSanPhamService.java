@@ -26,6 +26,7 @@ public class ChiTietSanPhamService {
         }
         return list;
     }
+    
     public ArrayList<ChiTietSanPhamModel> getChiTietSanPhamBan() {
         ArrayList<ChiTietSanPhamModel> list = new ArrayList<>();
         ArrayList<ChiTietSanPham> ctsp = ctspr.getChiTietSanPhamBan();

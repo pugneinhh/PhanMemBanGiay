@@ -164,7 +164,10 @@ public class KhachHangResponsitory {
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
-                return new KhachHang(rs.getString(1), rs.getString(2));
+                KhachHang kh = new KhachHang();
+                kh.setIdKH(rs.getString("ID"));
+                kh.setTenKH(rs.getString("MaKH"));
+                return kh;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -178,7 +181,10 @@ public class KhachHangResponsitory {
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
-                return new KhachHang(rs.getString(1), rs.getString(2));
+                KhachHang kh = new KhachHang();
+                kh.setIdKH(rs.getString("ID"));
+                kh.setTenKH(rs.getString("TenKH"));
+                return kh;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -295,6 +301,6 @@ public class KhachHangResponsitory {
         KhachHangResponsitory khRes = new KhachHangResponsitory();
         //System.out.println(khRes.getAllKhachHang());
         //System.out.println(khRes.getKhachHangBysdt("0962335335"));
-//        System.out.println(khRes.getKhachHangByidkmd("A54BF9CE-9623-49F3-8ED3-4045650A1AC8"));
+        System.out.println(khRes.getMaKHByID("A54BF9CE-9623-49F3-8ED3-4045650A1AC8"));
     }
 }

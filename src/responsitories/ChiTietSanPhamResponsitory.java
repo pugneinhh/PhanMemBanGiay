@@ -61,6 +61,7 @@ public class ChiTietSanPhamResponsitory {
 
         return list;
     }
+    
     public ArrayList<ChiTietSanPham> getChiTietSanPhamBan() {
         ArrayList<ChiTietSanPham> list = new ArrayList<>();
         String sql = "SELECT * from ChiTietSanPham WHERE TRANGTHAI=1";

@@ -61,6 +61,8 @@ public class KhachHangModel {
         this.ngayThamGia = ngayThamGia;
         this.trangThai = trangThai;
     }
+    
+    
 
     public String getIdKH() {
         return idKH;
