@@ -27,6 +27,15 @@ public class KhuyenMaiService {
         }
         return list;
     }
+    public ArrayList<KhuyenMaiModel> getKhuyenMaiAD(){
+        ArrayList<KhuyenMaiModel> list = new ArrayList<>();
+        ArrayList<KhuyenMai> km = kmr.getKMAD();
+        for(KhuyenMai x : km){
+            
+            list.add(new KhuyenMaiModel(x.getIdKM(), x.getMaKM(), x.getTenKM(),x.getGiaTri(),x.getGiamToiDa(), x.getNgayBatDau(), x.getNgayKetThuc(),x.getHinhThucApDung(), x.getApDungGiamGia(),x.getLoaiGiamGia(),x.getNgayTao(),x.getNgaySua(),x.getTrangThai()));
+        }
+        return list;
+    }
     
     public KhuyenMaiModel insertKM(KhuyenMaiModel kmm){
         ArrayList<KhuyenMai> list = kmr.getAllKM();

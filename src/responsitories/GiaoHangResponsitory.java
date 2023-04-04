@@ -61,7 +61,7 @@ public class GiaoHangResponsitory {
 
     public GiaoHang insertGH(GiaoHang gh) {
         String sql = "insert into GiaoHang values (NEWID(),?,?,?,?,?,?,?,?,?,GETDATE(),null,?)";
-        JDBCHelper.executeUpdate(sql, gh.getIdGiaoHang(), gh.getIdHD(), gh.getIdKH(), gh.getSdt(), gh.getDiaChi(), gh.getTienHang(), gh.getTienShip(), gh.getTongTien(), gh.getNgayGiao(), gh.getNgayNhan(), gh.getNgayTao(), gh.getNgaySua(), gh.getTrangThai());
+        JDBCHelper.executeUpdate(sql,  gh.getIdHD().getIdHD(), gh.getIdKH(), gh.getSdt(), gh.getDiaChi(), gh.getTienHang(), gh.getTienShip(), gh.getTongTien(), gh.getNgayGiao(), gh.getNgayNhan(), gh.getTrangThai());
         return gh;
     }
 

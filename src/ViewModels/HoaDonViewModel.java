@@ -13,7 +13,7 @@ public class HoaDonViewModel {
     private NhanVien idNV;
     private KhachHang idKH;
     private Date ngayMua;
-    private static BigDecimal thanhTien;
+    private BigDecimal thanhTien;
     private KhuyenMai idKM;
     private String ghiChu;
     private Date ngaySua;
@@ -45,7 +45,26 @@ public class HoaDonViewModel {
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
     }
+    public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao,String ghiChu, int trangThai) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.ngaytao = ngaytao;
+        this.ghiChu=ghiChu;
+        this.trangThai = trangThai;
+    }
 
+    public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, BigDecimal thanhTien, Date ngaytao, int trangThai) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.thanhTien = thanhTien;
+        this.ngaytao = ngaytao;
+        this.trangThai = trangThai;
+    }
+    
     public NhanVien getIdNV() {
         return idNV;
     }

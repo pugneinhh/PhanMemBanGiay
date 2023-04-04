@@ -41,6 +41,21 @@ public class KhuyenMaiResbonsitory {
 
         return list;
     }
+    public ArrayList<KhuyenMai> getKMAD() {
+        ArrayList<KhuyenMai> list = new ArrayList<>();
+        String sql = "select *from KhuyenMai where trangthai=0";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                list.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getDate(6), rs.getDate(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
 
     public KhuyenMai getKMByID(String id) {
 
