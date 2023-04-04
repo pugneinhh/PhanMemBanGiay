@@ -45,25 +45,37 @@ public class HoaDonChiTieservice {
         return hdctrs.getIDHoaDon(id);
     }
 
- public KhachHang getKhachHangByidkmd(String ma){
-     return hdctrs.getKhachHangByidkmd(ma);
- }
+    public KhachHang getKhachHangByidkmd(String ma) {
+        return hdctrs.getKhachHangByidkmd(ma);
+    }
+
     public hoadonchitietviewmodel inserthdct(hoadonchitietviewmodel hd) {
-        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(),hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia()));
+        var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia()));
         System.out.println(x.getIdCTSP().getIdCTSP());
         System.out.println(x.getIdHD().getIdHD());
-        return new hoadonchitietviewmodel(x.getIdHDCT(),x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
+        return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
     }
-   
+
     public boolean updateKhachHang(HoaDonChiTiet hd) {
         var x = hdctrs.updatehoadon(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getDonGia(), hd.getSoLuong(), hd.getNgayBan(),
                 hd.getNgayTao(), hd.getNgaySua(), hd.getTrangThai()));
         return x;
     }
-    
-    public hoadonchitietviewmodel updateHDCT(hoadonchitietviewmodel hdct){
-        var x = hdctrs.updateHDCT(new HoaDonChiTiet(hdct.getIdHDCT(),hdct.getIdHD(), hdct.getIdCTSP(), hdct.getSoLuong(), hdct.getDonGia()));
-    return new hoadonchitietviewmodel(x.getIdHDCT(),x.getIdHD(),x.getIdCTSP(),x.getSoLuong(),x.getDonGia());
-    
+
+    public hoadonchitietviewmodel updateHDCT(hoadonchitietviewmodel hdct) {
+        var x = hdctrs.updateHDCT(new HoaDonChiTiet(hdct.getIdHDCT(), hdct.getIdHD(), hdct.getIdCTSP(), hdct.getSoLuong(), hdct.getDonGia()));
+        return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
+
+    }
+        public int deleteHDCT(String idhd, String idctsp) {
+        var x = hdctrs.deleteHDCT(idhd,idctsp);
+        return x;
+
+    }
+
+    public hoadonchitietviewmodel updateHDCT_ThanhToan(hoadonchitietviewmodel hdct) {
+        var x = hdctrs.updateHDCT_ThanhToan(new HoaDonChiTiet(hdct.getIdHDCT(), hdct.getIdHD(), hdct.getIdCTSP(), hdct.getSoLuong(), hdct.getDonGia()));
+        return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
+
     }
 }

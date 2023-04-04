@@ -30,7 +30,7 @@ public class DoanhThuResponsitory {
         ResultSet rs=JDBCHelper.excuteQuery(sql, new Date());
         try {
             while(rs.next()){
-                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu");
+                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu")+" VNĐ";
                  list.add(tongtien);
                  list.add(rs.getInt(2));
                  list.add(rs.getInt(3));
@@ -46,7 +46,7 @@ public class DoanhThuResponsitory {
         ResultSet rs=JDBCHelper.excuteQuery(sql, new Date());
         try {
             while(rs.next()){
-                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu");
+                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu")+" VNĐ";
                  list.add(tongtien);
                  list.add(rs.getInt(2));
                  list.add(rs.getInt(3));
@@ -62,7 +62,7 @@ public class DoanhThuResponsitory {
         ResultSet rs=JDBCHelper.excuteQuery(sql, new Date());
         try {
             while(rs.next()){
-                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu");
+                 String tongtien = rs.getString("doanhthu")==null? "0 VNĐ" : rs.getString("doanhthu")+" VNĐ";
                  list.add(tongtien);
                  list.add(rs.getInt(2));
                  list.add(rs.getInt(3));

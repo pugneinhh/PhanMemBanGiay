@@ -18,26 +18,7 @@ public class HoaDonResponsitory {
 
     public ArrayList<HoaDonViewModel> getAllhoadon() {
         ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT * FROM HOADON";
-        ResultSet rs = JDBCHelper.excuteQuery(sql);
-
-        try {
-            while (rs.next()) {
-                NhanVien nv1 = nv.getNVByID(rs.getString(3));
-                KhachHang kh1 = kh.getKhachHangByidkmd(rs.getString(4));
-                KhuyenMai km1 = km.getKMByID(rs.getString(7));
-
-                list.add(new HoaDonViewModel(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(9), rs.getDate(10), rs.getInt(11)));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        return list;
-    }
-    public ArrayList<HoaDonViewModel> getHoaDonCho() {
-        ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT * FROM HOADON WHERE TRANGTHAI=0";
+        String sql = "SELECT * FROM hoadon";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
@@ -56,7 +37,8 @@ public class HoaDonResponsitory {
     }
 
     public HoaDon gethdByID(String id) {
-        String sql = "select * from HoaDon where ID = ?";
+        ArrayList<HoaDon> list = new ArrayList<>();
+        String sql = "select * from hoadon where id=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
@@ -65,8 +47,8 @@ public class HoaDonResponsitory {
                 KhuyenMai km1 = km.getKMByID(rs.getString(7));
                 return new HoaDon(rs.getString(1), rs.getString(2), nv1, kh1, rs.getDate(5), rs.getBigDecimal(6), km1, rs.getString(8), rs.getDate(10), rs.getDate(9), rs.getInt(11));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return null;
     }
@@ -89,5 +71,28 @@ public class HoaDonResponsitory {
         );
         return hd;
     }
+
+    public HoaDon updatehoadon_thanhtoan(HoaDon hd) {
+        String sql = "UPDATE  dbo.HoaDon SET THANHTIEN = ? ,TRANGTHAI = 1 , NGAYMUA = GETDATE() WHERE MAHD = ?";
+        JDBCHelper.executeUpdate(sql,
+                hd.getThanhTien(),
+                hd.getMaHD()
+        );
+        return hd;
+    }
+
+    public HoaDon updatehoadon_huy(HoaDon hd) {
+        String sql = "UPDATE  dbo.HoaDon SET TRANGTHAI = 2 , NGAYMUA = null , NGAYSUA = GETDATE() WHERE MAHD = ?";
+        JDBCHelper.executeUpdate(sql,
+                hd.getMaHD()
+        );
+        return hd;
+    }
+//    public static void main(String[] args) {
+//        HoaDonresbonsitory hdR = new HoaDonresbonsitory();
+//        System.out.println(hdR.getAllhoadon());
+//    }
+//    public HoaDonresbonsitory() {
+//    }
 
 }
