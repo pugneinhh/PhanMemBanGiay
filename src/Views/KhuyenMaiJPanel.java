@@ -716,7 +716,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         ArrayList<DanhMucModel> danhmucsp = dms.getAllDanhMuc();
         ArrayList<ChiTietSanPhamModel> listctsp = ctsps.getAllChiTietSanPham();
         DanhMucModel dmm = new DanhMucModel();
-        SanPhamModel spm=new SanPhamModel();
+        SanPhamModel spm = new SanPhamModel();
         ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
         // Thêm khuyến mại
         KhuyenMaiModel km = getformdata();
@@ -746,49 +746,47 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                         System.out.println(ct.getIdCTSP());
                         ctspm.setIdCTSP(ct.getIdCTSP());
                         System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
-                        if(ctsps.updateByID1(ctspm)!=null){
+                        if (ctsps.updateByID1(ctspm) != null) {
                             dem++;
                         }
                     }
                 }
             }
+            }
             // Lấy ra IDCTSP có trong danh mục
-        if(rdoSanPham.isSelected()==true){
-            //tìm những checkbox được check
-            for (int i = 0; i < listsp.size(); i++) {
-                 boolean check = (boolean) tblSanPham.getValueAt(i, 0);
-                 if(check==true){
-                     spm=listsp.get(i);
-                     ArrayList<ChiTietSanPhamModel> listID=new ArrayList<>();
-                     for (ChiTietSanPhamModel ctm : listctsp) {
-                         if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
-                            listID.add(ctm);
+            if (rdoSanPham.isSelected() == true) {
+                //tìm những checkbox được check
+                for (int i = 0; i < listsp.size(); i++) {
+                    boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                    if (check == true) {
+                        spm = listsp.get(i);
+                        ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
+                        for (ChiTietSanPhamModel ctm : listctsp) {
+                            if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
+                                listID.add(ctm);
+                            }
                         }
-                        }
-                     for (ChiTietSanPhamModel ct : listID) {
-                        ctspm.setIdCTSP(ct.getIdCTSP());
-                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
-                        if(ctsps.updateByID1(ctspm)!=null){
-                            dem++;
+                        for (ChiTietSanPhamModel ct : listID) {
+                            ctspm.setIdCTSP(ct.getIdCTSP());
+                            System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                            if (ctsps.updateByID1(ctspm) != null) {
+                                dem++;
+                            }
                         }
                     }
-                     }
-                     
-                 }
+
+                }
             }
-           
+
             if (dem > 0) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
                 LoadSP();
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại");
-<<<<<<< HEAD
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
+
             }
-=======
->>>>>>> origin/master
-        }
-            }
+        
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnLamMOiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMOiActionPerformed

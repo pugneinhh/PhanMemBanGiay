@@ -2363,11 +2363,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         if (checkSP().equals("Có")) {
             JOptionPane.showMessageDialog(this, "Đã có sản phẩm này");
 
-                btnCapNhatSPActionPerformed(evt);
+            btnCapNhatSPActionPerformed(evt);
 
-                loadTBSanPham(1);
+            loadTBSanPham(1);
 
-            
         } else if (checkSP().equals("Thêm")) {
             if (ctsps.insertCTSP(ctspM) != null) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
@@ -2714,8 +2713,8 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 String Tensp = data[0];
                 BigDecimal giaNhap = BigDecimal.valueOf(Double.valueOf(data[1]));
                 BigDecimal giaBan = BigDecimal.valueOf(Double.valueOf(data[2]));
-             
-                Integer sl =Integer.valueOf(data[3]) ;
+
+                Integer sl = Integer.valueOf(data[3]);
                 String size = data[4];
                 String doCao = data[5];
                 String ChatLieu = data[6];
@@ -2724,14 +2723,14 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 String MT = data[9];
                 String Hinh = data[10];
                 Integer TT = Integer.valueOf(data[11]);
-                System.out.println(Tensp+"1");
-                System.out.println(giaBan+"2");
+                System.out.println(Tensp + "1");
+                System.out.println(giaBan + "2");
                 state.setString(1, Tensp);
                 state.setBigDecimal(2, giaNhap);
                 state.setBigDecimal(3, giaBan);
                 state.setInt(4, sl);
                 state.setString(5, size);
-                
+
                 state.setString(6, doCao);
 
                 state.setString(7, ChatLieu);
@@ -2741,10 +2740,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                 state.setString(11, Hinh);
                 state.setInt(12, TT);
                 state.addBatch();
-                  System.out.println(state);
+                System.out.println(state);
                 if (count % batchSize == 0) {
                     state.executeBatch();
-                  
+
                 }
             }
 

@@ -5,9 +5,20 @@
 package responsitories;
 
 import Utilities.JDBCHelper;
+import groovy.lang.Category;
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 /**
  *
  * @author Phanh
@@ -97,10 +108,10 @@ public class DoanhThuResponsitory {
         }
         return list;
     }
-    public ArrayList<Object[]> getDTNAM(int nam){
+    public ArrayList<Object[]> getDTNAM(){
         ArrayList<Object[]> list=new ArrayList<>();
-        String sql="EXEC SP_DTNAM ?";
-        ResultSet rs=JDBCHelper.excuteQuery(sql,nam);
+        String sql="EXEC SP_DTCACNAM";
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
         try {
             while(rs.next()){
                  list.add(new Object[]{
@@ -139,12 +150,83 @@ public class DoanhThuResponsitory {
                 list.add(rs.getInt(1));
             }
             
-
+            
             return list;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
     
-   
+   public JFreeChart ChartMon(int thang,int nam){
+       String chartTitle = "Biểu đồ doanh thu tháng " + thang + " năm " + nam;
+        String sql = "EXEC SP_DTNGAY ?,?";
+        DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+        ResultSet rs=JDBCHelper.excuteQuery(sql, thang,nam);
+        try {
+            while(rs.next()){
+                dataset.addValue(rs.getInt(3),"Doanh Thu", rs.getDate(1));
+            }
+            JFreeChart lineChart=ChartFactory.createLineChart(chartTitle.toUpperCase(), "Ngày","Doanh Thu (VNĐ)", dataset, PlotOrientation.VERTICAL, true, true,false);
+            CategoryPlot plot=lineChart.getCategoryPlot();
+            plot.setRenderer(new BarRenderer());
+            plot.setBackgroundPaint(Color.white);
+            plot.setOutlineStroke(new BasicStroke(2.0f));
+            plot.setRangeGridlinesVisible(true);
+            plot.setRangeGridlinePaint(Color.BLACK);
+            plot.setDomainGridlinesVisible(true);
+            plot.setDomainGridlinePaint(Color.BLACK);
+            return lineChart;
+        } catch (SQLException ex) {
+            Logger.getLogger(DoanhThuResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
+   public JFreeChart ChartYear(int nam){
+       String chartTitle = "Biểu đồ doanh thu năm " + nam;
+        String sql = "EXEC SP_DTTHANG ?";
+        DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+        ResultSet rs=JDBCHelper.excuteQuery(sql, nam);
+        try {
+            while(rs.next()){
+                dataset.addValue(rs.getInt(3),"Doanh Thu", rs.getString(1));
+            }
+            JFreeChart lineChart=ChartFactory.createLineChart(chartTitle.toUpperCase(), "Tháng","Doanh Thu (VNĐ)", dataset, PlotOrientation.VERTICAL, true, true,false);
+            CategoryPlot plot=lineChart.getCategoryPlot();
+            plot.setRenderer(new BarRenderer());
+            plot.setBackgroundPaint(Color.white);
+            plot.setOutlineStroke(new BasicStroke(2.0f));
+            plot.setRangeGridlinesVisible(true);
+            plot.setRangeGridlinePaint(Color.BLACK);
+            plot.setDomainGridlinesVisible(true);
+            plot.setDomainGridlinePaint(Color.BLACK);
+            return lineChart;
+        } catch (SQLException ex) {
+            Logger.getLogger(DoanhThuResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
+   public JFreeChart ChartNam(){
+       String chartTitle = "Biểu đồ doanh thu các năm " ;
+        String sql = "EXEC SP_DTCACNAM";
+        DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+        ResultSet rs=JDBCHelper.excuteQuery(sql);
+        try {
+            while(rs.next()){
+                dataset.addValue(rs.getInt(3),"Doanh Thu", rs.getString(1));
+            }
+            JFreeChart lineChart=ChartFactory.createLineChart(chartTitle.toUpperCase(), "Năm","Doanh Thu (VNĐ)", dataset, PlotOrientation.VERTICAL, true, true,false);
+            CategoryPlot plot=lineChart.getCategoryPlot();
+            plot.setRenderer(new BarRenderer());
+            plot.setBackgroundPaint(Color.white);
+            plot.setOutlineStroke(new BasicStroke(2.0f));
+            plot.setRangeGridlinesVisible(true);
+            plot.setRangeGridlinePaint(Color.BLACK);
+            plot.setDomainGridlinesVisible(true);
+            plot.setDomainGridlinePaint(Color.BLACK);
+            return lineChart;
+        } catch (SQLException ex) {
+            Logger.getLogger(DoanhThuResponsitory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
 }

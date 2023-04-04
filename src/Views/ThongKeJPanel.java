@@ -4,11 +4,21 @@
  */
 package Views;
 
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jfree.chart.ChartPanel;
 import responsitories.DoanhThuResponsitory;
 
 /**
@@ -35,7 +45,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         loadComboThang();
         loadDTNgay();
         tblDoanhThu.getTableHeader().setBackground(Color.pink);
-        
+        addChartDays();
     }
     private void loadComboNam(){
         ArrayList<Integer> lnam=dtr.selectYears();
@@ -94,14 +104,67 @@ public class ThongKeJPanel extends javax.swing.JPanel {
     }
     private void loadDTNam(){
             dtm.setRowCount(0);
-            if ( cbbNam.getSelectedItem() != null) {
-            int year = Integer.parseInt(cbbNam.getSelectedItem().toString());
-            ArrayList<Object[]> list=dtr.getDTNAM( year);
+            
+            ArrayList<Object[]> list=dtr.getDTNAM();
             for (Object[] o : list) {   
                 dtm.addRow(o);
-            }
+            
             }
         
+    }
+    private void addChartDays() {
+        if (cbbThang.getSelectedItem() != null & cbbNam.getSelectedItem() != null) {
+            try {
+                int month = Integer.parseInt(cbbThang.getSelectedItem().toString());
+                int year = Integer.parseInt(cbbNam.getSelectedItem().toString());
+                pnChart.removeAll();
+                ChartPanel chartPanel = new ChartPanel(dtr.ChartMon(month, year));
+                chartPanel.setMouseZoomable(false);
+                pnChart.setLayout(new CardLayout());
+                pnChart.setPreferredSize(new Dimension(pnChart.getWidth(),pnChart.getHeight()));
+                pnChart.add(chartPanel);
+                pnChart.repaint();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    private void addChartMonths() {
+        if (cbbNam.getSelectedItem() != null) {
+            try {
+                
+                int year = Integer.parseInt(cbbNam.getSelectedItem().toString());
+                pnChart.removeAll();
+                ChartPanel chartPanel = new ChartPanel(dtr.ChartYear(year));
+                chartPanel.setMouseZoomable(false);
+                pnChart.setLayout(new CardLayout());
+                pnChart.setPreferredSize(new Dimension(pnChart.getWidth(),pnChart.getHeight()));
+                pnChart.add(chartPanel);
+                pnChart.repaint();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    private void addChartYears() {
+        
+            try {
+                
+                
+                pnChart.removeAll();
+                ChartPanel chartPanel = new ChartPanel(dtr.ChartNam());
+                chartPanel.setMouseZoomable(false);
+                pnChart.setLayout(new CardLayout());
+                pnChart.setPreferredSize(new Dimension(pnChart.getWidth(),pnChart.getHeight()));
+                pnChart.add(chartPanel);
+                pnChart.repaint();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +213,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDoanhThu = new javax.swing.JTable();
-        jPanel11 = new javax.swing.JPanel();
+        pnChart = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -169,15 +232,18 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Bị Hủy");
 
-        lblTienNgay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTienNgay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTienNgay.setForeground(new java.awt.Color(255, 51, 51));
         lblTienNgay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTienNgay.setText("-");
 
-        lblTCNgay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTCNgay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTCNgay.setForeground(new java.awt.Color(255, 51, 51));
         lblTCNgay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTCNgay.setText("-");
 
-        lblBHNgay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBHNgay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBHNgay.setForeground(new java.awt.Color(255, 51, 51));
         lblBHNgay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBHNgay.setText("-");
 
@@ -193,8 +259,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addComponent(lblTienNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -306,15 +371,18 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Bị Hủy");
 
-        lblTienNam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTienNam.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTienNam.setForeground(new java.awt.Color(255, 51, 51));
         lblTienNam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTienNam.setText("-");
 
-        lblTCNam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTCNam.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTCNam.setForeground(new java.awt.Color(255, 51, 51));
         lblTCNam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTCNam.setText("-");
 
-        lblBHNam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBHNam.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBHNam.setForeground(new java.awt.Color(255, 51, 51));
         lblBHNam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBHNam.setText("-");
 
@@ -381,15 +449,18 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel24.setText("Bị Hủy");
 
-        lblTienThang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTienThang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTienThang.setForeground(new java.awt.Color(255, 51, 51));
         lblTienThang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTienThang.setText("-");
 
-        lblTCThang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTCThang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTCThang.setForeground(new java.awt.Color(255, 51, 51));
         lblTCThang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTCThang.setText("-");
 
-        lblBHThang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBHThang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBHThang.setForeground(new java.awt.Color(255, 51, 51));
         lblBHThang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBHThang.setText("-");
 
@@ -478,18 +549,18 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Bảng", jPanel7);
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnChartLayout = new javax.swing.GroupLayout(pnChart);
+        pnChart.setLayout(pnChartLayout);
+        pnChartLayout.setHorizontalGroup(
+            pnChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 942, Short.MAX_VALUE)
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnChartLayout.setVerticalGroup(
+            pnChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 219, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Biểu Đồ", jPanel11);
+        jTabbedPane2.addTab("Biểu Đồ", pnChart);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -550,6 +621,11 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         jLabel1.setText("THỐNG KÊ");
 
         jButton1.setText("Xuất FiLe EXCEL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -594,17 +670,24 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         int index=cbbTime.getSelectedIndex();
         switch (index) {
             case 0:
+                addChartDays();
                 loadDTNgay();
                 break;
             case 1:
+                addChartMonths();
                 loadDTThang();
                 break;
             case 2:
+                addChartYears();
                 loadDTNam();
                 break;
         }
     }//GEN-LAST:event_cbbTimeItemStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbbNam;
@@ -628,7 +711,6 @@ public class ThongKeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -647,6 +729,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTienNam;
     private javax.swing.JLabel lblTienNgay;
     private javax.swing.JLabel lblTienThang;
+    private javax.swing.JPanel pnChart;
     private javax.swing.JTable tblDoanhThu;
     // End of variables declaration//GEN-END:variables
 }
