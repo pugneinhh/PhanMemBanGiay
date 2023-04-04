@@ -371,6 +371,11 @@ public class ChiTietSanPhamResponsitory {
         JDBCHelper.executeUpdate(sql, ctsp.getIdKM().getIdKM(), ctsp.getIdCTSP());
         return ctsp;
     }
+        public ChiTietSanPham update_ThanhToan(ChiTietSanPham ctsp) {
+        String sql = "update chitietsanpham set SOLUONG = SOLUONG - ? Where ID = ?";
+        JDBCHelper.executeUpdate(sql, ctsp.getSoLuong(), ctsp.getIdCTSP());
+        return ctsp;
+    }
 
 //    public static void main(String[] args) {
 //        ChiTietSanPhamResponsitory ctspR = new ChiTietSanPhamResponsitory();

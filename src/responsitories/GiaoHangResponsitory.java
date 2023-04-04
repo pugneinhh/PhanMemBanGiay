@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class GiaoHangResponsitory {
 
     
-    HoaDonresbonsitory hdr = new HoaDonresbonsitory();
+    HoaDonResponsitory hdr = new HoaDonResponsitory();
     KhachHangResponsitory khr = new KhachHangResponsitory();
     
 
@@ -35,7 +35,7 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
                 list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
             }
         } catch (SQLException ex) {
@@ -50,7 +50,7 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
                 list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
             }
         } catch (SQLException ex) {
@@ -97,11 +97,11 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                
 
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11),rs.getDate(12),rs.getInt(13)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -118,7 +118,7 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                 
 
@@ -139,7 +139,7 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                
 
@@ -160,7 +160,7 @@ public class GiaoHangResponsitory {
         try {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
-                HoaDon hd = hdr.getHDbyID(rs.getString(2));
+                HoaDon hd = hdr.gethdByID(rs.getString(2));
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                 
 

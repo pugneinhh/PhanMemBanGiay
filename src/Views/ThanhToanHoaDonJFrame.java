@@ -5,58 +5,62 @@
 package Views;
 
 import DomainModels.HoaDon;
-import DomainModels.KhuyenMai;
+import DomainModels.HoaDonChiTiet;
+import Services.ChiTietSanPhamService;
+import Services.HoaDonChiTieservice;
 import Services.KhuyenMaiService;
 import Services.hoadonservice;
-import ViewModels.HoaDonViewModel;
 import Utilities.DBConnection;
+import ViewModels.ChiTietSanPhamModel;
+import ViewModels.HoaDonViewModel;
 import ViewModels.KhuyenMaiModel;
-import java.lang.System.Logger.Level;
-import java.math.BigDecimal;
+import ViewModels.hoadonchitietviewmodel;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
-import org.apache.log4j.Logger;
 
 /**
  *
  * @author Asus
  */
 public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
-    KhuyenMaiService kms=new KhuyenMaiService();
+
+    HoaDonChiTieservice hoaDonChiTieservice = new HoaDonChiTieservice();
+    ChiTietSanPhamService chiTietSanPhamService = new ChiTietSanPhamService();
+    hoadonservice hoaDonService = new hoadonservice();
+    KhuyenMaiService kms = new KhuyenMaiService();
     JPanel banHang;
     HoaDon hd;
-    hoadonservice hds = new hoadonservice();
+
     /**
      * Creates new form ThanhToanHoaDonJFrame
      */
-    public ThanhToanHoaDonJFrame(JPanel banHang,HoaDon hd) {
+    public ThanhToanHoaDonJFrame(JPanel banHang, HoaDon hd) {
         initComponents();
-        this.banHang=banHang;
-        this.hd=hd;
+        lblTongtien.setText(hd.getThanhTien().toString());
+        this.banHang = banHang;
+        this.hd = hd;
         txtVoucher.setText(Voucher.voucher);
-        
-        HoaDonViewModel hdV = new HoaDonViewModel();
-        lblTongtien.setText(hdV.getThanhTien() +"");
         System.out.println(hd);
     }
-    private KhuyenMaiModel getKhuyenMai(String ma){
-        ArrayList<KhuyenMaiModel> list=kms.getAllKhuyenMai();
+
+    private KhuyenMaiModel getKhuyenMai(String ma) {
+        ArrayList<KhuyenMaiModel> list = kms.getAllKhuyenMai();
         for (KhuyenMaiModel km : list) {
-            if(km.getMaKM().equals(ma)){
+            if (km.getMaKM().equals(ma)) {
                 return km;
             }
         }
         return null;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,13 +81,13 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         txtGiam = new javax.swing.JTextField();
         txtVoucher = new javax.swing.JTextField();
         txtDiem = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        btnApVoucher = new javax.swing.JButton();
-        btnSDPoint = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        txtTienKH = new javax.swing.JTextField();
+        txtTienThoi = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        btnThanhToan = new javax.swing.JButton();
+        btnThanhToanVaIn = new javax.swing.JButton();
+        btnHuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +110,11 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         jLabel7.setText("Trả Lại Khách");
 
         txtGiam.setText("0");
+        txtGiam.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtGiamCaretUpdate(evt);
+            }
+        });
         txtGiam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGiamActionPerformed(evt);
@@ -125,30 +134,52 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnApVoucher.setText("Áp Dụng");
-        btnApVoucher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApVoucherActionPerformed(evt);
+        txtTienKH.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienKHCaretUpdate(evt);
             }
         });
 
-        btnSDPoint.setText("Sử Dụng");
-        btnSDPoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSDPointActionPerformed(evt);
+        txtTienThoi.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienThoiCaretUpdate(evt);
             }
         });
 
-        jButton3.setText("Thanh Toán");
-
-        jButton4.setText("Thanh Toán + In");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Áp Dụng");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Hủy");
+        jButton2.setText("Sử Dụng");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnThanhToan.setText("Thanh Toán");
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
+
+        btnThanhToanVaIn.setText("Thanh Toán + In");
+        btnThanhToanVaIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanVaInActionPerformed(evt);
+            }
+        });
+
+        btnHuy.setText("Hủy");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,19 +196,19 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTienThoi, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTienKH, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnApVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnSDPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -190,11 +221,11 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton3)
+                .addComponent(btnThanhToan)
                 .addGap(149, 149, 149)
-                .addComponent(jButton4)
+                .addComponent(btnThanhToanVaIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(btnHuy)
                 .addGap(87, 87, 87))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -215,25 +246,25 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnApVoucher))
+                    .addComponent(jButton1))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSDPoint))
+                    .addComponent(jButton2))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTienKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTienThoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnThanhToan)
+                    .addComponent(btnThanhToanVaIn)
+                    .addComponent(btnHuy))
                 .addGap(15, 15, 15))
         );
 
@@ -258,10 +289,10 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiamActionPerformed
 
-    private void btnApVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApVoucherActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Voucher(this, true).setVisible(true);
-        
-    }//GEN-LAST:event_btnApVoucherActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtVoucherInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtVoucherInputMethodTextChanged
         // TODO add your handling code here:
@@ -271,34 +302,103 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
 //        KhuyenMaiModel km=getKhuyenMai(txtVoucher.getText());
 //        BigDecimal gia=new BigDecimal(lblTongtien.getText());
 //        txtGiam.setText(String.valueOf(km.getGiaTri().doubleValue()*gia.doubleValue()/100));
-    if(txtVoucher.getText().length()==0){
-        return;
-    }
-txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.parseInt(txtVoucher.getText())/100));
+        if (txtVoucher.getText().length() == 0) {
+            return;
+        }
+        txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText()) * Integer.parseInt(txtVoucher.getText()) / 100));
     }//GEN-LAST:event_txtVoucherCaretUpdate
 
-    private void btnSDPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSDPointActionPerformed
-        double diem= Double.valueOf(txtDiem.getText());
-        txtGiam.setText(diem+Double.parseDouble(txtGiam.getText())+"");
-    }//GEN-LAST:event_btnSDPointActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        double diem = Double.valueOf(txtDiem.getText());
+        txtGiam.setText(diem + Double.parseDouble(txtGiam.getText()) + "");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnThanhToanVaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanVaInActionPerformed
         try {
             Hashtable map = new Hashtable();
             JasperReport rpt;
-       
+
             rpt = JasperCompileManager.compileReport("src\\Views\\rptHoaDon.jrxml");
-        
+
             map.put("MaHD", hd.getMaHD());
-            
+
             JasperPrint p = JasperFillManager.fillReport(rpt, map, DBConnection.getConnection());
 
             JasperViewer.viewReport(p, false);
-            
+
         } catch (JRException ex) {
             System.out.println(ex.getMessage());
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnThanhToanVaInActionPerformed
+
+    private void txtTienThoiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienThoiCaretUpdate
+
+    }//GEN-LAST:event_txtTienThoiCaretUpdate
+
+    private void txtTienKHCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKHCaretUpdate
+        float tienKh = 0;
+        float tienThoi = 0;
+        if (txtTienKH.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mời bạn nhập số tiền cần thanh toán");
+            return;
+        }
+        tienKh = Float.valueOf(txtTienKH.getText());
+        float tongTien = Float.valueOf(lblTongtien.getText());
+        if (tienKh >= tongTien) {
+            tienThoi = tienKh - tongTien;
+        }
+        txtTienThoi.setText(String.valueOf(tienThoi));
+    }//GEN-LAST:event_txtTienKHCaretUpdate
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        if (Float.valueOf(txtTienKH.getText()) < Float.valueOf(lblTongtien.getText())) {
+            JOptionPane.showMessageDialog(this, "Chưa đủ điều kiện thanh toán");
+            return;
+        }
+        ArrayList<HoaDonChiTiet> listHDCT = hoaDonChiTieservice.getAllhoadon();
+        ArrayList<HoaDonChiTiet> listNewHDCT = new ArrayList<>();
+        hoadonchitietviewmodel hdctvm = new hoadonchitietviewmodel();
+        ChiTietSanPhamModel ctsp = new ChiTietSanPhamModel();
+
+        HoaDonViewModel h = new HoaDonViewModel();
+        h.setThanhTien(hd.getThanhTien());
+        h.setMaHD(hd.getMaHD());
+        if (hoaDonService.updateHoaDon_ThanhToan(h) != null) {
+            for (HoaDonChiTiet x : listHDCT) {
+                if (x.getIdHD() != null && x.getIdHD().getMaHD().equals(hd.getMaHD())) {
+                    listNewHDCT.add(x);
+                }
+            }
+            for (HoaDonChiTiet y : listNewHDCT) {
+                hdctvm.setIdHD(y.getIdHD());
+                ctsp.setIdCTSP(y.getIdCTSP().getIdCTSP());
+                ctsp.setSoLuong(y.getSoLuong());
+                chiTietSanPhamService.update_ThanhToan(ctsp);
+            }
+            hoaDonChiTieservice.updateHDCT_ThanhToan(hdctvm);
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+
+        }
+    }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void txtGiamCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtGiamCaretUpdate
+        String chuaGiam = lblTongtien.getText();
+        if (txtGiam.getText().trim().isEmpty()) {
+            lblTongtien.setText(hd.getThanhTien().toString());
+        } else {
+            float giamGia = Float.valueOf(txtGiam.getText());
+            float tongTien = Float.valueOf(hd.getThanhTien().toString());
+            String sauGiam = String.valueOf(tongTien - giamGia);
+            lblTongtien.setText(sauGiam);
+        }
+
+    }//GEN-LAST:event_txtGiamCaretUpdate
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+       HoaDonViewModel hdHuy = new HoaDonViewModel();
+       hdHuy.setMaHD(hd.getMaHD());
+        hoaDonService.updateHoaDon(hdHuy);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,14 +433,22 @@ txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.p
 //                new ThanhToanHoaDonJFrame().setVisible(true);
 //            }
 //        });
+        //</editor-fold>
+
+        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ThanhToanHoaDonJFrame().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApVoucher;
-    private javax.swing.JButton btnSDPoint;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnThanhToanVaIn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,11 +456,11 @@ txtGiam.setText(String.valueOf(Integer.parseInt(lblTongtien.getText())*Integer.p
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lblTongtien;
     private javax.swing.JTextField txtDiem;
     private javax.swing.JTextField txtGiam;
+    private javax.swing.JTextField txtTienKH;
+    private javax.swing.JTextField txtTienThoi;
     private javax.swing.JTextField txtVoucher;
     // End of variables declaration//GEN-END:variables
 }

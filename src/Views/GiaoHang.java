@@ -22,28 +22,27 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GiaoHang extends javax.swing.JFrame {
 
-      CardLayout cardlayout;
-      private GiaoHangService ghs = new GiaoHangService();
-      DefaultTableModel dtmChoGH;
-      DefaultTableModel dtmDangGH;
-      DefaultTableModel dtmHuyGH;
-      DefaultTableModel dtmGH;
-      private hoadonservice hds = new hoadonservice();
-      
+    CardLayout cardlayout;
+    private GiaoHangService ghs = new GiaoHangService();
+    DefaultTableModel dtmChoGH;
+    DefaultTableModel dtmDangGH;
+    DefaultTableModel dtmHuyGH;
+    DefaultTableModel dtmGH;
+    private hoadonservice hds = new hoadonservice();
+
     public GiaoHang() {
         initComponents();
         cardlayout = (CardLayout) PnCacGoc.getLayout();
-      
+
         dtmChoGH = new DefaultTableModel();
         dtmChoGH = (DefaultTableModel) tblChoGiaoHang.getModel();
-        
+
         dtmDangGH = new DefaultTableModel();
         dtmDangGH = (DefaultTableModel) TblDangGiaoHang.getModel();
-        
-        
-         dtmHuyGH = new DefaultTableModel();
+
+        dtmHuyGH = new DefaultTableModel();
         dtmHuyGH = (DefaultTableModel) tblHuyGiaoHang.getModel();
-        
+
         dtmGH = new DefaultTableModel();
         dtmGH = (DefaultTableModel) tblGiaoHang.getModel();
         loadtableChoGiaoHang();
@@ -51,66 +50,71 @@ public class GiaoHang extends javax.swing.JFrame {
         loadtableHuyGiaoHang();
         loadtableGiaoHang();
     }
-  
-    public void loadtableChoGiaoHang(){
+
+    public void loadtableChoGiaoHang() {
         ArrayList<GiaoHangModel> list = ghs.ChoGiaoHang();
         dtmChoGH.setRowCount(0);
-        for(GiaoHangModel x : list){
-            Object[]rowdata ={
+        for (GiaoHangModel x : list) {
+            Object[] rowdata = {
                 x.getIdGiaoHang(),
-                 x.getIdHD(),
+                x.getIdHD().getMaHD(),
                 x.getIdKH().getTenKH(),
                 x.getSdt(),
                 x.getDiaChi(),
                 x.trangthai()
-            };dtmChoGH.addRow(rowdata);
+            };
+            dtmChoGH.addRow(rowdata);
         }
     }
-    
-    
-    public void loadtableDangGiaoHang(){
+
+    public void loadtableDangGiaoHang() {
         ArrayList<GiaoHangModel> list = ghs.DangGiaoHang();
         dtmDangGH.setRowCount(0);
-        for(GiaoHangModel x : list){
-            Object[]rowdata ={
+        for (GiaoHangModel x : list) {
+            Object[] rowdata = {
                 x.getIdGiaoHang(),
-                 x.getIdHD(),
+                x.getIdHD().getMaHD(),
                 x.getIdKH().getTenKH(),
                 x.getSdt(),
                 x.getDiaChi(),
-                 x.trangthai()
-            };dtmDangGH.addRow(rowdata);
+                x.trangthai()
+            };
+            dtmDangGH.addRow(rowdata);
         }
     }
-    public void loadtableHuyGiaoHang(){
+
+    public void loadtableHuyGiaoHang() {
         ArrayList<GiaoHangModel> list = ghs.HuyGiaoHang();
         dtmHuyGH.setRowCount(0);
-        for(GiaoHangModel x : list){
-            Object[]rowdata ={
+        for (GiaoHangModel x : list) {
+            Object[] rowdata = {
                 x.getIdGiaoHang(),
-                  x.getIdHD(),
+                x.getIdHD().getMaHD(),
                 x.getIdKH().getTenKH(),
                 x.getSdt(),
                 x.getDiaChi(),
-                 x.trangthai()
-            };dtmHuyGH.addRow(rowdata);
+                x.trangthai()
+            };
+            dtmHuyGH.addRow(rowdata);
         }
     }
- public void loadtableGiaoHang(){
+
+    public void loadtableGiaoHang() {
         ArrayList<GiaoHangModel> list = ghs.GiaoHang();
         dtmGH.setRowCount(0);
-        for(GiaoHangModel x : list){
-            Object[]rowdata ={
+        for (GiaoHangModel x : list) {
+            Object[] rowdata = {
                 x.getIdGiaoHang(),
-                  x.getIdHD(),
+                x.getIdHD().getMaHD(),
                 x.getIdKH().getTenKH(),
                 x.getSdt(),
                 x.getDiaChi(),
-                 x.trangthai()
-            };dtmGH.addRow(rowdata);
+                x.trangthai()
+            };
+            dtmGH.addRow(rowdata);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -470,8 +474,8 @@ public class GiaoHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          cardlayout.show(PnCacGoc, "CardChoGiaoHang");
-          loadtableChoGiaoHang();
+        cardlayout.show(PnCacGoc, "CardChoGiaoHang");
+        loadtableChoGiaoHang();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -485,81 +489,72 @@ public class GiaoHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-     cardlayout.show(PnCacGoc, "CardDangGiao");
-     loadtableGiaoHang();
-       
+//        cardlayout.show(PnCacGoc, "CardDangGiao");
+//        loadtableGiaoHang();
+    int row=TblDangGiaoHang.getSelectedRow();
+    if(row<0){
+        return;
+    }
+    String id=TblDangGiaoHang.getValueAt(row, 0).toString();
+    GiaoHangModel gh=new GiaoHangModel();
+    gh.setIdGiaoHang(id);
+    int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang hủy giao hàng không");
+      if(cd==JOptionPane.YES_OPTION)
+      {
+          ghs.updateHuyGH(gh);
+          loadtableDangGiaoHang();
+      }
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void tblChoGiaoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChoGiaoHangMouseClicked
-        int row =tblChoGiaoHang.getSelectedRow();
-        if(row==-1){
+        int row = tblChoGiaoHang.getSelectedRow();
+        if (row == -1) {
             return;
         }
         int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái chờ giao hàng sang đang giao hàng không");
-      if(cd!=JOptionPane.YES_OPTION)
-      {
-          return;
-      }
-   
-    String id = tblChoGiaoHang.getValueAt(row,0).toString();
-       GiaoHangModel ghm = new GiaoHangModel();
-             ghm.setIdGiaoHang(id);
-    
-      if(ghs.updateChoGH(ghm)!=null){
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái thành công");
-      }else{
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái không  thành công");
-      }
-      loadtableChoGiaoHang();
+        if (cd != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        String id = tblChoGiaoHang.getValueAt(row, 0).toString();
+        GiaoHangModel ghm = new GiaoHangModel();
+        ghm.setIdGiaoHang(id);
+
+        if (ghs.updateChoGH(ghm) != null) {
+            JOptionPane.showMessageDialog(this, "Chuyển đổi trạng thái thành công");
+        } else {
+            JOptionPane.showMessageDialog(this, "Chuyển đổi trạng thái không  thành công");
+        }
+        loadtableChoGiaoHang();
     }//GEN-LAST:event_tblChoGiaoHangMouseClicked
 
     private void TblDangGiaoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblDangGiaoHangMouseClicked
-        int row =TblDangGiaoHang.getSelectedRow();
-        if(row==-1){
+        int row = TblDangGiaoHang.getSelectedRow();
+        if (row == -1) {
             return;
         }
         int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái đang giao hàng sang  giao hàng không");
-      if(cd!=JOptionPane.YES_OPTION)
-      {
-          return;
-      }
-   
-    String id = TblDangGiaoHang.getValueAt(row,0).toString();
-       GiaoHangModel ghm = new GiaoHangModel();
-             ghm.setIdGiaoHang(id);
-    
-      if(ghs.updateDangGH(ghm)!=null){
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái thành công");
-      }else{
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái không  thành công");
-      }
-      loadtableDangGiaoHang();
+        if (cd != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        String id = TblDangGiaoHang.getValueAt(row, 0).toString();
+        GiaoHangModel ghm = new GiaoHangModel();
+        ghm.setIdGiaoHang(id);
+
+        if (ghs.updateDangGH(ghm) != null) {
+            JOptionPane.showMessageDialog(this, "Chuyển đổi trạng thái thành công");
+        } else {
+            JOptionPane.showMessageDialog(this, "Chuyển đổi trạng thái không  thành công");
+        }
+        loadtableDangGiaoHang();
     }//GEN-LAST:event_TblDangGiaoHangMouseClicked
 
     private void tblHuyGiaoHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHuyGiaoHangMouseClicked
-         int row =tblHuyGiaoHang.getSelectedRow();
-        if(row==-1){
-            return;
-        }
-        int cd = JOptionPane.showConfirmDialog(this, "bạn có muốn chuyển đổi trạng thái giao hàng sang hủy giao hàng không");
-      if(cd!=JOptionPane.YES_OPTION)
-      {
-          return;
-      }
-   
-    String id = tblHuyGiaoHang.getValueAt(row,0).toString();
-       GiaoHangModel ghm = new GiaoHangModel();
-             ghm.setIdGiaoHang(id);
-    
-      if(ghs.updateHuyGH(ghm)!=null){
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái thành công");
-      }else{
-          JOptionPane.showMessageDialog(this,"Chuyển đổi trạng thái không  thành công");
-      }
-      loadtableHuyGiaoHang();
+        
     }//GEN-LAST:event_tblHuyGiaoHangMouseClicked
 
-    
 //      private HoaDon getHD(int row, String maHD) {
 //        ArrayList<HoaDonViewModel> hdm = hds.getAllhoadon();
 //        for (HoaDonViewModel dhm1 : hdm) {
@@ -594,6 +589,8 @@ public class GiaoHang extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GiaoHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

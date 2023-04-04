@@ -19,6 +19,7 @@ import Services.DoCaoService;
 import Services.MauSacService;
 import Services.SanPhamService;
 import Services.SizeService;
+import Utilities.DBConnection;
 import Utilities.JDBCHelper;
 import ViewModels.ChatLieuModel;
 import ViewModels.ChiTietSanPhamModel;
@@ -30,9 +31,11 @@ import ViewModels.SizeModel;
 import com.barcodelib.barcode.Linear;
 import java.awt.Component;
 import java.awt.Image;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -761,6 +764,11 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         });
 
         btnNhapExcel.setText("Nhập excel");
+        btnNhapExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapExcelActionPerformed(evt);
+            }
+        });
 
         btnXuatExcel.setText("Xuất excel");
         btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
@@ -2355,11 +2363,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         if (checkSP().equals("Có")) {
             JOptionPane.showMessageDialog(this, "Đã có sản phẩm này");
 
-                btnCapNhatSPActionPerformed(evt);
+            btnCapNhatSPActionPerformed(evt);
 
-                loadTBSanPham(1);
+            loadTBSanPham(1);
 
-            
         } else if (checkSP().equals("Thêm")) {
             if (ctsps.insertCTSP(ctspM) != null) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
@@ -2682,6 +2689,80 @@ public class SanPhamJPanel extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnTimTheoGiaActionPerformed
+
+    private void btnNhapExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapExcelActionPerformed
+        JFileChooser jfile = new JFileChooser();
+        int batchSize = 20;
+        Connection con = null;
+        int x1 = tblThongTinSP.getRowCount();
+        try {
+            int f = jfile.showOpenDialog(this);
+            File file = jfile.getSelectedFile();
+            System.out.println(file);
+            con = DBConnection.getConnection();
+            con.setAutoCommit(false);
+            String sql = "INSERT INTO dbo.ChiTietSanPham(Id,IDSP,GiaNhap,GiaBan,SoLuong,Size,DoCao,ChatLieu,MauSac,"
+                    + "DanhMuc,MoTa,HinhAnh,NgayTao,TrangThai)VALUES(NEWID(),?,?,?,?,?,?,?,?,?,?,?,GETDATE(),?)";
+            PreparedStatement state = con.prepareStatement(sql);
+            BufferedReader lineReader = new BufferedReader(new FileReader(file));
+            String lineText = null;
+            int count = 0;
+            lineReader.readLine();
+            while ((lineText = lineReader.readLine()) != null) {
+                String[] data = lineText.split(";");
+                String Tensp = data[0];
+                BigDecimal giaNhap = BigDecimal.valueOf(Double.valueOf(data[1]));
+                BigDecimal giaBan = BigDecimal.valueOf(Double.valueOf(data[2]));
+
+                Integer sl = Integer.valueOf(data[3]);
+                String size = data[4];
+                String doCao = data[5];
+                String ChatLieu = data[6];
+                String MauSac = data[7];
+                String DanhMuc = data[8];
+                String MT = data[9];
+                String Hinh = data[10];
+                Integer TT = Integer.valueOf(data[11]);
+                System.out.println(Tensp + "1");
+                System.out.println(giaBan + "2");
+                state.setString(1, Tensp);
+                state.setBigDecimal(2, giaNhap);
+                state.setBigDecimal(3, giaBan);
+                state.setInt(4, sl);
+                state.setString(5, size);
+
+                state.setString(6, doCao);
+
+                state.setString(7, ChatLieu);
+                state.setString(8, MauSac);
+                state.setString(9, DanhMuc);
+                state.setString(10, MT);
+                state.setString(11, Hinh);
+                state.setInt(12, TT);
+                state.addBatch();
+                System.out.println(state);
+                if (count % batchSize == 0) {
+                    state.executeBatch();
+
+                }
+            }
+
+            lineReader.close();
+            state.executeBatch();
+            con.commit();
+            con.close();
+            JOptionPane.showMessageDialog(this, "Thêm từ danh sách thành công !!");
+            loadTBSanPham(Trang);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        int x2 = tblThongTinSP.getRowCount();
+        if (x1 == x2) {
+            JOptionPane.showMessageDialog(this, "Thêm không thành công !!");
+            return;
+        }
+    }//GEN-LAST:event_btnNhapExcelActionPerformed
 
     private DanhMuc getDM(int row, String tenDM) {
         ArrayList<DanhMucModel> dmm = dms.getAllDanhMuc();

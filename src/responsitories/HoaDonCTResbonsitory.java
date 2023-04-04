@@ -72,7 +72,7 @@ public class HoaDonCTResbonsitory {
             while (rs.next()) {
 
                 return (new HoaDon(rs.getString(1), rs.getString(2)));
-}
+            }
             c.close();
             ps.close();
             rs.close();
@@ -94,7 +94,7 @@ public class HoaDonCTResbonsitory {
         );
         return hdct;
     }
-    
+
     public Boolean updatehoadon(HoaDonChiTiet hdct) {
         String sql = "update ChiTietHoaDon set SoLuong=? where IDHD =? and IDCTSP=?";
         Integer row = JDBCHelper.executeUpdate(sql,
@@ -143,15 +143,26 @@ public class HoaDonCTResbonsitory {
 //    }
 
     public HoaDonChiTiet updateHDCT(HoaDonChiTiet hdct) {
-String sql = "UPDATE chitiethoadon SET SOLUONG = ? WHERE IDHD = ? AND IDCTSP = ?";
-        JDBCHelper.executeUpdate(sql, hdct.getSoLuong(), hdct.getIdHD().getIdHD(),hdct.getIdCTSP().getIdCTSP());
+        String sql = "UPDATE chitiethoadon SET SOLUONG = ? WHERE IDHD = ? AND IDCTSP = ?";
+        JDBCHelper.executeUpdate(sql, hdct.getSoLuong(), hdct.getIdHD().getIdHD(), hdct.getIdCTSP().getIdCTSP());
         return hdct;
     }
+    public int deleteHDCT(String idhd, String idctsp) {
+        String sql = "DELETE FROM chitiethoadon WHERE IDHD = ? AND IDCTSP = ?";
+        int row = JDBCHelper.executeUpdate(sql,idhd,idctsp );
+        return row;
+    }
+    public HoaDonChiTiet updateHDCT_ThanhToan(HoaDonChiTiet hdct) {
+        String sql = "UPDATE chitiethoadon SET TRANGTHAI = 1 , NGAYBAN =GETDATE() WHERE IDHD = ? ";
+        JDBCHelper.executeUpdate(sql, hdct.getIdHD().getIdHD());
+        return hdct;
+    }
+
     public static void main(String[] args) {
-     ArrayList<HoaDonChiTiet> list = new HoaDonCTResbonsitory().getAllhoadonct();
-     for (HoaDonChiTiet x : list){
-         System.out.println(x.getIdHDCT());
-         System.out.println(x.getIdCTSP().getIdCTSP());
-     }
+        ArrayList<HoaDonChiTiet> list = new HoaDonCTResbonsitory().getAllhoadonct();
+        for (HoaDonChiTiet x : list) {
+            System.out.println(x.getIdHDCT());
+            System.out.println(x.getIdCTSP().getIdCTSP());
+        }
     }
 }
