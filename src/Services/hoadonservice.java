@@ -35,6 +35,12 @@ public class hoadonservice {
     public ArrayList<HoaDonViewModel> getAllhoadonByTrangThai() {
         return hd.getAllhoadonByTrangThai();
     }
+    public ArrayList<HoaDonViewModel> getAllhoadonThanhToan() {
+        return hd.getAllhoadonThanhToan();
+    }
+    public ArrayList<HoaDonViewModel> getAllhoadonHuy() {
+        return hd.getAllhoadonHuy();
+    }
 
     public HoaDonViewModel insertHoaDon(HoaDonViewModel h) {
         var x = hd.inserthoadon(new HoaDon(h.getIdHD(), h.getMaHD(), h.getIdNV(), h.getIdKH(), h.getNgaytao(), h.getTrangThai()));

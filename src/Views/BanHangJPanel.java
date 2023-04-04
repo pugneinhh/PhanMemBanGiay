@@ -1521,7 +1521,14 @@ public class BanHangJPanel extends javax.swing.JPanel {
         return null;
     }
     private void btnDatHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHangActionPerformed
-       new GiaoHang().setVisible(true);
+       if(lblHoaDon.getText().equalsIgnoreCase("Hóa đơn trống")){
+           JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn");
+           return;
+       }
+       hd.setMaHD(lblHoaDon.getText());
+        hd.setThanhTien(BigDecimal.valueOf(Float.valueOf(lbltongtien.getText())));
+        hd.setIdKH(getKHByTen(lbltenkh.getText()));
+        new DatHang(this, hd).setVisible(true);
     }//GEN-LAST:event_btnDatHangActionPerformed
 
     private void changeBackgroud_SP_KH() {

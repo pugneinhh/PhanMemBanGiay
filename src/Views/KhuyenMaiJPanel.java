@@ -60,12 +60,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             @Override
             public void run() {
                 ArrayList<KhuyenMaiModel> listkm = kms.getAllKhuyenMai();
-                ArrayList<ChiTietSanPhamModel> listsp = ctsps.getAllChiTietSanPham();
+//                ArrayList<ChiTietSanPhamModel> listsp = ctsps.getAllChiTietSanPham();
                 Date htai = new Date();
                 for (KhuyenMaiModel k : listkm) {
                     if (htai.after(k.getNgayKetThuc())) {
-                        k.setTrangThai(1);
-                        kms.updateKM(k);
+                        
+                        kms.updateChuyenTT(k);
 //                        for (ChiTietSanPhamModel c : listsp) {
 //                            System.out.println(c);
 //                            if(c.getIdKM().getIdKM().equals(k.getIdKM())){

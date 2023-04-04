@@ -4,20 +4,104 @@
  */
 package Views;
 
+import DomainModels.HoaDon;
+import DomainModels.KhachHang;
+import Services.GiaoHangService;
+import ViewModels.GiaoCaModel;
+import ViewModels.GiaoHangModel;
+import ViewModels.HoaDonViewModel;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import responsitories.HoaDonResponsitory;
+import responsitories.HoaDonresbonsitory;
+import responsitories.KhachHangResponsitory;
+
 /**
  *
  * @author Phanh
  */
 public class DatHang extends javax.swing.JDialog {
-
+private  HoaDonResponsitory hdr = new HoaDonResponsitory();
+private KhachHangResponsitory khr=new KhachHangResponsitory();
+private  GiaoHangService ghs = new GiaoHangService();
     /**
      * Creates new form DatHang
      */
-    public DatHang() {
-        
+    JPanel banHang;
+    HoaDon hd;
+    public DatHang(JPanel banHang, HoaDon hd) {
+         this.banHang = banHang;
+        this.hd = hd;
         initComponents();
+        txtTenKhachHang.setText(hd.getIdKH().getTenKH());
+        txtSDT.setText(hd.getIdKH().getSdt());
+        txtDiaChi.setText(hd.getIdKH().getDiaChi());
+        txtPoint.setText(hd.getIdKH().getDiemEXP()+"");
+        
+        txtTienHang.setText(hd.getThanhTien().toString());
+        
     }
-
+    public GiaoHangModel getformData(){
+        String ten= txtTenKhachHang.getText().trim();
+        String sdt= txtSDT.getText().trim();
+        String  diachi= txtDiaChi.getText().trim();
+        String tienhang= txtTienHang.getText().trim();
+        String tienship= txtTienShip.getText().trim();
+        String tongtien=txtTongTien.getText().trim();
+        String giam=txtGiamGia.getText().trim();
+        String ghichu=txtGhiChu.getText();
+        BigDecimal tHang=null;
+        BigDecimal tShip=null;
+        BigDecimal tTongTien=null;
+        if(ten.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để trống tên");
+            txtTenKhachHang.requestFocus();
+            return null;
+        }
+        if(sdt.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để trống sdt");
+            txtSDT.requestFocus();
+            return null;
+        }
+        if(ten.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để trống tên");
+            txtTenKhachHang.requestFocus();
+            return null;
+        }
+        if(diachi.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để trống diachi");
+            txtDiaChi.requestFocus();
+            return null;
+        }
+        if(tienhang.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để tiền hàng");
+            txtTienHang.requestFocus();
+            return null;
+        }else{
+            tHang=BigDecimal.valueOf(Float.valueOf(tienhang));
+        }
+        if(tienship.length()==0){
+            JOptionPane.showMessageDialog(this, "Không được để tiền ship");
+            txtTienShip.requestFocus();
+            return null;
+        }else{
+            tShip=BigDecimal.valueOf(Float.valueOf(tienship));
+        }
+        tTongTien=BigDecimal.valueOf(Float.valueOf(tongtien));
+        ArrayList<HoaDonViewModel> list = hdr.getAllhoadon();
+        
+        HoaDon hoaDon=new HoaDon();
+        for (HoaDonViewModel h : list) {
+            if(h.getMaHD().equals(hd.getMaHD())){
+                hoaDon=hdr.gethdByID(h.getIdHD());
+            }
+        }
+        KhachHang kh=hd.getIdKH();
+        return new GiaoHangModel(null, hd, kh, sdt, diachi, tHang, tShip, tTongTien, null, null, null, null, 0,ghichu);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,22 +277,25 @@ public class DatHang extends javax.swing.JDialog {
 
         txtTienHang.setEditable(false);
         txtTienHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTienHang.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienHangCaretUpdate(evt);
+            }
+        });
         jPanel9.add(txtTienHang);
 
         txtTienShip.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtTienShip.setText("0");
-        txtTienShip.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTienShipKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTienShipKeyReleased(evt);
+        txtTienShip.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTienShipCaretUpdate(evt);
             }
         });
         jPanel9.add(txtTienShip);
 
         txtTongTien.setEditable(false);
         txtTongTien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTongTien.setEnabled(false);
         jPanel9.add(txtTongTien);
 
         txtGiamGia.setEditable(false);
@@ -217,6 +304,11 @@ public class DatHang extends javax.swing.JDialog {
         txtGiamGia.setText("0");
         txtGiamGia.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(240, 240, 240)));
         txtGiamGia.setEnabled(false);
+        txtGiamGia.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtGiamGiaCaretUpdate(evt);
+            }
+        });
         jPanel9.add(txtGiamGia);
 
         jPanel13.setBackground(new java.awt.Color(0, 153, 153));
@@ -301,7 +393,7 @@ public class DatHang extends javax.swing.JDialog {
         jPanel3.add(jPanel5, java.awt.BorderLayout.LINE_START);
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
         jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -330,16 +422,11 @@ public class DatHang extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTienShipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienShipKeyPressed
-        
-    }//GEN-LAST:event_txtTienShipKeyPressed
-
-    private void txtTienShipKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienShipKeyReleased
-       
-    }//GEN-LAST:event_txtTienShipKeyReleased
-
     private void btnSuDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuDungActionPerformed
-        
+        float diem = Float.valueOf(txtPoint.getText());
+        txtGiamGia.setText(String.valueOf( Float.valueOf(txtPoint.getText()) + Float.valueOf(txtGiamGia.getText())) );
+        System.out.println(String.valueOf(diem + Float.valueOf(txtGiamGia.getText())));
+        txtPoint.setText("0");
         
     }//GEN-LAST:event_btnSuDungActionPerformed
 
@@ -352,8 +439,40 @@ public class DatHang extends javax.swing.JDialog {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnGiaoHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoHangActionPerformed
-      
+        GiaoHangModel gc = getformData();
+        if(gc==null){
+            return;
+        }
+        
+        if(ghs.insertGH(gc)!= null){
+            JOptionPane.showMessageDialog(this, "Đặt hàng thành công");
+         this.setVisible(false);
+        }
     }//GEN-LAST:event_btnGiaoHangActionPerformed
+
+    private void txtTienHangCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienHangCaretUpdate
+        try {
+             txtTongTien.setText(String.valueOf(Float.valueOf(txtTienHang.getText())+Float.valueOf(txtTienShip.getText())));
+            
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+       
+    }//GEN-LAST:event_txtTienHangCaretUpdate
+
+    private void txtTienShipCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienShipCaretUpdate
+txtTongTien.setText(String.valueOf(Float.valueOf(txtTienHang.getText())+Float.valueOf(txtTienShip.getText())));
+            
+    }//GEN-LAST:event_txtTienShipCaretUpdate
+
+    private void txtGiamGiaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtGiamGiaCaretUpdate
+        
+            float giamGia = Float.valueOf(txtGiamGia.getText());
+            float tongTien = Float.valueOf(txtTienHang.getText())+Float.valueOf(txtTienShip.getText());
+            String sauGiam = String.valueOf(tongTien - giamGia);
+            txtTongTien.setText(sauGiam);
+        
+    }//GEN-LAST:event_txtGiamGiaCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -383,18 +502,18 @@ public class DatHang extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DatHang dialog = new DatHang();
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                DatHang dialog = new DatHang();
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

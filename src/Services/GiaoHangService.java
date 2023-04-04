@@ -24,7 +24,7 @@ public class GiaoHangService {
         ArrayList<GiaoHang> gh = ghr.getAllGiaoHang();
         for (GiaoHang x : gh) {
 
-            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu()));
       
         }
         return list;
@@ -37,29 +37,29 @@ public class GiaoHangService {
                 return null;
             }
         }
-        var x = ghr.insertGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai()));
-        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
+        var x = ghr.insertGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai(),ghm.getGhiChu()));
+        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu());
 
     }
 
     public GiaoHangModel updateChoGH(GiaoHangModel ghm) {
 
-        var x = ghr.updateChoGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(), ghm. getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai()));
-        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
+        var x = ghr.updateChoGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(), ghm. getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai(),ghm.getGhiChu()));
+        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu());
 
     }
     
      public GiaoHangModel updateDangGH(GiaoHangModel ghm) {
 
-        var x = ghr.updateDangGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai()));
-        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
+        var x = ghr.updateDangGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai(),ghm.getGhiChu()));
+        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu());
 
     }
      
       public GiaoHangModel updateHuyGH(GiaoHangModel ghm) {
 
-        var x = ghr.updateHuyGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai()));
-        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
+        var x = ghr.updateHuyGH(new GiaoHang(ghm.getIdGiaoHang(), ghm.getIdHD(), ghm.getIdKH(),  ghm.getSdt(), ghm.getDiaChi(), ghm.getTienHang(), ghm.getTienShip(), ghm.getTongTien(), ghm.getNgayGiao(), ghm.getNgayNhan(), ghm.getNgayTao(), ghm.getNgaySua(), ghm.getTrangThai(),ghm.getGhiChu()));
+        return new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu());
 
     }
 
@@ -72,7 +72,7 @@ public class GiaoHangService {
         ArrayList<GiaoHang> gh = ghr.DangGiaoHang();
         for (GiaoHang x : gh) {
 
-            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(), x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu()));
         }
         return list;
     }
@@ -82,7 +82,7 @@ public class GiaoHangService {
         ArrayList<GiaoHang> gh = ghr.HuyGiaoHang();
         for (GiaoHang x : gh) {
 
-            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu()));
         }
         return list;
     }
@@ -92,7 +92,7 @@ public class GiaoHangService {
         ArrayList<GiaoHang> gh = ghr.GiaoHang();
         for (GiaoHang x : gh) {
 
-            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu()));
         }
         return list;
     }
@@ -102,7 +102,7 @@ public class GiaoHangService {
         ArrayList<GiaoHang> gh = ghr.ChoGiaoHang();
         for (GiaoHang x : gh) {
 
-            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+            list.add(new GiaoHangModel(x.getIdGiaoHang(), x.getIdHD(), x.getIdKH(),  x.getSdt(), x.getDiaChi(), x.getTienHang(), x.getTienShip(), x.getTongTien(), x.getNgayGiao(), x.getNgayNhan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai(),x.getGhiChu()));
         }
         return list;
     }

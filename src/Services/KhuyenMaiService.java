@@ -55,6 +55,13 @@ public class KhuyenMaiService {
         
     
     }
+    public KhuyenMaiModel updateChuyenTT(KhuyenMaiModel kmm){
+        
+        var x =kmr.updateChuyenTT(new KhuyenMai(kmm.getMaKM(), kmm.getTenKM(),kmm.getGiaTri(),kmm.getGiamToiDa(),kmm.getNgayBatDau(),kmm.getNgayKetThuc(),kmm.getHinhThucApDung(), kmm.getApDungGiamGia(), kmm.getLoaiGiamGia(),kmm.getTrangThai()));
+         return new KhuyenMaiModel(x.getMaKM(),x.getTenKM(), x.getGiaTri(),x.getGiamToiDa(),x.getNgayBatDau(), x.getNgayKetThuc(), x.getHinhThucApDung(), x.getApDungGiamGia(), x.getLoaiGiamGia(), x.getTrangThai());
+        
+    
+    }
     
     
     public Integer deleteKM(String id){

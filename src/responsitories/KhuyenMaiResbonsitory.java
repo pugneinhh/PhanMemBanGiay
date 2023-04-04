@@ -87,7 +87,12 @@ public class KhuyenMaiResbonsitory {
                 KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoaiGiamGia(), KM.getTrangThai(), KM.getMaKM());
         return KM;
     }
-
+    public KhuyenMai updateChuyenTT(KhuyenMai KM) {
+        String sql = "UPDATE KhuyenMai SET NgaySua=GETDATE(),TrangThai=1 WHERE maKM=?";
+        JDBCHelper.executeUpdate(sql, KM.getMaKM());
+        return KM;
+    }
+    
     public Integer deleteKM(String id) {
         String sql = "DELETE FROM KhuyenMai WHERE maKM=?";
         int row = JDBCHelper.executeUpdate(sql, id);

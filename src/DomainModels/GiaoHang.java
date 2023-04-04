@@ -26,6 +26,7 @@ public class GiaoHang {
     private Date ngayTao;
     private Date ngaySua;
     private int trangThai;
+    private String ghiChu;
 
     public GiaoHang() {
     }
@@ -44,11 +45,10 @@ public class GiaoHang {
         this.trangThai = trangThai;
     }
 
-    public GiaoHang(String idGiaoHang, HoaDon idHD, KhachHang idKH, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai) {
+    public GiaoHang(String idGiaoHang, HoaDon idHD, KhachHang idKH, String sdt, String diaChi, BigDecimal tienHang, BigDecimal tienShip, BigDecimal tongTien, Date ngayGiao, Date ngayNhan, Date ngayTao, Date ngaySua, int trangThai, String ghiChu) {
         this.idGiaoHang = idGiaoHang;
         this.idHD = idHD;
         this.idKH = idKH;
-        
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.tienHang = tienHang;
@@ -59,7 +59,18 @@ public class GiaoHang {
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
+        this.ghiChu = ghiChu;
     }
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+
+    
 
     public String getIdGiaoHang() {
         return idGiaoHang;

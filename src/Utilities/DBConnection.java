@@ -7,7 +7,7 @@ public class DBConnection {
     public static String Username = "sa";
 
 
-    public static String Pass = "123456";
+    public static String Pass = "Anh020903";
 
     static {
         try {          

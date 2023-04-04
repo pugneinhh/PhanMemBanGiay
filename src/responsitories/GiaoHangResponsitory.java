@@ -36,7 +36,7 @@ public class GiaoHangResponsitory {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
                 HoaDon hd = hdr.gethdByID(rs.getString(2));
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
            ex.printStackTrace();
@@ -51,7 +51,7 @@ public class GiaoHangResponsitory {
             while (rs.next()) {
                 KhachHang kh = khr.getKHByID(rs.getString(3));
                 HoaDon hd = hdr.gethdByID(rs.getString(2));
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(GiaoHangResponsitory.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,19 +60,19 @@ public class GiaoHangResponsitory {
     }
 
     public GiaoHang insertGH(GiaoHang gh) {
-        String sql = "insert into GiaoHang values (NEWID(),?,?,?,?,?,?,?,?,?,GETDATE(),null,?)";
-        JDBCHelper.executeUpdate(sql,  gh.getIdHD().getIdHD(), gh.getIdKH(), gh.getSdt(), gh.getDiaChi(), gh.getTienHang(), gh.getTienShip(), gh.getTongTien(), gh.getNgayGiao(), gh.getNgayNhan(), gh.getTrangThai());
+        String sql = "insert into GiaoHang values (NEWID(),?,?,?,?,?,?,?,?,?,GETDATE(),null,?,?)";
+        JDBCHelper.executeUpdate(sql,  gh.getIdHD().getIdHD(), gh.getIdKH().getIdKH(), gh.getSdt(), gh.getDiaChi(), gh.getTienHang(), gh.getTienShip(), gh.getTongTien(), gh.getNgayGiao(), gh.getNgayNhan(), gh.getTrangThai(),gh.getGhiChu());
         return gh;
     }
 
     public GiaoHang updateChoGH(GiaoHang gh) {
-        String sql = "update  giaohang set trangthai =1 where idgh =?";
+        String sql = "update  giaohang set trangthai =1,ngaygiao=getdate() where idgh =?";
         JDBCHelper.executeUpdate(sql,  gh.getIdGiaoHang());
         return gh;
     }
     
       public GiaoHang updateDangGH(GiaoHang gh) {
-        String sql = "update  giaohang set trangthai =2 where idgh =?";
+        String sql = "update  giaohang set trangthai =2,ngaynhan=getdate() where idgh =?";
         JDBCHelper.executeUpdate(sql,  gh.getIdGiaoHang());
         return gh;
     }
@@ -101,7 +101,7 @@ public class GiaoHangResponsitory {
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                
 
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11),rs.getDate(12),rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11),rs.getDate(12),rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -122,7 +122,7 @@ public class GiaoHangResponsitory {
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                 
 
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -143,7 +143,7 @@ public class GiaoHangResponsitory {
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                
 
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -164,7 +164,7 @@ public class GiaoHangResponsitory {
 //                GioHang gh = ghr.getAllGHByID(rs.getString(sql));
                 
 
-                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+                list.add(new GiaoHang(rs.getString(1), hd, kh, rs.getString(4), rs.getString(5), rs.getBigDecimal(6), rs.getBigDecimal(7), rs.getBigDecimal(8), rs.getDate(9), rs.getDate(10), rs.getDate(11), rs.getDate(12), rs.getInt(13),rs.getString(14)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

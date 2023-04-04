@@ -4,17 +4,22 @@
  */
 package Views;
 
+import DomainModels.ChiTietSanPham;
 import DomainModels.GioHang;
 import DomainModels.HoaDon;
+import DomainModels.HoaDonChiTiet;
 import Services.GiaoCaService;
 import Services.GiaoHangService;
+import Services.HoaDonChiTieservice;
 import Services.hoadonservice;
 import ViewModels.GiaoHangModel;
 import ViewModels.HoaDonViewModel;
+import ViewModels.hoadonchitietviewmodel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import responsitories.HoaDonResponsitory;
 
 /**
  *
@@ -28,7 +33,11 @@ public class GiaoHang extends javax.swing.JFrame {
     DefaultTableModel dtmDangGH;
     DefaultTableModel dtmHuyGH;
     DefaultTableModel dtmGH;
+    DefaultTableModel dtmGioHang;
+    
     private hoadonservice hds = new hoadonservice();
+    private HoaDonChiTieservice hdcts=new HoaDonChiTieservice();
+    private HoaDonResponsitory hdr=new HoaDonResponsitory();
 
     public GiaoHang() {
         initComponents();
@@ -45,6 +54,9 @@ public class GiaoHang extends javax.swing.JFrame {
 
         dtmGH = new DefaultTableModel();
         dtmGH = (DefaultTableModel) tblGiaoHang.getModel();
+        dtmGioHang=new DefaultTableModel();
+        dtmGioHang=(DefaultTableModel) tblGioHang.getModel();
+        
         loadtableChoGiaoHang();
         loadtableDangGiaoHang();
         loadtableHuyGiaoHang();
@@ -139,11 +151,11 @@ public class GiaoHang extends javax.swing.JFrame {
         tblGiaoHang = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtHD = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tblGioHang = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
@@ -357,9 +369,15 @@ public class GiaoHang extends javax.swing.JFrame {
 
         jLabel2.setText("Mã Hóa Đơn");
 
+        txtHD.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtHDCaretUpdate(evt);
+            }
+        });
+
         jLabel3.setText("Tên Khách");
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -378,7 +396,7 @@ public class GiaoHang extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(tblGioHang);
 
         jLabel4.setText("Tổng Tiền đã bao gồm phí ship :");
 
@@ -408,7 +426,7 @@ public class GiaoHang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -437,7 +455,7 @@ public class GiaoHang extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,6 +573,37 @@ public class GiaoHang extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblHuyGiaoHangMouseClicked
 
+    private void txtHDCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtHDCaretUpdate
+       String mahd=txtHD.getText();
+       ArrayList<HoaDonViewModel> list=hds.getAllhoadon();
+       String id=null;
+        for (HoaDonViewModel hdm : list) {
+            if(hdm.getMaHD().equalsIgnoreCase(mahd)){
+                id=hdm.getIdHD();
+            }
+        }
+        ArrayList<HoaDonChiTiet> listhdct=hdcts.getAllhoadon();
+        ArrayList<ChiTietSanPham> listsp=new ArrayList<>();
+        for (HoaDonChiTiet hdct : listhdct) {
+            if(hdct.getIdHD().getIdHD().equals(id)){
+                listsp.add(hdct.getIdCTSP());
+                dtmGioHang.addRow(new Object[]{hdct.getIdCTSP().getMaQR(),hdct.getIdCTSP().getIdSP().getTen()});
+
+            }
+        }
+       
+        
+    }//GEN-LAST:event_txtHDCaretUpdate
+    private void loadGioHang(ArrayList<ChiTietSanPham> list){
+        dtmGioHang.setRowCount(0);
+        for (ChiTietSanPham ctsp : list) {
+            Object[] rowData={
+                ctsp.getMaQR(),
+                ctsp.getIdSP().getTen(),
+                
+            };
+        }
+    }
 //      private HoaDon getHD(int row, String maHD) {
 //        ArrayList<HoaDonViewModel> hdm = hds.getAllhoadon();
 //        for (HoaDonViewModel dhm1 : hdm) {
@@ -623,12 +672,12 @@ public class GiaoHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblChoGiaoHang;
     private javax.swing.JTable tblGiaoHang;
+    private javax.swing.JTable tblGioHang;
     private javax.swing.JTable tblHuyGiaoHang;
+    private javax.swing.JTextField txtHD;
     // End of variables declaration//GEN-END:variables
 }
