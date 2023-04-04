@@ -24,9 +24,10 @@ public class hoadonservice {
         return list;
     }
 
-//    public ArrayList<HoaDonViewModel> gettheoidhd(String id) {
-//        return hd.gethdByID(id);
-//    }
+    public ArrayList<HoaDonViewModel> getAllhoadonByTrangThai() {
+        return hd.getAllhoadonByTrangThai();
+    }
+
     public HoaDonViewModel insertHoaDon(HoaDonViewModel h) {
         var x = hd.inserthoadon(new HoaDon(h.getIdHD(), h.getMaHD(), h.getIdNV(), h.getIdKH(), h.getNgaytao(), h.getTrangThai()));
         return new HoaDonViewModel(x.getIdHD(), x.getMaHD(), x.getIdNV(), x.getIdKH(), x.getNgaytao(), x.getTrangThai());
@@ -44,7 +45,8 @@ public class hoadonservice {
         return new HoaDonViewModel(x.getIdHD(), x.getMaHD(), x.getIdNV(), x.getIdKH(), x.getNgaytao(), x.getTrangThai());
 
     }
-        public HoaDonViewModel updateHoaDon_HUY(HoaDonViewModel h) {
+
+    public HoaDonViewModel updateHoaDon_HUY(HoaDonViewModel h) {
         var x = hd.updatehoadon_huy(new HoaDon(h.getIdHD(), h.getMaHD(), h.getIdNV(), h.getIdKH(), h.getNgaytao(), h.getTrangThai()));
         return new HoaDonViewModel(x.getIdHD(), x.getMaHD(), x.getIdNV(), x.getIdKH(), x.getNgaytao(), x.getTrangThai());
 

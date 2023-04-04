@@ -44,6 +44,14 @@ public class LichSuGiaoHangModel {
         this.trangThai = trangThai;
     }
 
+    public LichSuGiaoHangModel(KhachHang maKH, KhachHang hoTen, String sdt, Date ngayMua, BigDecimal thanhTien) {
+        this.maKH = maKH;
+        this.hoTen = hoTen;
+        this.sdt = sdt;
+        this.ngayMua = ngayMua;
+        this.thanhTien = thanhTien;
+    }
+
     public HoaDon getMaHD() {
         return maHD;
     }

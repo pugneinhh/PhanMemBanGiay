@@ -370,9 +370,16 @@ INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,Trang
 VALUES(NewID(),'HD03','12ce26a3-5f6f-48f2-8d46-157d13d015c5','a54bf9ce-9623-49f3-8ed3-4045650a1ac8',
 '02/02/2022',100000,'93c78624-9ce0-403f-a1c7-e9f20e2bbfdb',null,getDate(),0)
 
+INSERT INTO HoaDon(ID,MaHD,IDNV,IDKH,NgayMua,ThanhTien,IDKM,GhiChu,NgayTao,TrangThai)
+VALUES(NewID(),'HD04','48f5e882-3987-43f8-b8c3-433a5ddd0a7e','c6ecd884-4e4b-4e1b-9794-81025f8af7a2',
+'02/02/2022',100000,'93c78624-9ce0-403f-a1c7-e9f20e2bbfdb',null,getDate(),1)
+
 --HoaDonChiTiet--
 INSERT INTO ChiTietHoaDon(Id,IDHD,IDCTSP,SoLuong,DonGia,NgayBan,NgayTao,TrangThai)
 VALUES(NewID(), '3a66dbd4-c230-4c71-8e19-0a2d67992b42','69ba7b9f-6a48-46e4-86fa-eb298b41da9c',5,20000,'03/03/2023',getDate(),0)
+
+INSERT INTO ChiTietHoaDon(Id,IDHD,IDCTSP,SoLuong,DonGia,NgayBan,NgayTao,TrangThai)
+VALUES(NewID(), '4B44DEF7-68EE-4C59-9106-06A437D03902','69BA7B9F-6A48-46E4-86FA-EB298B41DA9C',5,20000,'03/03/2023',getDate(),0)
 
 
 --SanPhamChiTiet--
@@ -408,12 +415,17 @@ N'Hàng đẹp',getDate(),0)
 
 --Giao Hang--
 INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
-VALUES(NewID(),'4b44def7-68ee-4c59-9106-06a437d03902','c6ecd884-4e4b-4e1b-9794-81025f8af7a2','0325668668',N'HaNoi',150000,15000,150000,'02/03/2023',null,getDate(),0)
+VALUES(NewID(),'3D82AAAB-BA91-4FBA-981E-44034CC5380D','c6ecd884-4e4b-4e1b-9794-81025f8af7a2','0325668668',N'HaNoi',150000,15000,150000,
+'02/03/2023','10/20/2023',getDate(),2)
 
 INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
 VALUES(NewID(),'3a66dbd4-c230-4c71-8e19-0a2d67992b42' ,'d91876a6-7527-4487-ba4d-a2cc9d443c0a', '0987808709', 'Hanoi',100000, 10000,110000,
-'01/01/2003', '10/10/2022', getDate(), 1)
+'01/01/2023', '10/10/2022', getDate(), 3)
 
 INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
 VALUES(NewID(),'a54bf9ce-9623-49f3-8ed3-4045650a1ac8' ,'d91876a6-7527-4487-ba4d-a2cc9d443c0a', '0987808709', 'Hanoi',100000, 10000,110000,
+'01/01/2003', '10/10/2022', getDate(), 0)
+
+INSERT INTO GiaoHang(IDGH,IdHD,IdKH,SDT,DiaChi,TienHang,TienShip,TongTien,NgayGiao,NgayNhan,NgayTao,TrangThai)
+VALUES(NewID(),'CDC6F6A6-6356-46D3-A62B-A30E006FC54C','d91876a6-7527-4487-ba4d-a2cc9d443c0a', '0987808709', 'Hanoi',100000, 10000,110000,
 '01/01/2003', '10/10/2022', getDate(), 0)

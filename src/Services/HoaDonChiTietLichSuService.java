@@ -27,6 +27,10 @@ public class HoaDonChiTietLichSuService {
     public ArrayList<LichSuGiaoHangModel> getAllHoaDonGiaoHang() {
         return hoaDonChiTietResponsitory.getAllHoaDonGiaoHang();
     }
+    
+    public ArrayList<LichSuGiaoHangModel> getAllLichSuKhachHang() {
+        return hoaDonChiTietResponsitory.getAllLichSuKhachHang();
+    }
 
     public ArrayList<HoaDonChiTiet_CTSanPham> getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(String maHD) {
         return hoaDonChiTietResponsitory.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(maHD);
