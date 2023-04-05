@@ -157,7 +157,7 @@ public class HoaDonViewModel {
         if (trangThai == 1) {
             return "Đã thanh toán";
         } else if (trangThai == 2) {
-            return "Hủy hóa đơn";
+            return "Đã hủy";
         } else {
             return null;
         }

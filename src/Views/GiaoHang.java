@@ -157,9 +157,9 @@ public class GiaoHang extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblGioHang = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtTongTien = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Chờ Giao Hàng");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -379,10 +379,7 @@ public class GiaoHang extends javax.swing.JFrame {
 
         tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
@@ -438,7 +435,7 @@ public class GiaoHang extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3)))
+                                .addComponent(txtTongTien)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -468,7 +465,7 @@ public class GiaoHang extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(248, 248, 248))))
         );
 
@@ -582,13 +579,20 @@ public class GiaoHang extends javax.swing.JFrame {
                 id=hdm.getIdHD();
             }
         }
+        dtmGioHang.setRowCount(0);
         ArrayList<HoaDonChiTiet> listhdct=hdcts.getAllhoadon();
         ArrayList<ChiTietSanPham> listsp=new ArrayList<>();
+        ArrayList<GiaoHangModel> listgh=ghs.getAllGiaoHang();
         for (HoaDonChiTiet hdct : listhdct) {
             if(hdct.getIdHD().getIdHD().equals(id)){
                 listsp.add(hdct.getIdCTSP());
-                dtmGioHang.addRow(new Object[]{hdct.getIdCTSP().getMaQR(),hdct.getIdCTSP().getIdSP().getTen()});
+                dtmGioHang.addRow(new Object[]{hdct.getIdCTSP().getMaQR(),hdct.getIdCTSP().getIdSP().getTen(),hdct.getSoLuong(),hdct.getDonGia(),hdct.getSoLuong()*Integer.valueOf(hdct.getDonGia().toString())});
 
+            }
+        }
+        for (GiaoHangModel gh : listgh) {
+            if(gh.getIdHD().getIdHD().equals(id)){
+                txtTongTien.setText(gh.getTongTien().toString());
             }
         }
        
@@ -673,11 +677,11 @@ public class GiaoHang extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblChoGiaoHang;
     private javax.swing.JTable tblGiaoHang;
     private javax.swing.JTable tblGioHang;
     private javax.swing.JTable tblHuyGiaoHang;
     private javax.swing.JTextField txtHD;
+    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }
