@@ -390,7 +390,12 @@ public class ChiTietSanPhamResponsitory {
 
     public ChiTietSanPham updateByID1(ChiTietSanPham ctsp) {
         String sql = "update chitietsanpham set IDKM = ? Where ID = ?";
-        JDBCHelper.executeUpdate(sql, ctsp.getIdKM().getIdKM(), ctsp.getIdCTSP());
+        JDBCHelper.executeUpdate(sql,ctsp.getIdKM().getIdKM(), ctsp.getIdCTSP());
+        return ctsp;
+    }
+        public ChiTietSanPham updateKM_hethan(ChiTietSanPham ctsp) {
+        String sql = "update chitietsanpham set IDKM = null Where ID = ?";
+        JDBCHelper.executeUpdate(sql, ctsp.getIdCTSP());
         return ctsp;
     }
         public ChiTietSanPham update_ThanhToan(ChiTietSanPham ctsp) {

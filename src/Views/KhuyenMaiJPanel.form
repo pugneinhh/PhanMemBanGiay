@@ -249,6 +249,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtGiaTri">
+              <Events>
+                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtGiaTriCaretUpdate"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="pnLoaiKhuyenMai">
               <Properties>
@@ -383,6 +386,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdoHoaDonMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoHoaDonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rdosanpham2">
@@ -482,6 +486,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtGiamToiDa">
+              <Events>
+                <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtGiamToiDaCaretUpdate"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

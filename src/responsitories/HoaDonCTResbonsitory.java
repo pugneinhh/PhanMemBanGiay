@@ -34,7 +34,22 @@ public class HoaDonCTResbonsitory {
 
         return list;
     }
+    public ArrayList<HoaDonChiTiet> getAllhoadonct_byMa(String idHD) {
+        ArrayList<HoaDonChiTiet> list = new ArrayList<>();
+        String sql = "SELECT * FROM chitiethoadon where idHD = ?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql,idHD);
+        try {
+            while (rs.next()) {
+                HoaDon h = hd.gethdByID(rs.getString(2));
+                ChiTietSanPham ct = ctsp.getChiTietSanPhamByIDkmd(rs.getString(3));
+                list.add(new HoaDonChiTiet(rs.getString(1), h, ct, rs.getBigDecimal(5), rs.getInt(4), rs.getDate(6), rs.getDate(7), rs.getDate(8), rs.getInt(9)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return list;
+    }
     public ArrayList<Hoadonct_SanpCT_Sp> gethdByID(String id) {
         ArrayList<Hoadonct_SanpCT_Sp> list = new ArrayList<>();
         String sql = "SELECT SanPham.MaSP,SanPham.Ten,ChiTietHoaDon.soluong,ChiTietHoaDon.DonGia,ChiTietSanPham.IDSP,N'Thành tiền'=ChiTietHoaDon.SoLuong*ChiTietHoaDon.DonGia  FROM ChiTietHoaDon JOIN ChiTietSanPham ON ChiTietHoaDon.IDCTSP=ChiTietSanPham.Id \n"
@@ -143,15 +158,16 @@ public class HoaDonCTResbonsitory {
 //    }
 
     public HoaDonChiTiet updateHDCT(HoaDonChiTiet hdct) {
-        String sql = "UPDATE chitiethoadon SET SOLUONG = ? WHERE IDHD = ? AND IDCTSP = ?";
-        JDBCHelper.executeUpdate(sql, hdct.getSoLuong(), hdct.getIdHD().getIdHD(), hdct.getIdCTSP().getIdCTSP());
+        String sql = "UPDATE chitiethoadon SET SOLUONG = ?,DONGIA=? WHERE IDHD = ? AND IDCTSP = ?";
+        JDBCHelper.executeUpdate(sql, hdct.getSoLuong(),hdct.getDonGia(), hdct.getIdHD().getIdHD(), hdct.getIdCTSP().getIdCTSP());
         return hdct;
     }
-    public int deleteHDCT(String idhd, String idctsp) {
-        String sql = "DELETE FROM chitiethoadon WHERE IDHD = ? AND IDCTSP = ?";
+    public int deleteHDCT(String idhd ,String idctsp) {
+        String sql = "DELETE FROM chitiethoadon WHERE IDHD =? and IDCTSP = ?";
         int row = JDBCHelper.executeUpdate(sql,idhd,idctsp );
         return row;
     }
+    
     public HoaDonChiTiet updateHDCT_ThanhToan(HoaDonChiTiet hdct) {
         String sql = "UPDATE chitiethoadon SET TRANGTHAI = 1 , NGAYBAN =GETDATE() WHERE IDHD = ? ";
         JDBCHelper.executeUpdate(sql, hdct.getIdHD().getIdHD());

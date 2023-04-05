@@ -36,7 +36,14 @@ public class HoaDonChiTieservice {
         }
         return list;
     }
-
+    public ArrayList<HoaDonChiTiet> getAllhoadon_byMa(String idHD) {
+        ArrayList<HoaDonChiTiet> list = new ArrayList<>();
+        ArrayList<DomainModels.HoaDonChiTiet> kh = hdctrs.getAllhoadonct_byMa(idHD);
+        for (DomainModels.HoaDonChiTiet x : kh) {
+            list.add(new HoaDonChiTiet(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getDonGia(), x.getSoLuong(), x.getNgayBan(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai()));
+        }
+        return list;
+    }
     public ArrayList<Hoadonct_SanpCT_Sp> gettheoMAhd(String MA) {
         return hdctrs.gethdByID(MA);
     }
@@ -67,7 +74,7 @@ public class HoaDonChiTieservice {
         return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
 
     }
-        public int deleteHDCT(String idhd, String idctsp) {
+        public int deleteHDCT(String idhd,String idctsp) {
         var x = hdctrs.deleteHDCT(idhd,idctsp);
         return x;
 

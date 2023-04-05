@@ -19,10 +19,25 @@ public class HoaDonViewModel {
     private Date ngaySua;
     private Date ngaytao;
     private int trangThai;
+    private int hinhThucThanhToan;
 
     public HoaDonViewModel() {
     }
 
+    public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayMua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai,int hinhThucThanhToan) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.ngayMua = ngayMua;
+        this.thanhTien = thanhTien;
+        this.idKM = idKM;
+        this.ghiChu = ghiChu;
+        this.ngaySua = ngaySua;
+        this.ngaytao = ngaytao;
+        this.trangThai = trangThai;
+        this.hinhThucThanhToan = hinhThucThanhToan;
+    }
     public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayMua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
@@ -35,6 +50,14 @@ public class HoaDonViewModel {
         this.ngaySua = ngaySua;
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
+
+    }
+    public int getHinhThucThanhToan() {
+        return hinhThucThanhToan;
+    }
+
+    public void setHinhThucThanhToan(int hinhThucThanhToan) {
+        this.hinhThucThanhToan = hinhThucThanhToan;
     }
 
     public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
@@ -54,7 +77,9 @@ public class HoaDonViewModel {
         this.ghiChu=ghiChu;
         this.trangThai = trangThai;
     }
-
+    public HoaDonViewModel(String idHD) {
+        this.idHD = idHD;
+    }
     public HoaDonViewModel(String idHD, String maHD, NhanVien idNV, KhachHang idKH, BigDecimal thanhTien, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
@@ -157,7 +182,7 @@ public class HoaDonViewModel {
         if (trangThai == 1) {
             return "Đã thanh toán";
         } else if (trangThai == 2) {
-            return "Đã hủy";
+            return "Hủy hóa đơn";
         } else {
             return null;
         }

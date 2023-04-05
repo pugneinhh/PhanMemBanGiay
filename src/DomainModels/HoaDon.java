@@ -23,6 +23,7 @@ public class HoaDon {
     private Date ngaySua;
     private Date ngaytao;
     private int trangThai;
+    private int hinhThucThanhToan;
 
     public HoaDon() {
     }
@@ -40,7 +41,21 @@ public class HoaDon {
         this.ngaytao = ngaytao;
         this.trangThai = trangThai;
     }
-
+    public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngayMua, BigDecimal thanhTien, KhuyenMai idKM, String ghiChu, Date ngaySua, Date ngaytao, int trangThai,int hinhThucThanhToan) {
+        this.idHD = idHD;
+        this.maHD = maHD;
+        this.idNV = idNV;
+        this.idKH = idKH;
+        this.ngayMua = ngayMua;
+        this.thanhTien = thanhTien;
+        this.idKM = idKM;
+        this.ghiChu = ghiChu;
+        this.ngaySua = ngaySua;
+        this.ngaytao = ngaytao;
+        this.trangThai = trangThai;
+        this.hinhThucThanhToan = hinhThucThanhToan;
+    }
+    
     public HoaDon(String idHD, String maHD, NhanVien idNV, KhachHang idKH, Date ngaytao, int trangThai) {
         this.idHD = idHD;
         this.maHD = maHD;
@@ -72,6 +87,16 @@ public class HoaDon {
     public HoaDon(String idHD, String maHD) {
         this.idHD = idHD;
         this.maHD = maHD;
+    }
+    public HoaDon(String idHD) {
+        this.idHD = idHD;
+    }
+    public int getHinhThucThanhToan() {
+        return hinhThucThanhToan;
+    }
+
+    public void setHinhThucThanhToan(int hinhThucThanhToan) {
+        this.hinhThucThanhToan = hinhThucThanhToan;
     }
 
     public String getIdHD() {

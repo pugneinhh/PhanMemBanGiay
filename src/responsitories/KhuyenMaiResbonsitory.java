@@ -28,7 +28,7 @@ public class KhuyenMaiResbonsitory {
 
     public ArrayList<KhuyenMai> getAllKM() {
         ArrayList<KhuyenMai> list = new ArrayList<>();
-        String sql = "select *from KhuyenMai";
+        String sql = "select *from KhuyenMai WHERE APDUNGGIAMGIA like N'Sản Phẩm'";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
@@ -41,10 +41,10 @@ public class KhuyenMaiResbonsitory {
 
         return list;
     }
-    
+
     public ArrayList<KhuyenMai> getKMAD() {
         ArrayList<KhuyenMai> list = new ArrayList<>();
-        String sql = "select *from KhuyenMai where trangthai=0";
+        String sql = "select * from KhuyenMai where trangthai=0 and apdunggiamgia like N'Hóa Đơn'";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
@@ -87,12 +87,13 @@ public class KhuyenMaiResbonsitory {
                 KM.getGiamToiDa(), KM.getNgayBatDau(), KM.getNgayKetThuc(), KM.getHinhThucApDung(), KM.getApDungGiamGia(), KM.getLoaiGiamGia(), KM.getTrangThai(), KM.getMaKM());
         return KM;
     }
+
     public KhuyenMai updateChuyenTT(KhuyenMai KM) {
         String sql = "UPDATE KhuyenMai SET NgaySua=GETDATE(),TrangThai=1 WHERE maKM=?";
         JDBCHelper.executeUpdate(sql, KM.getMaKM());
         return KM;
     }
-    
+
     public Integer deleteKM(String id) {
         String sql = "DELETE FROM KhuyenMai WHERE maKM=?";
         int row = JDBCHelper.executeUpdate(sql, id);
@@ -133,7 +134,7 @@ public class KhuyenMaiResbonsitory {
                             dt,
                             d,
                             "Giảm theo %", "Hóa Đơn Trên 300000", "Chương trình", 1));
- System.out.println(km.getIdKM());
+            System.out.println(km.getIdKM());
 //            ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
 //            SanPham sanPham = new SanPham("A4734480-41C2-4116-9C87-15987D56A949");
 //            DanhMuc danhMuc = new DanhMuc("9E9C8B02-1440-45A6-8425-042DB956EA11");
@@ -154,33 +155,33 @@ public class KhuyenMaiResbonsitory {
 //            ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
 //            ChiTietSanPhamService ctsps = new ChiTietSanPhamService();
 //            ChiTietSanPhamModel cmm = ctsps.updateCTSP(ctspm);
-           
 
         } catch (ParseException ex) {
             Logger.getLogger(KhuyenMaiResbonsitory.class.getName()).log(Level.SEVERE, null, ex);
         }
 ////        System.out.println(km.get);
 //
-           KhuyenMaiResbonsitory khuyenMaiRespon=  new KhuyenMaiResbonsitory();
-          List<KhuyenMai>  list=  khuyenMaiRespon.getAllKM();
-          for (KhuyenMai o : list) {
-              System.out.println( o.toString());
+        KhuyenMaiResbonsitory khuyenMaiRespon = new KhuyenMaiResbonsitory();
+        List<KhuyenMai> list = khuyenMaiRespon.getAllKM();
+        for (KhuyenMai o : list) {
+            System.out.println(o.toString());
         }
 
     }
-    public ArrayList<KhuyenMai> getIDByMa(String ma){
-        ArrayList<KhuyenMai> list  = new ArrayList<>();
+
+    public ArrayList<KhuyenMai> getIDByMa(String ma) {
+        ArrayList<KhuyenMai> list = new ArrayList<>();
         String sql = "select * from khuyenmai where makm=?";
-         ResultSet rs = JDBCHelper.excuteQuery(sql,ma);
+        ResultSet rs = JDBCHelper.excuteQuery(sql, ma);
         try {
             while (rs.next()) {
-                list.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4),rs.getBigDecimal(5), rs.getDate(6),
+                list.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getDate(6),
                         rs.getDate(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return list;       
+        return list;
     }
 }

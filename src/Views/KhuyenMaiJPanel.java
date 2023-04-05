@@ -60,20 +60,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
             @Override
             public void run() {
                 ArrayList<KhuyenMaiModel> listkm = kms.getAllKhuyenMai();
-//                ArrayList<ChiTietSanPhamModel> listsp = ctsps.getAllChiTietSanPham();
+                ArrayList<ChiTietSanPhamModel> listsp = ctsps.getAllChiTietSanPham();
                 Date htai = new Date();
                 for (KhuyenMaiModel k : listkm) {
                     if (htai.after(k.getNgayKetThuc())) {
-                        
+
                         kms.updateChuyenTT(k);
-//                        for (ChiTietSanPhamModel c : listsp) {
-//                            System.out.println(c);
-//                            if(c.getIdKM().getIdKM().equals(k.getIdKM())){
-//                                System.out.println(c.getIdKM().getIdKM());
-//                                c.setIdKM(null);
-//                                ctsps.updateByID1(c);
-//                            }
-//                        }
                     }
                 }
             }
@@ -225,7 +217,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         } else if (currentDate.after(NgayKetThuc)) {
             trangthai = 1;
         }
-        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, giatri, giamtoida, NgayBatDau, NgayKetThuc, hinhthuckmai, hinhthuckmai, loaikmai, trangthai);
+        KhuyenMaiModel km = new KhuyenMaiModel(makm, tenkm, giatri, giamtoida, NgayBatDau, NgayKetThuc, hinhthuc, hinhthuckmai, loaikmai, trangthai);
         return km;
     }
 
@@ -292,6 +284,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Giá Trị");
 
+        txtGiaTri.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtGiaTriCaretUpdate(evt);
+            }
+        });
+
         pnLoaiKhuyenMai.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel8.setText("Loại Khuyễn Mại");
@@ -349,6 +347,11 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         rdoHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rdoHoaDonMouseClicked(evt);
+            }
+        });
+        rdoHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoHoaDonActionPerformed(evt);
             }
         });
 
@@ -443,6 +446,12 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         );
 
         jLabel10.setText("Giảm tối đa");
+
+        txtGiamToiDa.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtGiamToiDaCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelaLLLayout = new javax.swing.GroupLayout(PanelaLL);
         PanelaLL.setLayout(PanelaLLLayout);
@@ -691,7 +700,9 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbbHinhThucGiamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbHinhThucGiamGiaActionPerformed
-        // TODO add your handling code here:
+       if (cbbHinhThucGiamGia.getSelectedIndex()==1){
+           txtGiamToiDa.setEditable(false);
+       } else txtGiamToiDa.setEditable(true);
     }//GEN-LAST:event_cbbHinhThucGiamGiaActionPerformed
     private DanhMuc getdanhmuc(String id) {
         ArrayList<DanhMuc> dm = dmr.getAllDanhMuc();
@@ -726,6 +737,10 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         DanhMucModel dmm = new DanhMucModel();
         SanPhamModel spm = new SanPhamModel();
         ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
+        int demHD = 0;
+        if (rdoHoaDon.isSelected()){
+            demHD = 1;
+        }
         // Thêm khuyến mại
         KhuyenMaiModel km = getformdata();
         if (kms.insertKM(km) != null) {
@@ -760,41 +775,41 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     }
                 }
             }
-            }
-            // Lấy ra IDCTSP có trong danh mục
-            if (rdoSanPham.isSelected() == true) {
-                //tìm những checkbox được check
-                for (int i = 0; i < listsp.size(); i++) {
-                    boolean check = (boolean) tblSanPham.getValueAt(i, 0);
-                    if (check == true) {
-                        spm = listsp.get(i);
-                        ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
-                        for (ChiTietSanPhamModel ctm : listctsp) {
-                            if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
-                                listID.add(ctm);
-                            }
-                        }
-                        for (ChiTietSanPhamModel ct : listID) {
-                            ctspm.setIdCTSP(ct.getIdCTSP());
-                            System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
-                            if (ctsps.updateByID1(ctspm) != null) {
-                                dem++;
-                            }
+        }
+        // Lấy ra IDCTSP có trong danh mục
+        if (rdoSanPham.isSelected() == true) {
+            //tìm những checkbox được check
+            for (int i = 0; i < listsp.size(); i++) {
+                boolean check = (boolean) tblSanPham.getValueAt(i, 0);
+                if (check == true) {
+                    spm = listsp.get(i);
+                    ArrayList<ChiTietSanPhamModel> listID = new ArrayList<>();
+                    for (ChiTietSanPhamModel ctm : listctsp) {
+                        if (ctm.getIdSP().getIdSP() != null && ctm.getIdSP().getIdSP().equals(spm.getIdSP())) {
+                            listID.add(ctm);
                         }
                     }
-
+                    for (ChiTietSanPhamModel ct : listID) {
+                        ctspm.setIdCTSP(ct.getIdCTSP());
+                        System.out.println(ctspm.getIdCTSP() + " and " + ctspm.getIdKM());
+                        if (ctsps.updateByID1(ctspm) != null) {
+                            dem++;
+                        }
+                    }
                 }
-            }
-
-            if (dem > 0) {
-                JOptionPane.showMessageDialog(this, "Thêm thành công");
-                LoadSP();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại");
 
             }
-        
+        }
+
+        if (dem > 0 || demHD > 0) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            LoadSP();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+
+        }
+
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnLamMOiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMOiActionPerformed
@@ -821,7 +836,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
         String ma = txtMaKhuyenMai.getText().trim();
         km.setMaKM(ma);
         KhuyenMai k = new KhuyenMai();
-        
+
         // set IDKM vào CTSP
         ctspm.setIdKM(getkhuyenmai(kms.getIDByMa(km.getMaKM()).get(0).getIdKM()));
         int dem = 0;
@@ -840,7 +855,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
                     }
                     // thêm chương trình vào từng IDCTSP
                     for (ChiTietSanPhamModel ct : listID) {
-                        
+
                         if (ctsps.updateByID1(ctspm) != null) {
                             dem++;
                         }
@@ -938,6 +953,20 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_tblSanPhamMouseClicked
+
+    private void rdoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoHoaDonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoHoaDonActionPerformed
+
+    private void txtGiamToiDaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtGiamToiDaCaretUpdate
+
+    }//GEN-LAST:event_txtGiamToiDaCaretUpdate
+
+    private void txtGiaTriCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtGiaTriCaretUpdate
+       if (cbbHinhThucGiamGia.getSelectedIndex()==1){
+           txtGiamToiDa.setText(txtGiaTri.getText());
+       }       
+    }//GEN-LAST:event_txtGiaTriCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

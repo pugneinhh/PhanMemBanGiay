@@ -71,7 +71,19 @@ public class HoaDonResponsitory {
         }
         return null;
     }
-
+    public HoaDon gethdBymaHD(String maHD) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        String sql = "select id from hoadon where maHD=?";
+        ResultSet rs = JDBCHelper.excuteQuery(sql, maHD);
+        try {
+            while (rs.next()) {
+                return new HoaDon(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
     public HoaDon inserthoadon(HoaDon hd) {
         String sql = "INSERT INTO dbo.HoaDon(ID,MaHD,IDNV,NgayTao,TrangThai) VALUES(NewID(),?,?,getdate(),?)";
         JDBCHelper.executeUpdate(sql,
@@ -92,9 +104,11 @@ public class HoaDonResponsitory {
     }
 
     public HoaDon updatehoadon_thanhtoan(HoaDon hd) {
-        String sql = "UPDATE  dbo.HoaDon SET THANHTIEN = ? ,TRANGTHAI = 1 , NGAYMUA = GETDATE() WHERE MAHD = ?";
+        String sql = "UPDATE  dbo.HoaDon SET THANHTIEN = ? ,TRANGTHAI = 1 , idkm = ?,NGAYMUA = GETDATE(),hinhthucthanhtoan = ? WHERE MAHD = ?";
         JDBCHelper.executeUpdate(sql,
                 hd.getThanhTien(),
+                hd.getIdKM().getIdKM(),
+                hd.getHinhThucThanhToan(),
                 hd.getMaHD()
         );
         return hd;
@@ -103,6 +117,13 @@ public class HoaDonResponsitory {
     public HoaDon updatehoadon_huy(HoaDon hd) {
         String sql = "UPDATE  dbo.HoaDon SET TRANGTHAI = 2 , NGAYMUA = null , NGAYSUA = GETDATE(),GHICHU=? WHERE MAHD = ?";
         JDBCHelper.executeUpdate(sql,hd.getGhiChu(),
+                hd.getMaHD()
+        );
+        return hd;
+    }
+        public HoaDon updatehoadon_huyKH(HoaDon hd) {
+        String sql = "UPDATE  dbo.HoaDon SET IDKH = null WHERE MAHD = ?";
+        JDBCHelper.executeUpdate(sql,
                 hd.getMaHD()
         );
         return hd;

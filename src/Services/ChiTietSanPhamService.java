@@ -125,7 +125,11 @@ public class ChiTietSanPhamService {
         System.out.println(x.getIdCTSP() + " " + x.getIdKM());
         return new ChiTietSanPhamModel(x.getIdCTSP(), x.getIdSP(), x.getIdKM(), x.getGiaNhap(), x.getGiaBan(), x.getMaQR(), x.getHinhanh(), x.getSoLuong(), x.getIdDM(), x.getIdSize(), x.getIdMS(), x.getIdCL(), x.getIdDC(), x.getMota(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
     }
-
+    public ChiTietSanPhamModel updateKM_hethan(ChiTietSanPhamModel ctspm) {
+        var x = ctspr.updateKM_hethan(new ChiTietSanPham(ctspm.getIdCTSP(), ctspm.getIdSP(), ctspm.getIdKM(), ctspm.getGiaNhap(), ctspm.getGiaBan(), ctspm.getMaQR(), ctspm.getHinhanh(), ctspm.getSoLuong(), ctspm.getIdDM(), ctspm.getIdSize(), ctspm.getIdMS(), ctspm.getIdCL(), ctspm.getIdDC(), ctspm.getMota(), ctspm.getNgayTao(), ctspm.getNgaySua(), ctspm.getTrangThai()));
+        System.out.println(x.getIdCTSP() + " " + x.getIdKM());
+        return new ChiTietSanPhamModel(x.getIdCTSP(), x.getIdSP(), x.getIdKM(), x.getGiaNhap(), x.getGiaBan(), x.getMaQR(), x.getHinhanh(), x.getSoLuong(), x.getIdDM(), x.getIdSize(), x.getIdMS(), x.getIdCL(), x.getIdDC(), x.getMota(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
+    }
     public ChiTietSanPhamModel update_ThanhToan(ChiTietSanPhamModel ctspm) {
         var x = ctspr.update_ThanhToan(new ChiTietSanPham(ctspm.getIdCTSP(), ctspm.getIdSP(), ctspm.getIdKM(), ctspm.getGiaNhap(), ctspm.getGiaBan(), ctspm.getMaQR(), ctspm.getHinhanh(), ctspm.getSoLuong(), ctspm.getIdDM(), ctspm.getIdSize(), ctspm.getIdMS(), ctspm.getIdCL(), ctspm.getIdDC(), ctspm.getMota(), ctspm.getNgayTao(), ctspm.getNgaySua(), ctspm.getTrangThai()));
         System.out.println(x.getIdCTSP() + " " + x.getIdKM());

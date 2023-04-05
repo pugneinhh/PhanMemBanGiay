@@ -24,6 +24,7 @@ public class KhachHangService {
     public KhachHang getMaKHByID(String id) {
         return khr.getMaKHByID(id);
     }
+
     public KhachHang getTenKHByID(String id) {
         return khr.getTenKHByID(id);
     }
@@ -37,16 +38,17 @@ public class KhachHangService {
         return list;
     }
 
-    public KhachHangModel gettheomakh(String SDT){
+    public KhachHangModel gettheomakh(String SDT) {
         return khr.getKhachHangByid(SDT);
     }
-     public ArrayList<KhachHangModel> gettheosdt(String SDT){
+
+    public ArrayList<KhachHangModel> gettheosdt(String SDT) {
         return khr.getKhachHangBysdt(SDT);
     }
-     public String getIDHoaDon(String maHD) {
+
+    public String getIDHoaDon(String maHD) {
         return khr.getIDkhachhang(maHD);
     }
-
 
     public KhachHangModel insertKhachHang(KhachHangModel khVM) {
         ArrayList<KhachHang> list = khr.getAllKhachHang();
@@ -68,9 +70,6 @@ public class KhachHangService {
 //    public KhachHang getKhachHangByMa(String ma) {
 //        return khr.getKhachHangByMa(ma);
 //    }
-    
-
-
     public ArrayList<KhachHangModel> getKhachHangBysdt(String sdt) {
         return khr.getKhachHangBysdt(sdt);
     }
@@ -82,8 +81,6 @@ public class KhachHangService {
 //    public KhachHangModel gettheomakh(String ma) {
 //        return khr.gettheomakh(ma);
 //    }
-
-
     public ArrayList<KhachHangModel> getKHByGT(String gt) {
         return khr.getKHByGT(gt);
     }
@@ -99,6 +96,11 @@ public class KhachHangService {
         return new KhachHangModel(x.getMaKH(), x.getTenKH(), x.getLoaiKH(),
                 x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(),
                 x.getNgayThamGia(), x.getTrangThai());
+    }
+
+    public KhachHangModel updateExp_KhachHang(KhachHangModel khVM) {
+        var x = khr.updateExp_KhachHang(new KhachHang(khVM.getIdKH(), khVM.getMaKH(), khVM.getLoaiKH(), khVM.getTenKH(), khVM.getDiaChi(), khVM.getGioiTinh(), khVM.getEmail(), khVM.getSdt(), khVM.getNgaySinh(), khVM.getNgayThamGia(), khVM.getTichDiem(), khVM.getDiemEXP(), khVM.getNgayTao(), khVM.getNgaySua(), khVM.getTrangThai()));
+        return new KhachHangModel(x.getIdKH(), x.getMaKH(), x.getLoaiKH(), x.getTenKH(), x.getDiaChi(), x.getGioiTinh(), x.getEmail(), x.getSdt(), x.getNgaySinh(), x.getNgayThamGia(), x.getTichDiem(), x.getDiemEXP(), x.getNgayTao(), x.getNgaySua(), x.getTrangThai());
     }
 
     public Integer deleteCV(String ma) {

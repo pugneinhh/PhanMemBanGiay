@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-
 package Views;
 
+import DomainModels.KhuyenMai;
 import Services.KhuyenMaiService;
 import ViewModels.KhuyenMaiModel;
 import static Views.BanHangJPanel.hd;
@@ -17,11 +17,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Phanh
  */
 public class Voucher extends javax.swing.JDialog {
+
     public static String voucher;
     private KhuyenMaiService kms = new KhuyenMaiService();
     DefaultTableModel dtm = new DefaultTableModel();
     JPanel banHang;
-    /** Creates new form Voucher */
+
+    /**
+     * Creates new form Voucher
+     */
     public Voucher(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -29,26 +33,26 @@ public class Voucher extends javax.swing.JDialog {
         loadKM();
     }
 
-    public void loadKM(){
+    public void loadKM() {
         ArrayList<KhuyenMaiModel> list = kms.getKhuyenMaiAD();
         dtm.setRowCount(0);
         for (KhuyenMaiModel x : list) {
-            if(x.getTrangThai() == 0){
+            if (x.getTrangThai() == 0) {
                 Object[] rowdata = {
-                x.getMaKM(),
-                x.getTenKM(),
-                x.getHinhThucApDung(),
-                x.getGiaTri(),
-                x.getGiamToiDa(),
-                x.getNgayBatDau(),
-                x.getNgayKetThuc(),
-            };
-            dtm.addRow(rowdata);
-            } else{
+                    x.getMaKM(),
+                    x.getTenKM(),
+                    x.getHinhThucApDung(),
+                    x.getGiaTri(),
+                    x.getGiamToiDa(),
+                    x.getNgayBatDau(),
+                    x.getNgayKetThuc(),};
+                dtm.addRow(rowdata);
+            } else {
                 return;
-            }                    
+            }
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,13 +98,20 @@ public class Voucher extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
-       int row=tblKhuyenMai.getSelectedRow();
-       if(row<0){
-           return;
-       }
-       voucher= tblKhuyenMai.getValueAt(row, 0).toString();
-       this.dispose();
-       new ThanhToanHoaDonJFrame(banHang, hd).setVisible(true);
+        int row = tblKhuyenMai.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        voucher = tblKhuyenMai.getValueAt(row, 0).toString();
+        KhuyenMaiModel km = kms.getIDByMa(voucher).get(0);
+        KhuyenMai k = new KhuyenMai();
+        k.setIdKM(km.getIdKM());
+        k.setMaKM(voucher);
+        hd.setIdKM(k);
+        
+        new ThanhToanHoaDonJFrame(banHang, hd).setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
     /**
@@ -128,6 +139,7 @@ public class Voucher extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Voucher.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
