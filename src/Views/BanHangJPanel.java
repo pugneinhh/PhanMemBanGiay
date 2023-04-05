@@ -314,6 +314,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
         lbltenkh = new javax.swing.JLabel();
         lblHoaDon = new javax.swing.JLabel();
         pncardgoc = new javax.swing.JPanel();
+        Sanpham = new javax.swing.JScrollPane();
+        tblSanPham = new javax.swing.JTable();
         Khach = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
@@ -341,8 +343,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         rdoKHCon = new javax.swing.JRadioButton();
         btnThemKH = new javax.swing.JButton();
         btnSuaKH = new javax.swing.JButton();
-        Sanpham = new javax.swing.JScrollPane();
-        tblSanPham = new javax.swing.JTable();
         HoaDon = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
         ThanhToan = new javax.swing.JPanel();
@@ -368,14 +368,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
         txtTimKiemBH.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemBHCaretUpdate(evt);
-            }
-        });
-        txtTimKiemBH.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTimKiemBHFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTimKiemBHFocusLost(evt);
             }
         });
 
@@ -613,6 +605,35 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
         pncardgoc.setLayout(new java.awt.CardLayout());
 
+        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "IDCTSP", "Tên SP", "Giá Bán", "Số Lượng", "CTKM", "Thành Tiền"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblSanPham.setRowHeight(40);
+        tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSanPhamMouseClicked(evt);
+            }
+        });
+        Sanpham.setViewportView(tblSanPham);
+
+        pncardgoc.add(Sanpham, "sanpham");
+
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -823,35 +844,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
         pncardgoc.add(Khach, "khach");
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "IDCTSP", "Tên SP", "Giá Bán", "Số Lượng", "CTKM", "Thành Tiền"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblSanPham.setRowHeight(40);
-        tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblSanPhamMouseClicked(evt);
-            }
-        });
-        Sanpham.setViewportView(tblSanPham);
-
-        pncardgoc.add(Sanpham, "sanpham");
-
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -969,13 +961,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnTimKiemBHActionPerformed
-
-    private void txtTimKiemBHFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemBHFocusLost
-        if (txtTimKiemBH.getText().trim().isEmpty()) {
-            txtTimKiemBH.setForeground(new Color(255, 0, 0));
-            changeBackgroud_SP_KH();
-        }
-    }//GEN-LAST:event_txtTimKiemBHFocusLost
 
     private void cbbDanhMucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbDanhMucItemStateChanged
 
@@ -1161,10 +1146,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
-    private void txtTimKiemBHFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemBHFocusGained
-
-    }//GEN-LAST:event_txtTimKiemBHFocusGained
-
     private void tblGioHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_tblGioHangMouseEntered
@@ -1226,7 +1207,6 @@ public class BanHangJPanel extends javax.swing.JPanel {
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         CardLayout layout = (CardLayout) pncardgoc.getLayout();
         layout.show(pncardgoc, "hoadon");
-
         chon = 2;
         changeBackgroud_SP_KH();
         loadhoadon();
