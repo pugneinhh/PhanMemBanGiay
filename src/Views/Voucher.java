@@ -21,7 +21,7 @@ public class Voucher extends javax.swing.JDialog {
     public static String voucher;
     private KhuyenMaiService kms = new KhuyenMaiService();
     DefaultTableModel dtm = new DefaultTableModel();
-    JPanel banHang;
+    BanHangJPanel banHang;
 
     /**
      * Creates new form Voucher

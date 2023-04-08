@@ -94,13 +94,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="125" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -109,7 +109,7 @@
                                   <Component id="btnFirst" linkSize="13" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLast" linkSize="13" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblpage" min="-2" max="-2" attributes="0"/>
@@ -136,78 +136,78 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel17" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtGiaNhapSP" linkSize="14" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel12" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel17" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                                       <Component id="jLabel7" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbbSizeSP" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                      <Component id="cbbMauSacSP" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbbTenSP" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtGiaNhapSP" alignment="0" pref="141" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="cbbMauSacSP" linkSize="14" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Component id="cbbSizeSP" linkSize="14" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="txtBarCode" linkSize="14" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbbTenSP" linkSize="14" min="-2" pref="209" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="jLabel18" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtGiaBanSP" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtSoLuongSP" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cbbDoCaoSP" alignment="0" pref="141" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel21" min="-2" pref="59" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="cbbChatLieuSP" min="-2" pref="142" max="-2" attributes="0"/>
-                                      </Group>
+                          <EmptySpace min="74" pref="64" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel18" min="-2" pref="59" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="cbbDoCaoSP" linkSize="14" min="-2" pref="141" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel16" min="-2" pref="37" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel19" min="-2" pref="59" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="rdoConSP" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rdoHetSP" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtGiaBanSP" linkSize="14" alignment="0" pref="141" max="32767" attributes="0"/>
+                                          <Component id="txtSoLuongSP" linkSize="14" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel21" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbbChatLieuSP" linkSize="14" min="-2" pref="142" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel24" min="-2" pref="59" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbbDanhMucSP" min="-2" pref="142" max="-2" attributes="0"/>
+                                  <Component id="cbbDanhMucSP" linkSize="14" min="-2" pref="142" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel16" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel19" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rdoConSP" min="-2" pref="70" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rdoHetSP" min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="93" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
@@ -227,75 +227,59 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtSoLuongSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbbTenSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtGiaBanSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtBarCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtGiaNhapSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbDoCaoSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="rdoConSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rdoHetSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbbSizeSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbChatLieuSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbbMauSacSP" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbbDanhMucSP" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="txtSoLuongSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cbbTenSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="txtGiaBanSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cbbDoCaoSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="rdoConSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="rdoHetSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="txtGiaNhapSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="cbbSizeSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cbbChatLieuSP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnCapNhatSP" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnThemSP" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -508,10 +492,16 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="M&#xe3; BarCore"/>
+                    <Property name="text" type="java.lang.String" value="M&#xe3; BarCode"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="txtBarCode">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel1">
 
@@ -673,16 +663,13 @@
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel25" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
                                       <Component id="txtTimGia" min="-2" pref="169" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnTimTheoGia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="jLabel25" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -802,7 +789,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="13" rowCount="0">
-                        <Column editable="false" title="M&#xe3; BarCore" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; BarCode" type="java.lang.Object"/>
                         <Column editable="false" title="T&#xea;n SP" type="java.lang.Object"/>
                         <Column editable="false" title="Gi&#xe1; Nh&#x1ead;p" type="java.lang.Object"/>
                         <Column editable="false" title="Gi&#xe1; B&#xe1;n" type="java.lang.Object"/>
@@ -1008,8 +995,6 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                                               <Component id="btnCapNhatDanhMuc" linkSize="3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-                                              <Component id="btnXoaDanhMuc" linkSize="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
@@ -1024,7 +1009,7 @@
                                               <Component id="rdoHetDanhMuc" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="331" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1052,7 +1037,6 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnThemDanhMuc" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnCapNhatDanhMuc" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnXoaDanhMuc" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" pref="328" max="32767" attributes="0"/>
@@ -1111,14 +1095,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatDanhMucActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnXoaDanhMuc">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaDanhMucActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -1222,10 +1198,9 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace pref="197" max="32767" attributes="0"/>
+                                          <EmptySpace pref="225" max="32767" attributes="0"/>
                                           <Component id="btnCapNhatMauSac" linkSize="5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
-                                          <Component id="btnXoaMauSac" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
@@ -1234,13 +1209,13 @@
                                           <Component id="txtTenMauSac" min="-2" pref="176" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="rdoConMauSac" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rdoHetMauSac" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <EmptySpace pref="210" max="32767" attributes="0"/>
+                                  <EmptySpace pref="232" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1261,7 +1236,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnThemMauSac" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCapNhatMauSac" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnXoaMauSac" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="jScrollPane5" pref="339" max="32767" attributes="0"/>
@@ -1320,14 +1294,6 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatMauSacActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="btnXoaMauSac">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaMauSacActionPerformed"/>
                           </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane5">
@@ -1429,13 +1395,7 @@
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                                  <Component id="btnCapNhatChatLieu" linkSize="6" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-                                                  <Component id="BtnXoaChatLieu" linkSize="6" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                                   <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1447,8 +1407,12 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="rdoHetChatLieu" min="-2" pref="73" max="-2" attributes="0"/>
                                               </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                                                  <Component id="btnCapNhatChatLieu" linkSize="6" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="291" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="341" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1476,7 +1440,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnThemChatLieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCapNhatChatLieu" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="BtnXoaChatLieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane6" pref="358" max="32767" attributes="0"/>
@@ -1538,14 +1501,6 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatChatLieuActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="BtnXoaChatLieu">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnXoaChatLieuActionPerformed"/>
                           </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane6">
@@ -1648,13 +1603,7 @@
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                                  <Component id="btnCapNhatDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                                                  <Component id="btnXoaDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1666,8 +1615,12 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="rdoHetDoCao" min="-2" pref="77" max="-2" attributes="0"/>
                                               </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                                                  <Component id="btnCapNhatDoCao" linkSize="10" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="307" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="357" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1695,7 +1648,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnThemDoCao" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCapNhatDoCao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnXoaDoCao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane7" pref="358" max="32767" attributes="0"/>
@@ -1754,14 +1706,6 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatDoCaoActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="btnXoaDoCao">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaDoCaoActionPerformed"/>
                           </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane7">
@@ -1848,20 +1792,12 @@
                                           <Component id="btnCapNhatSize" linkSize="9" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="rdoConSize" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="rdoHetSize" min="-2" pref="77" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                              <Component id="btnXoaSize" linkSize="9" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="345" max="32767" attributes="0"/>
+                                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="rdoConSize" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rdoHetSize" min="-2" pref="77" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="395" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -1886,7 +1822,6 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnThemSize" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnCapNhatSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnXoaSize" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" pref="367" max="32767" attributes="0"/>
@@ -1945,14 +1880,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCapNhatSizeActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnXoaSize">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaSizeActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

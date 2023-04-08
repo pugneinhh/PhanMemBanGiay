@@ -190,9 +190,5 @@ public class HoaDonResponsitory {
         return list;
     }
     
-    public static void main(String[] args) {
-        HoaDonResponsitory hdR = new HoaDonResponsitory();
-        System.out.println(hdR.getAllhoadonByTrangThai());
-    }
-
+   
 }

@@ -306,10 +306,5 @@ public class KhachHangResponsitory {
         return null;
     }
 
-    public static void main(String[] args) {
-        KhachHangResponsitory khRes = new KhachHangResponsitory();
-        //System.out.println(khRes.getAllKhachHang());
-        //System.out.println(khRes.getKhachHangBysdt("0962335335"));
-        System.out.println(khRes.getMaKHByID("A54BF9CE-9623-49F3-8ED3-4045650A1AC8"));
-    }
+   
 }

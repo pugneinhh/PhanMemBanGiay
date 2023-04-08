@@ -134,11 +134,5 @@ public class HoaDonChiTietLichSuResponsitory {
         return null;
     }
 
-    public static void main(String[] args) {
-        HoaDonChiTietLichSuResponsitory hdR = new HoaDonChiTietLichSuResponsitory();
-//        System.out.println(hdR.getAllHoaDonCTSP());
-//        System.out.println(hdR.getAllHoaDonGiaoHang());
-        //       System.out.println(hdR.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd("HD01"));
-        System.out.println(hdR.getAllHoaDonGiaoHang());
-    }
+   
 }

@@ -6,6 +6,7 @@ package Views;
 
 import DomainModels.HoaDon;
 import DomainModels.HoaDonChiTiet;
+import DomainModels.KhuyenMai;
 import Services.ChiTietSanPhamService;
 import Services.HoaDonChiTieservice;
 import Services.KhachHangService;
@@ -40,18 +41,24 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     KhachHangService khachHangService = new KhachHangService();
     hoadonservice hoaDonService = new hoadonservice();
     KhuyenMaiService kms = new KhuyenMaiService();
-    JPanel banHang;
+    BanHangJPanel banHang;
     HoaDon hd;
-
+    public static String tienKhach;
+    public static String tienTra;
     /**
      * Creates new form ThanhToanHoaDonJFrame
      */
-    public ThanhToanHoaDonJFrame(JPanel banHang, HoaDon hd) {
+    public ThanhToanHoaDonJFrame(BanHangJPanel banHang, HoaDon hd) {
         initComponents();
         lblTongtien.setText(hd.getThanhTien().toString());
         this.banHang = banHang;
         this.hd = hd;
-        txtDiem.setText(""+hd.getIdKH().getDiemEXP());
+        if(hd.getIdKH()==null){
+            txtDiem.setText("0");
+        }else{
+            txtDiem.setText(""+hd.getIdKH().getDiemEXP());
+        }
+        
         voucher();
 
     }
@@ -62,20 +69,20 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         if (loai.equalsIgnoreCase("giảm theo%")) {
             if ((Float.valueOf(giaTri.toString()) / 100 * Float.valueOf(donGia.toString())) > Float.valueOf(giaTriMax.toString())) {
                 gia = Float.valueOf(donGia.toString()) - Float.valueOf(giaTriMax.toString());
-                System.out.println("Giảm theo giá trị max");
+                
             } else {
                 gia = Float.valueOf(donGia.toString()) - (Float.valueOf(giaTri.toString()) / 100 * Float.valueOf(donGia.toString()));
-                System.out.println("Giảm theo giá trị %");
+                
             }
         } else {
             if (Float.valueOf(donGia.toString()) < Float.valueOf(donGia.toString()) - Float.valueOf(giaTri.toString())) {
                 gia = 0;
             } else {
                 gia = Float.valueOf(donGia.toString()) - Float.valueOf(giaTri.toString());
-                System.out.println("Giảm theo giá trị tiền mặt");
+                
             }
         }
-        System.out.println(Float.valueOf(giaTri.toString()) / 100 * Float.valueOf(donGia.toString()));
+        
         thanhTien_KM = BigDecimal.valueOf(gia);
         return thanhTien_KM;
     }
@@ -178,19 +185,9 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
                 txtVoucherInputMethodTextChanged(evt);
             }
         });
-        txtVoucher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVoucherActionPerformed(evt);
-            }
-        });
 
         txtDiem.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         txtDiem.setEnabled(false);
-        txtDiem.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtDiemCaretUpdate(evt);
-            }
-        });
 
         txtTienKH.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -389,17 +386,16 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
     private void btnApDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApDungActionPerformed
 
         new Voucher(this, true).setVisible(true);
-        this.dispose();
+        
 
     }//GEN-LAST:event_btnApDungActionPerformed
 
     private void txtVoucherInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtVoucherInputMethodTextChanged
-//        txtVoucher.setText(Voucher.voucher);
+
     }//GEN-LAST:event_txtVoucherInputMethodTextChanged
 
     private void txtVoucherCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtVoucherCaretUpdate
-//        System.out.println(Voucher.voucher);
-//        txtVoucher.setText(Voucher.voucher);
+
 
         KhuyenMaiModel km = getKhuyenMai(hd.getIdKM().getMaKM());  // lấy khuyến mãi
         BigDecimal gia = hd.getThanhTien(); // tổng tiền
@@ -407,7 +403,7 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         if (km == null) {
             return;
         }
-        System.out.println(hd.getThanhTien());
+        
         BigDecimal giaSauGiamVoucher = thanhTien(km.getHinhThucApDung(), km.getGiaTri(), km.getGiamToiDa(), hd.getThanhTien());
         double giamGia = hd.getThanhTien().doubleValue() - giaSauGiamVoucher.doubleValue();
         if (txtGiam.getText().equals("0") || txtGiam.getText() == null) {
@@ -438,16 +434,17 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         if (hd.getIdKH() != null) {
             kh.setMaKH(hd.getIdKH().getMaKH());
 //            kh.setDiemEXP((int) Math.round(Double.valueOf(txtDiem.getText())));
-            kh.setDiemEXP(Integer.valueOf(lblTongtien.getText())/1000);
+            kh.setDiemEXP((int) (Double.valueOf(lblTongtien.getText())/1000));
             
             khachHangService.updateExp_KhachHang(kh);
         } else {
             kh.setMaKH(null);
         }
-        if (!txtVoucher.getText().equals("0")) {
+        if (txtVoucher.getText().equals("0")|| txtVoucher.getText() == null) {
             txtGiam.setText(String.valueOf(giamGia + giamPoint));
-        } else
+        } else{
             txtGiam.setText(String.valueOf(giamPoint));
+        }
     }//GEN-LAST:event_btnSuDungActionPerformed
 
     private void btnThanhToanVaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanVaInActionPerformed
@@ -459,7 +456,8 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
             rpt = JasperCompileManager.compileReport("src\\Views\\rptHoaDon.jrxml");
 
             map.put("MaHD", hd.getMaHD());
-
+            map.put("TienKhachTra", tienKhach);
+            map.put("tienThoi", tienTra);
             JasperPrint p = JasperFillManager.fillReport(rpt, map, DBConnection.getConnection());
 
             JasperViewer.viewReport(p, false);
@@ -493,6 +491,8 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Chưa đủ điều kiện thanh toán");
             return;
         }
+        
+        
         int hinhThucThanhToan = cbbHinhThucThanhToan.getSelectedIndex();
         ArrayList<HoaDonChiTiet> listHDCT = hoaDonChiTieservice.getAllhoadon();
         ArrayList<HoaDonChiTiet> listNewHDCT = new ArrayList<>();
@@ -504,23 +504,17 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         h.setThanhTien(thanhTien);
         h.setMaHD(hd.getMaHD());
         h.setHinhThucThanhToan(hinhThucThanhToan);
+        KhuyenMai kmn = new KhuyenMai();
         if (hd.getIdKM() != null) {
             h.setIdKM(hd.getIdKM());
         } else {
-            h.setIdKM(null);
+            h.setIdKM(kmn);
         }
 
-//        if (hd.getIdKH() != null) {
-//            kh.setMaKH(hd.getIdKH().getMaKH());
-////            kh.setDiemEXP((int) Math.round(Double.valueOf(txtDiem.getText())));
-//            double soTien = Double.valueOf(lblTongtien.getText());
-//            
-//        } else {
-//            kh.setMaKH(null);
-//        }
+
 
         if (hoaDonService.updateHoaDon_ThanhToan(h) != null) {
-//            khachHangService.updateExp_KhachHang(kh);
+
             for (HoaDonChiTiet x : listHDCT) {
                 if (x.getIdHD() != null && x.getIdHD().getMaHD().equals(hd.getMaHD())) {
                     listNewHDCT.add(x);
@@ -534,8 +528,14 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
             }
             hoaDonChiTieservice.updateHDCT_ThanhToan(hdctvm);
             JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+            tienKhach=txtTienKH.getText();
+            
+            tienTra=txtTienThoi.getText();
+            banHang.dtmGH.setRowCount(0);
+            banHang.clearHD();
             this.dispose();
-
+            
+            
         }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
@@ -556,34 +556,13 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         HoaDonViewModel hdHuy = new HoaDonViewModel();
         hdHuy.setMaHD(hd.getMaHD());
         String lydo = JOptionPane.showInputDialog(this, "Vui lòng nhập lý do hủy?");
+        
         hdHuy.setGhiChu(lydo);
         if (hoaDonService.updateHoaDon_HUY(hdHuy) != null) {
             JOptionPane.showMessageDialog(this, "Hủy hóa đơn thành công");
         }
 
     }//GEN-LAST:event_btnHuyActionPerformed
-
-    private void txtVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoucherActionPerformed
-//        if (txtVoucher.getText().equals("0")) {
-//            
-//            return;
-//        }
-//        KhuyenMaiModel km = getKhuyenMai(hd.getIdKM().getMaKM());
-//        BigDecimal gia = new BigDecimal(lblTongtien.getText());
-//        double giamBF = Double.valueOf(txtGiam.getText());
-//        if (km==null){
-//            return;
-//        }
-//        System.out.println(hd.getThanhTien());
-//        BigDecimal giaSauGiamVoucher = thanhTien(km.getHinhThucApDung(), km.getGiaTri(), km.getGiamToiDa(), hd.getThanhTien());
-//        double giamGia =hd.getThanhTien().doubleValue() - giaSauGiamVoucher.doubleValue();
-//        if (txtGiam.getText().equals("0") || txtGiam.getText()==null) {
-////            txtGiam.setText(String.valueOf(km.getGiaTri().doubleValue() * gia.doubleValue() / 100));
-//                txtGiam.setText(String.valueOf(giamGia));
-//        } else {
-//            txtGiam.setText(String.valueOf(giamBF + giamGia));
-//        }
-    }//GEN-LAST:event_txtVoucherActionPerformed
 
     private void btnHuyVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyVoucherActionPerformed
         txtVoucher.setText("0");
@@ -598,7 +577,7 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         if (hd.getIdKH() != null) {
             giamPoint = hd.getIdKH().getDiemEXP();
         }
-        if (!txtDiem.getText().equals("0")) {
+        if (txtDiem.getText().equals("0")) {
             txtGiam.setText(String.valueOf(giamPoint));
         } else
             txtGiam.setText("0");
@@ -624,36 +603,6 @@ public class ThanhToanHoaDonJFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnHuyPointActionPerformed
-
-    private void txtDiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtDiemCaretUpdate
-//        if (hd.getIdKM() != null) {
-//            KhuyenMaiModel km = getKhuyenMai(hd.getIdKM().getMaKM());  // lấy khuyến mãi
-//
-//            BigDecimal gia = hd.getThanhTien(); // tổng tiền
-//            double giamPoint = Double.valueOf(txtDiem.getText()); // giảm điểm
-//            if (km == null) {
-//                return;
-//            }
-//            System.out.println(hd.getThanhTien());
-//            BigDecimal giaSauGiamVoucher = thanhTien(km.getHinhThucApDung(), km.getGiaTri(), km.getGiamToiDa(), hd.getThanhTien());
-//            double giamGia = hd.getThanhTien().doubleValue() - giaSauGiamVoucher.doubleValue();
-//            if (txtGiam.getText().equals("0") || txtGiam.getText() == null) {
-//                txtGiam.setText(String.valueOf(giamPoint));
-//            } else {
-//                txtGiam.setText(String.valueOf(giamPoint + giamGia));
-//            }
-//            if (txtDiem.getText().equals("0") || txtDiem.getText() == null) {
-//                txtGiam.setText(String.valueOf(giamGia));
-//            }
-//        } else {
-//            if (txtGiam.getText().equals("0") || txtGiam.getText() == null) {
-//                txtGiam.setText(txtDiem.getText());
-//            } 
-//            if (txtDiem.getText().equals("0") || txtDiem.getText() == null) {
-//                txtGiam.setText(String.valueOf(0));
-//            }
-//        }
-    }//GEN-LAST:event_txtDiemCaretUpdate
 
     /**
      * @param args the command line arguments

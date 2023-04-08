@@ -25,7 +25,7 @@ public class Loading extends javax.swing.JFrame {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i <= 100 ; i++) {
+                for (int i = 0; i <= 100 ; i+=5) {
                     pgrload.setValue(i);
                     lblLoad.setText("Loading "+i +"%");
                     try {

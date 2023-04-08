@@ -28,7 +28,37 @@ public class KhuyenMaiResbonsitory {
 
     public ArrayList<KhuyenMai> getAllKM() {
         ArrayList<KhuyenMai> list = new ArrayList<>();
-        String sql = "select *from KhuyenMai WHERE APDUNGGIAMGIA like N'Sản Phẩm'";
+        String sql = "select *from KhuyenMai";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                list.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getDate(6), rs.getDate(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<KhuyenMai> getKMHD() {
+        ArrayList<KhuyenMai> list = new ArrayList<>();
+        String sql = "select *from KhuyenMai WHERE APDUNGGIAMGIA like N'Hóa đơn'";
+        ResultSet rs = JDBCHelper.excuteQuery(sql);
+
+        try {
+            while (rs.next()) {
+                list.add(new KhuyenMai(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4), rs.getBigDecimal(5), rs.getDate(6), rs.getDate(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getDate(11), rs.getDate(12), rs.getInt(13)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
+    public ArrayList<KhuyenMai> getKMSP() {
+        ArrayList<KhuyenMai> list = new ArrayList<>();
+        String sql = "select *from KhuyenMai WHERE APDUNGGIAMGIA like N'Sản phẩm'";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
 
         try {
@@ -101,73 +131,6 @@ public class KhuyenMaiResbonsitory {
 
     }
 
-//    public KhuyenMai aaaa(KhuyenMai km) {
-//        String sql = "YOUR INSERT STATEMENT HERE";
-//        Connection conn = DBConnection.getConnection();
-//
-//        PreparedStatement ps = conn.prepareStatement(sql,
-//                Statement.RETURN_GENERATED_KEYS);
-//
-//        ps.execute();
-//
-//        ResultSet rs = ps.getGeneratedKeys();
-//        int generatedKey = 0;
-//        if (rs.next()) {
-//            generatedKey = rs.getInt(1);
-//        }
-//
-//        System.out.println("Inserted record's ID: " + generatedKey);
-//    }
-    public static void main(String[] args) {
-        try {
-            BigDecimal giatri = null;
-            giatri = BigDecimal.valueOf(Double.parseDouble("111000"));
-            BigDecimal giamtoida = null;
-            giamtoida = BigDecimal.valueOf(Double.parseDouble("222000"));
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            Date dt = date.parse("2022-02-02");
-            Date d = date.parse("2022-06-08");
-            KhuyenMai km
-                    = new KhuyenMaiResbonsitory().insertKM(new KhuyenMai("M5trs34", "wqedfsc",
-                            giatri,
-                            giamtoida,
-                            dt,
-                            d,
-                            "Giảm theo %", "Hóa Đơn Trên 300000", "Chương trình", 1));
-            System.out.println(km.getIdKM());
-//            ChiTietSanPhamModel ctspm = new ChiTietSanPhamModel();
-//            SanPham sanPham = new SanPham("A4734480-41C2-4116-9C87-15987D56A949");
-//            DanhMuc danhMuc = new DanhMuc("9E9C8B02-1440-45A6-8425-042DB956EA11");
-//            ChatLieu chatLieu = new ChatLieu("1D08AE8E-8412-49EB-A3ED-37874501AA17");
-//            Size size = new Size("368FEBDB-9415-4AA4-8E10-AFD57540A3C1");
-//            DoCao doCao = new DoCao("E56635BF-B728-41B7-90D8-42042BCEBD0D");
-//            MauSac mauSac = new MauSac("55C01E09-2109-4C30-8846-1041432CB946");
-//
-//            ctspm.setIdKM(km);
-//
-//            ctspm.setIdSP(sanPham);
-//            ctspm.setIdDM(danhMuc);
-//            ctspm.setIdCL(chatLieu);
-//            ctspm.setIdDC(doCao);
-//            ctspm.setIdMS(mauSac);
-//            ctspm.setIdSize(size);
-//            ctspm.setMaQR(20012003);
-//            ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
-//            ChiTietSanPhamService ctsps = new ChiTietSanPhamService();
-//            ChiTietSanPhamModel cmm = ctsps.updateCTSP(ctspm);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(KhuyenMaiResbonsitory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-////        System.out.println(km.get);
-//
-        KhuyenMaiResbonsitory khuyenMaiRespon = new KhuyenMaiResbonsitory();
-        List<KhuyenMai> list = khuyenMaiRespon.getAllKM();
-        for (KhuyenMai o : list) {
-            System.out.println(o.toString());
-        }
-
-    }
 
     public ArrayList<KhuyenMai> getIDByMa(String ma) {
         ArrayList<KhuyenMai> list = new ArrayList<>();

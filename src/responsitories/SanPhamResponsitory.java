@@ -72,8 +72,5 @@ public class SanPhamResponsitory {
         return row;
     }
 
-    public static void main(String[] args) {
-        SanPhamResponsitory spR = new SanPhamResponsitory();
-        System.out.println(spR.getSPByID("873ff970-ffa2-4ace-aec0-04e57ab4e5b1"));
-    }
+   
 }

@@ -67,10 +67,10 @@ public class ChatLieuResponsitory {
             if (rs.next()) {
 //                String id = rs.getString(1);
                   String ten = rs.getString(1);
-                System.out.println("  "+ten);
+                
             }
         } catch (SQLException e) {
-            e.printStackTrace(System.out);
+            e.printStackTrace();
         }
 
         return cl;
@@ -91,13 +91,5 @@ public class ChatLieuResponsitory {
         return row;
     }
 
-    public static void main(String[] args) {
-        ChatLieuResponsitory chatLieuRespon = new ChatLieuResponsitory();
-        ChatLieu _chatLieu = new ChatLieu("cl122233332233", "dfsf", 2);
-       
-            ChatLieu chatLieu= chatLieuRespon.insertCL(_chatLieu);
-       
-          System.out.println("  "+chatLieu.getIdCL());
 
-    }
 }

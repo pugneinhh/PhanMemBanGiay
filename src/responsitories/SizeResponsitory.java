@@ -65,8 +65,5 @@ public class SizeResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        SizeResponsitory sizeR = new SizeResponsitory();
-        System.out.println(sizeR.getSizeByID("bdf2df63-3654-44ad-a158-8268b3b45cf9"));
-    }
+    
 }

@@ -235,7 +235,6 @@
           <Events>
             <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtVoucherCaretUpdate"/>
             <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="txtVoucherInputMethodTextChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVoucherActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDiem">
@@ -245,9 +244,6 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtDiemCaretUpdate"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTienKH">
           <Events>

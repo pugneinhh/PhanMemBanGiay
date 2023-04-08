@@ -58,8 +58,6 @@ public class HoaDonChiTieservice {
 
     public hoadonchitietviewmodel inserthdct(hoadonchitietviewmodel hd) {
         var x = hdctrs.inserthoadonct(new HoaDonChiTiet(hd.getIdHDCT(), hd.getIdHD(), hd.getIdCTSP(), hd.getSoLuong(), hd.getDonGia()));
-        System.out.println(x.getIdCTSP().getIdCTSP());
-        System.out.println(x.getIdHD().getIdHD());
         return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
     }
 

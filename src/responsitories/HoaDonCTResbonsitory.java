@@ -174,11 +174,5 @@ public class HoaDonCTResbonsitory {
         return hdct;
     }
 
-    public static void main(String[] args) {
-        ArrayList<HoaDonChiTiet> list = new HoaDonCTResbonsitory().getAllhoadonct();
-        for (HoaDonChiTiet x : list) {
-            System.out.println(x.getIdHDCT());
-            System.out.println(x.getIdCTSP().getIdCTSP());
-        }
-    }
+   
 }

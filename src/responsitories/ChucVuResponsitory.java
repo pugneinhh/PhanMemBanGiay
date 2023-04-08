@@ -60,7 +60,5 @@ public class ChucVuResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        new ChucVuResponsitory().insertCV(new ChucVu( "CV1", "Quản lý", 1));
-    }
+   
 }

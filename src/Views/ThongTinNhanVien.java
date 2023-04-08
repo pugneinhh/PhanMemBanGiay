@@ -340,7 +340,7 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
     private void XacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XacnhanActionPerformed
         ArrayList<NhanVienModel> list = nvs.getAllNV();
         String user = txtMANV.getText();
-        System.out.println(user);
+        
         if(getData()) {
         for(NhanVienModel x : list) {
             if(x.getMaNV().equalsIgnoreCase(user)) {

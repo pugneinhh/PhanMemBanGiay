@@ -63,8 +63,6 @@ public class DoCaoResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        new DoCaoResponsitory().insertDC(new DoCao("DC1", "12cm", 1));
-    }
+    
     
 }

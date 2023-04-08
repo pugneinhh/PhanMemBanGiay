@@ -49,8 +49,37 @@ public class FormNhanVien extends javax.swing.JFrame {
         NhanVienModel nv = new NhanVienModel();
         if (DangNhap.nv.getIdCV().getTenCV().equalsIgnoreCase("Nhân viên")) {
             btnNhanVien.setEnabled(false);
+            btnKhuyenMai.setEnabled(false);
+           
+            btnKhuyenMai.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                   e.consume();
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+            });
             btnNhanVien.addMouseListener(new MouseListener() {
          @Override
+         
          public void mouseClicked(MouseEvent e) {
             e.consume();
          }
@@ -188,9 +217,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         lblAnhNVlogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(214, 214));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(900, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(239, 185, 169));
@@ -342,6 +369,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnTrangchu.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnTrangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
         btnTrangchu.setText("Trang chủ");
         btnTrangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTrangchu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -352,6 +380,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping.png"))); // NOI18N
         btnBanHang.setText("Bán hàng");
         btnBanHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBanHang.setMaximumSize(new java.awt.Dimension(94, 27));
@@ -364,6 +393,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
         btnHoaDon.setText("Hóa đơn");
         btnHoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -374,6 +404,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shoe.png"))); // NOI18N
         btnSanPham.setText("Sản phẩm");
         btnSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -384,6 +415,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon.png"))); // NOI18N
         btnKhuyenMai.setText("Khuyến mãi");
         btnKhuyenMai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -394,6 +426,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employees.png"))); // NOI18N
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,6 +437,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -414,6 +448,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/analytics.png"))); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {

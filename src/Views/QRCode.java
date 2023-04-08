@@ -256,8 +256,7 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
                     hdct.setIdCTSP(ctsp);
                     hdct.setSoLuong(1);
                     hdct.setDonGia(ctsp.getGiaBan());
-                    System.out.println(hdct.getIdCTSP()+"sanpham quet");
-                    System.out.println(hdct);
+                    
                     for (HoaDonChiTiet y : listHDCT) {
                         if (y.getIdHD().getIdHD() != null && y.getIdHD().getIdHD().equals(h.getIdHD())) {
                             listHDCTNew.add(y);

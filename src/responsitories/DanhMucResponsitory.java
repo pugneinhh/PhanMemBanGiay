@@ -58,10 +58,5 @@ public class DanhMucResponsitory {
         int row=JDBCHelper.executeUpdate(sql,id);
         return row;
     }
-    public static void main(String[] args) {
-        //new DanhMucResponsitory().insertDM(new DanhMuc("DM1", "Giày Đế Thấp", 1));
-        DanhMucResponsitory dmR = new DanhMucResponsitory();
-        System.out.println(dmR.getAllDanhMuc());
-        System.out.println(dmR.getDMByID("18c9edbd-5083-4b7c-bb74-ce6aa5764502"));
-    }
+   
 }
