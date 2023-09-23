@@ -54,9 +54,18 @@
 	<parameter name="tienThoi" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="tongTien" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tienGiam" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="diemKH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT dbo.ChatLieu.Ten, dbo.ChiTietHoaDon.SoLuong, dbo.ChiTietHoaDon.DonGia, dbo.ChiTietHoaDon.NgayBan, dbo.DanhMuc.Ten AS DanhMuc, dbo.DoCao.Ten AS DoCao, dbo.HoaDon.MaHD, IIF(dbo.KhachHang.TenKH IS NULL,N'Khách Lẻ',KHACHHANG.TENKH)AS TENKHACH,IIF( dbo.KhachHang.DiaChi IS NULL,N' ',KHACHHANG.DIACHI)AS DIACHIKHACH, 
-                  IIF(dbo.KhachHang.SDT IS NULL,N' ',KHACHHANG.SDT)AS SDTKHACH, dbo.MauSac.Ten AS MauSac, dbo.NhanVien.HoTen, dbo.SanPham.Ten AS SanPham, dbo.Size.Ten AS Size, dbo.ChiTietSanPham.GiaBan, dbo.HoaDon.ThanhTien, (dbo.ChiTietHoaDon.SoLuong*dbo.ChiTietHoaDon.DonGia) AS Gia
+		<![CDATA[SELECT dbo.ChatLieu.Ten, dbo.ChiTietHoaDon.SoLuong, dbo.ChiTietHoaDon.DonGia, dbo.HoaDon.NgayMua, dbo.DanhMuc.Ten AS DanhMuc, dbo.DoCao.Ten AS DoCao, dbo.HoaDon.MaHD, IIF(dbo.KhachHang.TenKH IS NULL,N'Khách Lẻ',KHACHHANG.TENKH)AS TENKHACH,IIF( dbo.KhachHang.DiaChi IS NULL,N' ',KHACHHANG.DIACHI)AS DIACHIKHACH, 
+                  IIF(dbo.KhachHang.SDT IS NULL,N' ',KHACHHANG.SDT)AS SDTKHACH, dbo.MauSac.Ten AS MauSac, dbo.NhanVien.HoTen, dbo.SanPham.Ten AS SanPham, dbo.Size.Ten AS Size, dbo.ChiTietSanPham.GiaBan, dbo.HoaDon.ThanhTien
 FROM     dbo.ChiTietSanPham INNER JOIN
                   dbo.ChiTietHoaDon ON dbo.ChiTietSanPham.Id = dbo.ChiTietHoaDon.IDCTSP INNER JOIN
                   dbo.ChatLieu ON dbo.ChatLieu.Id = dbo.ChiTietSanPham.ChatLieu AND dbo.ChiTietHoaDon.IDCTSP = dbo.ChiTietSanPham.Id INNER JOIN
@@ -74,7 +83,7 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 	<field name="Ten" class="java.lang.String"/>
 	<field name="SoLuong" class="java.lang.Integer"/>
 	<field name="DonGia" class="java.math.BigDecimal"/>
-	<field name="NgayBan" class="java.sql.Date"/>
+	<field name="NgayMua" class="java.sql.Date"/>
 	<field name="DanhMuc" class="java.lang.String"/>
 	<field name="DoCao" class="java.lang.String"/>
 	<field name="MaHD" class="java.lang.String"/>
@@ -87,7 +96,6 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 	<field name="Size" class="java.lang.String"/>
 	<field name="GiaBan" class="java.math.BigDecimal"/>
 	<field name="ThanhTien" class="java.math.BigDecimal"/>
-	<field name="Gia" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -167,12 +175,12 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 				</textElement>
 				<textFieldExpression><![CDATA[$F{HoTen}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="92" y="60" width="119" height="20" uuid="7246e5a6-9154-4797-ac06-c058bec82c37"/>
 				<textElement>
 					<font fontName="Arial" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{NgayBan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{NgayMua}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="406" y="39" width="149" height="20" uuid="b3491174-0499-40a0-a60d-ea8d1392e6ad"/>
@@ -253,7 +261,7 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 				<textElement>
 					<font fontName="Arial" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{SanPham}+","+$F{MauSac}+","+$F{Size}+","+$F{DoCao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SanPham}+","+$F{MauSac}+","+$F{Size}+","+$F{DoCao}+","+$F{DanhMuc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="242" y="0" width="90" height="42" uuid="037ce782-6ce5-4102-bde6-62f7e1475d20"/>
@@ -262,19 +270,19 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SoLuong}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0">
 				<reportElement x="333" y="0" width="97" height="42" uuid="5d64f8d2-e84e-456f-a235-9e084ca80f54"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{GiaBan}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0">
 				<reportElement x="430" y="0" width="125" height="42" uuid="60afe05e-59b2-4382-848d-89ca836fe075"/>
 				<textElement textAlignment="Right">
 					<font fontName="Arial" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Gia}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{DonGia}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="42" width="555" height="1" uuid="6ee7ecfe-b0dd-4022-9939-4da0654a89b8"/>
@@ -300,65 +308,128 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="103" splitType="Stretch">
+		<band height="202" splitType="Stretch">
 			<staticText>
-				<reportElement x="253" y="17" width="121" height="20" uuid="12f163a5-47c8-45b8-bec3-f0ecd6b90a4c"/>
+				<reportElement x="259" y="105" width="121" height="20" uuid="12f163a5-47c8-45b8-bec3-f0ecd6b90a4c"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tổng tiền:]]></text>
+				<text><![CDATA[Thành tiền:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="374" y="17" width="136" height="20" uuid="cb7d2d90-e028-4cbe-b5bb-a4c2fdc68ff3"/>
+			<textField pattern="###0">
+				<reportElement x="380" y="105" width="136" height="20" uuid="cb7d2d90-e028-4cbe-b5bb-a4c2fdc68ff3"/>
 				<textElement>
 					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ThanhTien}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="374" y="50" width="136" height="20" uuid="6a76b567-7e2d-48d6-b0ba-553535f86b90"/>
+			<textField pattern="###0">
+				<reportElement x="380" y="138" width="136" height="20" uuid="6a76b567-7e2d-48d6-b0ba-553535f86b90"/>
 				<textElement>
 					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TienKhachTra}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="374" y="80" width="136" height="20" uuid="ccf7a703-8935-4290-b7a0-a0f492963191"/>
+			<textField pattern="###0">
+				<reportElement x="380" y="168" width="136" height="20" uuid="ccf7a703-8935-4290-b7a0-a0f492963191"/>
 				<textElement>
 					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tienThoi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="253" y="50" width="121" height="20" uuid="edcbd13a-b175-4a59-90aa-cee0aad9792d"/>
+				<reportElement x="259" y="138" width="121" height="20" uuid="edcbd13a-b175-4a59-90aa-cee0aad9792d"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tiền khách đưa:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="253" y="80" width="121" height="20" uuid="844264cd-83d2-43cb-85ea-e8b71ba85157"/>
+				<reportElement x="259" y="168" width="121" height="20" uuid="844264cd-83d2-43cb-85ea-e8b71ba85157"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tiền trả lại:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="510" y="17" width="33" height="20" uuid="a7675abb-8fb6-4398-88ab-c2dffd436c64"/>
+				<reportElement x="516" y="105" width="33" height="20" uuid="a7675abb-8fb6-4398-88ab-c2dffd436c64"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VND]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="510" y="50" width="33" height="20" uuid="34d1dcee-c474-4922-989c-c6492c14a932"/>
+				<reportElement x="516" y="138" width="33" height="20" uuid="34d1dcee-c474-4922-989c-c6492c14a932"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[VND]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="510" y="80" width="33" height="20" uuid="f3266507-5bf6-4e2a-884d-681abe61ba5e"/>
+				<reportElement x="516" y="168" width="33" height="20" uuid="f3266507-5bf6-4e2a-884d-681abe61ba5e"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="40" width="121" height="20" uuid="e48f2705-a5e5-4b98-8fd7-536221b8f0a9"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tiền giảm:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="40" width="33" height="20" uuid="6027e63f-e3ec-4669-b62d-4747d18c50fa"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="380" y="40" width="136" height="20" uuid="2e800420-f6fc-44ba-a0d2-11e9e9aa86bc"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tienGiam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="10" width="121" height="20" uuid="7634e03c-c3c5-459f-ba21-fec25bc824d4"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="10" width="33" height="20" uuid="55e67291-0321-4b3a-9d7b-f9e87e2afc0f"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="380" y="10" width="136" height="20" uuid="75da9182-b5f6-452f-a96d-b9fc818f5116"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tongTien}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="380" y="73" width="136" height="20" uuid="267d435c-43d5-47bc-a744-6d08074d6bdf"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{diemKH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="73" width="121" height="20" uuid="f1e563a9-5b91-44d3-8126-aeed08da4ce9"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Điểm sử dụng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="73" width="33" height="20" uuid="6bc84f13-f2cb-4f78-b951-1c391a4c7b31"/>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
@@ -370,6 +441,6 @@ FROM     dbo.ChiTietSanPham INNER JOIN
 		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="7" splitType="Stretch"/>
+		<band height="12" splitType="Stretch"/>
 	</summary>
 </jasperReport>

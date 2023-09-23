@@ -104,11 +104,12 @@ public class HoaDonResponsitory {
     }
 
     public HoaDon updatehoadon_thanhtoan(HoaDon hd) {
-        String sql = "UPDATE  dbo.HoaDon SET THANHTIEN = ? ,TRANGTHAI = 1 , idkm = ?,NGAYMUA = GETDATE(),hinhthucthanhtoan = ? WHERE MAHD = ?";
+        String sql = "UPDATE  dbo.HoaDon SET THANHTIEN = ? ,TRANGTHAI = 1 , idkm = ?,NGAYMUA = GETDATE(),hinhthucthanhtoan = ?,ghichu=? WHERE MAHD = ?";
         JDBCHelper.executeUpdate(sql,
                 hd.getThanhTien(),
                 hd.getIdKM().getIdKM(),
                 hd.getHinhThucThanhToan(),
+                hd.getGhiChu(),
                 hd.getMaHD()
         );
         return hd;

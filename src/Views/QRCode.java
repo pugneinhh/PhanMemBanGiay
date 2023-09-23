@@ -48,10 +48,10 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
     ChiTietSanPhamResponsitory ctspr = new ChiTietSanPhamResponsitory();
     JTable tblGioHang;
     JTable tblHoaDon;
-    BanHangJPanel banHangfr;
+    BanHangPanel banHangfr;
     private final hoadonservice hoaDonService;
     private final ChiTietSanPhamService chiTietSanPhamService;
-    public QRCode(JTable tblGioHang, JTable tblHoaDon, BanHangJPanel banhangfr) {
+    public QRCode(JTable tblGioHang, JTable tblHoaDon, BanHangPanel banhangfr) {
         initComponents();
         initWebcam();
         this.setLocationRelativeTo(null);
@@ -272,7 +272,7 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
                             }
                             hdct.setSoLuong(y1.getSoLuong() + 1);
                             hoaDonChiTieservice.updateHDCT(hdct);
-                            banHangfr.loadGioHangbyID(h.getIdHD());
+                            banHangfr.loadGioHang();
                             dem++;
 //                banHangfr.loadTableBanHang();
                         }
@@ -281,7 +281,7 @@ public class QRCode extends javax.swing.JFrame implements Runnable, ThreadFactor
                     if (dem == 0) {
                         hdct.setSoLuong(1);
                         hoaDonChiTieservice.inserthdct(hdct);
-                        banHangfr.loadGioHangbyID(h.getIdHD());
+                        banHangfr.loadGioHang();
                     }
 
                 }

@@ -71,11 +71,11 @@ public class NhanVienResponsitory {
         return list;
     }
     public NhanVien getNVByID(String id) {
-        String sql = "SELECT ID, MANV FROM NhanVien WHERE ID=?";
+        String sql = "SELECT ID, MANV,HOTEN FROM NhanVien WHERE ID=?";
         ResultSet rs = JDBCHelper.excuteQuery(sql, id);
         try {
             while (rs.next()) {
-                return new NhanVien(rs.getString(1), rs.getString(2));
+                return new NhanVien(rs.getString(1), rs.getString(2),rs.getString(3));
             }
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienResponsitory.class.getName()).log(Level.SEVERE, null, ex);

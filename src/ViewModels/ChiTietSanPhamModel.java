@@ -81,6 +81,24 @@ public class ChiTietSanPhamModel {
         this.mota = mota;
         this.trangThai = trangThai;
     }
+    
+    public ChiTietSanPhamModel(String idCTSP,SanPham idSP, KhuyenMai idKM, BigDecimal giaNhap, BigDecimal giaBan, int maQR, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
+        this.idCTSP=idCTSP;
+        this.idSP = idSP;
+        this.idKM = idKM;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
+        this.maQR = maQR;
+        this.hinhanh = hinhanh;
+        this.soLuong = soLuong;
+        this.idDM = idDM;
+        this.idSize = idSize;
+        this.idMS = idMS;
+        this.idCL = idCL;
+        this.idDC = idDC;
+        this.mota = mota;
+        this.trangThai = trangThai;
+    }
 
     public ChiTietSanPhamModel(SanPham idSP, BigDecimal giaNhap, BigDecimal giaBan, String hinhanh, int soLuong, DanhMuc idDM, Size idSize, MauSac idMS, ChatLieu idCL, DoCao idDC, String mota, int trangThai) {
         this.idSP = idSP;
@@ -231,6 +249,11 @@ public class ChiTietSanPhamModel {
 
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return  idCTSP ;
     }
 
    

@@ -29,9 +29,10 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String idNV, String maNV) {
+    public NhanVien(String idNV, String maNV,String hoTen) {
         this.idNV = idNV;
         this.maNV = maNV;
+        this.hoTen=hoTen;
     }
    
     public NhanVien(String idNV, String maNV, String hoTen, Date ngaySinh, String gioiTinh, String diaChi, String sdt, String email, String matKhau, ChucVu idCV, String hinh, int trangThai) {
@@ -180,7 +181,7 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return maNV;
+        return hoTen;
     }   
     
 }

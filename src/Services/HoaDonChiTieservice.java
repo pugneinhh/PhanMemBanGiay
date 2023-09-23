@@ -83,4 +83,9 @@ public class HoaDonChiTieservice {
         return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
 
     }
+    public hoadonchitietviewmodel updateHDCT_huyThanhToan(hoadonchitietviewmodel hdct) {
+        var x = hdctrs.updateHDCT_huyThanhToan(new HoaDonChiTiet(hdct.getIdHDCT(), hdct.getIdHD(), hdct.getIdCTSP(), hdct.getSoLuong(), hdct.getDonGia()));
+        return new hoadonchitietviewmodel(x.getIdHDCT(), x.getIdHD(), x.getIdCTSP(), x.getSoLuong(), x.getDonGia());
+
+    }
 }

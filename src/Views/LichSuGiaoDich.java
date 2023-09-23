@@ -4,15 +4,17 @@
  */
 package Views;
 
-import DomainModels.GiaoHang;
+
 import DomainModels.HoaDon;
+import DomainModels.HoaDonChiTiet;
 import DomainModels.KhachHang;
 import DomainModels.KhuyenMai;
 import DomainModels.NhanVien;
+import Services.ChiTietSanPhamService;
 import Services.HoaDonChiTietLichSuService;
 import Services.hoadonservice;
 import Utilities.JDBCHelper;
-import ViewModels.LichSuGiaoHangModel;
+import ViewModels.ChiTietSanPhamModel;
 import ViewModels.HoaDonChiTiet_CTSanPham;
 import ViewModels.HoaDonViewModel;
 import java.awt.Color;
@@ -23,8 +25,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import responsitories.HoaDonCTResbonsitory;
 import responsitories.KhachHangResponsitory;
 import responsitories.KhuyenMaiResbonsitory;
 import responsitories.NhanVienResponsitory;
@@ -36,7 +39,9 @@ import responsitories.NhanVienResponsitory;
 public class LichSuGiaoDich extends javax.swing.JPanel {
 
     private HoaDonChiTietLichSuService hdCTSPs;
-    private final hoadonservice hoaDonSS;
+    private  hoadonservice hoaDonSS;
+    HoaDonCTResbonsitory hdcts=new HoaDonCTResbonsitory();
+    ChiTietSanPhamService ctsps=new ChiTietSanPhamService();
     private DefaultTableModel dtmHD = new DefaultTableModel();
     private DefaultTableModel dtmD = new DefaultTableModel();
     NhanVienResponsitory nv = new NhanVienResponsitory();
@@ -107,7 +112,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
 
     public ArrayList<HoaDonViewModel> getAllHoaDon() {
         ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON) AND (TRANGTHAI=1 OR TRANGTHAI=2)";
+        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON ORDER BY NGAYTAO DESC) AND (TRANGTHAI=1 OR TRANGTHAI=2) ORDER BY NGAYTAO DESC ";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
         try {
             while (rs.next()) {
@@ -125,7 +130,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
 
     public ArrayList<HoaDonViewModel> getHoaDonTT() {
         ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON) AND TRANGTHAI=1 ";
+        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON ORDER BY NGAYTAO DESC) AND TRANGTHAI=1 ORDER BY NGAYTAO DESC ";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
         try {
             while (rs.next()) {
@@ -143,7 +148,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
 
     public ArrayList<HoaDonViewModel> getHoaDonBH() {
         ArrayList<HoaDonViewModel> list = new ArrayList<>();
-        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON) AND  TRANGTHAI=2";
+        String sql = "SELECT TOP 6 * FROM HOADON where MAHD not in (SELECT TOP " + (Trang * 6 - 6) + "MAHD FROM HOADON ORDER BY NGAYTAO DESC) AND  TRANGTHAI=2 ORDER BY NGAYTAO DESC ";
         ResultSet rs = JDBCHelper.excuteQuery(sql);
         try {
             while (rs.next()) {
@@ -162,7 +167,8 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
     public void loadTBHoaDonAll(long Trang) {
         ArrayList<HoaDonViewModel> list = getAllHoaDon();
         dtmHD.setRowCount(0);
-        Collections.sort(list, Comparator.comparing(HoaDonModel -> HoaDonModel.getMaHD()));
+        Collections.sort(list, Comparator.comparing(HoaDonViewModel -> HoaDonViewModel.getNgaytao()));
+        Collections.reverse(list);
         for (HoaDonViewModel hd : list) {
             dtmHD.addRow(new Object[]{
                 hd.getMaHD(),
@@ -172,7 +178,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 hd.getThanhTien(),
                 hd.getHinhThucThanhToan()==0?"Tiền mặt":"Thẻ",
                 hd.trangthai(),
-                hd.getGhiChu()
+                hd.getGhiChu()==null?"":hd.getGhiChu()
             });
 
         }
@@ -182,7 +188,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
     public void loadTBHoaDonTT(long Trang) {
         ArrayList<HoaDonViewModel> list = getHoaDonTT();
         dtmHD.setRowCount(0);
-        Collections.sort(list, Comparator.comparing(HoaDonModel -> HoaDonModel.getMaHD()));
+//        Collections.sort(list, Comparator.comparing(HoaDonViewModel -> HoaDonViewModel.getMaHD()));
         for (HoaDonViewModel hd : list) {
             dtmHD.addRow(new Object[]{
                 hd.getMaHD(),
@@ -192,7 +198,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 hd.getThanhTien(),
                 hd.getHinhThucThanhToan()==0?"Tiền mặt":"Thẻ",
                 hd.trangthai(),
-                hd.getGhiChu()
+                hd.getGhiChu()==null?"":hd.getGhiChu()
             });
 
         }
@@ -202,7 +208,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
     public void loadTBHoaDonBH(long Trang) {
         ArrayList<HoaDonViewModel> list = getHoaDonBH();
         dtmHD.setRowCount(0);
-        Collections.sort(list, Comparator.comparing(HoaDonModel -> HoaDonModel.getMaHD()));
+//        Collections.sort(list, Comparator.comparing(HoaDonViewModel -> HoaDonViewModel.getMaHD()));
         for (HoaDonViewModel hd : list) {
             dtmHD.addRow(new Object[]{
                 hd.getMaHD(),
@@ -212,61 +218,14 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 hd.getThanhTien(),
                 hd.getHinhThucThanhToan()==0?"Tiền mặt":"Thẻ",
                 hd.trangthai(),
-                hd.getGhiChu()
+                hd.getGhiChu()==null?"":hd.getGhiChu()
             });
 
         }
 
     }
-//    public void loadhoadon() {
-//        ArrayList<HoaDonViewModel> list = hoaDonSS.getAllhoadonByTrangThai();
-//        
-//        dtmHD.setRowCount(0);
-//        for (HoaDonViewModel hd : list) {
-//            dtmHD.addRow(new Object[]{
-//                hd.getMaHD(),
-//                hd.getIdNV(),
-//                hd.getIdKH() == null ? "Khách lẻ" : "" + hd.getIdKH(),
-//                hd.getNgaytao(),
-//                hd.getThanhTien(),
-//                hd.trangthai()
-//            });
-//        }
-//    }
 
-    public void loadhoadonTT() {
-        ArrayList<HoaDonViewModel> list = hoaDonSS.getAllhoadonThanhToan();
-
-        dtmHD.setRowCount(0);
-        for (HoaDonViewModel hd : list) {
-            dtmHD.addRow(new Object[]{
-                hd.getMaHD(),
-                hd.getIdNV(),
-                hd.getIdKH() == null ? "Khách lẻ" : "" + hd.getIdKH(),
-                hd.getNgaytao(),
-                hd.getThanhTien(),
-                hd.getHinhThucThanhToan()==0?"Tiền mặt":"Thẻ",
-                hd.trangthai()
-            });
-        }
-    }
-
-    public void loadhoadonHuy() {
-        ArrayList<HoaDonViewModel> list = hoaDonSS.getAllhoadonHuy();
-
-        dtmHD.setRowCount(0);
-        for (HoaDonViewModel hd : list) {
-            dtmHD.addRow(new Object[]{
-                hd.getMaHD(),
-                hd.getIdNV(),
-                hd.getIdKH() == null ? "Khách lẻ" : "" + hd.getIdKH(),
-                hd.getNgaytao(),
-                hd.getThanhTien(),
-                hd.getHinhThucThanhToan()==0?"Tiền mặt":"Thẻ",
-                hd.trangthai()
-            });
-        }
-    }
+    
 
     private void loadTableHdCTSP(ArrayList<HoaDonChiTiet_CTSanPham> list) {
         dtmD.setRowCount(0);
@@ -388,6 +347,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
             }
         });
         tblHoaDon.setRowHeight(25);
+        tblHoaDon.setSelectionBackground(new java.awt.Color(153, 255, 153));
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDonMouseClicked(evt);
@@ -542,10 +502,16 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
 
         cbbHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Thẻ" }));
 
-        btnHuyHoaDon.setBackground(new java.awt.Color(255, 51, 51));
+        btnHuyHoaDon.setBackground(new java.awt.Color(255, 255, 102));
         btnHuyHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnHuyHoaDon.setForeground(new java.awt.Color(255, 255, 102));
+        btnHuyHoaDon.setForeground(new java.awt.Color(255, 51, 51));
+        btnHuyHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconDelete.png"))); // NOI18N
         btnHuyHoaDon.setText("Hủy Hóa Đơn");
+        btnHuyHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyHoaDonActionPerformed(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setText("Ghi chú");
@@ -562,10 +528,6 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHuyHoaDon)
-                .addGap(209, 209, 209))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,6 +561,10 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                             .addComponent(jLabel21)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHuyHoaDon)
+                .addGap(168, 168, 168))
         );
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbbHTTT, cbbTrangThaiHoaDon, txtMaHoaDon, txtMaNhanVien, txtNgayTao, txtTenKhachHang, txtThanhTien});
@@ -693,6 +659,7 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
         try {
             int row1 = tblHoaDon.getSelectedRow();
             if (row1 < 0) {
+                return;
             } else {
                 txtMaHoaDon.setText(tblHoaDon.getValueAt(row1, 0).toString());
                 txtMaNhanVien.setText(tblHoaDon.getValueAt(row1, 1).toString());
@@ -706,9 +673,10 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
                     cbbHTTT.setSelectedIndex(1);
                 }
                 cbbTrangThaiHoaDon.setSelectedItem(tblHoaDon.getValueAt(row1, 6).toString());
+                
                 ArrayList<HoaDonChiTiet_CTSanPham> li = hdCTSPs.getAllHoaDon_HoaDonChiTiet_ChiTietSP_theoMahd(tblHoaDon.getValueAt(row1, 0).toString());
                 txtThanhTien.setText(tblHoaDon.getValueAt(row1, 4).toString());
-                if(tblHoaDon.getValueAt(row1, 7).toString().length()>0){
+                if(tblHoaDon.getValueAt(row1, 7).toString().trim().length()>0){
                  txtGhiChu.setText(tblHoaDon.getValueAt(row1, 7).toString());   
                 }else{
                     txtGhiChu.setText("");
@@ -816,6 +784,33 @@ public class LichSuGiaoDich extends javax.swing.JPanel {
     private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtThanhTienActionPerformed
+
+    private void btnHuyHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyHoaDonActionPerformed
+        HoaDonViewModel hdHuy = new HoaDonViewModel();
+        hdHuy.setMaHD(txtMaHoaDon.getText());
+        if(txtMaHoaDon.getText().trim().length()==0){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hóa đơn muốn hủy");
+        }
+        String lydo = JOptionPane.showInputDialog(null, "Vui lòng nhập lý do hủy?");
+        if (lydo.isEmpty()) {
+            return;
+        }
+        hdHuy.setGhiChu(lydo);
+        HoaDon h=hdcts.getIDHoaDon(txtMaHoaDon.getText());
+        ArrayList<HoaDonChiTiet> listhdct=hdcts.getAllhoadonct_byMa(h.getIdHD());
+        ChiTietSanPhamModel ctspM=new ChiTietSanPhamModel();
+        if (hoaDonSS.updateHoaDon_HUY(hdHuy) != null) {
+            for (HoaDonChiTiet x : listhdct) {
+                ctspM.setIdCTSP(x.getIdCTSP().getIdCTSP());
+                ctspM.setSoLuong(x.getSoLuong());
+                ctsps.update_huyThanhToan(ctspM);
+                hdcts.updateHDCT_huyThanhToan(x);
+            }
+            JOptionPane.showMessageDialog(null, "Hủy hóa đơn thành công");
+            
+        }
+        loadTBHoaDonAll(1);
+    }//GEN-LAST:event_btnHuyHoaDonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

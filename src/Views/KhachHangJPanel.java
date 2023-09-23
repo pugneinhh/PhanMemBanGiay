@@ -4,16 +4,13 @@
  */
 package Views;
 
-import DomainModels.KhachHang;
 import Services.HoaDonChiTietLichSuService;
 import Services.KhachHangService;
-import ViewModels.GiaoCaModel;
 import ViewModels.LichSuGiaoHangModel;
 import ViewModels.KhachHangModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,6 +51,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 khachHangViewModel.getEmail(),
                 khachHangViewModel.getSdt(),
                 khachHangViewModel.getNgaySinh(),
+                khachHangViewModel.getTichDiem(),
+                khachHangViewModel.getDiemEXP(),
+                khachHangViewModel.getNgayThamGia(),
                 khachHangViewModel.getTrangThai() == 1 ? "Còn hoạt động" : "Ngừng hoạt động"
             });
         }
@@ -96,9 +96,10 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     public KhachHangModel getFormData() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date;
-        String ma = txtMaKH.getText();
+        ArrayList<KhachHangModel> listKH=khService.getAllKhachHang();
+        String ma = "KH"+(listKH.size()+1);
         String ten = txtTenKH.getText();
-        String loai = txtLoaiKH.getText();
+        
         String diaChi = txtDiaChiKH.getText();
         String gt = rdoKHNam.isSelected() == true ? "Nam" : "Nữ";
         String email = txtKHEmail.getText();
@@ -107,20 +108,13 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         int tt = rdoKHCon.isSelected() == true ? 1 : 0;
 
-        if (ma.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Mã không được trống");
-            return null;
-        }
         if (ten.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Mã không được trống");
+            JOptionPane.showMessageDialog(this, "Tên không được trống");
             return null;
         }
-        if (loai.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Mã không được trống");
-            return null;
-        }
+        
         if (diaChi.trim().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Mã không được trống");
+            JOptionPane.showMessageDialog(this, "Địa chỉ không được trống");
             return null;
         }
 
@@ -172,7 +166,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             }
         }
 
-        KhachHangModel kh = new KhachHangModel(ma, loai, ten, diaChi, gt, email, sdt, date, null, tt);
+        KhachHangModel kh = new KhachHangModel(ma, null, ten, diaChi, gt, email, sdt, date, null, tt);
         return kh;
     }
 
@@ -236,9 +230,15 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Mã khách hàng");
 
+        txtMaKH.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaKH.setEnabled(false);
+
         jLabel2.setText("Tên khách hàng");
 
         jLabel3.setText("Loại khách hàng");
+
+        txtLoaiKH.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtLoaiKH.setEnabled(false);
 
         jLabel4.setText("Địa chỉ");
 
@@ -273,6 +273,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         btnThem.setBackground(new java.awt.Color(152, 251, 152));
         btnThem.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +283,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         btnSua.setBackground(new java.awt.Color(152, 251, 152));
         btnSua.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconUpload.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +293,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         btnLamMoi.setBackground(new java.awt.Color(152, 251, 152));
         btnLamMoi.setFont(new java.awt.Font("Barlow Condensed Light", 1, 14)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cleaning.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,7 +306,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLamMoi)
                     .addComponent(btnSua)
@@ -316,9 +319,9 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(btnThem)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btnSua)
                 .addGap(18, 18, 18)
                 .addComponent(btnLamMoi)
@@ -371,7 +374,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                                         .addComponent(rdoKHNgung))
                                     .addComponent(txtKHNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -442,11 +445,11 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã KH", "Tên KH", "Loại KH", "Địa chỉ", "Giới tính", "Email", "SDT", "Ngày sinh", "Trạng thái"
+                "Mã KH", "Tên KH", "Loại KH", "Địa chỉ", "Giới tính", "Email", "SDT", "Ngày sinh", "Tích điểm", "Điểm EXP", "Ngày tham gia", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -508,7 +511,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cbbKHTrangThai, 0, 121, Short.MAX_VALUE))
+                    .addComponent(cbbKHTrangThai, 0, 134, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -522,7 +525,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
                 .addComponent(cbbKHTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -532,7 +535,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
@@ -587,14 +590,14 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 914, Short.MAX_VALUE)
                 .addGap(55, 55, 55))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
@@ -613,15 +616,15 @@ public class KhachHangJPanel extends javax.swing.JPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jTabbedPane3)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 999, Short.MAX_VALUE)
+            .addGap(0, 1024, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -712,7 +715,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
                 txtKHNgaySinh.setDate(date);
 //                Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(tblThongtinKH.getValueAt(row, 8).toString());
 
-                String tt = tblThongtinKH.getValueAt(row, 8).toString();
+                String tt = tblThongtinKH.getValueAt(row, 11).toString();
                 if (tt.equalsIgnoreCase("Còn hoạt động")) {
                     rdoKHCon.setSelected(true);
                 } else {

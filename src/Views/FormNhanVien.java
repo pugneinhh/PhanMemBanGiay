@@ -369,7 +369,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnTrangchu.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnTrangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
+        btnTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconHome.png"))); // NOI18N
         btnTrangchu.setText("Trang chủ");
         btnTrangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTrangchu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -380,7 +380,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping.png"))); // NOI18N
+        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/banHang.png"))); // NOI18N
         btnBanHang.setText("Bán hàng");
         btnBanHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBanHang.setMaximumSize(new java.awt.Dimension(94, 27));
@@ -393,7 +393,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/receipt.png"))); // NOI18N
         btnHoaDon.setText("Hóa đơn");
         btnHoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,7 +404,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shoe.png"))); // NOI18N
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/heels.png"))); // NOI18N
         btnSanPham.setText("Sản phẩm");
         btnSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,8 +415,8 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon.png"))); // NOI18N
-        btnKhuyenMai.setText("Khuyến mãi");
+        btnKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/coupon (1).png"))); // NOI18N
+        btnKhuyenMai.setText("Khuyến mại");
         btnKhuyenMai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -426,7 +426,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employees.png"))); // NOI18N
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconNV.png"))); // NOI18N
         btnNhanVien.setText("Nhân viên");
         btnNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -437,7 +437,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer.png"))); // NOI18N
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconKH.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -448,7 +448,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/analytics.png"))); // NOI18N
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/analytics (1).png"))); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -459,11 +459,18 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         btnThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThoat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThoatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThoatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThoatMouseExited(evt);
             }
         });
 
@@ -656,7 +663,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHangMouseClicked
 
     private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
-        BanHangJPanel bhl = new BanHangJPanel();
+        BanHangPanel bhl = new BanHangPanel();
         bhl.setSize(pncardgoc.getWidth(), pncardgoc.getHeight());
         JBanHang.add(bhl, BorderLayout.CENTER);
         cardlayout.show(pncardgoc, "cardbh");
@@ -707,6 +714,14 @@ public class FormNhanVien extends javax.swing.JFrame {
     private void lblAnhNVloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhNVloginMouseClicked
         new ThongTinNhanVien().setVisible(true);
     }//GEN-LAST:event_lblAnhNVloginMouseClicked
+
+    private void btnThoatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseEntered
+        btnThoat.setBackground(Color.pink);
+    }//GEN-LAST:event_btnThoatMouseEntered
+
+    private void btnThoatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseExited
+        btnThoat.setBackground(Color.white);
+    }//GEN-LAST:event_btnThoatMouseExited
 
     /**
      * @param args the command line arguments
